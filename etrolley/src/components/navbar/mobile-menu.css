@@ -71,11 +71,23 @@
   justify-content: space-between;
 }
 
+.mobile-menu__brand {
+  display: inline-flex;
+  align-items: center;
+  /* Light pill behind the dark logo so it stays readable on the
+     dark menu panel — same trick a lot of brand kits use when the
+     logo only has a light variant. */
+  background: var(--color-white);
+  padding: 6px 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
 .mobile-menu__brand img {
-  width: 110px;
+  width: clamp(110px, 30vw, 140px);
   height: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.95;
+  display: block;
+  filter: none;
 }
 
 .mobile-menu__close {
