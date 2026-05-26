@@ -28,7 +28,7 @@ export const differentTemplate = () => {
             </span>
             <span class="different__eyebrow-text">${t('different.eyebrow')}</span>
           </div>
-          <h2 class="different__title">${t('different.title')}</h2>
+          <h2 class="different__title" data-reveal="fade-up" data-reveal-delay="0.1">${t('different.title')}</h2>
         </div>
 
         <!-- Stacking deck (pinned + scroll-driven) -->

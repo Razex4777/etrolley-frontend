@@ -1,0 +1,51 @@
+/* =============================================================
+ * Motion infrastructure: the page-intro splash overlay + initial
+ * states for [data-reveal] elements (so they don't flash visible
+ * before JS runs).
+ * ============================================================= */
+
+/* ---------- Page intro ---------- */
+.page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: linear-gradient(180deg, #FEFFFF 0%, #F5F1EA 100%);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.page-intro__mark {
+  width: clamp(120px, 14vw, 180px);
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 12px 30px rgba(49, 108, 107, 0.18));
+}
+
+.page-intro__mark img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Reveal initial states (FOUC guard) ----------
+   The JS preset overrides these on init; this only prevents a
+   visible flash before scripts run. Once ScrollTrigger fires the
+   reveal, the element is animated to its natural state. */
+[data-reveal] {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+/* If JS fails to load (or before init), make sure content is still
+   visible after a beat instead of staying invisible forever. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; }
+  .page-intro    { display: none; }
+}
+
+/* Let groups stay visible to the reveal-bind mechanism. */
+[data-reveal-group] [data-reveal] {
+  /* parent will set children's initial state via JS, but if JS
+     hasn't fired yet, opacity:0 from the rule above already covers it. */
+}
