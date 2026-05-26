@@ -216,8 +216,19 @@
 }
 
 .nav__dropdown-flag {
-  font-size: 18px;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav__flag-icon {
+  display: block;
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.nav__dropdown-item:hover .nav__flag-icon {
+  transform: scale(1.08);
 }
 
 /* ---------- Phone block ---------- */

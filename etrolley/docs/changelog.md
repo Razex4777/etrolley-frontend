@@ -4,6 +4,7 @@
 
 # 2026-05-26 19:46
 
+- 🌐 **SVG Flag Icons Dropdown** — replaced native Unicode flag emojis in the language dropdown with high-fidelity, color-accurate inline SVG flags for both the United Kingdom (English) and Qatar (Arabic). This fixes Windows compatibility issues (where standard flag emojis render as plain text 'GB' and 'QA') and guarantees consistent, crisp flag rendering on all operating systems.
 - 🎨 **Horizontal Pagination & Description Alignment** — modified `services.css` to align the sage-green services section description and `1/4` slide pagination indicator side-by-side on the same horizontal row, matching the Figma reference layout.
 - 🗑️ **Hero CTA Cleanup** — removed the link label text (`hero.linkLabel` eyebrow) from the main hero section container to streamline the CTA block.
 

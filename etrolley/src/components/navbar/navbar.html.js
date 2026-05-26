@@ -8,7 +8,7 @@
  * ---------------------------------------------------------------
  */
 
-import { t } from '../../lib/i18n.js';
+import { t, getLang } from '../../lib/i18n.js';
 
 export const navbarTemplate = () => /* html */ `
   <nav class="nav" aria-label="${t('nav.aria.primary')}">
@@ -44,19 +44,20 @@ export const navbarTemplate = () => /* html */ `
         <li class="nav__item"><a href="#contact" class="nav__link">${t('nav.contact')}</a></li>
         <li class="nav__item nav__item--menu">
           <button class="nav__link nav__link--menu nav__link--lang" type="button" aria-haspopup="menu" aria-expanded="false" data-menu="lang">
+            <span class="nav__dropdown-flag" aria-hidden="true">${getLang() === 'ar' ? flagQatar() : flagUK()}</span>
             <span data-current-lang>${t('nav.lang')}</span>
             ${chevronSVG()}
           </button>
           <ul class="nav__dropdown" role="menu" aria-label="${t('nav.aria.lang')}">
             <li role="none">
               <button role="menuitemradio" type="button" data-lang="en" class="nav__dropdown-item">
-                <span class="nav__dropdown-flag" aria-hidden="true">🇬🇧</span>
+                <span class="nav__dropdown-flag" aria-hidden="true">${flagUK()}</span>
                 <span>${t('lang.en')}</span>
               </button>
             </li>
             <li role="none">
               <button role="menuitemradio" type="button" data-lang="ar" class="nav__dropdown-item">
-                <span class="nav__dropdown-flag" aria-hidden="true">🇶🇦</span>
+                <span class="nav__dropdown-flag" aria-hidden="true">${flagQatar()}</span>
                 <span>${t('lang.ar')}</span>
               </button>
             </li>
@@ -245,6 +246,37 @@ function social3D(type) {
 
       <!-- Top Gloss Overlay (Sheen reflection) -->
       <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-${bgId})" />
+    </svg>
+  `;
+}
+
+function flagUK() {
+  return /* html */ `
+    <svg class="nav__flag-icon" width="20" height="15" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+      <clipPath id="uk-clip">
+        <rect width="60" height="30" rx="3" />
+      </clipPath>
+      <g clip-path="url(#uk-clip)">
+        <rect width="60" height="30" fill="#012169"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" stroke-width="6"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" stroke-width="10"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+      </g>
+    </svg>
+  `;
+}
+
+function flagQatar() {
+  return /* html */ `
+    <svg class="nav__flag-icon" width="20" height="15" viewBox="0 0 28 15" xmlns="http://www.w3.org/2000/svg">
+      <clipPath id="qa-clip">
+        <rect width="28" height="15" rx="3" />
+      </clipPath>
+      <g clip-path="url(#qa-clip)">
+        <rect width="28" height="15" fill="#8D1B3D"/>
+        <polygon points="0,0 8,0 8,0.68 7,1.36 8,2.04 7,2.72 8,3.4 7,4.08 8,4.76 7,5.44 8,6.12 7,6.8 8,7.48 7,8.16 8,8.84 7,9.52 8,10.2 7,10.88 8,11.56 7,12.24 8,12.92 7,13.6 8,14.28 7,14.96 8,15 0,15" fill="#FFFFFF"/>
+      </g>
     </svg>
   `;
 }
