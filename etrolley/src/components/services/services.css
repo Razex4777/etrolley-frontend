@@ -578,9 +578,9 @@
   .services__cart-front {
     width: clamp(120px, 22vw, 180px);
     left: clamp(16px, 4vw, 32px);
-    /* Pull less than desktop's -58% so the cart sits lower and
-       its wheels land inside the dark band. */
-    transform: translateY(-38%);
+    /* Lift the cart higher so its wheels rest cleanly INSIDE the
+       dark section instead of floating in the white band above. */
+    transform: translateY(-62%);
   }
 }
 
@@ -588,9 +588,7 @@
   .services__cart-back,
   .services__cart-front {
     width: clamp(110px, 28vw, 160px);
-    /* Smaller pull-up so the wheels actually sit INSIDE the dark
-       section while the basket peeks above the section line. */
-    transform: translateY(-32%);
+    transform: translateY(-66%);
     left: 16px;
   }
 }
@@ -599,6 +597,6 @@
   .services__cart-back,
   .services__cart-front {
     width: clamp(96px, 30vw, 140px);
-    transform: translateY(-28%);
+    transform: translateY(-70%);
   }
 }
