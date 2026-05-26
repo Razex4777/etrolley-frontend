@@ -208,12 +208,7 @@ export function initSteps() {
 
     /* ---------- Magnetic CTA ---------- */
     const cta = qs('.steps__cta', host);
-    if (cta) {
-      const cleanupMagnetic = magneticHover(cta, 0.22);
-      /* gsap.context picks up GSAP-tracked items only — wire the
-         pointer-listener cleanup so it runs alongside ctx.revert(). */
-      ctx.add(() => cleanupMagnetic);
-    }
+    if (cta) magneticHover(cta, 0.22);
   }, host);
 
   return {
@@ -227,11 +222,6 @@ export function initSteps() {
 
 /* --------------------- Helpers --------------------- */
 
-/**
- * Magnetic-pull hover that follows the cursor with easing.
- * Returns a cleanup function that detaches both DOM listeners so
- * callers can integrate it into a lifecycle (gsap.context, etc.).
- */
 function magneticHover(el, strength = 0.25) {
   const onMove = (e) => {
     const rect = el.getBoundingClientRect();
@@ -251,9 +241,4 @@ function magneticHover(el, strength = 0.25) {
   };
   el.addEventListener('mousemove', onMove);
   el.addEventListener('mouseleave', onLeave);
-
-  return () => {
-    el.removeEventListener('mousemove', onMove);
-    el.removeEventListener('mouseleave', onLeave);
-  };
 }

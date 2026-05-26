@@ -2,6 +2,11 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-05-26 19:46
+
+- 🎨 **Horizontal Pagination & Description Alignment** — modified `services.css` to align the sage-green services section description and `1/4` slide pagination indicator side-by-side on the same horizontal row, matching the Figma reference layout.
+- 🗑️ **Hero CTA Cleanup** — removed the link label text (`hero.linkLabel` eyebrow) from the main hero section container to streamline the CTA block.
+
 # 2026-05-26 18:40
 
 - 🎨 **Services Section Top Border Standing Cart** — added top offset margin (`100px`) and set section overflow to `visible` to allow the shopping cart symbol to stand over the top border. Created a multi-layered, absolute-positioned cart container: the beige chassis frame is layered in front (`z-index: 2`) and the dark teal basket is behind it (`z-index: 1`) in a unified aspect-ratio viewBox coordinate system. Applied a scale-X flip transform to position the handle grip on the left, matching the design mockups. Integrated reveal animations in the GSAP timeline.

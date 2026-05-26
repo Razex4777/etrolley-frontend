@@ -63,7 +63,6 @@ export const heroTemplate = () => {
 
           <div class="hero__row">
             <div class="hero__cta-wrap">
-              <span class="hero__cta-eyebrow">${t('hero.linkLabel')}</span>
               <a class="hero__cta" href="#create-store">
                 <span>${t('hero.cta')}</span>
               </a>

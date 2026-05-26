@@ -112,3 +112,40 @@ function cardHTML(idx, position /* 'low' | 'high' */) {
 }
 
 const pad = (n) => String(n).padStart(2, '0');
+
+/**
+ * Per-step glyph — bold filled silhouette, primary teal.
+ */
+function stepIcon(idx) {
+  const icons = {
+    1: /* html */ `
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <rect x="8" y="14" width="40" height="32" rx="4" fill="currentColor" opacity="0.12"/>
+        <rect x="8" y="14" width="40" height="32" rx="4" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M8 24h40" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M18 34l5 5 11-12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`,
+    2: /* html */ `
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <path d="M28 6l5.6 14h14.4l-11.7 9.2L41 44 28 35l-13 9 4.7-14.8L8 20h14.4z"
+              fill="currentColor" opacity="0.18"/>
+        <path d="M28 6l5.6 14h14.4l-11.7 9.2L41 44 28 35l-13 9 4.7-14.8L8 20h14.4z"
+              stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      </svg>`,
+    3: /* html */ `
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <rect x="6" y="14" width="44" height="30" rx="4" fill="currentColor" opacity="0.12"/>
+        <rect x="6" y="14" width="44" height="30" rx="4" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M6 24h44" stroke="currentColor" stroke-width="2.4"/>
+        <rect x="12" y="32" width="14" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M32 34h14M32 38h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>`,
+    4: /* html */ `
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <path d="M12 20h32l-3.6 26H15.6z" fill="currentColor" opacity="0.16"/>
+        <path d="M12 20h32l-3.6 26H15.6z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M20 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>`,
+  };
+  return icons[idx] ?? '';
+}

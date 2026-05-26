@@ -196,8 +196,7 @@ function bindDragScroll(track) {
   track.addEventListener('pointercancel', onPointerCancel);
 
   /* Block native image dragging which interferes with our drag */
-  const onDragStart = (e) => e.preventDefault();
-  track.addEventListener('dragstart', onDragStart);
+  track.addEventListener('dragstart', (e) => e.preventDefault());
 
   return {
     destroy() {
@@ -206,7 +205,6 @@ function bindDragScroll(track) {
       track.removeEventListener('pointermove', onPointerMove);
       track.removeEventListener('pointerup', onPointerUp);
       track.removeEventListener('pointercancel', onPointerCancel);
-      track.removeEventListener('dragstart', onDragStart);
     },
   };
 }

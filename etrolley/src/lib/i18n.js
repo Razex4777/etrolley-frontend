@@ -96,10 +96,10 @@ const dict = {
     'services.card.support': 'Support',
     'services.card.social': 'Social Media',
     'services.card.desc': 'Now that your store is ready for sale, add your products',
-    'services.card.marketing.desc':   'Targeted ad campaigns and SEO that turn browsers into buyers — built around your brand voice.',
-    'services.card.photography.desc': 'Studio-grade product imaging that makes your catalogue feel premium and ready to sell.',
-    'services.card.support.desc':     'Real humans on standby after launch — answering questions, fixing hiccups, keeping you live.',
-    'services.card.social.desc':      'Social channels set up, content scheduled, community managed — your audience always engaged.',
+    'services.card.marketing.desc':   'Now that your store is ready for sale, add your products',
+    'services.card.photography.desc': 'Now that your store is ready for sale, add your products',
+    'services.card.support.desc':     'Now that your store is ready for sale, add your products',
+    'services.card.social.desc':      'Now that your store is ready for sale, add your products',
   },
   ar: {
     /* Navbar */
@@ -171,10 +171,10 @@ const dict = {
     'services.card.support': 'الدعم الفني',
     'services.card.social': 'وسائل التواصل الاجتماعي',
     'services.card.desc': 'الآن متجرك جاهز للبيع، أضف منتجاتك',
-    'services.card.marketing.desc':   'حملات إعلانية مدروسة وتحسين محركات بحث يحوّل الزوّار إلى مشترين فعليين.',
-    'services.card.photography.desc': 'تصوير منتجات بمستوى استوديو احترافي يمنح متجرك مظهراً فاخراً جاهزاً للبيع.',
-    'services.card.support.desc':     'فريق دعم بشري بعد الإطلاق يجيب على أسئلتك ويحلّ أي مشكلة تواجهك في الوقت الفعلي.',
-    'services.card.social.desc':      'إعداد قنواتك الاجتماعية، جدولة المحتوى، وإدارة المجتمع لجمهور دائم التفاعل.',
+    'services.card.marketing.desc':   'الآن متجرك جاهز للبيع، أضف منتجاتك',
+    'services.card.photography.desc': 'الآن متجرك جاهز للبيع، أضف منتجاتك',
+    'services.card.support.desc':     'الآن متجرك جاهز للبيع، أضف منتجاتك',
+    'services.card.social.desc':      'الآن متجرك جاهز للبيع، أضف منتجاتك',
   },
 };
 

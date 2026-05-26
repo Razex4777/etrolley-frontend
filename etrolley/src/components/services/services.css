@@ -47,10 +47,9 @@
   left: clamp(24px, 3.5vw, 70px);
   width: clamp(140px, 14vw, 220px);
   aspect-ratio: 262 / 215;
-  /* Pull the cart up so its lower half (teal basket bottom + yellow
-     wheels) gets buried under the dark section, while the top half
-     (handle + upper basket) peeks above into the previous section. */
-  transform: translateY(-42%);
+  /* Pull the cart up so its lower half gets buried under the dark
+     section while the top half pokes above into the previous one. */
+  transform: translateY(-50%);
   transform-origin: center bottom;
   pointer-events: none;
   z-index: -1;        /* behind .services__bg */
@@ -69,7 +68,7 @@
   left: clamp(24px, 3.5vw, 70px);
   width: clamp(140px, 14vw, 220px);
   aspect-ratio: 262 / 215;
-  transform: translateY(-42%);
+  transform: translateY(-50%);
   transform-origin: center bottom;
   pointer-events: none;
   z-index: 10;        /* above section bg + content */
@@ -248,7 +247,7 @@
   cursor: grab;
   user-select: none;
 
-  /* Hide the scrollbar — drag handle is the only affordance */
+  /* Hide the scrollbar — no progress bar visual */
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE / legacy Edge */
 }
@@ -269,6 +268,26 @@
 .services__track.is-dragging .services__card,
 .services__track.is-dragging a {
   pointer-events: none;
+}
+
+/* Custom thin scrollbar against the dark backdrop */
+.services__track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.services__track::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0 clamp(24px, 3.5vw, 70px);
+  border-radius: 10px;
+}
+
+.services__track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+}
+
+.services__track::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* ---------- Card block — image on top, white footer below ---------- */
