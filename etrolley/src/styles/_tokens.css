@@ -1,0 +1,87 @@
+/* =============================================================
+ * Design Tokens — extracted from Figma (Etrolley Test)
+ * Source of truth: do NOT hardcode hex values anywhere else.
+ * ============================================================= */
+
+:root {
+  /* ------- Colors ------- */
+  --color-primary:        #316C6B;   /* CTA / Brand teal */
+  --color-primary-deep:   #2a5d5c;
+  --color-primary-light:  #99B4AB;   /* sage stroke / accent */
+  --color-sage:           #9AB5AD;   /* services band */
+  --color-sand:           #F5C99A;   /* phone-icon orange */
+
+  --color-ink:            #121212;   /* primary text */
+  --color-ink-soft:       #212121;   /* heading muted */
+  --color-text:           #555555;   /* body / secondary */
+  --color-text-muted:     #7C7171;   /* labels */
+  --color-divider:        rgba(18, 18, 18, 0.08);
+  --color-stroke-faint:   #C0B693;
+
+  --color-white:          #FFFFFF;
+  --color-bg:             #FFFFFF;
+
+  /* ------- Gradients (background blobs) ------- */
+  --grad-hero-bg: linear-gradient(
+    -25deg,
+    rgba(154, 181, 172, 0.10) 0%,
+    rgba(254, 255, 255, 1)    40%,
+    rgba(255, 255, 255, 1)    100%,
+    rgba(245, 201, 154, 0.05) 100%
+  );
+
+  /* ------- Shadows ------- */
+  --shadow-cta:       0px 12px 18px rgba(18, 18, 18, 0.25);
+  --shadow-card:      0px 20px 50px rgba(213, 213, 213, 0.5);
+  --shadow-soft:      0px 0px 20px #DFDFDF;
+  --shadow-glow:      0px 2px 50px rgba(49, 108, 107, 0.5);
+
+  /* ------- Type ------- */
+  /* Latin first → falls back to Noto Sans Arabic for Arabic glyphs.
+     This way English copy uses Inter (clean, geometric, designed for UI)
+     while Arabic copy still gets Noto Sans Arabic shaping. */
+  --font-arabic: 'Inter', 'Noto Sans Arabic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Outfit', 'Inter', sans-serif;
+
+  /* Fluid type scale: clamp(min, preferred, max) — design-pixel anchored */
+  --fs-nav:        clamp(13px, 0.95vw, 18px);
+  --fs-cta:        clamp(13px, 0.95vw, 18px);
+  --fs-eyebrow:    clamp(11px, 0.7vw, 13px);
+  --fs-tel:        clamp(13px, 1vw, 19px);
+  --fs-h1:         clamp(36px, 4.6vw, 88px);
+  --fs-body:       clamp(13px, 0.9vw, 17px);
+  --fs-follow:     clamp(18px, 1.4vw, 28px);
+
+  /* ------- Radii ------- */
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 15px;
+  --r-xl: 25px;
+  --r-pill: 999px;
+
+  /* ------- Layout ------- */
+  --canvas-w:    1920px;   /* Figma frame width */
+  --gutter:      clamp(20px, 3vw, 70px);
+  --nav-h:       clamp(72px, 5.5vw, 96px);
+  --container:   min(1760px, calc(100vw - var(--gutter) * 2));
+
+  /* ------- Easing & Motion ------- */
+  --ease-out-expo:  cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:       180ms;
+  --dur-base:       320ms;
+  --dur-slow:       620ms;
+
+  /* ------- Z-index ------- */
+  --z-nav:    100;
+  --z-side:   90;
+  --z-modal:  1000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

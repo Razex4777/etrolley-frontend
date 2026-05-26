@@ -1,0 +1,9 @@
+/* =============================================================
+ * Main entry — imports tokens, reset, then components.
+ * ============================================================= */
+
+@import './_tokens.css';
+@import './_reset.css';
+
+@import '../components/navbar/navbar.css';
+@import '../components/hero/hero.css';

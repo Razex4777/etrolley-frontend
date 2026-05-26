@@ -1,0 +1,95 @@
+# 📐 E-Trolley — Project Structure (current state)
+
+> Source of truth for the architecture. Update on every change.
+> All file paths are relative to the project root `etrolley/`.
+
+```text
+etrolley/
+├── 📄 .gitignore                          ( Git exclusions — node_modules, dist, env files )
+├── 📄 index.html                          ( SPA entry; mounts <header data-component="navbar"> + <main data-component="hero">; preloads Noto Sans Arabic + Outfit fonts )
+├── 📄 package.json                        ( Manifest — declares "vite" dev dep + "gsap" + "lenis" runtime deps; scripts: dev/build/preview )
+├── 📄 package-lock.json                   ( npm lockfile — reproducible installs )
+├── 📄 vite.config.js                      ( Vite bundler config; aliases @, @components, @styles, @lib for clean imports )
+│
+├── 📁 docs/                               ( Source-of-truth documentation, never source code )
+│   ├── 📄 project_structure.md            ( THIS FILE — current architecture snapshot )
+│   └── 📄 changelog.md                    ( Append-only history of changes, capped at 500 lines )
+│
+├── 📁 public/                             ( Static assets served as-is at the site root )
+│   ├── 📁 images/                         ( Raster assets pulled from Figma via Framelink MCP )
+│   │   ├── 🖼️ logo-etrolley-28bffb.png    ( Brand logo wordmark, 1337×560, used in navbar )
+│   │   ├── 🖼️ hero-laptop-bags-eb2750.png ( Hero illustration: laptop showing online store + shopping bags )
+│   │   └── 🖼️ qr-theqa.png                ( THEQA QR code — Qatari Ministry of Communications validation badge )
+│   └── 📁 icons/                          ( Reserved for downloaded SVG icons; entrypoint icons currently inlined in component templates for perf )
+│
+└── 📁 src/                                ( All authored code lives here )
+    ├── 📄 main.js                         ( App bootstrap — mounts components, then inits Lenis smooth scroll )
+    │
+    ├── 📁 components/                     ( UI building blocks; each owns its template, styles, and behavior )
+    │   ├── 📁 navbar/                     ( Top navigation: logo, links, phone block, CTA, soft divider )
+    │   │   ├── 📄 navbar.html.js          ( Template fn returning the navbar markup with inline SVG icons )
+    │   │   ├── 📄 navbar.css              ( Pixel-anchored layout from Figma 1920×122; hover underlines, scrolled state, hide-on-scroll-down )
+    │   │   └── 📄 navbar.js               ( Mount + scroll-direction-based show/hide + ARIA dropdown wiring )
+    │   │
+    │   └── 📁 hero/                       ( Above-the-fold hero with QR aside, headline, CTA, illustration, social rail, side-CTA )
+    │       ├── 📄 hero.html.js            ( Template fn — DreamWD pill, headline lines, CTA + arrows, image, Follow rail, side message CTA )
+    │       ├── 📄 hero.css                ( Grid-based layout, gradient blob bg, brand watermark, magnetic CTA, parallax-ready )
+    │       └── 📄 hero.js                 ( GSAP entrance timeline (mask-up lines, staggered reveals) + ScrollTrigger parallax + magnetic CTA )
+    │
+    ├── 📁 lib/                            ( Framework-free utilities shared across components )
+    │   ├── 📄 smooth-scroll.js            ( Lenis singleton + GSAP ticker bridge — single RAF loop for jitter-free scrolling )
+    │   └── 📄 dom.js                      ( Tiny qs/qsa/mount helpers — no jQuery, no framework )
+    │
+    ├── 📁 styles/                         ( Global styles imported from main.js )
+    │   ├── 📄 main.css                    ( Aggregator — imports tokens, reset, then component CSS files )
+    │   ├── 📄 _tokens.css                 ( Design tokens extracted from Figma: colors, fonts, shadows, easings, breakpoints )
+    │   └── 📄 _reset.css                  ( Modern minimal reset + Lenis CSS hooks + skip-link a11y helper )
+    │
+    └── 📁 assets/                         ( Reserved for source-controlled assets imported via JS — currently empty )
+```
+
+---
+
+## 🎨 Project Metadata
+
+### Design System
+- **Approach**: Reference-driven from the Figma file `Etrolley-Test` (key `WexLQwaKjrmjFlP3jb6HwI`), augmented with motion patterns from the client's reference sites (`psstudios.co`, `lunchbox.io`).
+- **Visual style**: Light, airy, Qatari-flavored e-commerce. Soft sage/teal primary, warm beige accent, subtle blurred-gradient blobs, large display headline with brand watermark behind.
+- **Motion language**: Cinematic mask-up reveals, staggered entrances, scroll-driven parallax, magnetic CTA hover. Easing leans on `expo.out` and `power3.out`.
+
+### Color Palette (from Figma)
+| Token | Hex | Use |
+|---|---|---|
+| `--color-primary` | `#316C6B` | CTA fills, brand teal, active link |
+| `--color-primary-deep` | `#2a5d5c` | CTA hover deepening |
+| `--color-primary-light` | `#99B4AB` | Sage stroke |
+| `--color-sage` | `#9AB5AD` | "Services we provide" band |
+| `--color-sand` | `#F5C99A` | Phone-icon fill |
+| `--color-ink` | `#121212` | Primary text |
+| `--color-ink-soft` | `#212121` | Section headings |
+| `--color-text` | `#555555` | Body / paragraph |
+| `--color-text-muted` | `#7C7171` | Labels, eyebrows |
+| `--color-stroke-faint` | `#C0B693` | Hairline divider under navbar |
+
+### Typography
+- **Primary (UI / body)**: `Noto Sans Arabic` (Google Fonts) — weights 400/500/600/700.
+- **Display / accents**: `Outfit` (Google Fonts) — weights 500/600/700.
+- **Scale**: Fluid `clamp()` driven (`--fs-h1`, `--fs-nav`, `--fs-cta`, `--fs-body`, etc.) anchored to the 1920px Figma frame.
+
+### Key Tech Stack
+- **Build**: [Vite 8](https://vite.dev) (Rolldown-powered) — instant HMR, < 200ms cold builds.
+- **Smooth scroll**: [Lenis](https://github.com/darkroomengineering/lenis) — RAF synced with GSAP's ticker.
+- **Animations**: [GSAP 3](https://gsap.com) + ScrollTrigger plugin.
+- **Module system**: Pure native ES modules. No bundler magic, no framework runtime.
+- **Module size**: 142 KB JS / 12 KB CSS production bundle (gzip: 53 KB / 3.4 KB).
+
+### Architecture Principles
+- **One responsibility per file**, max 500 lines (no file currently exceeds 280).
+- **Components are self-contained** — `Component/` folders bundle template + styles + behavior.
+- **Design tokens centralized** in `_tokens.css`; no hardcoded hex elsewhere.
+- **A11y baked in**: skip-link, ARIA on dropdowns, `prefers-reduced-motion` honored, visible focus rings, keyboard-navigable.
+- **Performance**: critical fonts preconnected, hero images `fetchpriority="high"`, animations on `transform`/`opacity` only (compositor-friendly).
+
+### Browser Targets
+- Modern evergreen browsers (Chrome/Edge/Firefox/Safari last 2 versions).
+- Mobile-first via fluid `clamp()` scaling; explicit breakpoints at 1180px, 980px, 880px, 640px, 520px.
