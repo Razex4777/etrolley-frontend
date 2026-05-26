@@ -29,6 +29,14 @@ export function initHero() {
   const host = mount('[data-component="hero"]', heroTemplate());
   if (!host) return null;
 
+  /* Relocate the side CTA to <body> so it escapes the hero's
+     `overflow: clip` + `isolation: isolate` and can float above
+     every subsequent section. */
+  const sideCta = host.querySelector('[data-side-cta]');
+  if (sideCta && sideCta.parentElement !== document.body) {
+    document.body.appendChild(sideCta);
+  }
+
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return { el: host };
 
@@ -135,6 +143,10 @@ export function initHero() {
   return {
     el: host,
     destroy() {
+      /* Clean up the body-relocated side CTA so re-mount (e.g. on
+         language change) doesn't leave duplicates behind. */
+      const orphanedCta = document.body.querySelector(':scope > [data-side-cta]');
+      orphanedCta?.remove();
       ctx.revert();
       host.innerHTML = '';
     },

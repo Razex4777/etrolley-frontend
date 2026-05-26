@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd etrolley && npm install && npm run build",
+  "outputDirectory": "etrolley/dist",
+  "installCommand": "echo skipping root install",
+  "framework": null,
+  "trailingSlash": false
+}

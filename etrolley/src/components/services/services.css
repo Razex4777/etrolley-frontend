@@ -6,13 +6,13 @@
 
 .services {
   position: relative;
-  /* Background moves to .services__bg so we can layer the teal
-     cart between the page and this section. */
   background: transparent;
-  /* Larger, more confident vertical breathing room — feels premium. */
   padding: clamp(96px, 11vw, 180px) 0 clamp(80px, 9vw, 150px);
-  margin-top: 110px; /* Space for standing cart */
-  overflow: visible; /* Prevents clipping of the standing cart */
+  /* No margin-top — Different section now extends its own bg via
+     padding-bottom: 160px, so the cart sits on a continuous F8F9FA
+     band rather than a white seam. */
+  margin-top: 0;
+  overflow: visible;
   isolation: isolate;
 }
 
@@ -47,7 +47,10 @@
   left: clamp(24px, 3.5vw, 70px);
   width: clamp(140px, 14vw, 220px);
   aspect-ratio: 262 / 215;
-  transform: translateY(-58%);
+  /* Pull the cart up so its lower half (teal basket bottom + yellow
+     wheels) gets buried under the dark section, while the top half
+     (handle + upper basket) peeks above into the previous section. */
+  transform: translateY(-42%);
   transform-origin: center bottom;
   pointer-events: none;
   z-index: -1;        /* behind .services__bg */
@@ -66,7 +69,7 @@
   left: clamp(24px, 3.5vw, 70px);
   width: clamp(140px, 14vw, 220px);
   aspect-ratio: 262 / 215;
-  transform: translateY(-58%);
+  transform: translateY(-42%);
   transform-origin: center bottom;
   pointer-events: none;
   z-index: 10;        /* above section bg + content */
@@ -245,7 +248,7 @@
   cursor: grab;
   user-select: none;
 
-  /* Hide the scrollbar — no progress bar visual */
+  /* Hide the scrollbar — drag handle is the only affordance */
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE / legacy Edge */
 }
@@ -266,26 +269,6 @@
 .services__track.is-dragging .services__card,
 .services__track.is-dragging a {
   pointer-events: none;
-}
-
-/* Custom thin scrollbar against the dark backdrop */
-.services__track::-webkit-scrollbar {
-  height: 4px;
-}
-
-.services__track::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
-  margin: 0 clamp(24px, 3.5vw, 70px);
-  border-radius: 10px;
-}
-
-.services__track::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-}
-
-.services__track::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
 }
 
 /* ---------- Card block — image on top, white footer below ---------- */
@@ -558,5 +541,43 @@
 @media (max-width: 480px) {
   .services__card {
     flex: 0 0 calc(100vw - 48px);
+  }
+}
+
+
+/* =============================================================
+ * Cart sizing — keep it large enough on mobile that the bottom
+ * half can still get buried by the dark section bg. The fluid
+ * width clamp would otherwise shrink the cart to ~50px on small
+ * phones, which leaves no usable "buried" portion.
+ * ============================================================= */
+
+@media (max-width: 980px) {
+  .services__cart-back,
+  .services__cart-front {
+    width: clamp(120px, 22vw, 180px);
+    left: clamp(16px, 4vw, 32px);
+    /* Pull less than desktop's -58% so the cart sits lower and
+       its wheels land inside the dark band. */
+    transform: translateY(-38%);
+  }
+}
+
+@media (max-width: 640px) {
+  .services__cart-back,
+  .services__cart-front {
+    width: clamp(110px, 28vw, 160px);
+    /* Smaller pull-up so the wheels actually sit INSIDE the dark
+       section while the basket peeks above the section line. */
+    transform: translateY(-32%);
+    left: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services__cart-back,
+  .services__cart-front {
+    width: clamp(96px, 30vw, 140px);
+    transform: translateY(-28%);
   }
 }

@@ -81,23 +81,39 @@ export function initMobileMenu(host) {
   }
 
   // ----- Wire up triggers -----
-  burger.addEventListener('click', () => {
+  const onBurgerClick = () => {
     isOpen ? close(menu) : open(menu);
-  });
+  };
+  burger.addEventListener('click', onBurgerClick);
 
   // Close: backdrop + close button + nav links + Esc
-  qsa('[data-menu-close]', menu).forEach((el) => {
-    el.addEventListener('click', () => close(menu));
-  });
+  const closeTargets = qsa('[data-menu-close]', menu);
+  const onCloseClick = () => close(menu);
+  closeTargets.forEach((el) => el.addEventListener('click', onCloseClick));
 
-  document.addEventListener('keydown', (e) => {
+  const onKeydown = (e) => {
     if (e.key === 'Escape' && isOpen) close(menu);
-  });
+  };
+  document.addEventListener('keydown', onKeydown);
 
   // Close if viewport jumps to desktop
-  window.matchMedia('(min-width: 981px)').addEventListener('change', (e) => {
+  const desktopMQ = window.matchMedia('(min-width: 981px)');
+  const onMediaChange = (e) => {
     if (e.matches && isOpen) close(menu, { instant: true });
-  });
+  };
+  desktopMQ.addEventListener('change', onMediaChange);
+
+  // Expose a destroy hook so callers can tear down listeners on
+  // re-mount (language switch, etc.) without leaking handlers.
+  return {
+    destroy() {
+      if (isOpen) close(menu, { instant: true });
+      burger.removeEventListener('click', onBurgerClick);
+      closeTargets.forEach((el) => el.removeEventListener('click', onCloseClick));
+      document.removeEventListener('keydown', onKeydown);
+      desktopMQ.removeEventListener('change', onMediaChange);
+    },
+  };
 }
 
 function open(menu) {

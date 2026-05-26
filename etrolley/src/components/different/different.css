@@ -7,7 +7,10 @@
 .different {
   position: relative;
   height: 100vh;
-  padding: 0;
+  /* Extra bottom padding extends the section's #F8F9FA bg into
+     the gap reserved for the upcoming Services section's cart,
+     so there's no visible white seam between the two. */
+  padding: 0 0 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;

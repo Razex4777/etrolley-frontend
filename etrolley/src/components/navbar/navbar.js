@@ -37,7 +37,10 @@ export function initNavbar() {
     bindMobileLangSwitcher(host),
   ];
 
-  initMobileMenu(host);
+  /* The mobile menu manages its own listeners + GSAP timeline; it
+     returns a destroy hook we call before re-mounting. */
+  const mobileMenu = initMobileMenu(host);
+  if (mobileMenu?.destroy) cleanups.push(mobileMenu.destroy);
 
   return {
     el: nav,

@@ -102,8 +102,10 @@ export const heroTemplate = () => {
         </aside>
       </div>
 
-      <!-- Floating side CTA -->
-      <a class="hero__side-cta" href="#contact" aria-label="${t('hero.sideCta')}">
+      <!-- Floating side CTA — moved to body root by hero.js so it
+           escapes any ancestor stacking context (overflow:clip,
+           isolation:isolate) and can sit above ALL sections. -->
+      <a class="hero__side-cta" href="#contact" aria-label="${t('hero.sideCta')}" data-side-cta>
         <span>${t('hero.sideCta')}</span>
       </a>
     </div>
