@@ -185,6 +185,11 @@ const dict = {
 let current = readInitial();
 const subscribers = new Set();
 
+/* When set, a coordinator (e.g. the language transition) is currently
+   responsible for completing a language swap. setLang() forwards
+   any user request to it instead of applying the change directly. */
+let interceptor = null;
+
 function readInitial() {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -213,10 +218,28 @@ export function isRTL() {
 }
 
 /**
- * Apply the chosen language to the document and notify subscribers.
- * Idempotent: passing the current code is a no-op.
+ * Public entry-point for changing the language.
+ * If an interceptor is registered (the lang transition coordinator),
+ * the request is delegated to it. Otherwise the change is applied
+ * synchronously and subscribers are notified.
  */
 export function setLang(code) {
+  if (!SUPPORTED.includes(code) || code === current) return;
+
+  if (interceptor) {
+    interceptor(code);
+    return;
+  }
+  applyLang(code);
+}
+
+/**
+ * Low-level apply: writes the new state, persists, syncs <html>
+ * attributes and fires subscribers. Bypasses any interceptor.
+ * The transition coordinator calls this once the screen is fully
+ * covered so the user never sees the swap mid-motion.
+ */
+export function applyLang(code) {
   if (!SUPPORTED.includes(code) || code === current) return;
   current = code;
 
@@ -228,6 +251,18 @@ export function setLang(code) {
   subscribers.forEach((fn) => {
     try { fn(code); } catch (err) { console.error('[i18n]', err); }
   });
+}
+
+/**
+ * Register a coordinator that intercepts setLang() calls and is
+ * responsible for eventually invoking applyLang() at the right
+ * moment in its animation.
+ *
+ * Returns an unregister fn.
+ */
+export function setLangInterceptor(fn) {
+  interceptor = fn;
+  return () => { if (interceptor === fn) interceptor = null; };
 }
 
 export function onLangChange(fn) {

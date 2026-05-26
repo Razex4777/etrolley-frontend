@@ -4,7 +4,7 @@
  * Order matters:
  *   1. Apply persisted language to <html lang/dir> BEFORE first paint.
  *   2. Mount components (so their DOM exists for animations).
- *   3. Wire language-change listener to re-render templates.
+ *   3. Wire language-change listener — re-mount on every change.
  *   4. Init smooth scroll (Lenis) + GSAP-Lenis bridge.
  */
 
@@ -41,7 +41,8 @@ function boot() {
   applyDocAttrs();   // sync html lang + dir from storage
   mountAll();
 
-  // Re-render whenever the language changes — simplest source-of-truth model.
+  /* On every language change: re-mount all components so they
+     re-read the translation dictionary in the new locale. */
   onLangChange(() => {
     mountAll();
   });
