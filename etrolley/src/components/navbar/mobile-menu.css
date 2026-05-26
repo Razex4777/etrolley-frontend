@@ -42,10 +42,12 @@
   width: min(420px, 86vw);
   background: linear-gradient(180deg, #0e1f1f 0%, #16302f 100%);
   color: var(--color-white);
-  padding: 28px 32px 32px;
+  /* Generous bottom padding so the social row never sits under the
+     phone's nav bar / safe-area, plus respect env() inset. */
+  padding: 28px 32px calc(36px + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
   overflow-y: auto;
   overscroll-behavior: contain;
   /* Decorative vertical glow strip on the inner edge */
@@ -169,9 +171,35 @@
 .mobile-menu__foot {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding-top: 18px;
+  gap: 20px;
+  padding-top: 20px;
+  margin-top: auto;            /* pin to the bottom of the panel */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu__socials {
+  display: flex;
+  gap: 14px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 4px 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mobile-menu__socials a {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease-out-expo),
+              filter var(--dur-fast) var(--ease-out-expo);
 }
 
 .mobile-menu__lang {
@@ -224,31 +252,16 @@
   letter-spacing: 0.02em;
 }
 
-.mobile-menu__socials {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.mobile-menu__socials a {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  transition: transform var(--dur-fast) var(--ease-out-expo),
-              filter var(--dur-fast) var(--ease-out-expo);
-}
-
 .mobile-menu__socials a:hover {
   transform: translateY(-4px) scale(1.08);
   filter: brightness(1.15) contrast(1.05);
+}
+
+.mobile-menu__socials a img,
+.mobile-menu__socials a svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Lock body scroll while menu is open */

@@ -477,11 +477,13 @@
   .hero__cta-eyebrow { color: var(--color-text-muted); }
 
   .hero__cta {
-    width: clamp(240px, 60vw, 320px);
+    width: clamp(220px, 70vw, 320px);
     height: 56px;
+    padding: 0 22px;
     font-size: 15px;
-    font-weight: 500;
-    border-radius: 10px;
+    font-weight: 600;
+    border-radius: 12px;
+    white-space: nowrap;
   }
 
   .hero__nav { gap: 10px; }
