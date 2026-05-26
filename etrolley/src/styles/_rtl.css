@@ -112,9 +112,16 @@
 /* The Follow rail's vertical label currently rotates 180° (vertical-rl
    + rotate). In RTL we want the same readable orientation but mirrored
    so it sits naturally on the (now-left) rail. */
-[dir='rtl'] .hero__rail-label {
-  writing-mode: vertical-rl;
-  transform: rotate(0deg);
+/* Desktop rail-label tweak: in LTR the writing-mode + rotate(180)
+   makes the text read top-to-bottom; in RTL we drop the rotation
+   so the same vertical text reads bottom-to-top correctly.
+   Restricted to desktop only — the mobile horizontal layout is
+   handled below the next media query. */
+@media (min-width: 881px) {
+  [dir='rtl'] .hero__rail-label {
+    writing-mode: vertical-rl;
+    transform: rotate(0deg);
+  }
 }
 
 /* On mobile, horizontal Follow rail underline sits to the *right* of
