@@ -1,7 +1,7 @@
 {
   "buildCommand": "cd etrolley && npm install && npm run build",
   "outputDirectory": "etrolley/dist",
-  "installCommand": "echo skipped (handled in buildCommand)",
+  "installCommand": "echo skip-install",
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
