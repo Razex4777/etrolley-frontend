@@ -22,8 +22,11 @@
 
 .hero {
   position: relative;
-  /* Hero = exactly viewport height minus navbar. Never overflow. */
-  min-height: calc(100svh - var(--nav-h));
+  /* Hero fills the entire viewport on first load — the navbar is
+     position: fixed and overlays the top of this section, so we
+     intentionally start the hero at the page top and reserve room
+     for the navbar via padding-top. */
+  min-height: 100svh;
   padding-top: var(--nav-h);
   isolation: isolate;
   overflow: clip;

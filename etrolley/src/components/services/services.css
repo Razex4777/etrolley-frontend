@@ -49,7 +49,7 @@
   aspect-ratio: 262 / 215;
   /* Pull the cart up so its lower half gets buried under the dark
      section while the top half pokes above into the previous one. */
-  transform: translateY(-50%);
+  transform: translateY(-53%);
   transform-origin: center bottom;
   pointer-events: none;
   z-index: -1;        /* behind .services__bg */
