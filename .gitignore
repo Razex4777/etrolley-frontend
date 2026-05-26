@@ -1,0 +1,50 @@
+# =============================================================
+# Working notes, screenshots, screen recordings — local only
+# =============================================================
+*.mp4
+*.mov
+*.gif
+*.webm
+*.png.bak
+.react-doctor/
+
+# Personal conversation/research files (kept locally, not pushed)
+conversation.md
+client-announce-myoffer.md
+_add_figma_mcp.ps1
+
+# =============================================================
+# Node / Vite
+# =============================================================
+node_modules
+**/node_modules
+**/dist
+**/.vite
+**/.vite-temp
+**/.cache
+
+# =============================================================
+# Logs & env
+# =============================================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.*
+!.env.example
+
+# =============================================================
+# OS / editor cruft
+# =============================================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*.swo
+*.tmp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

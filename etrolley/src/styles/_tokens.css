@@ -42,6 +42,7 @@
      while Arabic copy still gets Noto Sans Arabic shaping. */
   --font-arabic: 'Inter', 'Noto Sans Arabic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Outfit', 'Inter', sans-serif;
+  --font-unbounded: 'Unbounded', sans-serif;
 
   /* Fluid type scale: clamp(min, preferred, max) — design-pixel anchored */
   --fs-nav:        clamp(13px, 0.95vw, 18px);

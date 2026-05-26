@@ -1,24 +1,23 @@
 /**
  * navbar.js
  * ---------------------------------------------------------------
- * Behaviors:
- *   1. Smart show/hide on scroll (hide on scroll-down, reveal on
- *      scroll-up) — feels native, doesn't fight the user.
- *   2. Adds .is-scrolled class for the soft drop-shadow once we
- *      leave the very top of the page.
- *   3. Dropdown menus (About, Language) — open on click, close on
- *      outside click / Esc / focus loss. Roving aria-expanded.
- *   4. Language switcher updates the trigger label and persists
- *      choice to localStorage. (Actual locale wiring deferred.)
+ * Mounts the navbar template, wires:
+ *   1. Smart show/hide on scroll.
+ *   2. Soft scrolled-state shadow.
+ *   3. Dropdown menus (About, Language) — ARIA-correct.
+ *   4. Language switcher → calls i18n.setLang which triggers a
+ *      full re-mount in main.js.
+ *   5. Mobile menu (delegated to mobile-menu.js).
  * ---------------------------------------------------------------
  */
 
 import { mount, qs, qsa } from '../../lib/dom.js';
+import { getLang, setLang } from '../../lib/i18n.js';
 import { navbarTemplate } from './navbar.html.js';
+import { initMobileMenu } from './mobile-menu.js';
 
 const SCROLL_DELTA = 8;
 const REVEAL_THRESHOLD = 80;
-const LANG_STORAGE_KEY = 'etrolley:lang';
 
 export function initNavbar() {
   const host = mount('[data-component="navbar"]', navbarTemplate());
@@ -27,14 +26,24 @@ export function initNavbar() {
   const nav = qs('.nav', host);
   if (!nav) return null;
 
-  bindScrollBehavior(nav);
-  bindDropdowns(host);
-  bindLanguageSwitcher(host);
+  // Reflect current language in both the dropdown selection and the
+  // language radios in the mobile menu.
+  syncLangActiveState(host);
+
+  const cleanups = [
+    bindScrollBehavior(nav),
+    bindDropdowns(host),
+    bindLanguageSwitcher(host),
+    bindMobileLangSwitcher(host),
+  ];
+
+  initMobileMenu(host);
 
   return {
     el: nav,
     destroy() {
-      // Listeners are scoped to the host; gc on unmount.
+      cleanups.forEach((fn) => typeof fn === 'function' && fn());
+      host.innerHTML = '';
     },
   };
 }
@@ -66,12 +75,13 @@ function bindScrollBehavior(nav) {
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  return () => window.removeEventListener('scroll', onScroll);
 }
 
 /* --------------------------- Dropdowns --------------------------- */
 function bindDropdowns(host) {
   const triggers = qsa('.nav__link--menu', host);
-  if (!triggers.length) return;
+  if (!triggers.length) return () => {};
 
   const closeAll = (except) => {
     triggers.forEach((t) => {
@@ -81,64 +91,68 @@ function bindDropdowns(host) {
     });
   };
 
-  triggers.forEach((trigger) => {
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const expanded = trigger.getAttribute('aria-expanded') === 'true';
-      closeAll(trigger);
-      trigger.setAttribute('aria-expanded', String(!expanded));
-      trigger.parentElement?.classList.toggle('is-open', !expanded);
-    });
-  });
+  const onTriggerClick = (e) => {
+    const trigger = e.currentTarget;
+    e.stopPropagation();
+    const expanded = trigger.getAttribute('aria-expanded') === 'true';
+    closeAll(trigger);
+    trigger.setAttribute('aria-expanded', String(!expanded));
+    trigger.parentElement?.classList.toggle('is-open', !expanded);
+  };
 
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (!host.contains(e.target)) closeAll();
-  });
+  triggers.forEach((t) => t.addEventListener('click', onTriggerClick));
 
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeAll();
-  });
+  const onDocClick = (e) => { if (!host.contains(e.target)) closeAll(); };
+  const onKey = (e) => { if (e.key === 'Escape') closeAll(); };
+
+  document.addEventListener('click', onDocClick);
+  document.addEventListener('keydown', onKey);
+
+  return () => {
+    triggers.forEach((t) => t.removeEventListener('click', onTriggerClick));
+    document.removeEventListener('click', onDocClick);
+    document.removeEventListener('keydown', onKey);
+  };
 }
 
-/* ------------------------ Language switcher ------------------------ */
+/* ------------------------ Desktop language switcher ------------------------ */
 function bindLanguageSwitcher(host) {
-  const items = qsa('[data-lang]', host);
-  const label = qs('[data-current-lang]', host);
-  if (!items.length || !label) return;
+  const items = qsa('.nav__dropdown-item[data-lang]', host);
+  if (!items.length) return () => {};
 
-  // Restore previous choice
-  const stored = localStorage.getItem(LANG_STORAGE_KEY);
-  if (stored) applyLang(items, label, stored);
+  const onClick = (e) => {
+    const btn = e.currentTarget;
+    e.stopPropagation();
+    setLang(btn.dataset.lang);
+    // The whole navbar re-renders via main.js on lang change, so no
+    // need to manually update aria-checked here.
+  };
 
-  items.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const code = btn.dataset.lang;
-      applyLang(items, label, code);
-      localStorage.setItem(LANG_STORAGE_KEY, code);
-
-      // Close the menu
-      const menu = btn.closest('.nav__item--menu');
-      const trigger = menu?.querySelector('.nav__link--menu');
-      trigger?.setAttribute('aria-expanded', 'false');
-      menu?.classList.remove('is-open');
-    });
-  });
+  items.forEach((b) => b.addEventListener('click', onClick));
+  return () => items.forEach((b) => b.removeEventListener('click', onClick));
 }
 
-function applyLang(items, label, code) {
-  items.forEach((btn) => {
+/* ------------------------ Mobile-menu language switcher ------------------------ */
+function bindMobileLangSwitcher(host) {
+  const items = qsa('.mobile-menu__lang-btn[data-lang]', host);
+  if (!items.length) return () => {};
+
+  const onClick = (e) => {
+    setLang(e.currentTarget.dataset.lang);
+  };
+
+  items.forEach((b) => b.addEventListener('click', onClick));
+  return () => items.forEach((b) => b.removeEventListener('click', onClick));
+}
+
+/* ------------------------ Reflect active lang in markup ------------------------ */
+function syncLangActiveState(host) {
+  const code = getLang();
+  qsa('[data-lang]', host).forEach((btn) => {
     const active = btn.dataset.lang === code;
-    btn.setAttribute('aria-checked', String(active));
     btn.classList.toggle('is-active', active);
-    if (active) {
-      const text = btn.querySelector('span:last-child')?.textContent ?? code;
-      label.textContent = text;
+    if (btn.getAttribute('role') === 'menuitemradio') {
+      btn.setAttribute('aria-checked', String(active));
     }
   });
-  // Reflect direction in the document for future Arabic content.
-  document.documentElement.lang = code;
-  document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr';
 }

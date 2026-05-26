@@ -6,4 +6,10 @@
 @import './_reset.css';
 
 @import '../components/navbar/navbar.css';
+@import '../components/navbar/mobile-menu.css';
 @import '../components/hero/hero.css';
+@import '../components/steps/steps.css';
+@import '../components/different/different.css';
+@import '../components/services/services.css';
+
+@import './_rtl.css';

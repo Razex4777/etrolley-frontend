@@ -43,7 +43,14 @@ export function initHero() {
     gsap.set('.hero__image', { y: 30, scale: 0.97 });
     gsap.set('.hero__cta-wrap', { y: 24 });
     gsap.set('.hero__dream-pill', { y: -10, scale: 0.85 });
-    gsap.set('.hero__watermark', { opacity: 0, scale: 1.05 });
+    /* Watermark: GSAP-managed centering (xPercent/yPercent: -50)
+       so scroll-driven transforms don't kill our centering. */
+    gsap.set('.hero__watermark', {
+      xPercent: -50,
+      yPercent: -50,
+      opacity: 0,
+      scale: 1.05,
+    });
 
     // -------- Entrance timeline --------
     const tl = gsap.timeline({
@@ -69,39 +76,45 @@ export function initHero() {
       .to('.hero__rail', { opacity: 1, x: 0, duration: 0.8 }, 0.85)
       .to('.hero__side-cta', { opacity: 1, duration: 0.6 }, 1.05);
 
-    // -------- Scroll-driven parallax --------
-    gsap.to('.hero__watermark', {
-      xPercent: -8,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
+    // -------- Scroll-driven parallax (desktop only — keep mobile static) --------
+    const isDesktop = window.matchMedia('(min-width: 881px)').matches;
 
-    gsap.to('.hero__image', {
-      y: -40,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.6,
-      },
-    });
+    if (isDesktop) {
+      gsap.to('.hero__watermark', {
+        /* Drift slightly off-center as user scrolls; xPercent base is -50
+           so this becomes a small relative shift, not a teleport. */
+        xPercent: -54,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
 
-    gsap.to('.hero__bg', {
-      yPercent: 12,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
+      gsap.to('.hero__image', {
+        y: -40,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.6,
+        },
+      });
+
+      gsap.to('.hero__bg', {
+        yPercent: 12,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+    }
 
     // -------- Magnetic CTA hover (subtle pull toward cursor) --------
     const cta = qs('.hero__cta', host);
@@ -123,6 +136,7 @@ export function initHero() {
     el: host,
     destroy() {
       ctx.revert();
+      host.innerHTML = '';
     },
   };
 }

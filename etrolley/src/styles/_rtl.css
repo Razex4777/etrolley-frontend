@@ -1,0 +1,174 @@
+/* =============================================================
+ * RTL overrides — applied when <html dir="rtl">
+ *
+ * Strategy: keep the LTR layout as the default, only override the
+ * *directional* properties (margin/padding sides, flex flow, text
+ * alignment, transforms that depend on horizontal direction).
+ * ============================================================= */
+
+/* --------- Body baseline --------- */
+[dir='rtl'] body {
+  font-family: var(--font-arabic);
+  letter-spacing: 0;
+}
+
+/* --------- Numerals stay Latin (phone, addresses) --------- */
+[dir='rtl'] bdi {
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+/* --------- Navbar --------- */
+[dir='rtl'] .nav__right {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir='rtl'] .nav__phone-text {
+  text-align: right;
+}
+
+[dir='rtl'] .nav__cta::before {
+  background: linear-gradient(-135deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+  transform: translateX(100%);
+}
+[dir='rtl'] .nav__cta:hover::before {
+  transform: translateX(-100%);
+}
+
+/* Burger lines: re-anchor to the LEFT edge so the indented middle
+   bar (with its dot) reads naturally in RTL. */
+[dir='rtl'] .nav__burger {
+  align-items: flex-start;
+}
+[dir='rtl'] .nav__burger-line {
+  transform-origin: left center;
+}
+[dir='rtl'] .nav__burger-dot {
+  right: auto;
+  left: calc(100% + 4px);
+}
+
+@media (hover: hover) {
+  [dir='rtl'] .nav__burger:hover .nav__burger-line--top {
+    transform: translateX(2px);
+  }
+  [dir='rtl'] .nav__burger:hover .nav__burger-dot {
+    right: auto;
+    left: calc(100% - 6px);
+  }
+}
+
+/* Dropdown chevron flip when open feels natural either way; nothing
+   to override. But the dropdown anchor should align with the trigger
+   visual edge. */
+[dir='rtl'] .nav__dropdown-item {
+  text-align: right;
+}
+
+/* --------- Hero --------- */
+/* The 3-col grid (aside | content | rail) reverses naturally in RTL
+   because grid-template-columns is logical-friendly under flex/grid.
+   But the content's internal left-aligned text needs flipping. */
+
+[dir='rtl'] .hero__headline {
+  text-align: right;
+}
+
+[dir='rtl'] .hero__validate {
+  text-align: right;
+}
+
+/* CTA shimmer travels from the opposite side */
+[dir='rtl'] .hero__cta::before {
+  background: linear-gradient(-135deg, transparent 30%, rgba(255, 255, 255, 0.22) 50%, transparent 70%);
+  transform: translateX(100%);
+}
+[dir='rtl'] .hero__cta:hover::before {
+  transform: translateX(-100%);
+}
+
+/* Carousel arrows: keep universal pattern [prev←] [next→] in both
+   directions. RTL's natural flex auto-reverse would put prev on the
+   left visually with the wrong-feeling icon, so we explicitly use
+   row-reverse to undo the flip and keep the icons in their literal
+   directions. */
+[dir='rtl'] .hero__nav {
+  flex-direction: row-reverse;
+}
+
+/* The "Send a message" side CTA is fixed to the right edge in LTR.
+   In RTL flip it to the left edge with mirrored rotation so the
+   text rises in a culturally natural direction. */
+[dir='rtl'] .hero__side-cta {
+  right: auto;
+  left: 0;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+[dir='rtl'] .hero__side-cta:hover {
+  transform: translate(-40%, -50%) rotate(90deg);
+}
+
+/* The Follow rail's vertical label currently rotates 180° (vertical-rl
+   + rotate). In RTL we want the same readable orientation but mirrored
+   so it sits naturally on the (now-left) rail. */
+[dir='rtl'] .hero__rail-label {
+  writing-mode: vertical-rl;
+  transform: rotate(0deg);
+}
+
+/* On mobile, horizontal Follow rail underline sits to the *right* of
+   the label in LTR; flip in RTL. */
+@media (max-width: 880px) {
+  [dir='rtl'] .hero__rail-label::after {
+    margin-left: 0;
+    margin-right: 12px;
+  }
+  [dir='rtl'] .hero__validate {
+    text-align: right;
+    flex-direction: row-reverse;
+  }
+}
+
+/* --------- Mobile menu --------- */
+/* Slide IN from the LEFT in RTL (mirror direction). GSAP sets the
+   panel transform via JS using xPercent — we override the *initial*
+   "off-screen" offset there, not in CSS. The CSS just needs to
+   anchor the panel and tweak edge styling. */
+[dir='rtl'] .mobile-menu__panel {
+  right: auto;
+  left: 0;
+  box-shadow: 40px 0 80px rgba(0, 0, 0, 0.4);
+}
+
+[dir='rtl'] .mobile-menu__panel::before {
+  left: auto;
+  right: 0;
+}
+
+[dir='rtl'] .mobile-menu__item a:hover {
+  padding-left: 4px;
+  padding-right: 16px;
+}
+
+[dir='rtl'] .mobile-menu__item a span::after {
+  left: auto;
+  right: 0;
+}
+
+[dir='rtl'] .mobile-menu__item a:hover span::after {
+  right: 0;
+  left: auto;
+}
+
+/* The trailing 01..05 numerals stay LTR via <bdi>, no extra rule. */
+
+
+/* --------- What Makes Us Different? — RTL --------- */
+/* Photo and panel swap natural sides; round the inner corners properly */
+[dir='rtl'] .different__photo {
+  border-radius: 0 var(--r-xl) var(--r-xl) 0;
+}
+[dir='rtl'] .different__panel {
+  border-radius: var(--r-xl) 0 0 var(--r-xl);
+}

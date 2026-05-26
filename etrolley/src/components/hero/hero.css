@@ -56,9 +56,10 @@
 /* ---------- Brand watermark behind headline (3D image from Figma) ---------- */
 .hero__watermark {
   position: absolute;
+  /* Anchor at the page-center; GSAP handles centering via xPercent/yPercent
+     so its scroll-driven transforms don't wipe a CSS translate(-50%, -50%). */
   left: 50%;
   top: 38%;
-  transform: translate(-50%, -50%);
   width: clamp(540px, 68vw, 1320px);
   height: auto;
   pointer-events: none;
@@ -337,26 +338,23 @@
 }
 
 .hero__social {
-  display: inline-grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  color: var(--color-white);
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  background: transparent;
+  border: none;
   transition: transform var(--dur-fast) var(--ease-out-expo),
-              box-shadow var(--dur-fast) var(--ease-out-expo);
+              filter var(--dur-fast) var(--ease-out-expo);
 }
 
-.hero__social svg { width: 18px; height: 18px; }
-
-.hero__social--fb { background: #1877F2; }
-.hero__social--tw { background: #000000; }
-.hero__social--in { background: #0A66C2; }
-.hero__social--ig { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); }
+.hero__social-tag {
+  display: none;
+}
 
 .hero__social:hover {
-  transform: translateY(-2px) scale(1.06);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px) scale(1.08);
+  filter: brightness(1.15) contrast(1.05);
 }
 
 /* ---------- Floating side CTA (right edge, rotated -90deg) ---------- */
@@ -399,30 +397,163 @@
   .hero__headline { font-size: clamp(34px, 5.4vw, 64px); }
 }
 
+/* ─────────── Tablet & mobile (≤880px) ───────────
+   Single-column stack, dictated layout order:
+     1. Headline (centered)
+     2. CTA + arrows
+     3. QR card
+     4. Validate footnote
+     5. Follow rail (horizontal)
+   Yellow→peach gradient washes left-to-right. Side CTA hidden.
+*/
 @media (max-width: 880px) {
   .hero {
     min-height: auto;
-    padding-bottom: 40px;
+    padding-top: calc(var(--nav-h) + 20px);
+    padding-bottom: 32px;
+    background: linear-gradient(
+      90deg,
+      rgba(245, 201, 154, 0.22) 0%,
+      rgba(255, 246, 232, 0.5) 35%,
+      rgba(255, 255, 255, 1) 65%,
+      rgba(245, 201, 154, 0.22) 100%
+    );
   }
+
+  .hero__bg,
+  .hero::before { display: none; }
+
+  .hero__watermark {
+    /* Sits dead-center behind the headline.
+       Match Figma Component 16 (442×171) ≈ 65% of frame width. */
+    top: 32%;
+    left: 50%;
+    width: clamp(260px, 70vw, 460px);
+    height: auto;
+    opacity: 0.16;
+    mix-blend-mode: luminosity;
+  }
+
+  /* Anchor headline relatively so the watermark visually centers behind it */
+  .hero__headline {
+    position: relative;
+    z-index: 1;
+  }
+
   .hero__inner {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 16px 24px 0;
+    text-align: center;
   }
-  .hero__aside { flex-direction: row; align-items: center; gap: 16px; }
-  .hero__qr { max-width: 160px; }
+
+  /* ----- Order: headline first, QR after CTA ----- */
+  .hero__content      { order: 1; width: 100%; align-items: center; }
+  .hero__aside        { order: 2; width: 100%; align-items: center; gap: 18px; flex-direction: column; }
+  .hero__rail         { order: 3; display: flex; }
+
+  .hero__dream-pill   { display: none; }
+
+  .hero__headline {
+    font-size: clamp(24px, 5.4vw, 36px);
+    line-height: 1.25;
+    text-align: center;
+    max-width: 560px;
+  }
+
   .hero__row {
     grid-template-columns: 1fr;
+    justify-items: center;
     gap: 24px;
+    margin-top: 8px;
   }
-  .hero__image { justify-content: flex-start; }
-  .hero__image img { max-width: 280px; }
-  .hero__watermark { font-size: clamp(120px, 28vw, 200px); }
+
+  .hero__cta-wrap { align-items: center; }
+  .hero__cta-eyebrow { color: var(--color-text-muted); }
+
+  .hero__cta {
+    width: clamp(240px, 60vw, 320px);
+    height: 56px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+  }
+
+  .hero__nav { gap: 10px; }
+  .hero__nav-btn {
+    width: 56px;
+    height: 36px;
+  }
+
+  /* ----- Hero illustration hidden on mobile (per design) ----- */
+  .hero__image { display: none; }
+
+  /* ----- QR card ----- */
+  .hero__qr {
+    max-width: clamp(240px, 60vw, 320px);
+    border-radius: 6px;
+  }
+
+  /* ----- Validate footnote: tighter, single row of icon+text ----- */
+  .hero__validate {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    gap: 10px;
+    max-width: 560px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .hero__validate-icon { width: 22px; height: 22px; margin-top: 0; }
+
+  /* ----- Horizontal Follow rail ----- */
+  .hero__rail {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 12px 0 4px;
+  }
+
+  .hero__rail-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .hero__rail-label::after {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: rgba(18, 18, 18, 0.2);
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+
+  .hero__socials {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .hero__social {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* ----- Hide rotated side CTA on mobile (replaced by inline) ----- */
   .hero__side-cta { display: none; }
 }
 
 @media (max-width: 520px) {
-  .hero__aside { flex-direction: column; align-items: flex-start; }
-  .hero__qr { max-width: 200px; align-self: center; }
-  .hero__validate { max-width: none; }
+  .hero__inner { padding: 12px 18px 0; gap: 22px; }
+  .hero__headline { font-size: clamp(22px, 6.6vw, 30px); }
   .hero__cta { width: 100%; max-width: 320px; }
+  .hero__qr { max-width: 80vw; }
 }
