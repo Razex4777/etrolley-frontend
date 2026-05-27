@@ -46,7 +46,7 @@ export function initSteps() {
 
     /* ---------- 1. Desktop Layout Animations (min-width: 1101px) ---------- */
     mm.add('(min-width: 1101px)', () => {
-      // Card 03 is lifted up on desktop
+      // Card 03 is lifted up on desktop to avoid collision with circular CTA
       gsap.set(cardsLow, { autoAlpha: 0, y: 80 });
       gsap.set(cardHigh, { autoAlpha: 0, y: 80 - 180 });
 
@@ -91,54 +91,12 @@ export function initSteps() {
         }, 0.75)
         .to('.steps__paragraph', { autoAlpha: 1, y: 0, duration: 0.8 }, 0.9);
 
-      // Hover triggers with desktop offsets (-180px base for Card 03)
-      const enterListeners = [];
-      const leaveListeners = [];
-
-      cards.forEach((card) => {
-        const num = qs('.steps__num', card);
-        const isHigh = card.classList.contains('steps__card--high');
-        const baseVal = isHigh ? -180 : 0;
-        const hoverVal = isHigh ? -188 : -8;
-
-        const onEnter = () => {
-          gsap.to(card, { y: hoverVal, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
-          if (num) gsap.to(num, { rotate: 8, scale: 1.06, duration: 0.45, ease: 'back.out(2)' });
-        };
-        const onLeave = () => {
-          gsap.to(card, { y: baseVal, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
-          if (num) gsap.to(num, { rotate: 0, scale: 1, duration: 0.5, ease: 'power3.out' });
-        };
-
-        card.addEventListener('mouseenter', onEnter);
-        card.addEventListener('mouseleave', onLeave);
-        enterListeners.push({ card, fn: onEnter });
-        leaveListeners.push({ card, fn: onLeave });
-      });
-
-      // Subtle parallax on Card 03 (desktop only)
-      if (cardHigh) {
-        gsap.to(cardHigh, {
-          yPercent: -6,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: host,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 0.8,
-          },
-        });
-      }
-
-      return () => {
-        enterListeners.forEach(({ card, fn }) => card.removeEventListener('mouseenter', fn));
-        leaveListeners.forEach(({ card, fn }) => card.removeEventListener('mouseleave', fn));
-      };
+      return () => {};
     });
 
     /* ---------- 2. Mobile/Tablet Layout Animations (max-width: 1100px) ---------- */
     mm.add('(max-width: 1100px)', () => {
-      // All cards align symmetrically (no high card offset)
+      // All cards align symmetrically
       gsap.set(cards, { autoAlpha: 0, y: 80 });
 
       const tl = gsap.timeline({
@@ -176,34 +134,7 @@ export function initSteps() {
         }, 0.8)
         .to('.steps__paragraph', { autoAlpha: 1, y: 0, duration: 0.8 }, 0.95);
 
-      // Hover triggers with standard mobile offsets (0 base for all cards)
-      const enterListeners = [];
-      const leaveListeners = [];
-
-      cards.forEach((card) => {
-        const num = qs('.steps__num', card);
-        const baseVal = 0;
-        const hoverVal = -8;
-
-        const onEnter = () => {
-          gsap.to(card, { y: hoverVal, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
-          if (num) gsap.to(num, { rotate: 8, scale: 1.06, duration: 0.45, ease: 'back.out(2)' });
-        };
-        const onLeave = () => {
-          gsap.to(card, { y: baseVal, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
-          if (num) gsap.to(num, { rotate: 0, scale: 1, duration: 0.5, ease: 'power3.out' });
-        };
-
-        card.addEventListener('mouseenter', onEnter);
-        card.addEventListener('mouseleave', onLeave);
-        enterListeners.push({ card, fn: onEnter });
-        leaveListeners.push({ card, fn: onLeave });
-      });
-
-      return () => {
-        enterListeners.forEach(({ card, fn }) => card.removeEventListener('mouseenter', fn));
-        leaveListeners.forEach(({ card, fn }) => card.removeEventListener('mouseleave', fn));
-      };
+      return () => {};
     });
 
     /* ---------- Magnetic CTA ---------- */

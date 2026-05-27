@@ -1,0 +1,338 @@
+/* =============================================================
+ * Distinctive Designs Section
+ * ============================================================= */
+
+.designs {
+  position: relative;
+  /* Tightened top padding to slide it up close to the partners banner, generous bottom padding */
+  padding: clamp(40px, 5vw, 80px) 0 clamp(96px, 11vw, 180px);
+  background: #FFFFFF;
+  color: var(--color-ink-soft);
+  overflow: hidden;
+  isolation: isolate;
+  /* Removed border-top to allow seamless integration with the clients/partners section above */
+}
+
+.designs__inner {
+  position: relative;
+  max-width: var(--canvas-w);
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 80px);
+}
+
+/* ---------- Paint Bucket Watermark ---------- */
+.designs__watermark {
+  position: absolute;
+  top: clamp(-40px, -2vw, -20px);
+  left: clamp(20px, 4vw, 80px); /* Shifted further to the right */
+  opacity: 0.7; /* Increased opacity for maximum clarity */
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(-10deg);
+}
+
+[dir="rtl"] .designs__watermark {
+  left: auto;
+  right: clamp(20px, 4vw, 80px); /* Mirror shifted rightward inside RTL */
+  transform: scaleX(-1) rotate(-10deg);
+}
+
+/* ---------- Header ---------- */
+.designs__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(32px, 5vw, 96px);
+  margin-bottom: clamp(36px, 4vw, 64px);
+  position: relative;
+  z-index: 2;
+}
+
+.designs__header-left {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.6vw, 24px);
+  min-width: 0;
+  margin-inline-start: clamp(120px, 16vw, 280px); /* Heavy shift to the right to leave the Qatari bottle watermark clear */
+  transition: margin-inline-start var(--dur-base) var(--ease-out-expo);
+}
+
+.designs__header-right {
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+  margin-inline-end: clamp(120px, 16vw, 280px); /* Symmetrical margin to position arrows directly above the last card */
+  transition: margin-inline-end var(--dur-base) var(--ease-out-expo);
+}
+
+.designs__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.designs__eyebrow-line {
+  width: 60px;
+  height: 1.5px;
+  background: var(--color-primary-light); /* #99B4AB */
+  opacity: 0.55;
+}
+
+.designs__eyebrow-circles {
+  display: inline-flex;
+  position: relative;
+  width: 54px;
+  height: 36px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.designs__circle {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.designs__circle--solid {
+  left: 0;
+  background: var(--color-sand); /* #F5C99A */
+  z-index: 1;
+}
+
+.designs__circle--hollow {
+  left: 18px;
+  border: 4px solid var(--color-primary); /* #316C6B */
+  background: transparent;
+  z-index: 2;
+}
+
+.designs__eyebrow-text {
+  font-family: 'Outfit', var(--font-primary), sans-serif;
+  font-weight: 500;
+  font-size: clamp(14px, 1.2vw, 18px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Title ---------- */
+.designs__title {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 600;
+  font-size: clamp(32px, 3.6vw, 50px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-soft);
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ---------- Arrows ---------- */
+.designs__arrows {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.designs__arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #A8A8A1;
+  background: transparent;
+  color: #000000;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  transition: background var(--dur-base) var(--ease-out-expo),
+              color var(--dur-base) var(--ease-out-expo),
+              border-color var(--dur-base) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.designs__arrow:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+}
+
+.designs__arrow:active {
+  transform: scale(0.94);
+}
+
+.designs__arrow:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ---------- Viewport / Track ---------- */
+.designs__viewport {
+  position: relative;
+  margin-inline: calc(clamp(24px, 4vw, 80px) * -1); /* Bleed track to viewport edges */
+  padding-inline: 0;
+}
+
+/* Fade masks at edges */
+.designs__viewport::before,
+.designs__viewport::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(24px, 4vw, 80px);
+  pointer-events: none;
+  z-index: 2;
+}
+.designs__viewport::before {
+  left: 0;
+  background: linear-gradient(90deg, #FFFFFF, rgba(255, 255, 255, 0));
+}
+.designs__viewport::after {
+  right: 0;
+  background: linear-gradient(-90deg, #FFFFFF, rgba(255, 255, 255, 0));
+}
+
+.designs__track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(20px, 2.2vw, 40px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-top: 8px;
+  padding-bottom: clamp(16px, 1.4vw, 24px);
+  padding-inline-start: calc(clamp(120px, 16vw, 280px) + clamp(24px, 4vw, 80px));
+  padding-inline-end: clamp(24px, 4vw, 80px);
+  scroll-padding-inline-start: calc(clamp(120px, 16vw, 280px) + clamp(24px, 4vw, 80px));
+  scroll-padding-inline-end: clamp(24px, 4vw, 80px);
+  scroll-behavior: smooth;
+}
+
+.designs__track::-webkit-scrollbar { display: none; }
+/* Kill all browser interpolation during active pointer drag */
+.designs__track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+/* Freeze card transitions mid-drag — prevents reflow jank */
+.designs__track.is-dragging .designs__tile,
+.designs__track.is-dragging .designs__graphic-img {
+  transition: none !important;
+}
+
+/* ---------- Card ---------- */
+.designs__card {
+  flex: 0 0 clamp(200px, 16vw, 242px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-snap-align: start;
+}
+
+.designs__card-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1vw, 16px);
+  color: var(--color-primary-light);
+  opacity: 0.8;
+  margin-inline-start: 12px;
+}
+
+[dir="rtl"] .designs__card-label {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+}
+
+.designs__tile {
+  width: 100%;
+  aspect-ratio: 242 / 272;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(18, 18, 18, 0.05);
+  box-shadow: 0 6px 24px rgba(18, 18, 18, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 2vw, 28px) 16px;
+  box-sizing: border-box;
+  transition: transform var(--dur-base) var(--ease-out-expo),
+              box-shadow var(--dur-base) var(--ease-out-expo),
+              border-color var(--dur-base) var(--ease-out-expo);
+}
+
+.designs__card-title {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 600;
+  font-size: clamp(16px, 1.4vw, 21px);
+  color: var(--color-ink-soft);
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.designs__graphic-circle {
+  width: 110px;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  margin-top: 12px;
+}
+
+.designs__graphic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.designs__card:hover .designs__graphic-img {
+  transform: scale(1.05);
+}
+
+.designs__card:hover .designs__tile {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(18, 18, 18, 0.08);
+  border-color: rgba(18, 18, 18, 0.08);
+}
+
+/* =================== Responsive =================== */
+
+@media (max-width: 980px) {
+  .designs__header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .designs__header-left {
+    margin-inline-start: 0;
+  }
+  .designs__header-right {
+    justify-content: flex-end;
+    width: 100%;
+    margin-inline-end: 0; /* Reset margins on mobile */
+  }
+  .designs__track {
+    padding-inline-start: clamp(24px, 4vw, 80px);
+    scroll-padding-inline-start: clamp(24px, 4vw, 80px);
+  }
+}
+
+@media (max-width: 640px) {
+  .designs__title {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.15;
+  }
+  .designs__card {
+    flex: 0 0 65vw;
+    max-width: 250px;
+  }
+}

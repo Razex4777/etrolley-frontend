@@ -38,10 +38,10 @@ export function initDifferent() {
     const slides = qsa('.different__slide', host);
     if (slides.length <= 1) return;
 
-    // Position subsequent cards down and hide them initially to prevent overflow rendering
+    // Position subsequent cards completely off-screen below the viewport so they slide up cleanly on scroll
     slides.forEach((slide, idx) => {
       if (idx > 0) {
-        gsap.set(slide, { yPercent: 100, autoAlpha: 0 });
+        gsap.set(slide, { yPercent: 180, autoAlpha: 1 });
       }
     });
 
@@ -53,16 +53,23 @@ export function initDifferent() {
         pin: true,
         scrub: 0.4,
         anticipatePin: 1,
+        onToggle: (self) => {
+          // Add or remove .is-pinned class to dynamically hide the header and center cards
+          if (self.isActive) {
+            host.classList.add('is-pinned');
+          } else {
+            host.classList.remove('is-pinned');
+          }
+        }
       }
     });
 
-    // Create the sequential card deck cover steps (no scaling/shifting to avoid visual clutter)
+    // Create the sequential card deck cover steps (pure opaque slide-up)
     slides.forEach((slide, idx) => {
       if (idx === 0) return;
       
       tl.to(slide, {
         yPercent: 0,
-        autoAlpha: 1, // Fade in and show as it enters
         ease: 'none',
       }, `slide-${idx}`);
     });

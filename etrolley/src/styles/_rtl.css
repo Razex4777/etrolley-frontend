@@ -206,3 +206,93 @@
      position: static, so the directional override is a no-op. */
   [dir='rtl'] .steps__cta { left: auto; }
 }
+
+
+/* --------- Our Renowned Clients — RTL --------- */
+[dir='rtl'] .clients__title,
+[dir='rtl'] .clients__desc {
+  text-align: right;
+}
+
+[dir='rtl'] .clients__desc {
+  text-align: end;
+}
+
+/* The arrow chevrons are direction-coded in the SVG. Keep prev on
+   the side that matches "back-in-reading-order" by reversing the
+   button row. The `dir` flag in JS already inverts scroll direction,
+   so visually [‹][›] still scrolls from start to end naturally. */
+[dir='rtl'] .clients__arrows {
+  flex-direction: row-reverse;
+}
+
+/* Edge fade masks should mirror so the soft side hint sits on the
+   correct visual edge in RTL. */
+[dir='rtl'] .clients__viewport::before {
+  background: linear-gradient(-90deg, #FFFFFF, rgba(255, 255, 255, 0));
+}
+[dir='rtl'] .clients__viewport::after {
+  background: linear-gradient(90deg, #FFFFFF, rgba(255, 255, 255, 0));
+}
+
+@media (max-width: 980px) {
+  [dir='rtl'] .clients__desc {
+    text-align: right;
+  }
+}
+
+
+/* --------- Support & Help — RTL ---------
+   Mirror the trolley artwork to the left edge so the cart still
+   reads as "rolling toward the content" in RTL reading order.
+   The card gradient also gets flipped so the sand glow ends up on
+   the same side as the cart. */
+[dir='rtl'] .support__card {
+  background-color: #FFFFFF;
+  background-image:
+    linear-gradient(
+      -90deg,
+      #F5F6F4 0%,
+      #FFFFFF 35%,
+      #FFFFFF 65%,
+      #FBF1E5 100%
+    );
+}
+
+[dir='rtl'] .support__cart-back {
+  right: auto;
+  left: clamp(-160px, -8vw, -90px);
+  transform: scaleX(-1);
+}
+
+[dir='rtl'] .support__cart-front {
+  right: auto;
+  left: clamp(0px, 2vw, 40px);
+  transform: scaleX(-1);
+}
+
+[dir='rtl'] .support__actions {
+  /* Padding pulls the buttons away from the cart's edge — flip side. */
+  padding-inline-end: 0;
+  padding-inline-start: clamp(180px, 22vw, 380px);
+}
+
+[dir='rtl'] .support__title {
+  text-align: right;
+}
+
+@media (max-width: 980px) {
+  [dir='rtl'] .support__cart-back {
+    transform: scaleX(-1);
+    right: auto;
+    left: -64px;
+  }
+  [dir='rtl'] .support__cart-front {
+    transform: scaleX(-1);
+    right: auto;
+    left: 8px;
+  }
+  [dir='rtl'] .support__actions {
+    padding-inline-start: 0;
+  }
+}

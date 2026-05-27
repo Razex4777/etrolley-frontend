@@ -1,0 +1,427 @@
+/* =============================================================
+ * Clients section — "Our Renowned Clients"
+ *
+ * Layout intent (desktop):
+ *   - White background continuous with the section above
+ *   - Header row: title block on left, paragraph + arrows on right
+ *   - Eyebrow slider mirrors steps/different (175.63 × 25, dual circles)
+ *   - Carousel: horizontally-scrolling row of 279 × 245 cards with
+ *     a centered "Store Name" label above each tile
+ * ============================================================= */
+
+.clients {
+  position: relative;
+  /* Generous top padding, with zero bottom padding so the partners block sits right at the bottom */
+  padding: clamp(96px, 11vw, 180px) 0 0;
+  background: #FFFFFF;
+  color: var(--color-ink-soft);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.clients__inner {
+  position: relative;
+  max-width: var(--canvas-w);
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 80px);
+}
+
+/* ---------- Header ---------- */
+.clients__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(32px, 5vw, 96px);
+  margin-bottom: clamp(36px, 4vw, 64px);
+}
+
+.clients__header-left {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.6vw, 24px);
+  min-width: 0;
+}
+
+.clients__header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(16px, 1.6vw, 24px);
+  flex-shrink: 0;
+}
+
+.clients__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clients__eyebrow-line {
+  width: 60px;
+  height: 1.5px;
+  background: var(--color-primary-light); /* #99B4AB */
+  opacity: 0.55;
+}
+
+.clients__eyebrow-circles {
+  display: inline-flex;
+  position: relative;
+  width: 54px;
+  height: 36px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.clients__circle {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.clients__circle--solid {
+  left: 0;
+  background: var(--color-sand); /* #F5C99A */
+  z-index: 1;
+}
+
+.clients__circle--hollow {
+  left: 18px;
+  border: 4px solid var(--color-primary); /* #316C6B */
+  background: transparent;
+  z-index: 2;
+}
+
+.clients__eyebrow-text {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 500;
+  font-size: clamp(14px, 1.2vw, 18px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Title ---------- */
+.clients__title {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 600;
+  font-size: clamp(32px, 3.6vw, 50px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-soft);
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ---------- Right column: paragraph + arrows ---------- */
+.clients__desc {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 400;
+  font-size: clamp(15px, 1.1vw, 20px);
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+  max-width: 411px;
+  margin: 0;
+  text-align: end;
+}
+
+.clients__arrows {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.clients__arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #A8A8A1;
+  background: transparent;
+  color: #000000;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  transition: background var(--dur-base) var(--ease-out-expo),
+              color var(--dur-base) var(--ease-out-expo),
+              border-color var(--dur-base) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.clients__arrow:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+}
+
+.clients__arrow:active {
+  transform: scale(0.94);
+}
+
+.clients__arrow:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ---------- Viewport / Track ---------- */
+.clients__viewport {
+  position: relative;
+  margin-inline: calc(clamp(24px, 4vw, 80px) * -1); /* Bleed track to viewport edges */
+  padding-inline: clamp(24px, 4vw, 80px);
+}
+
+/* Soft fade masks at the edges hint at horizontal continuity. */
+.clients__viewport::before,
+.clients__viewport::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(24px, 4vw, 80px);
+  pointer-events: none;
+  z-index: 2;
+}
+.clients__viewport::before {
+  left: 0;
+  background: linear-gradient(90deg, #FFFFFF, rgba(255, 255, 255, 0));
+}
+.clients__viewport::after {
+  right: 0;
+  background: linear-gradient(-90deg, #FFFFFF, rgba(255, 255, 255, 0));
+}
+
+.clients__track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(20px, 2.2vw, 40px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: clamp(24px, 4vw, 80px);
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 8px 4px clamp(16px, 1.4vw, 24px);
+  scroll-behavior: smooth;
+}
+
+.clients__track::-webkit-scrollbar { display: none; }
+
+/* Kill all browser interpolation during active pointer drag */
+.clients__track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;          /* Stop snap from fighting scrollLeft */
+}
+
+/* Freeze all card transitions mid-drag — prevents reflow jank */
+.clients__track.is-dragging .clients__tile,
+.clients__track.is-dragging .clients__tile img {
+  transition: none !important;
+}
+
+/* ---------- Card ---------- */
+.clients__card {
+  /* Figma Frame 20 = 279 × 245. Lock it so the row stays on a clean
+     baseline at every breakpoint. */
+  flex: 0 0 clamp(220px, 18vw, 279px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  scroll-snap-align: start;
+}
+
+.clients__label {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 400;
+  font-size: clamp(18px, 1.4vw, 24px);
+  line-height: 1.4;
+  color: var(--color-primary); /* #316C6B */
+  text-align: center;
+}
+
+.clients__tile {
+  width: 100%;
+  aspect-ratio: 239 / 205;       /* Figma inner image dims */
+  border-radius: 25px;
+  overflow: hidden;
+  background: #F4F4F2;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 24px rgba(18, 18, 18, 0.06);
+  transition: transform var(--dur-base) var(--ease-out-expo),
+              box-shadow var(--dur-base) var(--ease-out-expo);
+}
+
+.clients__tile svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.clients__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 16px; /* Reduced padding for a prouder, larger branding presence */
+  box-sizing: border-box;
+  border-radius: 16px; /* Softens block backgrounds to fit tile curvature */
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.clients__card:hover .clients__tile {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(18, 18, 18, 0.12);
+}
+
+.clients__card:hover .clients__tile img {
+  transform: scale(1.04);
+}
+
+/* =================== Responsive =================== */
+
+@media (max-width: 980px) {
+  .clients__header {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 24px;
+  }
+  .clients__header-right {
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+  }
+  .clients__desc {
+    text-align: start;
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 640px) {
+  .clients__header-right {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .clients__desc {
+    max-width: 100%;
+  }
+  .clients__arrows {
+    align-self: flex-end;
+  }
+  .clients__title {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.15;
+  }
+  .clients__card {
+    flex: 0 0 70vw;
+    max-width: 280px;
+  }
+  .clients__label {
+    font-size: 18px;
+  }
+}
+
+/* =============================================================
+ * Partners Banner Block — "Our Partners"
+ * ============================================================= */
+
+.partners {
+  margin-inline: calc(clamp(24px, 4vw, 80px) * -1); /* Bleed out of margins */
+  margin-top: clamp(60px, 7vw, 100px);
+  padding: clamp(24px, 3vw, 48px) clamp(24px, 4vw, 80px);
+  background: linear-gradient(90deg, #E5E9EB 0%, #F4F6F7 40%, #F6ECE6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  border-radius: 0; /* Flat block design as requested by user */
+  overflow: hidden;
+  position: relative;
+}
+
+.partners__title-box {
+  flex-shrink: 0;
+}
+
+.partners__title {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 600;
+  font-size: clamp(20px, 2.2vw, 32px);
+  color: var(--color-ink-soft);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.partners__logos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 64px);
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.partners__logo-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-base) var(--ease-out-expo),
+              opacity var(--dur-base) var(--ease-out-expo);
+  opacity: 0.85;
+}
+
+.partners__logo-img {
+  height: clamp(34px, 4.5vw, 52px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.partners__logo-item:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+}
+
+/* RTL Adjustments */
+[dir="rtl"] .partners {
+  background: linear-gradient(-90deg, #E5E9EB 0%, #F4F6F7 40%, #F6ECE6 100%);
+}
+
+[dir="rtl"] .partners__logos {
+  justify-content: flex-start;
+}
+
+/* Responsive banner */
+@media (max-width: 980px) {
+  .partners {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    padding: 32px clamp(24px, 4vw, 80px);
+  }
+
+  .partners__logos {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 640px) {
+  .partners__logos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    justify-items: center;
+  }
+
+  .partners__logo-item {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

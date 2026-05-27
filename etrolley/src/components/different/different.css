@@ -11,9 +11,8 @@
      clipped, but we also keep the deck vertically centered in the
      remaining viewport. */
   min-height: 100vh;
-  /* Tight top padding — the GSAP-pinned deck below already eats up
-     a viewport height, so we don't need huge whitespace at the top. */
-  padding: clamp(40px, 5vw, 80px) 0 160px;
+  /* Premium generous vertical padding to match the steps and services sections */
+  padding: clamp(96px, 11vw, 180px) 0 clamp(96px, 11vw, 180px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -21,6 +20,7 @@
   background: #F8F9FA;
   isolation: isolate;
   color: var(--color-ink);
+  transition: padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .different__inner {
@@ -38,6 +38,9 @@
   align-items: center;
   text-align: center;
   margin-bottom: clamp(28px, 3vw, 48px);
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              visibility 0.4s ease;
 }
 
 .different__eyebrow {
@@ -112,7 +115,7 @@
 .different__deck {
   position: relative;
   width: auto;
-  overflow: hidden;
+  overflow: visible;
   padding: 50px;
   margin: -50px;
 }
@@ -131,13 +134,54 @@
 }
 
 @media (min-width: 769px) {
+  .different {
+    /* Increase unpinned padding-top to perfectly clear the absolute-positioned header */
+    padding-top: clamp(200px, 13vw, 240px);
+  }
+
+  .different__inner {
+    /* Remove relative positioning on desktop so that absolute-positioned header is aligned relative to .different container, preventing overlapping */
+    position: static;
+  }
+
+  .different__header {
+    /* Absolute position the header so it takes up zero space in normal document flow */
+    position: absolute;
+    top: clamp(60px, 5vw, 100px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: var(--canvas-w);
+    padding: 0 clamp(24px, 4vw, 80px);
+    z-index: 10;
+  }
+
   .different__track {
-    /* Cap the deck height so the header has guaranteed room above
-       it and the cards never dip below the viewport bottom. */
-    width: min(100%, calc(1788 / 798 * 60vh));
+    /* Expand track max-height constraint to 80vh to show slides in glorious full resolution, matching psstudios.co */
+    width: min(100%, calc(1788 / 798 * 78vh));
     aspect-ratio: 1788 / 798;
     min-height: 0;
-    max-height: 64vh;
+    max-height: 78vh;
+    transition: transform 0.35s ease;
+  }
+
+  /* Minimize vertical padding on pinning to give slides maximum viewport height and clear navbar perfectly */
+  [data-component="different"].is-pinned .different {
+    padding-top: calc(var(--nav-h) + clamp(20px, 2.5vw, 40px));
+    padding-bottom: clamp(20px, 2.5vw, 40px);
+  }
+
+  /* Keep track vertically centered/clear under the fixed navbar */
+  [data-component="different"].is-pinned .different__track {
+    transform: translateY(0);
+  }
+
+  /* Fade out header and shift up slightly with translateX center preserved */
+  [data-component="different"].is-pinned .different__header {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -40px);
+    pointer-events: none;
   }
 }
 

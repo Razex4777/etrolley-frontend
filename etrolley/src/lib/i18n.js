@@ -100,6 +100,36 @@ const dict = {
     'services.card.photography.desc': 'Now that your store is ready for sale, add your products',
     'services.card.support.desc':     'Now that your store is ready for sale, add your products',
     'services.card.social.desc':      'Now that your store is ready for sale, add your products',
+
+    /* Our Renowned Clients */
+    'clients.eyebrow':     'Success stories',
+    'clients.title':       'Our Renowned Clients',
+    'clients.desc':        'Join the list of more than 500 brands that rely on E-trolley',
+    'clients.storeName':   'Store Name',
+    'partners.title':      'Our Partners',
+    'clients.aria.controls': 'Carousel controls',
+    'clients.aria.prev':   'Previous brands',
+    'clients.aria.next':   'Next brands',
+
+    /* Distinctive Designs */
+    'designs.eyebrow':     'Select one',
+    'designs.title':       'Distinctive Designs',
+    'designs.container':   'Container',
+    'designs.card.beauty': 'Health & Beauty',
+    'designs.card.perfumes':'Perfumes',
+    'designs.card.electronics':'Electronics',
+    'designs.card.flowers': 'Flowers',
+    'designs.card.outfits': 'Outfits',
+    'designs.aria.prev':   'Previous designs',
+    'designs.aria.next':   'Next designs',
+
+    /* Support & Help CTA card */
+    'support.eyebrow':       'Support & Help',
+    'support.title':         'Are you in need of assistance or have a question?',
+    'support.aria.contacts': 'Contact options',
+    'support.aria.whatsapp': 'Chat with us on WhatsApp',
+    'support.aria.phone':    'Call us',
+    'support.aria.email':    'Email our support team',
   },
   ar: {
     /* Navbar */
@@ -175,6 +205,36 @@ const dict = {
     'services.card.photography.desc': 'الآن متجرك جاهز للبيع، أضف منتجاتك',
     'services.card.support.desc':     'الآن متجرك جاهز للبيع، أضف منتجاتك',
     'services.card.social.desc':      'الآن متجرك جاهز للبيع، أضف منتجاتك',
+
+    /* Our Renowned Clients */
+    'clients.eyebrow':       'قصص نجاح',
+    'clients.title':         'عملاؤنا المميزون',
+    'clients.desc':          'انضم إلى قائمة تضم أكثر من 500 علامة تجارية تعتمد على إي-ترولي',
+    'clients.storeName':     'اسم المتجر',
+    'partners.title':        'شركاؤنا',
+    'clients.aria.controls': 'أدوات التحكم في العرض',
+    'clients.aria.prev':     'العلامات السابقة',
+    'clients.aria.next':     'العلامات التالية',
+
+    /* Distinctive Designs */
+    'designs.eyebrow':       'اختر تصميمك',
+    'designs.title':         'تصاميم مميزة',
+    'designs.container':     'حاوية',
+    'designs.card.beauty':   'الصحة والجمال',
+    'designs.card.perfumes': 'العطور',
+    'designs.card.electronics':'الإلكترونيات',
+    'designs.card.flowers':  'الزهور',
+    'designs.card.outfits':  'الملابس والأزياء',
+    'designs.aria.prev':     'التصاميم السابقة',
+    'designs.aria.next':     'التصاميم التالية',
+
+    /* Support & Help CTA card */
+    'support.eyebrow':       'الدعم والمساعدة',
+    'support.title':         'هل تحتاج إلى مساعدة أو لديك سؤال؟',
+    'support.aria.contacts': 'خيارات التواصل',
+    'support.aria.whatsapp': 'تواصل معنا عبر واتساب',
+    'support.aria.phone':    'اتصل بنا',
+    'support.aria.email':    'أرسل بريداً إلى فريق الدعم',
   },
 };
 

@@ -11,7 +11,7 @@
 
 .steps {
   position: relative;
-  padding: clamp(80px, 9vw, 160px) 0 clamp(60px, 7vw, 120px);
+  padding: clamp(80px, 8.5vw, 150px) 0 clamp(60px, 6.5vw, 120px);
   background: #000000;
   overflow: clip;
   isolation: isolate;
@@ -24,9 +24,9 @@
 
 .steps__inner {
   position: relative;
-  max-width: var(--canvas-w);
+  max-width: 1560px; /* Fully maximized screen coverage */
   margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 80px);
+  padding: 0 clamp(20px, 2.5vw, 40px); /* Ultra-tight side margins for maximum card width stretch */
 }
 
 /* ---------- Eyebrow ---------- */
@@ -96,10 +96,10 @@
 .steps__title {
   font-family: var(--font-unbounded), var(--font-arabic);
   font-weight: 900;
-  font-size: clamp(38px, 4.8vw, 70px);
+  font-size: clamp(40px, 5.2vw, 76px); /* Large high-impact header */
   line-height: 1.05;
   letter-spacing: -0.03em;
-  margin-bottom: clamp(20px, 2.5vw, 40px);
+  margin-bottom: clamp(20px, 2.6vw, 40px);
   max-width: 800px;
   text-transform: uppercase;
 }
@@ -136,10 +136,10 @@
 .steps__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(16px, 1.6vw, 30px);
+  gap: clamp(16px, 1.8vw, 32px); /* Generous gaps for grand card presentation */
   position: relative;
   align-items: end;
-  margin-bottom: clamp(56px, 5.5vw, 100px);
+  margin-bottom: clamp(56px, 5.6vw, 100px);
   /* Reduce padding to move the cards up, closer to the title */
   padding-top: 20px;
 }
@@ -148,65 +148,38 @@
   position: relative;
   background: #161616;
   border-radius: var(--r-xl);
-  padding: clamp(24px, 2vw, 38px) clamp(20px, 1.8vw, 32px) clamp(28px, 2.4vw, 42px);
+  padding: clamp(24px, 2.2vw, 36px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 2.6vw, 48px);
-  min-height: clamp(280px, 24vw, 400px);
-  transition: background var(--dur-base) var(--ease-out-expo),
-              box-shadow var(--dur-base) var(--ease-out-expo);
+  justify-content: flex-end;
+  min-height: auto;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   isolation: isolate;
   border: 2px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Soft hover wash */
-.steps__card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease-out-expo);
-  z-index: -1;
-}
-
-.steps__card:hover {
-  background: #1f1f1f;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.03);
-}
-
-.steps__card:hover::before { opacity: 1; }
-
-/* Card 03 lifted further up to sit above baseline and leave space for CTA */
+/* Card 03 shifted upward on desktop to clear room for the circular CTA */
 .steps__card--high {
   transform: translateY(-180px);
-  min-height: clamp(320px, 28vw, 470px);
 }
 
-/* ----- Outlined number (top right) ----- */
+/* Outlined number (top right) */
 .steps__num {
   position: absolute;
   top: clamp(16px, 1.4vw, 24px);
   right: clamp(18px, 1.6vw, 28px);
-  font-family: var(--font-unbounded), var(--font-arabic);
+  font-family: var(--font-unbounded), var(--font-arabic); /* Keep the premium blocky brand font */
   font-weight: 700;
   font-size: clamp(32px, 3vw, 48px);
   line-height: 1;
   letter-spacing: 0.02em;
-  color: #161616; /* Match card background to cover internal variable font overlaps */
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.3);
+  color: #161616; /* Fill matches the card background exactly as in 1st image */
+  -webkit-text-stroke: 1.5px #FFFFFF; /* High-contrast bright solid white outline */
   paint-order: stroke fill;
   pointer-events: none;
   user-select: none;
-  transition: -webkit-text-stroke-color var(--dur-base) var(--ease-out-expo),
-              color var(--dur-base) var(--ease-out-expo);
-}
-
-.steps__card:hover .steps__num {
-  color: #1f1f1f; /* Match card hover background */
-  -webkit-text-stroke-color: rgba(255, 255, 255, 0.85);
 }
 
 /* ----- Icon ----- */
@@ -229,7 +202,7 @@
   margin-top: auto;
   font-family: var(--font-arabic);
   font-weight: 800;
-  font-size: clamp(17px, 1.5vw, 26px);
+  font-size: clamp(17px, 1.5vw, 25px);
   line-height: 1.32;
   letter-spacing: -0.005em;
   color: var(--color-white);
@@ -396,9 +369,8 @@
     align-items: stretch;
     padding-top: 0;
   }
-  .steps__card { min-height: 260px; }
+  .steps__card { min-height: auto; }
   .steps__card--high { transform: none; }
-  .steps__card--high:hover { transform: translateY(-8px); }
   .steps__cta {
     position: static;
     transform: none;
@@ -432,7 +404,7 @@
     max-width: 100%;
   }
   .steps__grid { grid-template-columns: 1fr; gap: 18px; }
-  .steps__card { min-height: 220px; }
+  .steps__card { min-height: auto; }
   
   /* Order grid items to position CTA button between Card 3 and Card 4 on mobile */
   .steps__card[data-step="1"] { order: 1; }

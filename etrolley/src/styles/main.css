@@ -11,6 +11,9 @@
 @import '../components/steps/steps.css';
 @import '../components/different/different.css';
 @import '../components/services/services.css';
+@import '../components/clients/clients.css';
+@import '../components/designs/designs.css';
+@import '../components/support/support.css';
 
 @import './_rtl.css';
 @import './_motion.css';

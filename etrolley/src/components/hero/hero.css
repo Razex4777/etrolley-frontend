@@ -85,7 +85,7 @@
   align-items: start;
   max-width: var(--canvas-w);
   margin: 0 auto;
-  padding: clamp(20px, 2.5vw, 50px) clamp(24px, 3.5vw, 70px) 0;
+  padding: clamp(36px, 4.5vw, 90px) clamp(24px, 3.5vw, 70px) 0;
   height: 100%;
 }
 
@@ -298,8 +298,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  /* Pull image down so its bottom aligns with content base
-     while keeping the CTA glued to the headline. */
   align-self: stretch;
   min-height: 0;
 }
@@ -310,6 +308,7 @@
   max-width: clamp(280px, 30vw, 480px);
   height: auto;
   filter: drop-shadow(0 24px 40px rgba(49, 108, 107, 0.18));
+  transform: translateY(-70px);
 }
 
 /* ---------- Right rail (Follow + socials) ---------- */

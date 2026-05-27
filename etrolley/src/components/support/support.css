@@ -1,0 +1,313 @@
+/* =============================================================
+ * Support & Help — wide pill-shaped CTA card with single combined
+ * trolley artwork.
+ *
+ * Layout:
+ *   - .support__card                 → z: 1 (normal flow)
+ *   - .support__trolley (combined)   → z: 10, sits on top of the
+ *     card's right edge with the yellow back layer peeking above
+ * ============================================================= */
+
+.support {
+  position: relative;
+  padding: clamp(80px, 8vw, 140px) 0 clamp(60px, 6vw, 110px);
+  background: #FFFFFF;
+  isolation: isolate;
+  /* Allow the yellow back layer to extend above the card AND
+     past the right edge horizontally; the parent `<main>` already
+     has `overflow-x: hidden` on `html/body` so we don't risk an
+     extra horizontal scrollbar. */
+  overflow: visible;
+}
+
+.support__inner {
+  position: relative;
+  /* Slightly inset from the full canvas so the card doesn't span
+     the entire 1920px width — but wide enough that the title still
+     fits on its original line count, keeping the card's visual
+     height unchanged. */
+  max-width: min(1500px, calc(100% - clamp(48px, 8vw, 160px)));
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 80px);
+  /* Children with z-index live in this stacking context; we DON'T
+     create a new stacking context here so the yellow back layer
+     and the teal front layer can stack relative to the card via
+     pure source-order + z-index. */
+}
+
+/* ---------- Card ---------- */
+.support__card {
+  position: relative;
+  border-radius: 48px;
+  padding: clamp(40px, 4.6vw, 80px) clamp(40px, 4.4vw, 88px);
+  /* SOLID base white so the card is fully opaque and never lets the
+     yellow back layer bleed through it. The gradient sits on top as
+     a decorative wash with low-opacity stops only on the EDGES. */
+  background-color: #FFFFFF;
+  background-image:
+    linear-gradient(
+      90deg,
+      #F5F6F4 0%,
+      #FFFFFF 35%,
+      #FFFFFF 65%,
+      #FBF1E5 100%
+    );
+  box-shadow:
+    0 48px 100px -20px rgba(18, 18, 18, 0.18),
+    0 24px 50px -12px rgba(49, 108, 107, 0.12),
+    0 8px 16px rgba(18, 18, 18, 0.08);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: clamp(32px, 4vw, 64px);
+  min-height: clamp(220px, 19vw, 320px);
+}
+
+/* ---------- Copy ---------- */
+.support__copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.4vw, 22px);
+  min-width: 0;
+}
+
+.support__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 400;
+  font-size: clamp(15px, 1.3vw, 22px);
+  line-height: 1.4;
+  color: var(--color-ink-soft);
+}
+
+.support__slider {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.support__slider-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px solid var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+.support__slider-knob {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 6px);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.support__slider-knob::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--color-primary);
+  transform: translate(calc(-50% + 12px), -50%);
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.support__title {
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 700;
+  font-size: clamp(26px, 3.2vw, 48px);
+  line-height: 1.22;
+  color: var(--color-ink-soft);
+  margin: 0;
+  /* Allow up to 28ch so the title stays on its intended 2 lines at
+     the narrower card width — prevents the card height from growing
+     when the container gets shorter. */
+  max-width: 28ch;
+}
+
+/* ---------- Action buttons ---------- */
+.support__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(16px, 1.6vw, 28px);
+  /* Slide the icon row well clear of the trolley artwork on the right. */
+  padding-inline-end: clamp(180px, 22vw, 380px);
+  flex-shrink: 0;
+}
+
+.support__btn {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(72px, 6.4vw, 92px);
+  height: clamp(72px, 6.4vw, 92px);
+  border-radius: 25px;
+  overflow: hidden;
+  text-decoration: none;
+  flex-shrink: 0;
+  box-shadow: 0 12px 24px rgba(18, 18, 18, 0.10);
+  transition: transform var(--dur-base) var(--ease-out-expo),
+              box-shadow var(--dur-base) var(--ease-out-expo);
+  cursor: pointer;
+  background: transparent;
+}
+
+.support__btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 14px 28px rgba(18, 18, 18, 0.15);
+}
+
+.support__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.support__btn:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.support__btn svg,
+.support__btn img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.support__btn--gmail {
+  border: 1px solid rgba(18, 18, 18, 0.06);
+}
+
+/* ---------- Trolley artwork — TWO layers ----------
+   Composition (matches the Figma):
+     - Both carts are roughly the same on-screen size.
+     - YELLOW back layer: shifted UP + RIGHT of teal, peeks above
+       and beyond the card's top-right corner. Its handle is the
+       part the eye catches outside the card.
+     - TEAL front layer: anchored at the card's right side, sits
+       on TOP of yellow, mostly contained inside the card.
+     - They overlap by ~85% so the composition reads as one cart
+       with a duplicate "ghost" shadow behind it.
+
+   z-order (via DOM source order — both are siblings of the card):
+     1. .support__cart-back  → painted first
+     2. .support__card       → painted second (covers most of yellow)
+     3. .support__cart-front → painted last (sits on top of card)
+*/
+
+.support__cart-back {
+  position: absolute;
+  /* Lifted above the card so the handle pokes out the top-right
+     corner; right edge sits past the card on the right. */
+  bottom: clamp(80px, 9vw, 150px);
+  /* Slid even further to the right — the yellow cart now reads as
+     trailing off the page edge, only the inner part shows on the
+     card with the handle pointing further out. */
+  right: clamp(-160px, -8vw, -90px);
+  width: clamp(180px, 20vw, 280px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.support__cart-back svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.support__cart-front {
+  position: absolute;
+  /* Anchor near the TOP of the card — the cart's handle reads at the
+     top edge of the frame, body fills the upper half, wheel sits
+     around the card's vertical mid-line. */
+  top: clamp(-20px, -1vw, 0px);
+  /* Shifted further to the RIGHT so the teal cart sits closer to
+     (and partially under) the yellow back layer, matching the
+     Figma's heavily-overlapped composition. */
+  right: clamp(0px, 2vw, 40px);
+  width: clamp(180px, 20vw, 280px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.support__cart-front svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 20px rgba(49, 108, 107, 0.18));
+}
+
+/* Card sits between the two layers in z-order via source-order. */
+.support__card {
+  z-index: 2;
+}
+
+/* =================== Responsive =================== */
+
+@media (max-width: 980px) {
+  .support__card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: clamp(32px, 5vw, 48px);
+    min-height: 0;
+    border-radius: 36px;
+  }
+  .support__actions {
+    padding-inline-end: 0;
+    justify-content: flex-start;
+  }
+  .support__cart-back {
+    width: clamp(140px, 25vw, 220px);
+    bottom: auto;
+    top: -40px;
+    right: -64px;
+  }
+  .support__cart-front {
+    width: clamp(140px, 25vw, 220px);
+    bottom: auto;
+    top: -16px;
+    transform: none;
+    right: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .support__title {
+    font-size: clamp(20px, 5.6vw, 28px);
+    max-width: 100%;
+  }
+  .support__btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+  }
+  .support__cart-back {
+    width: 140px;
+    top: -28px;
+    right: -56px;
+  }
+  .support__cart-front {
+    width: 140px;
+    bottom: auto;
+    top: -10px;
+    transform: none;
+    right: 4px;
+  }
+}
