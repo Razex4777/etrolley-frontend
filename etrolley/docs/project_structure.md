@@ -65,10 +65,15 @@ etrolley/
     │   │   ├── 📄 clients.css             ( Carousel layout, cards hovers, gradient partners banner, and mobile grid overlays )
     │   │   └── 📄 clients.js              ( GSAP scroll trigger entries, arrow listeners, and touch pointer inertial drags )
     │   │
-    │   └── 📁 designs/                    ( Carousel of distinctive store template design card categories )
-    │       ├── 📄 designs.html.js         ( Template fn returning designs carousel, paint bucket watermark, and category SVGs )
-    │       ├── 📄 designs.css             ( Designs layout, cards hovers, absolute watermark styling, and mobile responsiveness )
-    │       └── 📄 designs.js              ( GSAP scroll trigger entries, arrow step listeners, and inertial drag gestures )
+    │   ├── 📁 designs/                    ( Carousel of distinctive store template design card categories )
+    │   │   ├── 📄 designs.html.js         ( Template fn returning designs carousel, paint bucket watermark, and category SVGs )
+    │   │   ├── 📄 designs.css             ( Designs layout, cards hovers, absolute watermark styling, and mobile responsiveness )
+    │   │   └── 📄 designs.js              ( GSAP scroll trigger entries, arrow step listeners, and inertial drag gestures )
+    │   │
+    │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links and bottom CTA )
+    │       ├── 📄 footer.html.js          ( Template fn returning footer columns, dynamic inline SVGs, and copyright bar )
+    │       ├── 📄 footer.css              ( CSS layout, responsive grids, link lifts, and glossy badge styles )
+    │       └── 📄 footer.js               ( GSAP ScrollTrigger timeline reveals for footer columns and CTA elements )
     │
     ├── 📁 lib/                            ( Framework-free utilities shared across components )
     │   ├── 📄 smooth-scroll.js            ( Lenis singleton + GSAP ticker bridge — single RAF loop for jitter-free scrolling )

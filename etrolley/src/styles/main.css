@@ -14,6 +14,7 @@
 @import '../components/clients/clients.css';
 @import '../components/designs/designs.css';
 @import '../components/support/support.css';
+@import '../components/footer/footer.css';
 
 @import './_rtl.css';
 @import './_motion.css';

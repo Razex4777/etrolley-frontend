@@ -130,6 +130,23 @@ const dict = {
     'support.aria.whatsapp': 'Chat with us on WhatsApp',
     'support.aria.phone':    'Call us',
     'support.aria.email':    'Email our support team',
+
+    /* Footer */
+    'footer.logo.text':      'Etrolley',
+    'footer.quickLinks':     'Quick Links',
+    'footer.siteMap':        'Site Map',
+    'footer.keepInTouch':    "Let's keep in touch",
+    'footer.terms':          'Terms & Conditions',
+    'footer.privacy':        'Privacy Policy',
+    'footer.social':         'Social',
+    'footer.home':           'Home',
+    'footer.services':       'Services',
+    'footer.prices':         'Prices',
+    'footer.about':          'About Us',
+    'footer.contact':        'Contact Us',
+    'footer.address':        'Qatar - Doha - Khalifa City',
+    'footer.cta':            'build your store now',
+    'footer.copyright':      '© 2025 E-trolley All Rights Reserved',
   },
   ar: {
     /* Navbar */
@@ -235,6 +252,23 @@ const dict = {
     'support.aria.whatsapp': 'تواصل معنا عبر واتساب',
     'support.aria.phone':    'اتصل بنا',
     'support.aria.email':    'أرسل بريداً إلى فريق الدعم',
+
+    /* Footer */
+    'footer.logo.text':      'إي ترولي',
+    'footer.quickLinks':     'روابط سريعة',
+    'footer.siteMap':        'خريطة الموقع',
+    'footer.keepInTouch':    'لنكن على اتصال',
+    'footer.terms':          'الشروط والأحكام',
+    'footer.privacy':        'سياسة الخصوصية',
+    'footer.social':         'وسائل التواصل',
+    'footer.home':           'الرئيسية',
+    'footer.services':       'الخدمات',
+    'footer.prices':         'الأسعار',
+    'footer.about':          'من نحن',
+    'footer.contact':        'اتصل بنا',
+    'footer.address':        'قطر - الدوحة - مدينة خليفة',
+    'footer.cta':            'أنشئ متجرك الآن',
+    'footer.copyright':      '© ٢٠٢٥ إي ترولي جميع الحقوق محفوظة',
   },
 };
 

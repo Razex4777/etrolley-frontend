@@ -24,6 +24,7 @@ import { initServices } from './components/services/services.js';
 import { initSupport } from './components/support/support.js';
 import { initClients } from './components/clients/clients.js';
 import { initDesigns } from './components/designs/designs.js';
+import { initFooter } from './components/footer/footer.js';
 
 let activeNavbar = null;
 let activeHero = null;
@@ -33,6 +34,7 @@ let activeServices = null;
 let activeSupport = null;
 let activeClients = null;
 let activeDesigns = null;
+let activeFooter = null;
 
 function mountAll() {
   activeNavbar?.destroy?.();
@@ -43,6 +45,7 @@ function mountAll() {
   activeSupport?.destroy?.();
   activeClients?.destroy?.();
   activeDesigns?.destroy?.();
+  activeFooter?.destroy?.();
   destroyReveal();
 
   activeNavbar = initNavbar();
@@ -53,6 +56,7 @@ function mountAll() {
   activeSupport = initSupport();
   activeClients = initClients();
   activeDesigns = initDesigns();
+  activeFooter = initFooter();
 
   /* Initialise the declarative scroll-reveal AFTER components have
      rendered, so any [data-reveal] markup they ship is picked up. */
