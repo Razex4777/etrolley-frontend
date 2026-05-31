@@ -56,10 +56,18 @@
     0 24px 50px -12px rgba(49, 108, 107, 0.12),
     0 8px 16px rgba(18, 18, 18, 0.08);
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1.2fr 1fr clamp(150px, 16vw, 230px);
   align-items: center;
-  gap: clamp(32px, 4vw, 64px);
+  gap: clamp(24px, 3vw, 48px);
   min-height: clamp(220px, 19vw, 320px);
+}
+
+.support__card::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  visibility: hidden;
 }
 
 /* ---------- Copy ---------- */
@@ -148,11 +156,10 @@
 .support__actions {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: clamp(16px, 1.6vw, 28px);
-  /* Sit the icon cluster out toward the cart artwork on the right.
-     Smaller end-padding than before so the icons hug the cart. */
-  padding-inline-end: clamp(60px, 9vw, 200px);
   flex-shrink: 0;
+  width: 100%;
 }
 
 .support__btn {
@@ -271,9 +278,12 @@
     min-height: 0;
     border-radius: 36px;
   }
+  .support__card::after {
+    display: none;
+  }
   .support__actions {
-    padding-inline-end: 0;
-    justify-content: flex-start;
+    justify-content: center;
+    width: 100%;
   }
   .support__cart-back {
     width: clamp(140px, 25vw, 220px);

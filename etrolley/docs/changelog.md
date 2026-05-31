@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-05-31 13:10
+
+- 🛠️ **Support & Help CTA Card RTL Layout & Logo Rotation Resolved**:
+  - **Symmetrical 3-Column CSS Grid Layout**: Structured a highly robust 3-column CSS Grid layout inside [support.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.css) using an empty `::after` pseudo-element as the third grid column: `grid-template-columns: 1.2fr 1fr clamp(150px, 16vw, 230px)`. This ensures that in RTL, where columns naturally swap, the spacer sits on the left to perfectly reserve empty space for the absolute-positioned carts, preventing any visual overlaps with contact buttons.
+  - **Dynamic Centering of Contact Actions**: Centered the WhatsApp, Phone, and Gmail contact icons horizontally in the middle of the card (`justify-content: center; width: 100%`) on both LTR and RTL directions, resolving the visual misalignment issue completely.
+  - **Removed Rotated Brand Logo Issue**: Eliminated `transform: scaleX(-1)` from all support cart selectors in [_rtl.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_rtl.css) to preserve the original, uncorrupted orientation of the brand lettermark.
+  - **Viewport-Aware Animation Offsets**: Updated [support.js](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.js) to dynamically check `isRTL()` and swap translation offsets (e.g. `xBack`, `xFront`, `xEyebrow` with negative/positive values) to ensure the entrance transition slides smoothly inwards from the screen limits rather than outwards.
+
 # 2026-05-31 12:45
 
 - 🛠️ **Support & Help CTA Card Layout Calibration & Title Wrapping**:

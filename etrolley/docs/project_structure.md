@@ -12,6 +12,8 @@ etrolley/
 ├── 📄 vite.config.js                      ( Vite bundler config; aliases @, @components, @styles, @lib for clean imports )
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
+│   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
+│   │   └── 📄 support-rtl-fix.md          ( Active implementation plan for resolving Support CTA RTL layout and logo rotation issues )
 │   ├── 📄 project_structure.md            ( THIS FILE — current architecture snapshot )
 │   └── 📄 changelog.md                    ( Append-only history of changes, capped at 500 lines )
 │
@@ -69,6 +71,11 @@ etrolley/
     │   │   ├── 📄 designs.html.js         ( Template fn returning designs carousel, paint bucket watermark, and category SVGs )
     │   │   ├── 📄 designs.css             ( Designs layout, cards hovers, absolute watermark styling, and mobile responsiveness )
     │   │   └── 📄 designs.js              ( GSAP scroll trigger entries, arrow step listeners, and inertial drag gestures )
+    │   │
+    │   ├── 📁 support/                    ( "Support & Help" wide card component with contact button row and double trolley artwork )
+    │   │   ├── 📄 support.html.js         ( Template fn returning eyebrow slider, headline, contact buttons, and absolute SVGs )
+    │   │   ├── 📄 support.css             ( Styling for the grid copy, social buttons, absolute cart back/front elements, and mobile queries )
+    │   │   └── 📄 support.js              ( GSAP ScrollTrigger entrance timeline reveals with viewport-aware RTL coordinate translation )
     │   │
     │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links and bottom CTA )
     │       ├── 📄 footer.html.js          ( Template fn returning footer columns, dynamic inline SVGs, and copyright bar )

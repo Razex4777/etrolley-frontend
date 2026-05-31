@@ -8,9 +8,11 @@
 import { t } from '../../lib/i18n.js';
 
 const SLIDES = [
-  { id: 1, theme: 'gray',  image: '/images/different/different-slide-1.png' },
-  { id: 2, theme: 'black', image: '/images/different/different-slide-2.png' },
-  { id: 3, theme: 'white', image: '/images/different/different-slide-3.png' },
+  { id: 1, theme: 'teal',  image: '/images/different/different-slide-1.webp' },
+  { id: 2, theme: 'white', image: '/images/different/different-slide-2.webp' },
+  { id: 3, theme: 'teal',  image: '/images/different/different-slide-3.webp' },
+  { id: 4, theme: 'white', image: '/images/different/different-slide-4.webp' },
+  { id: 5, theme: 'teal',  image: '/images/different/different-slide-5.webp' },
 ];
 
 export const differentTemplate = () => {

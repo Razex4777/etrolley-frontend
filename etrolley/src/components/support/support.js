@@ -11,6 +11,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { mount } from '../../lib/dom.js';
 import { supportTemplate } from './support.html.js';
+import { isRTL } from '../../lib/i18n.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,14 +25,19 @@ export function initSupport() {
   }
 
   const ctx = gsap.context(() => {
+    const rtl = isRTL();
+    const xBack = rtl ? -60 : 60;
+    const xFront = rtl ? -40 : 40;
+    const xEyebrow = rtl ? 20 : -20;
+
     /* Initial state */
     gsap.set('.support__card',         { autoAlpha: 0, y: 60 });
-    gsap.set('.support__eyebrow',      { autoAlpha: 0, x: -20 });
+    gsap.set('.support__eyebrow',      { autoAlpha: 0, x: xEyebrow });
     gsap.set('.support__slider-knob',  { scale: 0, transformOrigin: 'center center' });
     gsap.set('.support__title',        { autoAlpha: 0, y: 24 });
     gsap.set('.support__btn',          { autoAlpha: 0, y: 28, scale: 0.85 });
-    gsap.set('.support__cart-back',    { autoAlpha: 0, x: 60 });
-    gsap.set('.support__cart-front',   { autoAlpha: 0, x: 40, scale: 0.92, transformOrigin: 'center center' });
+    gsap.set('.support__cart-back',    { autoAlpha: 0, x: xBack });
+    gsap.set('.support__cart-front',   { autoAlpha: 0, x: xFront, scale: 0.92, transformOrigin: 'center center' });
 
     gsap.timeline({
       defaults: { ease: 'power3.out' },

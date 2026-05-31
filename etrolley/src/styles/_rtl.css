@@ -171,13 +171,48 @@
 /* The trailing 01..05 numerals stay LTR via <bdi>, no extra rule. */
 
 
-/* --------- What Makes Us Different? — RTL --------- */
-/* Photo and panel swap natural sides; round the inner corners properly */
-[dir='rtl'] .different__photo {
-  border-radius: 0 var(--r-xl) var(--r-xl) 0;
+/* --------- What Makes Us Different? — RTL ---------
+   The slide is a 2-col grid (photo | panel). CSS Grid auto-reverses
+   the column order under dir=rtl, so the photo lands on the RIGHT
+   and the text panel on the LEFT — exactly the mirror we want. Both
+   cards are independent with a gap between them, so each keeps its
+   full 25px radius (no half-rounding needed).
+
+   The only things that need explicit handling in RTL are the text
+   directions inside the panel. */
+
+/* Header is center-aligned already — nothing to flip there.        */
+
+/* Panel copy reads right-to-left. */
+[dir='rtl'] .different__slide-title {
+  text-align: right;
 }
-[dir='rtl'] .different__panel {
-  border-radius: var(--r-xl) 0 0 var(--r-xl);
+
+[dir='rtl'] .different__slide-desc {
+  text-align: right;
+}
+
+/* Footer row: number + description. In LTR it's [num] … [desc].
+   Grid/flex auto-reverses under RTL to [desc] … [num]; we keep the
+   big numeral hugging the inline-start edge (now the right) and let
+   the description sit on the inline-end (now the left), matching the
+   mirrored reading flow. The big 01–05 numerals stay Latin glyphs
+   which is the desired decorative treatment. */
+[dir='rtl'] .different__slide-foot {
+  flex-direction: row-reverse;
+}
+
+/* On the mobile stacked layout the description was force-aligned
+   right for LTR; flip it to the left so it reads correctly in RTL.
+   (This rule already exists in different.css scoped to max-width:768;
+   we mirror it here for the desktop-default cascade safety.) */
+@media (max-width: 768px) {
+  [dir='rtl'] .different__slide-desc {
+    text-align: left;
+  }
+  [dir='rtl'] .different__slide-foot {
+    flex-direction: row;
+  }
 }
 
 
@@ -262,21 +297,12 @@
 [dir='rtl'] .support__cart-back {
   right: auto;
   left: clamp(-110px, -6vw, -50px);
-  transform: scaleX(-1);
 }
 
 [dir='rtl'] .support__cart-front {
   right: auto;
   left: clamp(0px, 2vw, 40px);
-  transform: scaleX(-1);
 }
-
-[dir='rtl'] .support__actions {
-  /* Padding pulls the buttons away from the cart's edge — flip side. */
-  padding-inline-end: 0;
-  padding-inline-start: clamp(60px, 9vw, 200px);
-}
-
 [dir='rtl'] .support__title {
   text-align: right;
 }
@@ -287,16 +313,11 @@
 
 @media (max-width: 980px) {
   [dir='rtl'] .support__cart-back {
-    transform: scaleX(-1);
     right: auto;
     left: -64px;
   }
   [dir='rtl'] .support__cart-front {
-    transform: scaleX(-1);
     right: auto;
     left: 8px;
-  }
-  [dir='rtl'] .support__actions {
-    padding-inline-start: 0;
   }
 }
