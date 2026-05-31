@@ -303,6 +303,17 @@
   right: auto;
   left: clamp(0px, 2vw, 40px);
 }
+
+/* Mirror the cart glyphs horizontally so they face the opposite
+   direction in RTL. We flip the INNER <svg> (not the container) —
+   the container's transform is owned by GSAP's entrance animation
+   (x / scale), so flipping it there would be overridden. Flipping
+   the child svg is conflict-free and keeps the animation intact. */
+[dir='rtl'] .support__cart-back svg,
+[dir='rtl'] .support__cart-front svg {
+  transform: scaleX(-1);
+}
+
 [dir='rtl'] .support__title {
   text-align: right;
 }
