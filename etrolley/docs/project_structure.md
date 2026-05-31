@@ -26,7 +26,7 @@ etrolley/
 │   │   │   ├── 🖼️ services-support.png     ( Support card header mockup )
 │   │   │   └── 🖼️ services-social.png      ( Social Media card header mockup )
 │   │   ├── 📁 clients/                    ( WebP client brand logo images — Gazali, Urban, Yarnista, Tokyo, Connection )
-│   │   ├── 📁 different/                  ( Differentiators card asset images )
+│   │   ├── 📁 different/                  ( WebP differentiator card illustrations — slides 1 to 5 )
 │   │   ├── 📁 partners/                   ( WebP regional payment partner logos — My Fatoorah, Pass, Sadad, Jeyaad, Edfapay )
 │   │   └── 📁 distinctive-designs/        ( WebP store template design category illustrations — Beauty, Perfumes, Electronics, Flowers, Outfits )
 │   └── 📁 icons/                          ( Reserved for downloaded SVG icons; entrypoint icons currently inlined in component templates for perf )

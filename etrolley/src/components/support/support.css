@@ -22,11 +22,10 @@
 
 .support__inner {
   position: relative;
-  /* Slightly inset from the full canvas so the card doesn't span
-     the entire 1920px width — but wide enough that the title still
-     fits on its original line count, keeping the card's visual
-     height unchanged. */
-  max-width: min(1500px, calc(100% - clamp(48px, 8vw, 160px)));
+  /* Wide, long card like the Figma — spans most of the canvas with
+     a comfortable gutter. The title sits on 2 lines and the icons
+     have room to sit out near the cart artwork. */
+  max-width: min(1760px, calc(100% - clamp(48px, 6vw, 120px)));
   margin: 0 auto;
   padding: 0 clamp(24px, 4vw, 80px);
   /* Children with z-index live in this stacking context; we DON'T
@@ -136,10 +135,13 @@
   line-height: 1.22;
   color: var(--color-ink-soft);
   margin: 0;
-  /* Allow up to 28ch so the title stays on its intended 2 lines at
-     the narrower card width — prevents the card height from growing
-     when the container gets shorter. */
-  max-width: 28ch;
+  /* No max-width clamp — the explicit \n line breaks control wrapping
+     so the headline always reads on exactly 2 rows. */
+}
+
+/* Each \n-split segment renders as its own block line. */
+.support__title-line {
+  display: block;
 }
 
 /* ---------- Action buttons ---------- */
@@ -147,8 +149,9 @@
   display: inline-flex;
   align-items: center;
   gap: clamp(16px, 1.6vw, 28px);
-  /* Slide the icon row well clear of the trolley artwork on the right. */
-  padding-inline-end: clamp(180px, 22vw, 380px);
+  /* Sit the icon cluster out toward the cart artwork on the right.
+     Smaller end-padding than before so the icons hug the cart. */
+  padding-inline-end: clamp(60px, 9vw, 200px);
   flex-shrink: 0;
 }
 
@@ -214,14 +217,13 @@
 
 .support__cart-back {
   position: absolute;
-  /* Lifted above the card so the handle pokes out the top-right
-     corner; right edge sits past the card on the right. */
-  bottom: clamp(80px, 9vw, 150px);
-  /* Slid even further to the right — the yellow cart now reads as
-     trailing off the page edge, only the inner part shows on the
-     card with the handle pointing further out. */
-  right: clamp(-160px, -8vw, -90px);
-  width: clamp(180px, 20vw, 280px);
+  /* Lowered a touch so the yellow handle/body drops down to better
+     match the Figma overlap. */
+  bottom: clamp(40px, 6vw, 110px);
+  /* Slid left to overlap the teal cart more heavily, matching the
+     Figma where the yellow ghost sits closer behind the teal. */
+  right: clamp(-110px, -6vw, -50px);
+  width: clamp(150px, 16vw, 230px);
   z-index: 1;
   pointer-events: none;
 }
@@ -242,7 +244,7 @@
      (and partially under) the yellow back layer, matching the
      Figma's heavily-overlapped composition. */
   right: clamp(0px, 2vw, 40px);
-  width: clamp(180px, 20vw, 280px);
+  width: clamp(150px, 16vw, 230px);
   z-index: 10;
   pointer-events: none;
 }

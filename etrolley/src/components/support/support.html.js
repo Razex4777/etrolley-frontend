@@ -48,7 +48,7 @@ export const supportTemplate = () => /* html */ `
             <span class="support__eyebrow-text">${t('support.eyebrow')}</span>
           </div>
 
-          <h2 class="support__title" data-reveal="fade-up">${t('support.title')}</h2>
+          <h2 class="support__title" data-reveal="fade-up">${titleLines()}</h2>
         </div>
 
         <div class="support__actions" role="group" aria-label="${t('support.aria.contacts')}">
@@ -82,6 +82,17 @@ export const supportTemplate = () => /* html */ `
     </div>
   </div>
 `;
+
+/* --------------------------------------------------------------- */
+/* Title — split on \n into stacked lines so the headline always   */
+/* reads on its intended two rows regardless of container width.   */
+/* --------------------------------------------------------------- */
+function titleLines() {
+  return t('support.title')
+    .split('\n')
+    .map((line) => `<span class="support__title-line">${line}</span>`)
+    .join('');
+}
 
 /* --------------------------------------------------------------- */
 /* Glyphs                                                          */

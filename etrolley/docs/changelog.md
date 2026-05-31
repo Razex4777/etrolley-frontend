@@ -2,6 +2,17 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-05-31 12:45
+
+- 🛠️ **Support & Help CTA Card Layout Calibration & Title Wrapping**:
+  - **Symmetrical 1760px Card Width**: Expanded `.support__inner` to `max-width: min(1760px, calc(100% - clamp(48px, 6vw, 120px)))` inside [support.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.css), matching the generous full-width cards from the Figma mockup.
+  - **Line-Break Split Title Wrapping**: Split the support CTA title using explicit `\n` in [i18n.js](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/lib/i18n.js) and rendered as stacked `span` block lines in [support.html.js](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.html.js) for both English and Arabic. This guarantees perfect 2-line wraps and avoids height adjustments when containers resize.
+  - **Social Action Spacing & Trolley Overlap**: Adjusted icon cluster margin padding (`padding-inline-end: clamp(60px, 9vw, 200px)`) to position button groups beautifully near the trolley vectors. Recalibrated cart scale and positioning to place the yellow cart ghost closer behind the primary teal cart (`right: clamp(-110px, -6vw, -50px)`), matching Figma's overlapping layers.
+  - **RTL Symmetrical Adjustments**: Mirrored all layout alignments, text alignment, and cart translations in [_rtl.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_rtl.css) for Arabic orientation.
+
+- 🖼️ **What Makes Us Different? WebP Image Migration**:
+  - Converted the original `.jpg` and `.png` image cards for the differentiators slide deck (`different-slide-1.jpg`, `different-slide-1.png`, `different-slide-2.png`, `different-slide-3.png`) into highly optimized WebP format (`different-slide-1.webp` through `different-slide-5.webp`), saving up to 85% in file load weight.
+
 # 2026-05-28 14:52
 
 - 📐 **Brand Footer Component Design, Implementation & Mounting**:

@@ -261,7 +261,7 @@
 
 [dir='rtl'] .support__cart-back {
   right: auto;
-  left: clamp(-160px, -8vw, -90px);
+  left: clamp(-110px, -6vw, -50px);
   transform: scaleX(-1);
 }
 
@@ -274,10 +274,14 @@
 [dir='rtl'] .support__actions {
   /* Padding pulls the buttons away from the cart's edge — flip side. */
   padding-inline-end: 0;
-  padding-inline-start: clamp(180px, 22vw, 380px);
+  padding-inline-start: clamp(60px, 9vw, 200px);
 }
 
 [dir='rtl'] .support__title {
+  text-align: right;
+}
+
+[dir='rtl'] .support__title-line {
   text-align: right;
 }
 

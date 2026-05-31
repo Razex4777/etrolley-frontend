@@ -125,7 +125,7 @@ const dict = {
 
     /* Support & Help CTA card */
     'support.eyebrow':       'Support & Help',
-    'support.title':         'Are you in need of assistance or have a question?',
+    'support.title':         'Are you in need of assistance\nor have a question?',
     'support.aria.contacts': 'Contact options',
     'support.aria.whatsapp': 'Chat with us on WhatsApp',
     'support.aria.phone':    'Call us',
@@ -247,7 +247,7 @@ const dict = {
 
     /* Support & Help CTA card */
     'support.eyebrow':       'الدعم والمساعدة',
-    'support.title':         'هل تحتاج إلى مساعدة أو لديك سؤال؟',
+    'support.title':         'هل تحتاج إلى مساعدة\nأو لديك سؤال؟',
     'support.aria.contacts': 'خيارات التواصل',
     'support.aria.whatsapp': 'تواصل معنا عبر واتساب',
     'support.aria.phone':    'اتصل بنا',
