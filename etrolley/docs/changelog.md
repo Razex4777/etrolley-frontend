@@ -2,6 +2,21 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-02 00:05
+
+- **Added CSS-Only Expandable Contact Us Drawer**:
+  - Implemented a Figma-accurate premium Contact Us side drawer modal panel (`#contact-drawer`) inside [index.base.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/index.base.html) containing inputs for Name, Email, Phone Number, and Message.
+  - Linked the floating "Send a message" / "أرسل رسالة" CTA buttons on the Home Hero section to target `#contact-drawer` directly.
+  - Styled the panel in a new stylesheet [contact-drawer.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/hero/contact-drawer.css) with elegant backdrop-filters, custom inputs, rounded borders, shadows, focus glows, and bidirectional RTL mirroring.
+  - Recompiled and ran production Vite build cleanly.
+
+# 2026-06-02 00:00
+
+- **Fixed Responsive Mobile FAQs Overlap with Navbar**:
+  - Increased top padding on the `.faqs` section in `src/components/faqs/faqs.css` to `clamp(140px, 12vw, 200px)` to safely clear the sticky top navbar.
+  - Adjusted the mobile-specific media query padding override under `max-width: 768px` from `60px 20px` to `120px 20px 60px 20px` to preserve a safe top clearance on small viewports.
+  - Recompiled and ran production Vite build cleanly.
+
 # 2026-06-01 23:59
 
 - **Expanded FAQ Accordion to 9 Items and Set First Opened by Default**:

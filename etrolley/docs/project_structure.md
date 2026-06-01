@@ -83,6 +83,7 @@ etrolley/
     │   │
     │   ├── 📁 hero/                       ( Above-the-fold hero with QR aside, headline, CTA, illustration, socials )
     │   │   ├── 📄 hero.css                ( Grid-based layout, gradient blob, magnetic CTA )
+    │   │   ├── 📄 contact-drawer.css      ( CSS-only premium expandable Contact Us side drawer modal panel stylesheet )
     │   │   ├── 📄 hero.en.html            ( Static English hero markup )
     │   │   └── 📄 hero.ar.html            ( Static Arabic hero markup )
     │   │

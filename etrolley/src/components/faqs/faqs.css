@@ -4,7 +4,7 @@
 
 .faqs {
   position: relative;
-  padding: clamp(60px, 8vw, 120px) clamp(24px, 6vw, 120px);
+  padding: clamp(140px, 12vw, 200px) clamp(24px, 6vw, 120px) clamp(60px, 6vw, 120px);
   background: var(--color-white);
 }
 
@@ -220,7 +220,7 @@
 
 @media (max-width: 768px) {
   .faqs {
-    padding: 60px 20px;
+    padding: 120px 20px 60px 20px;
   }
   
   .faqs__trigger {

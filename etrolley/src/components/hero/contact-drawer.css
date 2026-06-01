@@ -1,0 +1,190 @@
+/* =============================================================
+ * CSS-Only Contact Us side drawer (Figma-accurate, pixel-perfect)
+ * ============================================================= */
+
+.contact-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.4s ease;
+}
+
+.contact-drawer:target {
+  pointer-events: auto;
+  visibility: visible;
+  transition: none;
+}
+
+.contact-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 12, 0.45);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+.contact-drawer:target .contact-drawer__backdrop {
+  opacity: 1;
+}
+
+.contact-drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(520px, 90vw);
+  background: #FFFFFF;
+  color: var(--color-ink);
+  padding: 40px clamp(24px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+/* RTL Slide-in behavior */
+[dir="rtl"] .contact-drawer__panel {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+  box-shadow: 20px 0 60px rgba(0, 0, 0, 0.15);
+}
+
+.contact-drawer:target .contact-drawer__panel {
+  transform: translateX(0);
+}
+
+.contact-drawer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.08);
+  padding-bottom: 20px;
+}
+
+.contact-drawer__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 36px);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.contact-drawer__close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: rgba(18, 18, 18, 0.05);
+  color: var(--color-ink);
+  transition: background var(--dur-fast) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.contact-drawer__close:hover {
+  background: rgba(18, 18, 18, 0.1);
+  transform: rotate(90deg);
+}
+
+/* Form Styles */
+.contact-drawer__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-drawer__field {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 6px;
+  width: 100%;
+}
+
+.contact-drawer__field label {
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-ink-soft);
+  transition: color var(--dur-fast) ease;
+}
+
+.contact-drawer__field input,
+.contact-drawer__field textarea {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid rgba(18, 18, 18, 0.12);
+  border-radius: 12px;
+  background: #FCFCFC;
+  color: var(--color-ink);
+  font-family: var(--font-arabic);
+  font-size: 16px;
+  transition: border-color var(--dur-fast) ease,
+              box-shadow var(--dur-fast) ease,
+              background var(--dur-fast) ease;
+  box-sizing: border-box;
+}
+
+.contact-drawer__field input::placeholder,
+.contact-drawer__field textarea::placeholder {
+  color: #A0A0A0;
+}
+
+.contact-drawer__field input:focus,
+.contact-drawer__field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(49, 108, 107, 0.12);
+}
+
+/* Float label effect or highlight labels on focus */
+.contact-drawer__field input:focus ~ label,
+.contact-drawer__field textarea:focus ~ label {
+  color: var(--color-primary);
+}
+
+/* Submit Button */
+.contact-drawer__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-arabic);
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 12px;
+  margin-top: 12px;
+  box-shadow: 0 10px 20px rgba(49, 108, 107, 0.18);
+  transition: background var(--dur-fast) ease,
+              transform var(--dur-fast) ease,
+              box-shadow var(--dur-fast) ease;
+}
+
+.contact-drawer__submit:hover {
+  background: var(--color-primary-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(49, 108, 107, 0.28);
+}
+
+.contact-drawer__submit:active {
+  transform: translateY(0);
+}
+
+/* Body Lock Helper */
+body:has(#contact-drawer:target) {
+  overflow: hidden;
+}

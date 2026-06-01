@@ -59,6 +59,50 @@
       })();
     </script>
     <!-- INSERT: footer -->
+    
+    <!-- CSS-Only Expandable Contact Drawer Modal -->
+    <div class="contact-drawer" id="contact-drawer" aria-hidden="true">
+      <a class="contact-drawer__backdrop" href="#" aria-label="Close contact form"></a>
+      <div class="contact-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="contact-drawer-title">
+        <div class="contact-drawer__top">
+          <h2 class="contact-drawer__title" id="contact-drawer-title">
+            <span class="i18n-block--inline" lang="en">Contact Us</span>
+            <span class="i18n-block--inline" lang="ar">اتصل بنا</span>
+          </h2>
+          <a class="contact-drawer__close" href="#" aria-label="Close" role="button">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+        <form class="contact-drawer__form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent!'); window.location.hash='#';">
+          <div class="contact-drawer__field">
+            <input type="text" id="contact-name" placeholder="Name" required />
+            <label for="contact-name" class="i18n-block--inline" lang="en">Name</label>
+            <label for="contact-name" class="i18n-block--inline" lang="ar">الاسم</label>
+          </div>
+          <div class="contact-drawer__field">
+            <input type="email" id="contact-email" placeholder="Email" required />
+            <label for="contact-email" class="i18n-block--inline" lang="en">Email</label>
+            <label for="contact-email" class="i18n-block--inline" lang="ar">البريد الإلكتروني</label>
+          </div>
+          <div class="contact-drawer__field">
+            <input type="tel" id="contact-phone" placeholder="Phone Number" required />
+            <label for="contact-phone" class="i18n-block--inline" lang="en">Phone Number</label>
+            <label for="contact-phone" class="i18n-block--inline" lang="ar">رقم الهاتف</label>
+          </div>
+          <div class="contact-drawer__field">
+            <textarea id="contact-message" placeholder="Message here.." rows="4" required></textarea>
+            <label for="contact-message" class="i18n-block--inline" lang="en">Message here..</label>
+            <label for="contact-message" class="i18n-block--inline" lang="ar">اكتب رسالتك هنا..</label>
+          </div>
+          <button type="submit" class="contact-drawer__submit">
+            <span class="i18n-block--inline" lang="en">Send Message</span>
+            <span class="i18n-block--inline" lang="ar">إرسال الرسالة</span>
+          </button>
+        </form>
+      </div>
+    </div>
 
   </body>
 </html>

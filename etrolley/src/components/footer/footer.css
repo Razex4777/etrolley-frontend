@@ -441,7 +441,12 @@
   /* The last content section sits on top of the footer and casts an
      elegant, slightly wider drop shadow as it slides away — this is
      the "door" edge that defines the garage reveal. */
-  .support {
+  .support,
+  .benefits,
+  .faqs,
+  .blogpage,
+  .designspage,
+  .servicepage {
     position: relative;
     z-index: 2;
     background: #FFFFFF;
