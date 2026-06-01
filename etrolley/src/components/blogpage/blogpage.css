@@ -55,31 +55,29 @@
   padding-top: 16px;
 }
 
-/* ── Content Grid: Explore + Main + Mostread ───────────────── */
+/* ── Content Grid: Sidebar + Main Content ─────────────────── */
 .blogpage-content {
   display: grid;
   grid-template-columns: minmax(280px, 380px) 1fr;
   gap: clamp(30px, 3vw, 60px);
   align-items: start;
-  grid-template-areas:
-    "explore main"
-    "mostread main";
 }
 
-.blogpage-explore {
-  grid-area: explore;
+/* ── Sidebar ───────────────────────────────────────────────── */
+.blogpage-sidebar {
   position: sticky;
   top: calc(var(--nav-h) + 20px);
+  display: flex;
+  flex-direction: column;
 }
 
+.blogpage-explore,
 .blogpage-mostread {
-  grid-area: mostread;
-  position: sticky;
-  top: calc(var(--nav-h) + 300px); /* offset below explore tag block */
+  display: block;
 }
 
 .blogpage-main {
-  grid-area: main;
+  min-width: 0;
 }
 
 /* -- Explore Section -- */
@@ -418,24 +416,29 @@
 
   .blogpage-content {
     grid-template-columns: 1fr;
-    grid-template-areas: none;
     display: flex;
     flex-direction: column;
     gap: 40px;
   }
 
-  .blogpage-explore {
-    grid-area: auto;
+  /* Make sidebar container disappear visually, rendering children as direct flex elements */
+  .blogpage-sidebar {
+    display: contents;
     position: static;
+  }
+
+  /* Force exact mobile visual stacking sequence via flex order properties */
+  .blogpage-explore {
+    order: 1;
+    display: block;
   }
 
   .blogpage-main {
-    grid-area: auto;
+    order: 2;
   }
 
   .blogpage-mostread {
-    grid-area: auto;
-    position: static;
+    order: 3;
     display: block !important;
   }
 
