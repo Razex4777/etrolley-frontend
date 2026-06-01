@@ -210,6 +210,84 @@ export function compile() {
     fs.writeFileSync(path.join(root, 'services-ar.html'), arServices, 'utf8');
     console.log('Compiled services-ar.html (Arabic)');
   }
+
+
+  // --- 4. Compile blog.html and blog-ar.html ---
+  const blogComponents = [
+    'navbar',
+    'blogpage',
+    'footer'
+  ];
+
+  if (fs.existsSync(path.join(root, 'src/blog.base.html'))) {
+    const blogBase = fs.readFileSync(path.join(root, 'src/blog.base.html'), 'utf8');
+
+    // English blog.html
+    let enBlog = blogBase;
+    enBlog = enBlog.replace('[LANG]', 'en');
+    enBlog = enBlog.replace('[DIR]', 'ltr');
+    enBlog = enBlog.replace('[TITLE]', 'Blog — E-Trolley');
+    enBlog = enBlog.replace('[DESCRIPTION]', 'Read the latest insights on e-commerce, digital marketing, SEO, and technology from the E-Trolley team.');
+
+    blogComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="blog-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="blog.html"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index.html#create"');
+        }
+        enBlog = enBlog.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'blog.html'), enBlog, 'utf8');
+    console.log('Compiled blog.html (English)');
+
+    // Arabic blog-ar.html
+    let arBlog = blogBase;
+    arBlog = arBlog.replace('[LANG]', 'ar');
+    arBlog = arBlog.replace('[DIR]', 'rtl');
+    arBlog = arBlog.replace('[TITLE]', 'المدونة — إي ترولي');
+    arBlog = arBlog.replace('[DESCRIPTION]', 'اقرأ أحدث المقالات حول التجارة الإلكترونية والتسويق الرقمي وتحسين محركات البحث والتكنولوجيا من فريق إي ترولي.');
+
+    blogComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
+          compContent = compContent.replace('href="index.html"', 'href="blog.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="blog-ar.html"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about-ar.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index-ar.html#create"');
+        }
+        arBlog = arBlog.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'blog-ar.html'), arBlog, 'utf8');
+    console.log('Compiled blog-ar.html (Arabic)');
+  }
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

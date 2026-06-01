@@ -17,6 +17,7 @@
 @import '../components/about/about.css';
 @import '../components/benefits/benefits.css';
 @import '../components/servicepage/servicepage.css';
+@import '../components/blogpage/blogpage.css';
 @import '../components/footer/footer.css';
 
 @import './_rtl.css';

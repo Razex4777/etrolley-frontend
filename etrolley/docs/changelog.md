@@ -2,6 +2,22 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:20
+
+- **Replaced Team with Blogs in Navbar Dropdown**:
+  - Replaced the "Team" menu item under the "About Us" dropdown with "Blogs" pointing to `blog.html` in [navbar.en.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/navbar/navbar.en.html).
+  - Localized and replaced the Arabic "فريقنا" (Team) menu item with "المدونة" (Blogs) pointing to `blog-ar.html` in [navbar.ar.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/navbar/navbar.ar.html).
+  - Kept the master bilingual markup layout updated by replacing `#team` with `blog.html` in [navbar.markup.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/navbar/navbar.markup.html).
+  - Ran the template compilation script successfully to update the navigation menu on all 8 static pages.
+  - Built the production bundle with no errors.
+
+    - Rounded top corners on the footer (`border-top-left-radius: clamp(32px, 4vw, 56px)` + `border-top-right-radius`) so the pinned footer reads as a distinct lift-up panel from below the support section.
+    - Added a 2-stop inset highlight at the top of the footer (`inset 0 2px 0 rgba(255,255,255,0.7)` + `inset 0 1px 0 rgba(49,108,107,0.04)`) to sell the "light gap" seam where the door above meets the floor below.
+    - Upgraded the `.support` drop shadow to a 3-layer stack (`0 24px 60px -12px rgba(18,18,18,0.22)`, `0 8px 18px -6px rgba(49,108,107,0.08)`) so the door edge above casts a more dramatic shadow on the revealed footer as it lifts.
+  - Documented the stacking contract (`<main>` z:2 → `.support` z:2 → `<footer>` z:1) in the CSS comments for future maintainers.
+  - Mobile fallback path (`<980px`) is untouched: garage reveal rules live only inside `min-width: 981px` so touch UX remains unaffected.
+  - Compiled and verified the production bundle builds cleanly with the new visual treatment.
+
 # 2026-06-01 21:49
 
 - **Aligned Mobile Timeline Description Spacings**:

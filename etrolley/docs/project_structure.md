@@ -12,7 +12,9 @@ etrolley/
 ├── 📄 about-ar.html                       ( Arabic static About Us page; holds compiled navbar, about section, and parallax footer )
 ├── 📄 package.json                        ( Manifest — declares "vite" dev dep; scripts: dev/build/preview )
 ├── 📄 package-lock.json                   ( npm lockfile — reproducible installs )
-├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index.html, index-ar.html, about.html, and about-ar.html )
+├── 📄 blog.html                           ( English Blog page; compiled from blog.base.html + blogpage + navbar + footer )
+├── 📄 blog-ar.html                        ( Arabic Blog page; RTL-compiled mirror with fully localized content )
+├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, and blog pages in both EN and AR )
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
 │   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
@@ -41,11 +43,13 @@ etrolley/
 │   │   ├── 📁 clients/                    ( WebP client brand logo images — Gazali, Urban, Yarnista, Tokyo, Connection )
 │   │   ├── 📁 different/                  ( WebP differentiator card illustrations — slides 1 to 5 )
 │   │   ├── 📁 partners/                   ( WebP regional payment partner logos — My Fatoorah, Pass, Sadad, Jeyaad, Edfapay )
-│   │   └── 📁 distinctive-designs/        ( WebP store template design category illustrations — Beauty, Perfumes, Electronics, Flowers, Outfits )
+│   │   ├── 📁 distinctive-designs/        ( WebP store template design category illustrations — Beauty, Perfumes, Electronics, Flowers, Outfits )
+│   │   └── 📁 blog/                       ( WebP blog post card and sidebar images — seo-techniques.webp, wordpress-website.webp )
 │   └── 📁 icons/                          ( Reserved for downloaded SVG icons; entrypoint icons currently inlined in component templates for perf )
 │
 └── 📁 src/                                ( All authored code lives here )
     ├── 📄 about.base.html                 ( Base HTML shell layout template for compiled About Us pages )
+    ├── 📄 blog.base.html                  ( Base HTML shell layout template for compiled Blog pages )
     ├── 📄 index.base.html                 ( Base HTML shell layout template for compiled Home landing pages )
     ├── 📁 components/                     ( UI building blocks; each contains its styles, static HTML layouts )
     │   ├── 📁 about/                      ( Symmetrical LTR/RTL About Us page content component )
@@ -102,8 +106,13 @@ etrolley/
     │   │   ├── 📄 support.en.html         ( Static English support markup )
     │   │   └── 📄 support.ar.html         ( Static Arabic support markup )
     │   │
-    │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links and bottom CTA )
-    │       ├── 📄 footer.css              ( CSS layout, responsive grids, link lifts, and glossy badge styles )
+    │   ├── 📁 blogpage/                   ( Blog listing page with header, sidebar explore/tags/most-read, and 2-col card grid )
+    │   │   ├── 📄 blogpage.css            ( Figma-accurate layout, typography, card borders, tag toggles, scroll-reveal, responsive breakpoints )
+    │   │   ├── 📄 blogpage.en.html        ( English blog markup — header, sidebar, category tags, most-read cards, blog card grid )
+    │   │   └── 📄 blogpage.ar.html        ( Arabic blog markup — RTL mirror with localized headings, tags, and card content )
+    │   │
+    │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links, bottom CTA, and pure-CSS sticky "garage-door" reveal effect )
+    │       ├── 📄 footer.css              ( CSS layout, responsive grids, link lifts, glossy badge styles, and desktop-only sticky parallax "garage door" reveal with rounded top corners and dramatic support shadow )
     │       ├── 📄 footer.en.html          ( Static English footer markup )
     │       └── 📄 footer.ar.html          ( Static Arabic footer markup )
     │
