@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 22:30
+
+- **Fixed Duplicate Most Read Sections**:
+  - Cleaned up dual-duplication of the "Most Read" section from both `blogpage.en.html` and `blogpage.ar.html`.
+  - Removed outdated duplicate elements from compiled `blog.html` and `blog-ar.html`.
+  - Recompiled page templates and verified Vite production bundles build successfully without any layout errors.
+
 # 2026-06-01 23:22
 
 - **Refactored Blog Layout, Responsive Column Order, and Pagination**:
