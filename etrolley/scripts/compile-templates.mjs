@@ -288,6 +288,83 @@ export function compile() {
     fs.writeFileSync(path.join(root, 'blog-ar.html'), arBlog, 'utf8');
     console.log('Compiled blog-ar.html (Arabic)');
   }
+
+  // --- 5. Compile designs.html and designs-ar.html ---
+  const designsComponents = [
+    'navbar',
+    'designspage',
+    'footer'
+  ];
+
+  if (fs.existsSync(path.join(root, 'src/designs.base.html'))) {
+    const designsBase = fs.readFileSync(path.join(root, 'src/designs.base.html'), 'utf8');
+
+    // English designs.html
+    let enDesigns = designsBase;
+    enDesigns = enDesigns.replace('[LANG]', 'en');
+    enDesigns = enDesigns.replace('[DIR]', 'ltr');
+    enDesigns = enDesigns.replace('[TITLE]', 'Distinctive Designs — E-Trolley');
+    enDesigns = enDesigns.replace('[DESCRIPTION]', 'Explore our portfolio and distinctive e-commerce store designs built for E-Trolley clients.');
+
+    designsComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="designs-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="designs.html"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index.html#create"');
+        }
+        enDesigns = enDesigns.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'designs.html'), enDesigns, 'utf8');
+    console.log('Compiled designs.html (English)');
+
+    // Arabic designs-ar.html
+    let arDesigns = designsBase;
+    arDesigns = arDesigns.replace('[LANG]', 'ar');
+    arDesigns = arDesigns.replace('[DIR]', 'rtl');
+    arDesigns = arDesigns.replace('[TITLE]', 'التصاميم المميزة — إي ترولي');
+    arDesigns = arDesigns.replace('[DESCRIPTION]', 'استكشف أعمالنا والتصاميم المميزة لمتاجر التجارة الإلكترونية التي قمنا بإنشائها لعملاء إي ترولي.');
+
+    designsComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
+          compContent = compContent.replace('href="index.html"', 'href="designs.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="designs-ar.html"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about-ar.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index-ar.html#create"');
+        }
+        arDesigns = arDesigns.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'designs-ar.html'), arDesigns, 'utf8');
+    console.log('Compiled designs-ar.html (Arabic)');
+  }
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

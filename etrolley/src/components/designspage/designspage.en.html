@@ -1,0 +1,143 @@
+<section class="designspage" id="designs">
+
+  <!-- ── Hero Banner: Title, Description + Mockup ───────────── -->
+  <header class="designspage-hero">
+    <div class="designspage-hero__inner">
+      <div class="designspage-hero__content">
+        <!-- Eyebrow with double circles slider -->
+        <div class="designspage-hero__eyebrow" aria-hidden="true" data-reveal="fade-up" data-reveal-delay="0.1">
+          <span class="designspage-hero__slider">
+            <span class="designspage-hero__slider-track"></span>
+            <span class="designspage-hero__slider-knob"></span>
+          </span>
+          <span class="designspage-hero__eyebrow-text">Distinctive designs</span>
+        </div>
+        <h1 class="designspage-hero__title" data-reveal="fade-up" data-reveal-delay="0.2">
+          See What We Did<br>For Our Clients
+        </h1>
+        <p class="designspage-hero__desc" data-reveal="fade-up" data-reveal-delay="0.3">
+          We are proud to have worked with a wide range of clients, Explore our portfolio to see how we’ve helped businesses achieve greater value. Your store success story could be next! We review how we can harness digital capabilities to fit the nature of each business activity.
+        </p>
+      </div>
+      <div class="designspage-hero__media" data-reveal="scale" data-reveal-delay="0.2">
+        <img class="designspage-hero__img" 
+             src="/images/distinctive-designs/hero-mockup.webp" 
+             alt="See What We Did For Our Clients" 
+             loading="eager" 
+             fetchpriority="high" />
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Portfolio Grid Section ────────────────────────────── -->
+  <div class="designspage-portfolio">
+    <div class="designspage-portfolio__header">
+      <span class="designspage-portfolio__eyebrow" data-reveal="fade-up">Stores & Brands</span>
+      <h2 class="designspage-portfolio__title" data-reveal="fade-up" data-reveal-delay="0.1">
+        Explore what we have done for <span>Our Clients</span>
+      </h2>
+    </div>
+
+    <!-- Dynamic Category Filter Tabs -->
+    <nav class="designspage-tabs" role="tablist" data-reveal="fade-up" data-reveal-delay="0.2">
+      <button class="designspage-tab is-active" role="tab" aria-selected="true" data-filter="all">All</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="outfits">outfits</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="health-beauty">Health and Beauty</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="perfumes">Perfumes</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="electronics">Electronics</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="flowers">Flowers</button>
+    </nav>
+
+    <!-- Grid Container -->
+    <div class="designspage-grid" data-reveal-group data-reveal-group-stagger="0.08">
+
+      <!-- Card 1: Optimus (Electronics) -->
+      <article class="designspage-card is-visible" data-category="electronics" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-1.webp" alt="Optimus Project - Electronics" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 2: FabyLand (Health & Beauty) -->
+      <article class="designspage-card is-visible" data-category="health-beauty" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-2.webp" alt="FabyLand Project - Health & Beauty" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 3: Sella (Electronics / Flowers) -->
+      <article class="designspage-card is-visible" data-category="electronics flowers" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-3.webp" alt="Sella Project - Electronics & Flowers" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 4: FabyLand 2 (Perfumes / Flowers / Health & Beauty) -->
+      <article class="designspage-card is-visible" data-category="perfumes flowers health-beauty" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-4.webp" alt="FabyLand Showcase - Perfumes & Flowers" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 5: Sella 2 (Electronics) -->
+      <article class="designspage-card is-visible" data-category="electronics" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-5.webp" alt="Sella Showcase - Electronics" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 6: Optimus 2 (Electronics) -->
+      <article class="designspage-card is-visible" data-category="electronics" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-6.webp" alt="Optimus Showcase - Electronics" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 7: Human & Beings (outfits) -->
+      <article class="designspage-card is-visible" data-category="outfits" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-7.webp" alt="Human & Beings - outfits" loading="lazy" />
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ── Interactive Filter & Tab Toggling Script ───────────── -->
+  <script>
+    (function() {
+      var tabs = document.querySelectorAll('.designspage-tab');
+      var cards = document.querySelectorAll('.designspage-card');
+      
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          // Reset active class
+          tabs.forEach(function(t) { 
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('is-active');
+          tab.setAttribute('aria-selected', 'true');
+
+          var filter = tab.getAttribute('data-filter');
+
+          cards.forEach(function(card) {
+            var categories = card.getAttribute('data-category').split(' ');
+            if (filter === 'all' || categories.indexOf(filter) !== -1) {
+              card.style.display = 'block';
+              setTimeout(function() {
+                card.classList.add('is-visible');
+              }, 10);
+            } else {
+              card.classList.remove('is-visible');
+              setTimeout(function() {
+                card.style.display = 'none';
+              }, 400); // Matches CSS transition duration
+            }
+          });
+        });
+      });
+    })();
+  </script>
+
+</section>

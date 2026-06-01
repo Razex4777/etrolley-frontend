@@ -1,0 +1,143 @@
+<section class="designspage" id="designs">
+
+  <!-- ── Hero Banner: Title, Description + Mockup ───────────── -->
+  <header class="designspage-hero">
+    <div class="designspage-hero__inner">
+      <div class="designspage-hero__content">
+        <!-- Eyebrow with double circles slider -->
+        <div class="designspage-hero__eyebrow" aria-hidden="true" data-reveal="fade-up" data-reveal-delay="0.1">
+          <span class="designspage-hero__slider">
+            <span class="designspage-hero__slider-track"></span>
+            <span class="designspage-hero__slider-knob"></span>
+          </span>
+          <span class="designspage-hero__eyebrow-text">تصاميم مميزة</span>
+        </div>
+        <h1 class="designspage-hero__title" data-reveal="fade-up" data-reveal-delay="0.2">
+          شاهد ما قدمناه<br>لعملائنا الكرام
+        </h1>
+        <p class="designspage-hero__desc" data-reveal="fade-up" data-reveal-delay="0.3">
+          نحن فخورون بالعمل مع مجموعة واسعة من العملاء، استكشف أعمالنا لترى كيف ساعدنا الشركات على تحقيق قيمة أكبر. قصة نجاح متجرك قد تكون التالية! نحن نستعرض كيف يمكننا تسخير القدرات الرقمية لتناسب طبيعة كل نشاط تجاري.
+        </p>
+      </div>
+      <div class="designspage-hero__media" data-reveal="scale" data-reveal-delay="0.2">
+        <img class="designspage-hero__img" 
+             src="/images/distinctive-designs/hero-mockup.webp" 
+             alt="شاهد ما قدمناه لعملائنا" 
+             loading="eager" 
+             fetchpriority="high" />
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Portfolio Grid Section ────────────────────────────── -->
+  <div class="designspage-portfolio">
+    <div class="designspage-portfolio__header">
+      <span class="designspage-portfolio__eyebrow" data-reveal="fade-up">المتاجر والعلامات التجارية</span>
+      <h2 class="designspage-portfolio__title" data-reveal="fade-up" data-reveal-delay="0.1">
+        استكشف ما قمنا به <span>لعملائنا</span>
+      </h2>
+    </div>
+
+    <!-- Dynamic Category Filter Tabs -->
+    <nav class="designspage-tabs" role="tablist" data-reveal="fade-up" data-reveal-delay="0.2">
+      <button class="designspage-tab is-active" role="tab" aria-selected="true" data-filter="all">الكل</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="outfits">الملابس والأزياء</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="health-beauty">الصحة والجمال</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="perfumes">العطور</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="electronics">الإلكترونيات</button>
+      <button class="designspage-tab" role="tab" aria-selected="false" data-filter="flowers">الزهور</button>
+    </nav>
+
+    <!-- Grid Container -->
+    <div class="designspage-grid" data-reveal-group data-reveal-group-stagger="0.08">
+
+      <!-- Card 1: Optimus (Electronics) -->
+      <article class="designspage-card is-visible" data-category="electronics" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-1.webp" alt="مشروع Optimus - الإلكترونيات" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 2: FabyLand (Health & Beauty) -->
+      <article class="designspage-card is-visible" data-category="health-beauty" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-2.webp" alt="مشروع FabyLand - الصحة والجمال" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 3: Sella (Electronics / Flowers) -->
+      <article class="designspage-card is-visible" data-category="electronics flowers" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-3.webp" alt="مشروع Sella - الإلكترونيات والزهور" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 4: FabyLand 2 (Perfumes / Flowers / Health & Beauty) -->
+      <article class="designspage-card is-visible" data-category="perfumes flowers health-beauty" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-4.webp" alt="معرض FabyLand - العطور والزهور" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 5: Sella 2 (Electronics) -->
+      <article class="designspage-card is-visible" data-category="electronics" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-5.webp" alt="معرض Sella - الإلكترونيات" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 6: Optimus 2 (Electronics) -->
+      <article class="designspage-card is-visible" data-category="electronics" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-6.webp" alt="معرض Optimus - الإلكترونيات" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- Card 7: Human & Beings (outfits) -->
+      <article class="designspage-card is-visible" data-category="outfits" data-reveal="fade-up">
+        <div class="designspage-card__img-wrap">
+          <img class="designspage-card__img" src="/images/distinctive-designs/showcase-7.webp" alt="مشروع Human & Beings - الملابس والأزياء" loading="lazy" />
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ── Interactive Filter & Tab Toggling Script ───────────── -->
+  <script>
+    (function() {
+      var tabs = document.querySelectorAll('.designspage-tab');
+      var cards = document.querySelectorAll('.designspage-card');
+      
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          // Reset active class
+          tabs.forEach(function(t) { 
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('is-active');
+          tab.setAttribute('aria-selected', 'true');
+
+          var filter = tab.getAttribute('data-filter');
+
+          cards.forEach(function(card) {
+            var categories = card.getAttribute('data-category').split(' ');
+            if (filter === 'all' || categories.indexOf(filter) !== -1) {
+              card.style.display = 'block';
+              setTimeout(function() {
+                card.classList.add('is-visible');
+              }, 10);
+            } else {
+              card.classList.remove('is-visible');
+              setTimeout(function() {
+                card.style.display = 'none';
+              }, 400); // Matches CSS transition duration
+            }
+          });
+        });
+      });
+    })();
+  </script>
+
+</section>

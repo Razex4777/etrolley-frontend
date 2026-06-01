@@ -14,7 +14,9 @@ etrolley/
 ├── 📄 package-lock.json                   ( npm lockfile — reproducible installs )
 ├── 📄 blog.html                           ( English Blog page; compiled from blog.base.html + blogpage + navbar + footer )
 ├── 📄 blog-ar.html                        ( Arabic Blog page; RTL-compiled mirror with fully localized content )
-├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, and blog pages in both EN and AR )
+├── 📄 designs.html                        ( English Distinctive Designs page; compiled from designs.base.html + designspage + navbar + footer )
+├── 📄 designs-ar.html                     ( Arabic Distinctive Designs page; RTL-compiled mirror with localized portfolio showcase )
+├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, and designs pages in both EN and AR )
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
 │   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
@@ -50,6 +52,7 @@ etrolley/
 └── 📁 src/                                ( All authored code lives here )
     ├── 📄 about.base.html                 ( Base HTML shell layout template for compiled About Us pages )
     ├── 📄 blog.base.html                  ( Base HTML shell layout template for compiled Blog pages )
+    ├── 📄 designs.base.html               ( Base HTML shell layout template for compiled Distinctive Designs showcase pages )
     ├── 📄 index.base.html                 ( Base HTML shell layout template for compiled Home landing pages )
     ├── 📁 components/                     ( UI building blocks; each contains its styles, static HTML layouts )
     │   ├── 📁 about/                      ( Symmetrical LTR/RTL About Us page content component )
@@ -110,6 +113,11 @@ etrolley/
     │   │   ├── 📄 blogpage.css            ( Figma-accurate layout, typography, card borders, tag toggles, scroll-reveal, responsive breakpoints )
     │   │   ├── 📄 blogpage.en.html        ( English blog markup — header, sidebar, category tags, most-read cards, blog card grid )
     │   │   └── 📄 blogpage.ar.html        ( Arabic blog markup — RTL mirror with localized headings, tags, and card content )
+    │   │
+    │   ├── 📁 designspage/                ( Dedicated full showcase page showing all projects with category filter tabs )
+    │   │   ├── 📄 designspage.css         ( Figma-accurate layout, aspect-ratio constraints, 25px rounded cards, filter tabs active highlights, and RTL logic )
+    │   │   ├── 📄 designspage.en.html     ( English designs markup — hero mockup layout, tab selectors, 7 equal-sized showcase cards, and lightweight filtering script )
+    │   │   └── 📄 designspage.ar.html     ( Arabic designs markup — RTL mirrored copy with localized eyebrow and tab selectors )
     │   │
     │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links, bottom CTA, and pure-CSS sticky "garage-door" reveal effect )
     │       ├── 📄 footer.css              ( CSS layout, responsive grids, link lifts, glossy badge styles, and desktop-only sticky parallax "garage door" reveal with rounded top corners and dramatic support shadow )

@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 22:36
+
+- **Completed Distinctive Designs Showcase Page**:
+  - Implemented the full "Distinctive Designs" portfolio page featuring a Figma-accurate English Hero mockup header (`designs.html`) and RTL-mirrored Arabic layout (`designs-ar.html`).
+  - Added filterable category tabs for category sections (All, Outfits, Health & Beauty, Perfumes, Electronics, Flowers) that dynamically filter the showcase grid items using lightweight JS class toggles with CSS scale and opacity transitions.
+  - Converted the 7 project showcase mockups and 1 iMac mockup to web-optimized WebP assets inside the assets folder.
+  - Configured Vite input build points to bundle the new pages successfully with zero compile warnings.
+  - Updated the master navbar markup file (`navbar.markup.html`) to link Partners directly to the new `designs.html` and `designs-ar.html` pages under the title "Designs" / "تصاميمنا".
+
 # 2026-06-01 22:30
 
 - **Fixed Duplicate Most Read Sections**:
@@ -398,76 +407,3 @@
   - Added `scroll-padding-inline` properties to `.services__track` in [services.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/services/services.css) matching the container padding-inline values exactly.
   - This ensures that scroll snap alignment (`scroll-snap-align: start`) respects the grid centering margin offset instead of aligning cards to the viewport border limit, preserving the left margin limit on narrow device viewports.
   - Confirmed compiler success under Vite in 402ms.
-
-# 2026-06-01 15:25
-
-- **Fixed Services Card Left Spacing Alignment**:
-  - Replaced card margin-inline-start/end with container-level padding-inline-start/end on `.services__track`. This ensures browser scroll containers correctly preserve the left margin limit on smaller devices (instead of clipping the margin box to 0px on scrollLeft limits), matching the desktop layout alignment.
-  - Built production bundle successfully in 469ms.
-
-# 2026-06-01 15:22
-
-- **Fixed Active Index Subpixel Bleed & Restored Desktop Drag-to-Scroll**:
-  - Restored `src/components/services/services.js` containing only pointer drag-to-scroll inertial physics logic, resolving the desktop-drag requirement.
-  - Linked `services.js` lifecycle to `src/main.js` bootstrap sequence.
-  - Modified `.services__track` CSS in `services.css` to hide horizontal scrollbars completely (`scrollbar-width: none` and WebKit selector display overrides) on both desktop and mobile layouts.
-  - Re-added pointer grab/grabbing cursors and dragging state visual overrides.
-  - Fixed active scroller index subpixel bleeding by configuring `.services__index-active-wrapper` height to exactly `1em` and calculating translation offsets natively in `em` units rather than percentages, centering text precisely on baseline and preventing line-serif rounding artifacts.
-  - Confirmed compiler success under Vite in 415ms.
-
-# 2026-06-01 15:16
-
-- **Fully Migrated "Services We Provide" Section to 100% Pure HTML and CSS**:
-  - Deleted `services.js` and `services.html.js` completely.
-  - Removed all Services section imports and active mount hooks from `src/main.js` to run the component with zero JavaScript logic.
-  - Added pure CSS Scroll-driven timelines using `scroll-timeline-name: --services-track` on the horizontal scroller `.services__track`.
-  - Implemented vertical slide index transition animations dynamically in pure CSS using vertical translation driven by the scroll timeline, updating scroller indicator numbers (`1` to `4`) automatically as the user scrolls.
-  - Linked page entrance staggered reveals to the global declarative `data-reveal="..."` animations system (scale, fade-up, group stagger), eliminating component-specific triggers.
-  - Cleaned up grab/grabbing dragging helper cursors and states since scrolling is handled natively by the browser.
-  - Successfully verified building and compiling multi-page layout via Vite in 647ms.
-
-# 2026-06-01 15:15
-
-- **Resolved CSS position: sticky Stacking Bug**:
-  - Changed `overflow-x: hidden` to `overflow-x: clip` on `html` and `body` inside `_reset.css`. This prevents the browser from disabling CSS `position: sticky` on the page when multiple ancestors have horizontal overflow caps, restoring native scrolling sticky pinning functionality.
-  - Refactored `.different__track` layout from `display: flex; flex-direction: column` to a robust `display: block` to eliminate flex-specific sticky bugs.
-  - Built and verified compiling success under Vite in 741ms.
-
-# 2026-06-01 15:10
-
-
-- **Fully Migrated "What Makes Us Different?" Section to 100% Pure HTML and CSS**:
-  - Deleted `different.js` and `different.html.js` completely.
-  - Removed all Different section imports and active mount hooks from `src/main.js` to run the component with zero JavaScript logic.
-  - Converted `.different` container height to `auto` and updated the vertical layout flow of `.different__track` using vertical flexbox column.
-  - Implemented card stacking animations natively using pure CSS `position: sticky` and assigned responsive bottom margin scroll runways (`22vh` on desktop, `18vh` on mobile) so subsequent cards stack overlay-style as the user scrolls.
-  - Removed all JS-driven `.is-pinned` rules. The section header now naturally scrolls out of view before the cards begin to stack.
-  - Verified Vite compiles the production build successfully in 494ms with zero warnings or errors.
-
-# 2026-06-01 15:05
-
-
-- **Hidden Differentiators Header & Prevented Bottom Section Overlap**:
-  - Configured the `.different__header` to transition and fade out smoothly (`opacity: 0; visibility: hidden; transform: translateY(-40px)`) when `.is-pinned` is active, hiding the title when cards are pinned to free up vertical viewport space.
-  - Increased card track `.different__track` maximum height constraint to `78vh` (desktop) to maximize card visibility (extend them more).
-  - Translated the card track `.different__track` upward (`translateY(-11vh)` on desktop and `translateY(-6vh)` on mobile) when `.is-pinned` is active. This shifts the cards up into the empty header space, centering them perfectly and freeing up clearance at the bottom, which resolves the layout overlap with the `.services` section below it.
-  - Verified Vite compiles the production build successfully in 535ms with zero warnings or errors.
-
-# 2026-06-01 15:48
-
-
-- **Reverted "What Makes Us Different?" (Differentiators) to Dynamic JS-based Pinning and Stacking**:
-  - Reverted `different.js`, `different.css`, and `different.html.js` to their working states from HEAD (`3a31a66`) via Git.
-  - Reverted `i18n.js` via Git to restore the translation keys for the differentiators slideshow dynamically.
-  - Restored the missing `<script type="module" src="/src/main.js"></script>` module loader tag to both `index.html` and `index-ar.html` right before the end of the `<body>`, allowing GSAP and Lenis animations to initialize and execute properly.
-  - Fixed the layout overlap bug with the `.services` section by standardizing and keeping `.different` vertical padding static/constant, removing the dynamic padding transition that altered container height when unpinning.
-  - Keeps all other zero-JS / static components (such as navbar, hero, steps) completely untouched in their pure CSS/HTML states.
-  - Successfully verified dynamic mounting and animation functionality, compiling successfully via Vite in 476ms.
-
-# 2026-06-01 14:55
-
-- **Pinned Section Header & Fixed Card Stacking Offsets for "What Makes Us Different?"**:
-  - Applied `position: sticky; top: var(--nav-h)` on `.different__header` with a solid `#F8F9FA` background mask so the "What Makes Us Different?" title pins beneath the navbar while cards scroll underneath.
-  - Recalibrated card sticky `top` offset to `calc(var(--nav-h) + clamp(100px, 13vh, 150px))` (desktop) and `calc(var(--nav-h) + clamp(80px, 12vh, 110px))` (mobile) to clear the pinned header cleanly.
-  - Reduced card heights to `clamp(380px, 58vh, 580px)` (desktop) and `clamp(420px, 60vh, 560px)` (mobile) so cards fit within the viewport below the pinned header with no clipping.
-  - Build compiled successfully via Vite in 338ms.

@@ -44,6 +44,8 @@ export default defineConfig({
         services_ar: fileURLToPath(new URL('./services-ar.html', import.meta.url)),
         blog: fileURLToPath(new URL('./blog.html', import.meta.url)),
         blog_ar: fileURLToPath(new URL('./blog-ar.html', import.meta.url)),
+        designs: fileURLToPath(new URL('./designs.html', import.meta.url)),
+        designs_ar: fileURLToPath(new URL('./designs-ar.html', import.meta.url)),
       },
     },
   },

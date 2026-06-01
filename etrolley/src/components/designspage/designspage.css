@@ -1,0 +1,345 @@
+/* =============================================================
+ * Distinctive Designs Showcase Page — Component Styles
+ * Figma-accurate typography, layout, colors & responsive design.
+ * ============================================================= */
+
+/* ── Page Background ───────────────────────────────────────── */
+.designs-showcase-page {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f9fafb 40%,
+    #f5f7f6 100%
+  );
+}
+
+/* ── Container ─────────────────────────────────────────────── */
+.designspage {
+  width: var(--container);
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: clamp(140px, 12vw, 200px) var(--gutter) clamp(60px, 6vw, 100px);
+}
+
+/* ── Hero Banner: Title, Description + Mockup ───────────────── */
+.designspage-hero {
+  margin-bottom: clamp(60px, 8vw, 120px);
+}
+
+.designspage-hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(40px, 5vw, 100px);
+  align-items: center;
+}
+
+.designspage-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Eyebrow: Double circle slider decoration */
+.designspage-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.designspage-hero__slider {
+  display: inline-flex;
+  position: relative;
+  width: 48px;
+  height: 24px;
+}
+
+.designspage-hero__slider-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary-light);
+  transform: translateY(-50%);
+}
+
+.designspage-hero__slider-knob {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  background: var(--color-sand);
+  border: 1.5px solid var(--color-primary);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.designspage-hero__eyebrow-text {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 1.3vw, 24px);
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #212121;
+}
+
+/* Title */
+.designspage-hero__title {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(38px, 4.5vw, 75px);
+  line-height: clamp(50px, 5.5vw, 100px);
+  letter-spacing: 0;
+  color: #121212;
+  margin: 0 0 24px;
+}
+
+/* Description */
+.designspage-hero__desc {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(15px, 1.2vw, 20px);
+  line-height: clamp(22px, 1.8vw, 28px);
+  letter-spacing: 0;
+  color: #555555;
+  text-align: justify;
+  margin: 0;
+  max-width: 752px;
+}
+
+/* Mockup Media */
+.designspage-hero__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.designspage-hero__img {
+  width: 100%;
+  max-width: 637px;
+  height: auto;
+  aspect-ratio: 637 / 542;
+  object-fit: contain;
+}
+
+/* ── Portfolio Section Headers ────────────────────────────── */
+.designspage-portfolio {
+  border-top: 2px solid var(--color-primary-light);
+  padding-top: clamp(40px, 6vw, 80px);
+}
+
+.designspage-portfolio__header {
+  text-align: center;
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+.designspage-portfolio__eyebrow {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1.1vw, 17.79px);
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #212121;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.designspage-portfolio__title {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 2.5vw, 40px);
+  line-height: clamp(32px, 3.2vw, 53.42px);
+  letter-spacing: 0;
+  color: #121212;
+  margin: 0;
+}
+
+.designspage-portfolio__title span {
+  color: var(--color-primary);
+}
+
+/* ── Filter Tabs ───────────────────────────────────────────── */
+.designspage-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(16px, 2vw, 40px);
+  border-bottom: 2px solid var(--color-primary-light);
+  padding-bottom: 24px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+.designspage-tab {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(16px, 1.8vw, 32px);
+  line-height: 1.4;
+  color: #7c7171;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: color var(--dur-base) var(--ease-out-expo), transform var(--dur-fast) var(--ease-out-expo);
+  user-select: none;
+  outline: none;
+}
+
+.designspage-tab:hover {
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.designspage-tab.is-active {
+  color: var(--color-primary);
+  position: relative;
+}
+
+.designspage-tab.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -26px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 2px 2px 0 0;
+}
+
+/* ── Showcase Cards Grid ───────────────────────────────────── */
+.designspage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 40px);
+}
+
+.designspage-card {
+  aspect-ratio: 542 / 407;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo),
+    opacity var(--dur-base) var(--ease-out-expo);
+  box-shadow: 0px 15px 30px 0px rgba(0, 0, 0, 0.05);
+}
+
+.designspage-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 24px 48px 0px rgba(49, 108, 107, 0.16);
+}
+
+.designspage-card__img-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.designspage-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.designspage-card:hover .designspage-card__img {
+  transform: scale(1.05);
+}
+
+/* Scroll reveal transition */
+.designspage-card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.designspage-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive Viewports ──────────────────────────────────── */
+
+/* Tablet & Smaller Screens (≤1024px) */
+@media (max-width: 1024px) {
+  .designspage-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .designspage-hero__content {
+    align-items: center;
+  }
+
+  .designspage-hero__desc {
+    text-align: center;
+  }
+
+  .designspage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Mobile Screens (≤768px) */
+@media (max-width: 768px) {
+  .designspage-tabs {
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  .designspage-tab.is-active::after {
+    bottom: -18px;
+    height: 3px;
+  }
+
+  .designspage-tab {
+    font-size: clamp(15px, 2.5vw, 22px);
+  }
+
+  .designspage-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* Small Devices (≤480px) */
+@media (max-width: 480px) {
+  .designspage {
+    padding: 120px 16px 40px;
+  }
+
+  .designspage-hero__title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .designspage-hero__desc {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .designspage-portfolio__title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+
+/* ── RTL Overrides ─────────────────────────────────────────── */
+[dir='rtl'] .designspage-hero__inner {
+  direction: rtl;
+}
+
+[dir='rtl'] .designspage-hero__eyebrow {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .designspage-tab.is-active::after {
+  left: auto;
+  right: 0;
+}
