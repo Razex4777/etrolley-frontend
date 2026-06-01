@@ -374,6 +374,85 @@ export function compile() {
     fs.writeFileSync(path.join(root, 'designs-ar.html'), arDesigns, 'utf8');
     console.log('Compiled designs-ar.html (Arabic)');
   }
+
+  // --- 6. Compile faqs.html and faqs-ar.html ---
+  const faqsPageComponents = [
+    'navbar',
+    'faqs',
+    'footer'
+  ];
+
+  if (fs.existsSync(path.join(root, 'src/faqs.base.html'))) {
+    const faqsBase = fs.readFileSync(path.join(root, 'src/faqs.base.html'), 'utf8');
+
+    // English faqs.html
+    let enFaqs = faqsBase;
+    enFaqs = enFaqs.replace('[LANG]', 'en');
+    enFaqs = enFaqs.replace('[DIR]', 'ltr');
+    enFaqs = enFaqs.replace('[TITLE]', 'FAQs — E-Trolley');
+    enFaqs = enFaqs.replace('[DESCRIPTION]', 'Frequently Asked Questions about E-Trolley platform, creating online stores, and pricing.');
+
+    faqsPageComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="faqs-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="faqs.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index.html#create"');
+        }
+        enFaqs = enFaqs.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'faqs.html'), enFaqs, 'utf8');
+    console.log('Compiled faqs.html (English)');
+
+    // Arabic faqs-ar.html
+    let arFaqs = faqsBase;
+    arFaqs = arFaqs.replace('[LANG]', 'ar');
+    arFaqs = arFaqs.replace('[DIR]', 'rtl');
+    arFaqs = arFaqs.replace('[TITLE]', 'الأسئلة الشائعة — إي ترولي');
+    arFaqs = arFaqs.replace('[DESCRIPTION]', 'الأسئلة الشائعة حول منصة إي ترولي، إنشاء المتاجر الإلكترونية، والأسعار.');
+
+    faqsPageComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
+          compContent = compContent.replace('href="index.html"', 'href="faqs.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="faqs-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about-ar.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index-ar.html#create"');
+        }
+        arFaqs = arFaqs.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'faqs-ar.html'), arFaqs, 'utf8');
+    console.log('Compiled faqs-ar.html (Arabic)');
+  }
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

@@ -2,6 +2,17 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:55
+
+- **Created Separate FAQs Page & Refactored Navbar/Mobile Sidebars**:
+  - Moved the FAQ Accordion section out of the About page (`about.html` / `about-ar.html`) into its own standalone pages: `faqs.html` (English) and `faqs-ar.html` (Arabic).
+  - Created a new base layout template `src/faqs.base.html` for compilation.
+  - Updated all desktop dropdowns and mobile sidebar accordion menus in `navbar.markup.html`, `navbar.en.html`, and `navbar.ar.html` to direct to `faqs.html` and `faqs-ar.html` instead of anchor hash hashes.
+  - Registered the new page entries in `vite.config.js` and updated the `docs/project_structure.md` architecture snapshot.
+- **Fixed Distinctive Designs RTL Hero Eyebrow Alignment**:
+  - Shifted the "تصاميم مميزة" eyebrow slider in `designs-ar.html` to align with the right-most margin of the content column, mirroring the English layout exactly.
+  - Added `align-items: flex-start` to `.designspage-hero__content` and updated RTL layout rules in `designspage.css`.
+
 # 2026-06-01 23:52
 
 - **Added FAQs to Desktop Dropdowns and Mobile Accordions**:

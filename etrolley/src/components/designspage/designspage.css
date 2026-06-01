@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
 }
 
 /* Eyebrow: Double circle slider decoration */
@@ -370,6 +371,11 @@
 /* ── RTL Overrides ─────────────────────────────────────────── */
 [dir='rtl'] .designspage-hero__inner {
   direction: rtl;
+}
+
+[dir='rtl'] .designspage-hero__content {
+  text-align: right;
+  align-items: flex-start;
 }
 
 [dir='rtl'] .designspage-hero__eyebrow {

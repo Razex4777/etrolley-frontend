@@ -16,7 +16,9 @@ etrolley/
 ├── 📄 blog-ar.html                        ( Arabic Blog page; RTL-compiled mirror with fully localized content )
 ├── 📄 designs.html                        ( English Distinctive Designs page; compiled from designs.base.html + designspage + navbar + footer )
 ├── 📄 designs-ar.html                     ( Arabic Distinctive Designs page; RTL-compiled mirror with localized portfolio showcase )
-├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, and designs pages in both EN and AR )
+├── 📄 faqs.html                           ( English FAQs page; compiled from faqs.base.html + faqs component + navbar + footer )
+├── 📄 faqs-ar.html                        ( Arabic FAQs page; RTL-compiled mirror with fully localized accordion Q&A content )
+├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, designs, and faqs pages in both EN and AR )
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
 │   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
@@ -54,6 +56,7 @@ etrolley/
     ├── 📄 about.base.html                 ( Base HTML shell layout template for compiled About Us pages )
     ├── 📄 blog.base.html                  ( Base HTML shell layout template for compiled Blog pages )
     ├── 📄 designs.base.html               ( Base HTML shell layout template for compiled Distinctive Designs showcase pages )
+    ├── 📄 faqs.base.html                  ( Base HTML shell layout template for compiled FAQs pages )
     ├── 📄 index.base.html                 ( Base HTML shell layout template for compiled Home landing pages )
     ├── 📁 components/                     ( UI building blocks; each contains its styles, static HTML layouts )
     │   ├── 📁 about/                      ( Symmetrical LTR/RTL About Us page content component )
