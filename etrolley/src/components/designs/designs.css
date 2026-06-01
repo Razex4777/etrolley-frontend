@@ -147,6 +147,7 @@
   display: inline-grid;
   place-items: center;
   padding: 0;
+  text-decoration: none;
   transition: background var(--dur-base) var(--ease-out-expo),
               color var(--dur-base) var(--ease-out-expo),
               border-color var(--dur-base) var(--ease-out-expo),
@@ -201,8 +202,7 @@
   gap: clamp(20px, 2.2vw, 40px);
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x proximity;
-  cursor: grab;
+  scroll-snap-type: x mandatory;
   user-select: none;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -216,12 +216,6 @@
 }
 
 .designs__track::-webkit-scrollbar { display: none; }
-/* Kill all browser interpolation during active pointer drag */
-.designs__track.is-dragging {
-  cursor: grabbing;
-  scroll-behavior: auto;
-  scroll-snap-type: none;
-}
 
 /* Freeze card transitions mid-drag — prevents reflow jank */
 .designs__track.is-dragging .designs__tile,
@@ -236,6 +230,7 @@
   flex-direction: column;
   gap: 12px;
   scroll-snap-align: start;
+  scroll-margin-top: clamp(140px, 15vh, 220px);
 }
 
 .designs__card-label {

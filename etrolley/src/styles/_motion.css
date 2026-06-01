@@ -1,10 +1,9 @@
 /* =============================================================
- * Motion infrastructure: the page-intro splash overlay + initial
- * states for [data-reveal] elements (so they don't flash visible
- * before JS runs).
+ * Motion infrastructure: page-intro curtain slide + pure CSS
+ * transition-based scroll reveals.
  * ============================================================= */
 
-/* ---------- Page intro ---------- */
+/* ---------- Page intro curtain ---------- */
 .page-intro {
   position: fixed;
   inset: 0;
@@ -13,6 +12,7 @@
   display: grid;
   place-items: center;
   pointer-events: none;
+  animation: introSplashCurtain 0.95s cubic-bezier(0.85, 0, 0.15, 1) 1.4s forwards;
 }
 
 .page-intro__mark {
@@ -20,6 +20,9 @@
   display: grid;
   place-items: center;
   filter: drop-shadow(0 12px 30px rgba(49, 108, 107, 0.18));
+  opacity: 0;
+  transform: scale(0.92) translateY(16px);
+  animation: introSplashMark 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .page-intro__mark img {
@@ -28,24 +31,118 @@
   display: block;
 }
 
-/* ---------- Reveal initial states (FOUC guard) ----------
-   The JS preset overrides these on init; this only prevents a
-   visible flash before scripts run. Once ScrollTrigger fires the
-   reveal, the element is animated to its natural state. */
+@keyframes introSplashMark {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  30%, 70% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+@keyframes introSplashCurtain {
+  0% {
+    transform: translateY(0);
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
+
+/* Slide the main navbar in from the top once the splash starts sliding out */
+.nav {
+  transform: translateY(-100%);
+  opacity: 0;
+  animation: navSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+}
+
+@keyframes navSlideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---------- Pure CSS Scroll Reveals ---------- */
+@keyframes revealOnLoad {
+  to {
+    opacity: 1;
+    transform: translate(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
 [data-reveal] {
   opacity: 0;
   will-change: transform, opacity, filter;
+  animation: revealOnLoad var(--reveal-duration, 0.85s) var(--reveal-ease, cubic-bezier(0.25, 1, 0.5, 1)) forwards;
+  animation-delay: calc(1.8s + var(--reveal-delay, 0s));
 }
 
-/* If JS fails to load (or before init), make sure content is still
-   visible after a beat instead of staying invisible forever. */
+/* Presets */
+[data-reveal="fade-up"] {
+  transform: translateY(28px);
+}
+[data-reveal="fade"] {
+  transform: none;
+}
+[data-reveal="slide-left"] {
+  transform: translateX(40px);
+}
+[data-reveal="slide-right"] {
+  transform: translateX(-40px);
+}
+[data-reveal="scale"] {
+  transform: scale(0.94);
+}
+[data-reveal="blur-in"] {
+  filter: blur(12px);
+}
+
+/* Pre-configured delay utilities mapping data attributes to CSS custom properties */
+[data-reveal-delay="0.05"] { --reveal-delay: 0.05s; }
+[data-reveal-delay="0.1"] { --reveal-delay: 0.1s; }
+[data-reveal-delay="0.15"] { --reveal-delay: 0.15s; }
+[data-reveal-delay="0.2"] { --reveal-delay: 0.2s; }
+[data-reveal-delay="0.25"] { --reveal-delay: 0.25s; }
+[data-reveal-delay="0.3"] { --reveal-delay: 0.3s; }
+[data-reveal-delay="0.35"] { --reveal-delay: 0.35s; }
+[data-reveal-delay="0.4"] { --reveal-delay: 0.4s; }
+[data-reveal-delay="0.5"] { --reveal-delay: 0.5s; }
+
+/* Group reveal stagger defaults up to 8 children */
+[data-reveal-group] [data-reveal]:nth-child(1) { --reveal-delay: 0.08s; }
+[data-reveal-group] [data-reveal]:nth-child(2) { --reveal-delay: 0.16s; }
+[data-reveal-group] [data-reveal]:nth-child(3) { --reveal-delay: 0.24s; }
+[data-reveal-group] [data-reveal]:nth-child(4) { --reveal-delay: 0.32s; }
+[data-reveal-group] [data-reveal]:nth-child(5) { --reveal-delay: 0.40s; }
+[data-reveal-group] [data-reveal]:nth-child(6) { --reveal-delay: 0.48s; }
+[data-reveal-group] [data-reveal]:nth-child(7) { --reveal-delay: 0.56s; }
+[data-reveal-group] [data-reveal]:nth-child(8) { --reveal-delay: 0.64s; }
+
+
+/* ---------- Prefers Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; }
-  .page-intro    { display: none; }
-}
-
-/* Let groups stay visible to the reveal-bind mechanism. */
-[data-reveal-group] [data-reveal] {
-  /* parent will set children's initial state via JS, but if JS
-     hasn't fired yet, opacity:0 from the rule above already covers it. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .page-intro {
+    display: none !important;
+  }
+  .nav {
+    transform: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
 }

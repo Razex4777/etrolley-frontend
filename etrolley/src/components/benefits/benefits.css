@@ -1,0 +1,261 @@
+/* =============================================================
+ * Benefits Section styling
+ * ============================================================= */
+
+.benefits {
+  position: relative;
+  padding: clamp(60px, 8vw, 120px) clamp(24px, 6vw, 120px);
+  background: var(--color-white);
+}
+
+.benefits__header {
+  text-align: center;
+  margin-bottom: clamp(40px, 5vw, 80px);
+}
+
+.benefits__eyebrow {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.benefits__title {
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 53.42px;
+  color: var(--color-ink);
+}
+
+.benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+  justify-content: center;
+  max-width: 100%;
+  margin: 94px auto 0 auto;
+}
+
+.benefits__card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  border-radius: 25px;
+  padding: 120px 62px 48px 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  box-sizing: border-box;
+  width: 545px;
+  max-width: 100%;
+  height: 499px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(18, 18, 18, 0.02);
+  transition: transform var(--dur-base) var(--ease-out-expo),
+              box-shadow var(--dur-base) var(--ease-out-expo),
+              border-color var(--dur-base) var(--ease-out-expo);
+}
+
+.benefits__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(18, 18, 18, 0.06);
+  border-color: var(--color-primary-light);
+}
+
+.benefits__icon-box {
+  position: absolute;
+  top: 0;
+  left: 62px;
+  transform: translateY(-50%);
+  width: 188px;
+  height: 188px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefits__svg {
+  width: 188px;
+  height: 188px;
+}
+
+.benefits__card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 2vw, 28px);
+  line-height: 1.3;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.benefits__card-text {
+  font-family: var(--font-arabic);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 420px;
+  margin: 0;
+}
+
+/* =================== RTL Mirrors =================== */
+[dir='rtl'] .benefits__card {
+  align-items: flex-end;
+  text-align: right;
+  padding: 120px 62px 48px 62px;
+}
+
+[dir='rtl'] .benefits__icon-box {
+  left: auto;
+  right: 62px;
+}
+
+[dir='rtl'] .benefits__card-text {
+  text-align: right;
+}
+
+/* ---------- Footer Promo Block ---------- */
+.benefits__footer {
+  display: flex;
+  align-items: center;
+  margin-top: clamp(60px, 7vw, 100px);
+  gap: 48px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.benefits__promo {
+  position: relative;
+  width: 272px;
+  height: 168.34px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.benefits__promo-green {
+  position: absolute;
+  width: 200px;
+  height: 128px;
+  left: 72px;
+  top: 15px;
+  z-index: 1;
+}
+
+.benefits__promo-message {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 77px;
+  top: 0px;
+  z-index: 2;
+}
+
+.benefits__promo-pill {
+  position: absolute;
+  width: 230px;
+  height: 56px;
+  left: 0px;
+  top: 60px;
+  background: #FFFFFF;
+  box-shadow: 0px 8px 16px rgba(18, 18, 18, 0.08);
+  border-radius: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.benefits__promo-pill-text {
+  font-family: 'Inter', var(--font-arabic), sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #111827;
+  text-align: center;
+}
+
+.benefits__footer-text {
+  max-width: 1364px;
+  font-family: var(--font-arabic);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  color: var(--color-text);
+  text-align: justify;
+  margin: 0;
+}
+
+/* RTL mirrors for benefits footer */
+[dir='rtl'] .benefits__footer {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .benefits__promo-green {
+  left: auto;
+  right: 72px;
+}
+
+[dir='rtl'] .benefits__promo-message {
+  left: auto;
+  right: 77px;
+}
+
+[dir='rtl'] .benefits__promo-pill {
+  left: auto;
+  right: 0px;
+}
+
+[dir='rtl'] .benefits__footer-text {
+  text-align: justify;
+}
+
+/* =================== Responsive =================== */
+@media (max-width: 1180px) {
+  .benefits__grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 120px;
+    column-gap: clamp(24px, 3vw, 40px);
+  }
+}
+
+@media (max-width: 980px) {
+  .benefits__footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+  }
+  
+  [dir='rtl'] .benefits__footer {
+    flex-direction: column;
+  }
+  
+  .benefits__footer-text {
+    text-align: center;
+  }
+  
+  [dir='rtl'] .benefits__footer-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits__grid {
+    grid-template-columns: 1fr;
+    row-gap: 120px;
+    column-gap: 24px;
+  }
+  
+  .benefits__card {
+    height: auto;
+    min-height: 420px;
+    padding: 100px 32px 36px 32px;
+  }
+}

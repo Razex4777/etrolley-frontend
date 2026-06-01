@@ -1,0 +1,174 @@
+/* =============================================================
+ * About Us Page Layout and Components
+ * ============================================================= */
+
+.about {
+  position: relative;
+  padding: clamp(60px, 6vw, 120px) clamp(24px, 6vw, 120px);
+  background: var(--color-white);
+  overflow: clip;
+}
+
+/* ---------- Full-width backdrop radial glow ---------- */
+.about__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(245, 201, 154, 0.14) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(49, 108, 107, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(40px, 5vw, 100px);
+  align-items: center;
+  max-width: 100%;
+}
+
+/* ---------- Text Content Column ---------- */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.about__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.about__slider {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.about__slider-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2.5px solid var(--color-primary-light);
+  transform: translateY(-1.25px);
+}
+
+.about__slider-knob {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 6px);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--color-sand);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.about__slider-knob::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--color-primary);
+  transform: translate(calc(-50% + 12px), -50%);
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.about__eyebrow-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+}
+
+.about__title {
+  font-family: var(--font-arabic);
+  font-weight: 700;
+  font-size: clamp(32px, 3.6vw, 64px);
+  line-height: 1.2;
+  color: var(--color-ink);
+  margin-bottom: clamp(24px, 3vw, 36px);
+  letter-spacing: -0.015em;
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.about__text {
+  font-family: var(--font-arabic);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* ---------- Media Column ---------- */
+.about__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about__image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 600 / 400;
+}
+
+.about__image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* =================== RTL Mirrors =================== */
+
+[dir='rtl'] .about__content {
+  align-items: flex-start;
+  text-align: right;
+}
+
+[dir='rtl'] .about__title {
+  letter-spacing: 0;
+}
+
+/* =================== Responsive Breakpoints =================== */
+
+@media (max-width: 980px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about {
+    padding: 120px 24px clamp(40px, 5vw, 60px) 24px;
+  }
+
+  .about__image-container {
+    max-width: 480px;
+  }
+}

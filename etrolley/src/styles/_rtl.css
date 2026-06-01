@@ -75,6 +75,10 @@
   text-align: right;
 }
 
+[dir='rtl'] .hero__image img {
+  transform: translate(50px, -70px);
+}
+
 [dir='rtl'] .hero__validate {
   text-align: right;
 }
@@ -146,6 +150,11 @@
   right: auto;
   left: 0;
   box-shadow: 40px 0 80px rgba(0, 0, 0, 0.4);
+  transform: translateX(-100%);
+}
+
+[dir='rtl'] .mobile-menu:target .mobile-menu__panel {
+  transform: translateX(0);
 }
 
 [dir='rtl'] .mobile-menu__panel::before {
@@ -332,3 +341,32 @@
     left: 8px;
   }
 }
+
+/* --------- Services we provide - RTL Cart overrides --------- */
+[dir='rtl'] .services__cart-back,
+[dir='rtl'] .services__cart-front {
+  left: auto;
+  right: clamp(24px, 3.5vw, 70px);
+}
+
+[dir='rtl'] .services__cart-back svg,
+[dir='rtl'] .services__cart-front svg {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 980px) {
+  [dir='rtl'] .services__cart-back,
+  [dir='rtl'] .services__cart-front {
+    left: auto;
+    right: clamp(16px, 4vw, 32px);
+  }
+}
+
+@media (max-width: 640px) {
+  [dir='rtl'] .services__cart-back,
+  [dir='rtl'] .services__cart-front {
+    left: auto;
+    right: 16px;
+  }
+}
+

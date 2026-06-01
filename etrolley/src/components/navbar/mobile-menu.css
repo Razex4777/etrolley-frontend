@@ -17,11 +17,13 @@
   z-index: var(--z-modal);
   pointer-events: none;
   visibility: hidden;
+  transition: visibility 0.4s ease;
 }
 
-.mobile-menu.is-open {
+.mobile-menu:target {
   pointer-events: auto;
   visibility: visible;
+  transition: none;
 }
 
 .mobile-menu__backdrop {
@@ -32,6 +34,11 @@
   -webkit-backdrop-filter: blur(6px);
   opacity: 0;
   cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+.mobile-menu:target .mobile-menu__backdrop {
+  opacity: 1;
 }
 
 .mobile-menu__panel {
@@ -52,6 +59,12 @@
   overscroll-behavior: contain;
   /* Decorative vertical glow strip on the inner edge */
   box-shadow: -40px 0 80px rgba(0, 0, 0, 0.4);
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu:target .mobile-menu__panel {
+  transform: translateX(0);
 }
 
 .mobile-menu__panel::before {
@@ -74,13 +87,8 @@
 .mobile-menu__brand {
   display: inline-flex;
   align-items: center;
-  /* Light pill behind the dark logo so it stays readable on the
-     dark menu panel — same trick a lot of brand kits use when the
-     logo only has a light variant. */
-  background: var(--color-white);
-  padding: 6px 14px;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  background: transparent;
+  padding: 0;
 }
 
 .mobile-menu__brand img {
@@ -276,10 +284,50 @@
   display: block;
 }
 
-/* Lock body scroll while menu is open */
-body.is-menu-open {
+/* Lock body scroll while menu is open via CSS :has() */
+body:has(#mobile-menu:target) {
   overflow: hidden;
 }
+
+/* Premium CSS transition staggers for panel elements */
+.mobile-menu__top,
+.mobile-menu__foot {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu:target .mobile-menu__top,
+.mobile-menu:target .mobile-menu__foot {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu:target .mobile-menu__top {
+  transition-delay: 0.2s;
+}
+
+.mobile-menu:target .mobile-menu__foot {
+  transition-delay: 0.4s;
+}
+
+.mobile-menu__item {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu:target .mobile-menu__item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Composition stagger delays */
+.mobile-menu:target .mobile-menu__item:nth-child(1) { transition-delay: 0.22s; }
+.mobile-menu:target .mobile-menu__item:nth-child(2) { transition-delay: 0.27s; }
+.mobile-menu:target .mobile-menu__item:nth-child(3) { transition-delay: 0.32s; }
+.mobile-menu:target .mobile-menu__item:nth-child(4) { transition-delay: 0.37s; }
+.mobile-menu:target .mobile-menu__item:nth-child(5) { transition-delay: 0.42s; }
 
 /* Hide menu trigger entirely on desktop */
 @media (min-width: 981px) {

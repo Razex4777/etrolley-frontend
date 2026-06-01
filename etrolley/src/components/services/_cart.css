@@ -1,0 +1,80 @@
+/* =============================================================
+ * Services Cart Artwork Styles & Media Queries
+ * ============================================================= */
+
+/* ---------- Cart: teal basket layer (BEHIND section bg) ---------- */
+.services__cart-back {
+  position: absolute;
+  /* Anchor to the same coordinates as the yellow front layer so
+     the two halves overlap perfectly. */
+  top: 0;
+  left: clamp(24px, 3.5vw, 70px);
+  width: clamp(140px, 14vw, 220px);
+  aspect-ratio: 262 / 215;
+  /* Pull the cart up so its lower half gets buried under the dark
+     section while the top half pokes above into the previous one. */
+  transform: translateY(-53%);
+  transform-origin: center bottom;
+  pointer-events: none;
+  z-index: -2;        /* Behind .services__bg (which is 0) */
+}
+
+.services__cart-back svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- Cart: yellow handle + wheels (IN FRONT of back layer, behind bg) ---------- */
+.services__cart-front {
+  position: absolute;
+  top: 0;
+  left: clamp(24px, 3.5vw, 70px);
+  width: clamp(140px, 14vw, 220px);
+  aspect-ratio: 262 / 215;
+  transform: translateY(-50%);
+  transform-origin: center bottom;
+  pointer-events: none;
+  z-index: 10;        /* above section bg + content */
+}
+
+.services__cart-front svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =============================================================
+ * Cart sizing — keep it large enough on mobile that the bottom
+ * half can still get buried by the dark section bg. The fluid
+ * width clamp would otherwise shrink the cart to ~50px on small
+ * phones, which leaves no usable "buried" portion.
+ * ============================================================= */
+
+@media (max-width: 980px) {
+  .services__cart-back,
+  .services__cart-front {
+    width: clamp(120px, 22vw, 180px);
+    left: clamp(16px, 4vw, 32px);
+    /* Lift the cart higher so its wheels rest cleanly INSIDE the
+       dark section instead of floating in the white band above. */
+    transform: translateY(-62%);
+  }
+}
+
+@media (max-width: 640px) {
+  .services__cart-back,
+  .services__cart-front {
+    width: clamp(110px, 28vw, 160px);
+    transform: translateY(-66%);
+    left: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services__cart-back,
+  .services__cart-front {
+    width: clamp(96px, 30vw, 140px);
+    transform: translateY(-70%);
+  }
+}

@@ -14,7 +14,24 @@
 @import '../components/clients/clients.css';
 @import '../components/designs/designs.css';
 @import '../components/support/support.css';
+@import '../components/about/about.css';
+@import '../components/benefits/benefits.css';
+@import '../components/servicepage/servicepage.css';
 @import '../components/footer/footer.css';
 
 @import './_rtl.css';
 @import './_motion.css';
+
+/* =============================================================
+   * Bilingual Translation Toggle (Pure CSS, Zero-JS)
+   * Automatically shows matching language elements and hides
+   * the other based on the <html lang="..."> attribute.
+   * ============================================================= */
+html[lang="en"] [lang="ar"] {
+  display: none !important;
+}
+
+html[lang="ar"] [lang="en"] {
+  display: none !important;
+}
+

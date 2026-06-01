@@ -127,9 +127,7 @@
 }
 
 .clients__arrows {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+  display: none !important;
 }
 
 .clients__arrow {
@@ -139,6 +137,7 @@
   border: 1px solid #A8A8A1;
   background: transparent;
   color: #000000;
+  text-decoration: none;         /* Prevent link underlines */
   cursor: pointer;
   display: inline-grid;
   place-items: center;
@@ -167,60 +166,24 @@
 /* ---------- Viewport / Track ---------- */
 .clients__viewport {
   position: relative;
-  margin-inline: calc(clamp(24px, 4vw, 80px) * -1); /* Bleed track to viewport edges */
-  padding-inline: clamp(24px, 4vw, 80px);
-}
-
-/* Soft fade masks at the edges hint at horizontal continuity. */
-.clients__viewport::before,
-.clients__viewport::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: clamp(24px, 4vw, 80px);
-  pointer-events: none;
-  z-index: 2;
-}
-.clients__viewport::before {
-  left: 0;
-  background: linear-gradient(90deg, #FFFFFF, rgba(255, 255, 255, 0));
-}
-.clients__viewport::after {
-  right: 0;
-  background: linear-gradient(-90deg, #FFFFFF, rgba(255, 255, 255, 0));
+  overflow: hidden;
+  display: flex;
 }
 
 .clients__track {
   display: flex;
   flex-wrap: nowrap;
   gap: clamp(20px, 2.2vw, 40px);
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x proximity;
-  scroll-padding-inline: clamp(24px, 4vw, 80px);
-  cursor: grab;
-  user-select: none;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  width: max-content;
+  animation: clientsMarquee 10s ease-in-out infinite;
   padding: 8px 4px clamp(16px, 1.4vw, 24px);
-  scroll-behavior: smooth;
+}
+
+.clients__track:hover {
+  animation-play-state: paused;
 }
 
 .clients__track::-webkit-scrollbar { display: none; }
-
-/* Kill all browser interpolation during active pointer drag */
-.clients__track.is-dragging {
-  cursor: grabbing;
-  scroll-behavior: auto;
-  scroll-snap-type: none;          /* Stop snap from fighting scrollLeft */
-}
-
-/* Freeze all card transitions mid-drag — prevents reflow jank */
-.clients__track.is-dragging .clients__tile,
-.clients__track.is-dragging .clients__tile img {
-  transition: none !important;
-}
 
 /* ---------- Card ---------- */
 .clients__card {
@@ -232,6 +195,7 @@
   align-items: center;
   gap: 12px;
   scroll-snap-align: start;
+  scroll-margin-top: clamp(140px, 15vh, 220px);
 }
 
 .clients__label {
@@ -246,14 +210,11 @@
 .clients__tile {
   width: 100%;
   aspect-ratio: 239 / 205;       /* Figma inner image dims */
-  border-radius: 25px;
+  display: block;
+  background: transparent;
+  border-radius: 25px;           /* Rounded corners */
   overflow: hidden;
-  background: #F4F4F2;
-  display: grid;
-  place-items: center;
   box-shadow: 0 6px 24px rgba(18, 18, 18, 0.06);
-  transition: transform var(--dur-base) var(--ease-out-expo),
-              box-shadow var(--dur-base) var(--ease-out-expo);
 }
 
 .clients__tile svg {
@@ -265,21 +226,9 @@
 .clients__tile img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-  padding: 16px; /* Reduced padding for a prouder, larger branding presence */
   box-sizing: border-box;
-  border-radius: 16px; /* Softens block backgrounds to fit tile curvature */
-  transition: transform var(--dur-base) var(--ease-out-expo);
-}
-
-.clients__card:hover .clients__tile {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(18, 18, 18, 0.12);
-}
-
-.clients__card:hover .clients__tile img {
-  transform: scale(1.04);
 }
 
 /* =================== Responsive =================== */
@@ -359,12 +308,24 @@
 }
 
 .partners__logos {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.partners__logos-track {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: clamp(28px, 4vw, 64px);
-  justify-content: flex-end;
-  flex-grow: 1;
+  gap: 0;
+  width: max-content;
+  animation: partnersMarquee 25s linear infinite;
+}
+
+.partners__logos-track:hover {
+  animation-play-state: paused;
 }
 
 .partners__logo-item {
@@ -374,6 +335,8 @@
   transition: transform var(--dur-base) var(--ease-out-expo),
               opacity var(--dur-base) var(--ease-out-expo);
   opacity: 0.85;
+  flex-shrink: 0;
+  padding-inline-end: clamp(40px, 5.5vw, 90px);
 }
 
 .partners__logo-img {
@@ -388,13 +351,35 @@
   opacity: 1;
 }
 
+@keyframes partnersMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* RTL Adjustments */
 [dir="rtl"] .partners {
   background: linear-gradient(-90deg, #E5E9EB 0%, #F4F6F7 40%, #F6ECE6 100%);
 }
 
-[dir="rtl"] .partners__logos {
-  justify-content: flex-start;
+[dir="rtl"] .partners__logos-track {
+  animation: partnersMarqueeRTL 25s linear infinite;
+}
+
+[dir="rtl"] .partners__logos-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes partnersMarqueeRTL {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
 }
 
 /* Responsive banner */
@@ -405,23 +390,64 @@
     gap: 28px;
     padding: 32px clamp(24px, 4vw, 80px);
   }
+}
 
-  .partners__logos {
-    justify-content: space-around;
+/* ---------- Clients Marquee Keyframes & RTL Support ---------- */
+@keyframes clientsMarquee {
+  /* Card 1 (Gazali) */
+  0%, 16% {
+    transform: translateX(0);
+  }
+  /* Card 2 (Urban) */
+  20%, 36% {
+    transform: translateX(-10%);
+  }
+  /* Card 3 (Yarnista) */
+  40%, 56% {
+    transform: translateX(-20%);
+  }
+  /* Card 4 (Tokyo) */
+  60%, 76% {
+    transform: translateX(-30%);
+  }
+  /* Card 5 (Connection) */
+  80%, 96% {
+    transform: translateX(-40%);
+  }
+  /* Wrap back to Card 1 duplicate */
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@media (max-width: 640px) {
-  .partners__logos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    justify-items: center;
-  }
+[dir="rtl"] .clients__track {
+  animation: clientsMarqueeRTL 10s ease-in-out infinite;
+}
 
-  .partners__logo-item {
-    width: 100%;
-    justify-content: center;
+@keyframes clientsMarqueeRTL {
+  /* Card 1 (Gazali) */
+  0%, 16% {
+    transform: translateX(0);
+  }
+  /* Card 2 (Urban) */
+  20%, 36% {
+    transform: translateX(10%);
+  }
+  /* Card 3 (Yarnista) */
+  40%, 56% {
+    transform: translateX(20%);
+  }
+  /* Card 4 (Tokyo) */
+  60%, 76% {
+    transform: translateX(30%);
+  }
+  /* Card 5 (Connection) */
+  80%, 96% {
+    transform: translateX(40%);
+  }
+  /* Wrap back to Card 1 duplicate */
+  100% {
+    transform: translateX(50%);
   }
 }
 

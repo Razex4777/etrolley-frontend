@@ -1,0 +1,130 @@
+/* =============================================================
+ * Services Card "Learn More" Button Styles (with Marquee Cycle)
+ * ============================================================= */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.services__card-btn {
+  --btn-h: 64px;
+  --marquee-speed: 4s;        /* full right→left cycle */
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--btn-h);
+  margin-top: 10px;
+  background: #000000;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: var(--r-pill);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition:
+    background-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow       var(--dur-base) cubic-bezier(0.16, 1, 0.3, 1),
+    transform        var(--dur-fast) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Static label — visible at idle, fades out on hover. */
+.services__card-btn-static {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  transition:
+    opacity   200ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Marquee container — covers the button, hidden until hover. */
+.services__card-btn-marquee {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The single moving label.
+   Absolutely positioned across the full width and vertically centered.
+   The animation translates it from translateX(100%) (just off right)
+   → translateX(-100%) (just off left). At iteration end the value
+   snaps back to translateX(100%) — that snap is invisible because
+   the element is off-screen. */
+.services__card-btn-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: #000000;
+  white-space: nowrap;
+  transform: translateX(100%);
+  animation: services-btn-cycle var(--marquee-speed) linear infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+
+@keyframes services-btn-cycle {
+  from { transform: translateX(100%);  }   /* just off-screen right */
+  to   { transform: translateX(-100%); }   /* just off-screen left  */
+}
+
+/* ----- Hover state ----- */
+.services__card-btn:hover,
+.services__card-btn:focus-visible {
+  background: #FFE600;
+  box-shadow: 0 14px 28px rgba(255, 230, 0, 0.35);
+  outline: none;
+}
+
+.services__card-btn:hover .services__card-btn-static,
+.services__card-btn:focus-visible .services__card-btn-static {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.services__card-btn:hover .services__card-btn-marquee,
+.services__card-btn:focus-visible .services__card-btn-marquee {
+  opacity: 1;
+}
+
+.services__card-btn:hover .services__card-btn-item,
+.services__card-btn:focus-visible .services__card-btn-item {
+  animation-play-state: running;
+}
+
+.services__card-btn:active {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services__card-btn,
+  .services__card-btn-static,
+  .services__card-btn-marquee {
+    transition: none;
+  }
+  .services__card-btn-item {
+    animation: none;
+  }
+}

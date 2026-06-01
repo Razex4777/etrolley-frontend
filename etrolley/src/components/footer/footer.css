@@ -53,11 +53,11 @@
   width: 106px;
   height: 106px;
   border-radius: 28px;
-  background: #0A3130; /* Dark teal signature brand backdrop */
+  background: #000000; /* Black signature brand backdrop */
   overflow: hidden;
   box-shadow: 
-    0 16px 36px rgba(10, 49, 48, 0.16),
-    0 8px 16px rgba(10, 49, 48, 0.08);
+    0 16px 36px rgba(0, 0, 0, 0.16),
+    0 8px 16px rgba(0, 0, 0, 0.08);
   transition: transform 420ms var(--ease-out-expo), box-shadow 420ms var(--ease-out-expo);
   cursor: pointer;
 }
@@ -65,8 +65,8 @@
 .footer__logo-box:hover {
   transform: translateY(-6px) rotate(-3deg);
   box-shadow: 
-    0 24px 48px rgba(10, 49, 48, 0.24),
-    0 12px 24px rgba(10, 49, 48, 0.12);
+    0 24px 48px rgba(0, 0, 0, 0.24),
+    0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .footer__logo-box svg {
@@ -401,3 +401,30 @@
     width: 100%;
   }
 }
+
+/* =============================================================
+ * Premium Sticky Parallax Footer Reveal (Garage Reveal Effect)
+ * Desktop only (min-width: 981px) to prevent layout jumping or
+ * scroll container sizing glitches on mobile devices.
+ * ============================================================= */
+@media (min-width: 981px) {
+  footer[data-component="footer"] {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    display: block;
+  }
+
+  /* Ensure the last content section sits on top of the footer and
+     casts an elegant drop shadow downwards as it slides away. */
+  .support {
+    position: relative;
+    z-index: 2;
+    background: #FFFFFF;
+    box-shadow: 0 15px 35px rgba(18, 18, 18, 0.08);
+  }
+}
+

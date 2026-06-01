@@ -19,33 +19,16 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
-  /* Hard cap on horizontal scroll. `overflow-x: hidden` on html
-     guarantees mobile browsers refuse the rubber-band slide-right
-     even when a child element is wider than the viewport. */
-  overflow-x: hidden;
   max-width: 100%;
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
+main {
+  display: block;
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
 
 body {
   min-height: 100vh;
@@ -54,7 +37,6 @@ body {
   line-height: 1.5;
   color: var(--color-ink);
   background: var(--color-bg);
-  overflow-x: hidden;
   max-width: 100%;
   position: relative;
 }

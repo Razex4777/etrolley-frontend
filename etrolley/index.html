@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -16,24 +16,724 @@
     />
 
     <link rel="icon" type="image/png" href="/images/logo-etrolley-28bffb.png" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body>
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
-        <header data-component="navbar"></header>
-        <main>
-          <section data-component="hero"></section>
-          <section data-component="steps"></section>
-          <section data-component="different"></section>
-          <section data-component="services"></section>
-          <section data-component="clients"></section>
-          <section data-component="designs"></section>
-          <section data-component="support"></section>
-        </main>
-        <footer data-component="footer"></footer>
+    <!-- Page Curtain (Intro splash) -->
+    <div class="page-intro" aria-hidden="true">
+      <div class="page-intro__mark">
+        <img src="/images/logo-etrolley-28bffb.png" alt="" />
       </div>
     </div>
 
-    <script type="module" src="/src/main.js"></script>
+    <header data-component="navbar">
+<!-- Static navbar markup — copied into index.html for SEO. Source of truth for copy. -->
+<nav class="nav" aria-label="Primary" aria-label="Primary"> <div class="nav__inner"> <a class="nav__logo" href="/" aria-label="E-Trolley"> <img src="/images/logo-etrolley-28bffb.png" alt="E-Trolley" width="196" height="83" loading="eager" fetchpriority="high" /> </a> <ul class="nav__links" role="list"> <li class="nav__item"> <a href="#home" class="nav__link is-active"> Home </a> </li> <li class="nav__item"> <a href="services.html" class="nav__link"> Services </a> </li> <li class="nav__item"> <a href="#prices" class="nav__link"> Prices </a> </li> <li class="nav__item nav__item--menu"> <button class="nav__link nav__link--menu" type="button" aria-haspopup="menu" aria-expanded="false" data-menu="about"> About Us <svg class="nav__chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"> <path d="M1 1l3.5 3.5L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/> </svg> </button> <ul class="nav__dropdown" role="menu" aria-label="About menu" aria-label="About menu"> <li role="none"> <a role="menuitem" class="nav__dropdown-item" href="about.html"> Our Story </a> </li> <li role="none"> <a role="menuitem" class="nav__dropdown-item" href="#team"> Team </a> </li> <li role="none"> <a role="menuitem" class="nav__dropdown-item" href="#partners"> Partners </a> </li> </ul> </li> <li class="nav__item"> <a href="#contact" class="nav__link"> Contact Us </a> </li> <li class="nav__item nav__item--menu"> <button class="nav__link nav__link--menu nav__link--lang" type="button" aria-haspopup="menu" aria-expanded="false" data-menu="lang"> <span class="nav__dropdown-flag" aria-hidden="true"> <svg class="nav__flag-icon" width="20" height="15" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <clipPath id="uk-clip-nav"><rect width="60" height="30" rx="3" /></clipPath> <g clip-path="url(#uk-clip-nav)"> <rect width="60" height="30" fill="#012169"/> <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" stroke-width="6"/> <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/> <path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" stroke-width="10"/> <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/> </g> </svg> </span> <span data-current-lang> English </span> <svg class="nav__chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"> <path d="M1 1l3.5 3.5L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/> </svg> </button> <ul class="nav__dropdown" role="menu" aria-label="Choose language" aria-label="Choose language"> <li role="none"> <a role="menuitem" href="index.html" class="nav__dropdown-item"> <span class="nav__dropdown-flag" aria-hidden="true"> <svg class="nav__flag-icon" width="20" height="15" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <clipPath id="uk-clip-nav-dd"><rect width="60" height="30" rx="3" /></clipPath> <g clip-path="url(#uk-clip-nav-dd)"> <rect width="60" height="30" fill="#012169"/> <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" stroke-width="6"/> <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/> <path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" stroke-width="10"/> <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/> </g> </svg> </span> <span>English</span> </a> </li> <li role="none"> <a role="menuitem" href="index-ar.html" class="nav__dropdown-item"> <span class="nav__dropdown-flag" aria-hidden="true"> <svg class="nav__flag-icon" width="20" height="15" viewBox="0 0 28 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <clipPath id="qa-clip-nav-dd"><rect width="28" height="15" rx="3" /></clipPath> <g clip-path="url(#qa-clip-nav-dd)"> <rect width="28" height="15" fill="#8D1B3D"/> <polygon points="0,0 8,0 8,0.68 7,1.36 8,2.04 7,2.72 8,3.4 7,4.08 8,4.76 7,5.44 8,6.12 7,6.8 8,7.48 7,8.16 8,8.84 7,9.52 8,10.2 7,10.88 8,11.56 7,12.24 8,12.92 7,13.6 8,14.28 7,14.96 8,15 0,15" fill="#FFFFFF"/> </g> </svg> </span> <span>العربية</span> </a> </li> </ul> </li> </ul> <div class="nav__phone"> <span class="nav__phone-icon" aria-hidden="true"> <svg width="55" height="55" viewBox="0 0 55 55" fill="none" aria-hidden="true"> <circle cx="27.5" cy="27.5" r="27.5" fill="#F5C99A"/> <path d="M37.5 32.7v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.4 19.4 0 0 1-6-6 19.7 19.7 0 0 1-3-8.6 2 2 0 0 1 2-2.2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.2L23 26.2a16 16 0 0 0 6 6l1.9-1.9a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.5.6a2 2 0 0 1 1.7 2v.3z" stroke="#316C6B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/> </svg> </span> <div class="nav__phone-text"> <span class="nav__phone-label i18n-block--block" lang="en">Call us at</span> <span class="nav__phone-label i18n-block--block" lang="ar">اتصل بنا على</span> <a class="nav__phone-num" href="tel:+97450988700"><bdi>(+974)50988700</bdi></a> </div> </div> <div class="nav__right"> <a class="nav__cta" href="#create-store"> Create a store </a> <a class="nav__burger" href="#mobile-menu" aria-label="Open menu" aria-label="Open menu" role="button"> <span class="nav__burger-line nav__burger-line--top"></span> <span class="nav__burger-line nav__burger-line--mid"> <span class="nav__burger-dot" aria-hidden="true"></span> </span> <span class="nav__burger-line nav__burger-line--bot"></span> </a> </div> </div> <span class="nav__divider" aria-hidden="true"></span>
+</nav> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <a class="mobile-menu__backdrop" href="#"></a> <aside class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Main menu" aria-label="Main menu"> <div class="mobile-menu__top"> <a class="mobile-menu__brand" href="/" data-menu-close> <img src="/images/logo-etrolley-28bffb.png" alt="E-Trolley" width="196" height="83" /> </a> <a class="mobile-menu__close" href="#" aria-label="Close menu" aria-label="Close menu" role="button"> <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"> <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> </svg> </a> </div> <nav class="mobile-menu__nav" aria-label="Mobile" aria-label="Mobile"> <ul class="mobile-menu__list" role="list"> <li class="mobile-menu__item"> <a href="#home" data-menu-close> Home <i><bdi>01</bdi></i> </a> </li> <li class="mobile-menu__item"> <a href="services.html" data-menu-close> Services <i><bdi>02</bdi></i> </a> </li> <li class="mobile-menu__item"> <a href="#prices" data-menu-close> Prices <i><bdi>03</bdi></i> </a> </li> <li class="mobile-menu__item"> <a href="about.html" data-menu-close> About Us <i><bdi>04</bdi></i> </a> </li> <li class="mobile-menu__item"> <a href="#contact" data-menu-close> Contact Us <i><bdi>05</bdi></i> </a> </li> </ul> </nav> <div class="mobile-menu__foot"> <div class="mobile-menu__lang" role="group" aria-label="Choose language" aria-label="Choose language"> <a class="mobile-menu__lang-btn" href="index.html">EN</a> <span aria-hidden="true">/</span> <a class="mobile-menu__lang-btn" href="index-ar.html">العربية</a> </div> <a class="mobile-menu__phone" href="tel:+97450988700" data-menu-close> <span class="mobile-menu__phone-label i18n-block--block" lang="en">Call us at</span> <span class="mobile-menu__phone-label i18n-block--block" lang="ar">اتصل بنا على</span> <span class="mobile-menu__phone-num"><bdi>(+974) 50988700</bdi></span> </a> <ul class="mobile-menu__socials" role="list"> <li> <a href="#" aria-label="Facebook"> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="fb-bg-static-mob" cx="50%" cy="40%" r="50%" fx="50%" fy="30%"> <stop offset="0%" stop-color="#3A90F8"/> <stop offset="70%" stop-color="#1460D4"/> <stop offset="100%" stop-color="#08388C"/> </radialGradient> <linearGradient id="gloss-fb-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-fb-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-fb-bg-static-mob" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-fb-bg-static-mob)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#fb-bg-static-mob)" filter="url(#shadow-fb-bg-static-mob)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <path d="M30 13.5h-4.5c-2.5 0-4.5 2-4.5 4.5V21.5h-3v4h3v10h4v-10h3.5l0.5-4h-4v-3.5c0-0.8 0.7-1.5 1.5-1.5H30v-4z" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-fb-bg-static-mob)" /> </svg> </a> </li> <li> <a href="#" aria-label="Twitter"> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="x-bg-static-mob" cx="50%" cy="40%" r="50%" fx="50%" fy="30%"> <stop offset="0%" stop-color="#4A4A4D"/> <stop offset="70%" stop-color="#18181A"/> <stop offset="100%" stop-color="#000000"/> </radialGradient> <linearGradient id="gloss-x-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-x-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-x-bg-static-mob" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-x-bg-static-mob)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#x-bg-static-mob)" filter="url(#shadow-x-bg-static-mob)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <path d="M30.25 14h3.2l-6.8 7.8 8 10.6H28.15l-5.3-7-5.9 7H13.75l7.2-8.3-7.6-10.1h6.5l4.5 6 5.9-6zm-1.1 16.5h1.7L20.55 15.7h-1.7l10.2 14.8z" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-x-bg-static-mob)" /> </svg> </a> </li> <li> <a href="#" aria-label="LinkedIn"> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="li-bg-static-mob" cx="50%" cy="40%" r="50%" fx="50%" fy="30%"> <stop offset="0%" stop-color="#3598F5"/> <stop offset="70%" stop-color="#0D64BA"/> <stop offset="100%" stop-color="#063870"/> </radialGradient> <linearGradient id="gloss-li-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-li-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-li-bg-static-mob" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-li-bg-static-mob)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#li-bg-static-mob)" filter="url(#shadow-li-bg-static-mob)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <path d="M16 22h3v12h-3V22zm1.5-5.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM21 22h3v1.8c.8-1.2 2-2 4-2 3.5 0 4.5 2.2 4.5 5.2V34h-3v-8.5c0-2-0.8-3-2.5-3-1.8 0-2.5 1.2-2.5 3V34h-3V22z" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-li-bg-static-mob)" /> </svg> </a> </li> <li> <a href="#" aria-label="Instagram"> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="ig-bg-static-mob" cx="35%" cy="30%" r="70%" fx="30%" fy="25%"> <stop offset="0%" stop-color="#FFDD73"/> <stop offset="25%" stop-color="#F25B5C"/> <stop offset="60%" stop-color="#D12C79"/> <stop offset="100%" stop-color="#426BEB"/> </radialGradient> <linearGradient id="gloss-ig-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-ig-bg-static-mob" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-ig-bg-static-mob" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-ig-bg-static-mob)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#ig-bg-static-mob)" filter="url(#shadow-ig-bg-static-mob)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <rect x="14" y="14" width="20" height="20" rx="5.5" stroke="#FFFFFF" stroke-width="2" fill="none" /> <circle cx="24" cy="24" r="4.5" stroke="#FFFFFF" stroke-width="2" fill="none" /> <circle cx="29.5" cy="18.5" r="1.2" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-ig-bg-static-mob)" /> </svg> </a> </li> </ul> </div> </aside>
+</div> </header>
+    <main>
+      <section data-component="hero"> <div class="hero"> <!-- Decorative background gradient blob (CSS only) --> <div class="hero__bg" aria-hidden="true"></div> <!-- Brand 3D watermark behind headline (sourced from Figma) --> <img class="hero__watermark" src="/images/etrolley-watermark.png" alt="" aria-hidden="true" width="1319" height="348" /> <div class="hero__inner"> <!-- QR + footnote --> <aside class="hero__aside"> <div class="hero__qr"> <img src="/images/qr-theqa.png" alt="ثقة — موثّق من قبل وزارة الاتصالات القطرية" width="305" height="388" loading="eager" /> </div> <p class="hero__validate"> <span class="hero__validate-icon" aria-hidden="true"> <svg width="29" height="29" viewBox="0 0 29 29" fill="none" aria-hidden="true"> <circle cx="14.5" cy="14.5" r="13" stroke="#316C6B" stroke-width="2" stroke-dasharray="1.2 2.6" stroke-linecap="round" fill="none"/> <circle cx="14.5" cy="14.5" r="9" stroke="#316C6B" stroke-width="1.4" fill="none"/> <path d="M10.2 14.7 L13.1 17.6 L18.9 11.6" stroke="#316C6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/> </svg> </span> <span> E-Trolley is an officially certified platform by the Qatari Ministry of Communications. </span> </p> </aside> <!-- Center: copy + CTA + image --> <div class="hero__content"> <div class="hero__dream-pill" aria-hidden="true"> <span>DreamWD</span> </div> <h1 class="hero__headline" id="hero-headline"> <span class="line">Your store will be</span> <span class="line">ready in no more</span> <span class="line">than a minute.</span> </h1> <div class="hero__row"> <div class="hero__cta-wrap"> <a class="hero__cta" href="#create-store"> Start building your store </a> </div> <div class="hero__image"> <img src="/images/hero-laptop-bags.png" alt="متجر إلكتروني على جهاز كمبيوتر محمول مع حقائب تسوق" width="492" height="401" loading="eager" fetchpriority="high" /> </div> </div> </div> <!-- Right rail: Follow + socials --> <aside class="hero__rail"> <span class="hero__rail-label"> Follow us </span> <ul class="hero__socials" role="list"> <li> <a href="#" aria-label="Facebook" class="hero__social"> <span class="hero__social-tag">Facebook</span> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="fb-bg-static" cx="50%" cy="40%" r="50%" fx="50%" fy="30%"> <stop offset="0%" stop-color="#3A90F8"/> <stop offset="70%" stop-color="#1460D4"/> <stop offset="100%" stop-color="#08388C"/> </radialGradient> <linearGradient id="gloss-fb-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-fb-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-fb-bg-static" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-fb-bg-static)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#fb-bg-static)" filter="url(#shadow-fb-bg-static)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <path d="M30 13.5h-4.5c-2.5 0-4.5 2-4.5 4.5V21.5h-3v4h3v10h4v-10h3.5l0.5-4h-4v-3.5c0-0.8 0.7-1.5 1.5-1.5H30v-4z" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-fb-bg-static)" /> </svg> </a> </li> <li> <a href="#" aria-label="Twitter" class="hero__social"> <span class="hero__social-tag">Twitter</span> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="x-bg-static" cx="50%" cy="40%" r="50%" fx="50%" fy="30%"> <stop offset="0%" stop-color="#4A4A4D"/> <stop offset="70%" stop-color="#18181A"/> <stop offset="100%" stop-color="#000000"/> </radialGradient> <linearGradient id="gloss-x-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-x-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-x-bg-static" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-x-bg-static)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#x-bg-static)" filter="url(#shadow-x-bg-static)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <path d="M30.25 14h3.2l-6.8 7.8 8 10.6H28.15l-5.3-7-5.9 7H13.75l7.2-8.3-7.6-10.1h6.5l4.5 6 5.9-6zm-1.1 16.5h1.7L20.55 15.7h-1.7l10.2 14.8z" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-x-bg-static)" /> </svg> </a> </li> <li> <a href="#" aria-label="LinkedIn" class="hero__social"> <span class="hero__social-tag">LinkedIn</span> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="li-bg-static" cx="50%" cy="40%" r="50%" fx="50%" fy="30%"> <stop offset="0%" stop-color="#3598F5"/> <stop offset="70%" stop-color="#0D64BA"/> <stop offset="100%" stop-color="#063870"/> </radialGradient> <linearGradient id="gloss-li-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-li-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-li-bg-static" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-li-bg-static)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#li-bg-static)" filter="url(#shadow-li-bg-static)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <path d="M16 22h3v12h-3V22zm1.5-5.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM21 22h3v1.8c.8-1.2 2-2 4-2 3.5 0 4.5 2.2 4.5 5.2V34h-3v-8.5c0-2-0.8-3-2.5-3-1.8 0-2.5 1.2-2.5 3V34h-3V22z" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-li-bg-static)" /> </svg> </a> </li> <li> <a href="#" aria-label="Instagram" class="hero__social"> <span class="hero__social-tag">Instagram</span> <svg class="social-3d" width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;"> <defs> <radialGradient id="ig-bg-static" cx="35%" cy="30%" r="70%" fx="30%" fy="25%"> <stop offset="0%" stop-color="#FFDD73"/> <stop offset="25%" stop-color="#F25B5C"/> <stop offset="60%" stop-color="#D12C79"/> <stop offset="100%" stop-color="#426BEB"/> </radialGradient> <linearGradient id="gloss-ig-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/> <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0"/> </linearGradient> <linearGradient id="rim-ig-bg-static" x1="0" y1="0" x2="0" y2="1"> <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/> <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/> </linearGradient> <filter id="shadow-ig-bg-static" x="-10%" y="-10%" width="120%" height="120%"> <feDropShadow dx="0" dy="2.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.35"/> </filter> </defs> <circle cx="24" cy="24" r="22" stroke="url(#rim-ig-bg-static)" stroke-width="0.8" /> <circle cx="24" cy="24" r="21" fill="url(#ig-bg-static)" filter="url(#shadow-ig-bg-static)" /> <circle cx="24" cy="24" r="20.5" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.6" /> <rect x="14" y="14" width="20" height="20" rx="5.5" stroke="#FFFFFF" stroke-width="2" fill="none" /> <circle cx="24" cy="24" r="4.5" stroke="#FFFFFF" stroke-width="2" fill="none" /> <circle cx="29.5" cy="18.5" r="1.2" fill="#FFFFFF" /> <ellipse cx="24" cy="14" rx="14" ry="7.5" fill="url(#gloss-ig-bg-static)" /> </svg> </a> </li> </ul> </aside> </div> <!-- Floating side CTA — moved to body root by hero.js so it escapes any ancestor stacking context (overflow:clip, isolation:isolate) and can sit above ALL sections. --> <a class="hero__side-cta" href="#contact" aria-label="Send a message" data-side-cta>Send a message </a> </div> </section>
+      <section data-component="steps"> <div class="steps"> <div class="steps__bg" aria-hidden="true"></div> <div class="steps__inner"> <!-- Eyebrow with slider knob --> <div class="steps__eyebrow"> <span class="steps__slider" aria-hidden="true"> <span class="steps__slider-track"></span> <span class="steps__slider-knob"></span> </span> <span class="steps__eyebrow-text"> Build a store </span> </div> <!-- Headline --> <h2 class="steps__title"> <span class="line"><span class="line-inner">OUR</span> <span class="line"><span class="line-inner">CREATIVE</span></span> <span class="line"><span class="line-inner">PROCESS</span></span> </span> </h2> <!-- Card grid --> <div class="steps__grid"> <!-- Card 1 --> <article class="steps__card steps__card--low" data-step="1"> <span class="steps__num" aria-hidden="true">01</span> <p class="steps__copy"> Select the package that matches your needs </p> <span class="steps__corner" aria-hidden="true"></span> </article> <!-- Card 2 --> <article class="steps__card steps__card--low" data-step="2"> <span class="steps__num" aria-hidden="true">02</span> <p class="steps__copy"> Pick a design that is in line with your brand. </p> <span class="steps__corner" aria-hidden="true"></span> </article> <!-- Card 3 --> <article class="steps__card steps__card--high" data-step="3"> <span class="steps__num" aria-hidden="true">03</span> <p class="steps__copy"> Enter your store details and finalize the payment process. </p> <span class="steps__corner" aria-hidden="true"></span> </article> <!-- Card 4 --> <article class="steps__card steps__card--low" data-step="4"> <span class="steps__num" aria-hidden="true">04</span> <p class="steps__copy"> Now that your store is ready for sale, add your products </p> <span class="steps__corner" aria-hidden="true"></span> </article> <button class="steps__cta" type="button" aria-label="LET'S START"> <span class="steps__cta-bg" aria-hidden="true"></span> <span class="steps__cta-text"> <span>LET'S</span> <span>START</span> </span> </button> </div> <!-- Footer area containing the promo illustration and the closing paragraph --> <div class="steps__footer"> <div class="steps__promo" aria-hidden="true"> <div class="steps__promo-green"> <svg width="200" height="128" viewBox="0 0 200 128" fill="none" xmlns="http://www.w3.org/2000/svg"> <g transform="rotate(-14 100 64)"> <rect x="15" y="30" width="150" height="24" rx="12" fill="#316C6B"/> <rect x="35" y="60" width="145" height="24" rx="12" fill="#316C6B"/> <rect x="20" y="90" width="130" height="24" rx="12" fill="#316C6B"/> </g> </svg> </div> <div class="steps__promo-message"> <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M40 22C40 31.3888 31.7157 39 21.5 39C18.6653 39 15.9866 38.3976 13.6272 37.3195C11.5878 38.8028 8.87113 40.1691 5.92683 40.8504C5.3951 40.9734 4.90807 40.4851 5.03456 39.9575C6.01258 35.8778 6.77258 31.8488 5.75338 29.8395C3.39958 25.197 4.29819 19.1678 9.5 14.5C14.5097 9.99347 21.5 9 21.5 9C31.7157 9 40 12.6112 40 22Z" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"/> <circle cx="16" cy="20" r="2.5" fill="#000000"/> <circle cx="27" cy="20" r="2.5" fill="#000000"/> <path d="M15 27C17 30.5 24.5 30.5 26.5 27" stroke="#000000" stroke-width="3" stroke-linecap="round"/> </svg> </div> <div class="steps__promo-pill"> <span class="steps__promo-text"> No technical skills required. </span> </div> </div> <p class="steps__paragraph"> Simple or Professional? Choose the plan that best suits your business, based on the level of features you require, then browse the ready-made designs and choose the one that suits you. All designs are available to all users at no additional charge. Or request your own custom design. Fill out the basic information and complete the payment in a quick and secure manner. </p> </div> </div> </div> </section>
+
+      <section data-component="different"> <div class="different"> <div class="different__inner"> <!-- Header --> <div class="different__header"> <div class="different__eyebrow"> <span class="different__slider" aria-hidden="true"> <span class="different__slider-track"></span> <span class="different__slider-knob"></span> </span> <span class="different__eyebrow-text"> Our Services </span> </div> <h2 class="different__title" data-reveal="fade-up" data-reveal-delay="0.1"> What Makes Us Different? </h2> </div> <!-- Stacking deck (pinned + scroll-driven) --> <div class="different__deck" data-deck> <div class="different__viewport"> <div class="different__track" data-track> <!-- Slide 1 --> <article class="different__slide different__slide--teal" data-slide="0"> <div class="different__photo"> <img src="/images/different/different-slide-1.webp" alt="" loading="lazy" decoding="async" /> </div> <div class="different__panel"> <div class="different__panel-decor" aria-hidden="true"></div> <h3 class="different__slide-title"> <span class="line"><span class="line-inner">Easy online store</span> <span class="line"><span class="line-inner">with your brand name</span></span> </span> </span> <span class="line"><span class="line-inner">بعلامتك التجارية</span></span> </span> </h3> <div class="different__slide-foot"> <span class="different__num" aria-hidden="true">01</span> <p class="different__slide-desc"> Get your business name up and running right away, without any complexity or technical expertise. </p> </div> </div> </article> <!-- Slide 2 --> <article class="different__slide different__slide--white" data-slide="1"> <div class="different__photo"> <img src="/images/different/different-slide-2.webp" alt="" loading="lazy" decoding="async" /> </div> <div class="different__panel"> <div class="different__panel-decor" aria-hidden="true"></div> <h3 class="different__slide-title"> <span class="line"><span class="line-inner">A dedicated account manager</span> <span class="line"><span class="line-inner">to support you every step of the way.</span></span> </span> </span> <span class="line"><span class="line-inner">يدعمك في كل خطوة.</span></span> </span> </h3> <div class="different__slide-foot"> <span class="different__num" aria-hidden="true">02</span> <p class="different__slide-desc"> You'll have a dedicated account manager who will accompany you from the very beginning until you achieve success, helping you and responding to your inquiries quickly. </p> </div> </div> </article> <!-- Slide 3 --> <article class="different__slide different__slide--teal" data-slide="2"> <div class="different__photo"> <img src="/images/different/different-slide-3.webp" alt="" loading="lazy" decoding="async" /> </div> <div class="different__panel"> <div class="different__panel-decor" aria-hidden="true"></div> <h3 class="different__slide-title"> <span class="line"><span class="line-inner">Easy control panel</span> <span class="line"><span class="line-inner">with free training.</span></span> </span> </span> <span class="line"><span class="line-inner">مع تدريب مجاني.</span></span> </span> </h3> <div class="different__slide-foot"> <span class="different__num" aria-hidden="true">03</span> <p class="different__slide-desc"> The subscription comes with free training sessions to teach you how to manage your store professionally. </p> </div> </div> </article> <!-- Slide 4 --> <article class="different__slide different__slide--white" data-slide="3"> <div class="different__photo"> <img src="/images/different/different-slide-4.webp" alt="" loading="lazy" decoding="async" /> </div> <div class="different__panel"> <div class="different__panel-decor" aria-hidden="true"></div> <h3 class="different__slide-title"> <span class="line"><span class="line-inner">Instant integration with</span> <span class="line"><span class="line-inner">payment and delivery gateways</span></span> </span> </span> <span class="line"><span class="line-inner">بوابات الدفع والتوصيل</span></span> </span> </h3> <div class="different__slide-foot"> <span class="different__num" aria-hidden="true">04</span> <p class="different__slide-desc"> You can start selling immediately with simple steps to activate payment and delivery with our help. </p> </div> </div> </article> <!-- Slide 5 --> <article class="different__slide different__slide--teal" data-slide="4"> <div class="different__photo"> <img src="/images/different/different-slide-5.webp" alt="" loading="lazy" decoding="async" /> </div> <div class="different__panel"> <div class="different__panel-decor" aria-hidden="true"></div> <h3 class="different__slide-title"> <span class="line"><span class="line-inner">Financial reports and</span> <span class="line"><span class="line-inner">performance analysis</span></span> </span> </span> <span class="line"><span class="line-inner">وتحليل الأداء</span></span> </span> </h3> <div class="different__slide-foot"> <span class="different__num" aria-hidden="true">05</span> <p class="different__slide-desc"> Real-time tracking of your store's growth is provided by easy-to-read reports that help you make smart decisions. </p> </div> </div> </article> </div> </div> </div> </div> </div> </section>
+
+      <section data-component="services">
+  <div class="services">
+    <!-- Section background — extracted as a separate layer so the teal cart can sit BEHIND it (z-index -1) and get clipped by the section's top edge naturally. -->
+    <div class="services__bg" aria-hidden="true"></div>
+
+    <!-- Cart: teal basket layer (BEHIND the section background) -->
+    <div class="services__cart-back" aria-hidden="true">
+      <div data-reveal="scale">
+        <svg viewBox="0 0 262 215" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <path d="M100.429 67.2482H232.45C233.888 67.2482 234.967 68.5714 234.665 69.981L230.81 87.8593C230.58 88.8949 229.659 89.6428 228.594 89.6428H161.167C159.915 89.6428 158.908 90.6496 158.908 91.9009V109.405C158.908 110.657 159.915 111.663 161.167 111.663H222.869C224.307 111.663 225.386 112.987 225.084 114.396L221.243 132.275C221.013 133.31 220.092 134.058 219.028 134.058H173.525C172.273 134.058 171.266 135.065 171.266 136.316V153.821C171.266 155.072 172.273 156.079 173.525 156.079H236.823C237.888 156.079 238.808 155.331 239.039 154.295L243.397 134.044L248.217 111.635L252.964 89.5996L257.798 67.1906L257.798 67.1906L261.941 47.9459C261.97 47.7877 261.999 47.6295 261.999 47.4713C261.999 46.22 260.992 45.2131 259.74 45.2131H100.444C99.1921 45.2131 98.1851 46.22 98.1851 47.4713V64.9756C98.1851 66.227 99.1921 67.2338 100.444 67.2338L100.429 67.2482Z" fill="#316C6B"/>
+          <path d="M223.128 190.814C215.524 190.814 209.36 184.651 209.36 177.049C209.36 169.447 215.524 163.285 223.128 163.285C230.731 163.285 236.895 169.447 236.895 177.049C236.895 184.651 230.731 190.814 223.128 190.814Z" fill="#316C6B"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Cart: yellow handle + wheels (IN FRONT of everything) -->
+    <div class="services__cart-front" aria-hidden="true">
+      <div data-reveal="scale">
+        <svg viewBox="0 0 262 215" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <path d="M0 2.28693V19.7913C0 21.0426 1.007 22.0494 2.25859 22.0494H42.2805C43.2875 22.0494 44.1794 22.7254 44.4528 23.6891L82.1154 156.259L88.402 178.337C88.6754 179.315 89.5673 179.977 90.5743 179.977H156.462C157.93 179.977 159.009 178.61 158.663 177.186L143.429 113.411C143.184 112.376 142.249 111.657 141.199 111.671L118.9 112.002C117.419 112.031 116.354 113.455 116.757 114.878L127.69 153.368C128.107 154.806 127.014 156.244 125.518 156.244H109.866C108.859 156.244 107.967 155.568 107.694 154.605L69.3694 19.6474L64.2479 1.63968C63.9746 0.661626 63.0827 0 62.0756 0H2.27299C1.02141 0 0.0143738 1.00682 0.0143738 2.25816L0 2.28693Z" fill="#F5C99A"/>
+          <path d="M146.923 214.669C139.32 214.669 133.156 208.506 133.156 200.904C133.156 193.302 139.32 187.139 146.923 187.139C154.527 187.139 160.691 193.302 160.691 200.904C160.691 208.506 154.527 214.669 146.923 214.669Z" fill="#F5C99A"/>
+          <path d="M109.462 214.669C101.858 214.669 95.6942 208.506 95.6942 200.904C95.6942 193.302 101.858 187.139 109.462 187.139C117.065 187.139 123.229 193.302 123.229 200.904C123.229 208.506 117.065 214.669 109.462 214.669Z" fill="#F5C99A"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="services__inner">
+      <!-- Top header layout: Title block, description, pagination index -->
+      <div class="services__header">
+        <div class="services__header-left">
+          <!-- Eyebrow with white line and overlapping circles -->
+          <div class="services__eyebrow" aria-hidden="true" data-reveal="fade-up">
+            <span class="services__eyebrow-line"></span>
+            <span class="services__eyebrow-circles">
+              <span class="services__circle services__circle--solid"></span>
+              <span class="services__circle services__circle--hollow"></span>
+            </span>
+            <span class="services__eyebrow-line"></span>
+            <span class="services__eyebrow-text"> Additional </span>
+          </div>
+          <h2 class="services__title" data-reveal="fade-up" data-reveal-delay="0.1"> Services we provide </h2>
+        </div>
+        <div class="services__header-right">
+          <p class="services__desc" data-reveal="fade-up" data-reveal-delay="0.15"> Our support services are available in this section to help you integrate the work of your store and find everything you need in one place. </p>
+          <div class="services__index" id="services-index" data-reveal="scale" data-reveal-delay="0.2">
+            <span class="services__index-active-wrapper">
+              <span class="services__index-active-list">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+              </span>
+            </span>
+            <span class="services__index-divider">/</span>
+            <span class="services__index-total">8</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrollable cards track (Figma: Frame 118) -->
+      <div class="services__track-wrapper">
+        <div class="services__track" id="services-track" role="region" aria-label="Services we provide" data-reveal-group data-reveal-group-stagger="0.12">
+          <!-- Card 1: Marketing -->
+          <div class="services__card" data-index="0" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-marketing.webp" alt="Marketing" aria-label="Marketing" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • MARKETING </span>
+              <h3 class="services__card-title"> Marketing </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 2: Photography -->
+          <div class="services__card" data-index="1" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-photography.webp" alt="Photography" aria-label="Photography" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • PHOTOGRAPHY </span>
+              <h3 class="services__card-title"> Photography </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 3: Support -->
+          <div class="services__card" data-index="2" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-support.webp" alt="Support" aria-label="Support" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • SUPPORT </span>
+              <h3 class="services__card-title"> Support </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 4: Social Media -->
+          <div class="services__card" data-index="3" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-social.webp" alt="Social Media" aria-label="Social Media" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • SOCIAL </span>
+              <h3 class="services__card-title"> Social Media </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 5: Marketing (Repeat) -->
+          <div class="services__card" data-index="4" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-marketing.webp" alt="Marketing" aria-label="Marketing" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • MARKETING </span>
+              <h3 class="services__card-title"> Marketing </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 6: Photography (Repeat) -->
+          <div class="services__card" data-index="5" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-photography.webp" alt="Photography" aria-label="Photography" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • PHOTOGRAPHY </span>
+              <h3 class="services__card-title"> Photography </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 7: Support (Repeat) -->
+          <div class="services__card" data-index="6" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-support.webp" alt="Support" aria-label="Support" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • SUPPORT </span>
+              <h3 class="services__card-title"> Support </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 8: Social Media (Repeat) -->
+          <div class="services__card" data-index="7" data-reveal="fade-up">
+            <div class="services__card-img">
+              <img src="/images/services/services-social.webp" alt="Social Media" aria-label="Social Media" loading="lazy" />
+            </div>
+            <div class="services__card-body">
+              <span class="services__card-eyebrow"> SERVICE • SOCIAL </span>
+              <h3 class="services__card-title"> Social Media </h3>
+              <p class="services__card-text"> Now that your store is ready for sale, add your products </p>
+              <a href="#contact" class="services__card-btn">
+                <span class="services__card-btn-static"> Learn More </span>
+                <span class="services__card-btn-marquee" aria-hidden="true">
+                  <span class="services__card-btn-item"> Learn More </span>
+                </span>
+                <span class="visually-hidden"> Learn More </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section data-component="clients">
+  <div class="clients">
+    <div class="clients__inner">
+      <!-- Header -->
+      <header class="clients__header">
+        <div class="clients__header-left">
+          <div class="clients__eyebrow" aria-hidden="true" data-reveal="fade-up">
+            <span class="clients__eyebrow-line"></span>
+            <span class="clients__eyebrow-circles">
+              <span class="clients__circle clients__circle--solid"></span>
+              <span class="clients__circle clients__circle--hollow"></span>
+            </span>
+            <span class="clients__eyebrow-line"></span>
+            <span class="clients__eyebrow-text"> Success stories </span>
+          </div>
+          <h2 class="clients__title" data-reveal="fade-up" data-reveal-delay="0.1"> Our Renowned Clients </h2>
+        </div>
+        <div class="clients__header-right">
+          <p class="clients__desc" data-reveal="fade-up" data-reveal-delay="0.15"> Join the list of more than 500 brands that rely on E-trolley </p>
+          <div class="clients__arrows" role="group" aria-label="Carousel controls" data-reveal="scale" data-reveal-delay="0.2">
+            <a class="clients__arrow" data-dir="prev" href="#client-card-0" aria-label="Previous brands">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path class="clients__arrow-path-prev" d="M14 6 L8 12 L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="clients__arrow" data-dir="next" href="#client-card-7" aria-label="Next brands">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path class="clients__arrow-path-next" d="M10 6 L16 12 L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Carousel -->
+      <div class="clients__viewport">
+        <div class="clients__track" id="clients-track" role="list" data-reveal-group data-reveal-group-stagger="0.09">
+          <!-- Set 1 -->
+          <!-- Card 0 -->
+          <div class="clients__card" role="listitem" id="client-card-0" data-card="0" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/gazali.webp" alt="Gazali for Oudh & Perfumes / غزالي للعود والعطور" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 1 -->
+          <div class="clients__card" role="listitem" id="client-card-1" data-card="1" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/urban.webp" alt="URBAN" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="clients__card" role="listitem" id="client-card-2" data-card="2" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/yarnista.webp" alt="YARNISTA" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="clients__card" role="listitem" id="client-card-3" data-card="3" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/tokyo.webp" alt="TOKYO" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="clients__card" role="listitem" id="client-card-4" data-card="4" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/connection-by-alnaim.webp" alt="CONNECTION BY ALNAIM" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Set 2 (Duplicate for Marquee Loop) -->
+          <!-- Card 5 -->
+          <div class="clients__card" role="listitem" id="client-card-5" data-card="5" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/gazali.webp" alt="Gazali for Oudh & Perfumes / غزالي للعود والعطور" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="clients__card" role="listitem" id="client-card-6" data-card="6" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/urban.webp" alt="URBAN" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="clients__card" role="listitem" id="client-card-7" data-card="7" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/yarnista.webp" alt="YARNISTA" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="clients__card" role="listitem" id="client-card-8" data-card="8" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/tokyo.webp" alt="TOKYO" loading="lazy" />
+            </div>
+          </div>
+          <!-- Card 9 -->
+          <div class="clients__card" role="listitem" id="client-card-9" data-card="9" data-reveal="fade-up">
+            <span class="clients__label"> Store Name </span>
+            <div class="clients__tile" aria-hidden="true">
+              <img src="/images/clients/connection-by-alnaim.webp" alt="CONNECTION BY ALNAIM" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partners Banner Block -->
+      <div class="partners" data-reveal-group data-reveal-group-stagger="0.1">
+        <div class="partners__title-box">
+          <h3 class="partners__title" data-reveal="fade-up"> Our Partners </h3>
+        </div>
+        <div class="partners__logos">
+          <div class="partners__logos-track">
+            <div class="partners__logo-item">
+              <img src="/images/partners/my-fatoorah.webp" alt="My Fatoorah" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/pass.webp" alt="Pass" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/sadad.webp" alt="Sadad" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/jeyaad.webp" alt="Jeyaad" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/edfapay.webp" alt="EdfaPay" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/my-fatoorah.webp" alt="My Fatoorah" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/pass.webp" alt="Pass" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/sadad.webp" alt="Sadad" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/jeyaad.webp" alt="Jeyaad" class="partners__logo-img" />
+            </div>
+            <div class="partners__logo-item">
+              <img src="/images/partners/edfapay.webp" alt="EdfaPay" class="partners__logo-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section data-component="designs">
+  <div class="designs">
+    <div class="designs__inner">
+      <!-- Paint Bucket Watermark Background -->
+      <div class="designs__watermark" aria-hidden="true" data-reveal="scale" data-reveal-delay="0.2">
+        <svg width="244" height="212" viewBox="0 0 244 212" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g opacity="0.85">
+            <path d="M206.958 78.2834C207.396 78.4711 207.801 78.6796 208.228 78.8274C228.387 85.6793 238.876 100.832 243.311 120.847C244.695 127.093 243.881 133.542 241.869 139.682C241.069 142.245 239.73 144.605 237.945 146.602C236.16 148.601 233.968 150.191 231.521 151.265C229.073 152.337 226.424 152.87 223.754 152.826C221.084 152.781 218.455 152.161 216.043 151.006C212.48 149.311 209.393 146.58 206.131 144.257C203.913 142.677 201.772 140.984 199.178 139.023C198.524 143.788 198.238 147.911 197.366 151.905C192.935 172.174 182.739 188.922 166.441 201.711C162.984 204.302 159.278 206.542 155.381 208.395C145.208 213.495 135.132 212.726 125.298 207.255C119.53 203.931 114.412 199.573 110.199 194.4C109.207 193.22 108.216 192.049 107.099 190.715C103.863 192.395 100.806 194.174 97.5946 195.598C93.8045 197.28 89.8801 198.656 86.0143 200.162C85.1572 200.495 84.1003 200.607 83.4759 201.189C80.9653 203.529 78.0828 203.114 75.1739 202.548C72.3039 201.993 69.4408 201.387 66.6005 200.697C61.4828 199.543 56.6008 197.513 52.1676 194.694C30.3189 180.358 15.6249 160.429 6.67412 135.977C1.60004 122.109 -0.619945 107.347 0.148477 92.5889C0.273013 86.9725 1.93244 81.4986 4.94491 76.7684C6.76783 74.0101 8.9099 71.6555 12.3225 70.7932C13.5024 70.442 14.6113 69.8829 15.5972 69.142C39.8014 52.1423 65.8971 38.3785 91.6886 24.099C104.515 16.9978 117.569 10.298 130.232 2.91757C137.26 -1.18083 144.126 -0.412707 151.117 1.8721C157.938 4.10172 163.824 8.16642 169.231 12.8431C187.446 28.5798 198.897 48.6297 205.857 71.4831C206.375 73.7226 206.743 75.9945 206.958 78.2834ZM185.655 132.998C184.489 132.01 183.817 131.413 183.116 130.849C177.214 126.109 171.245 121.477 166.265 115.668C149.895 96.8096 137.575 74.7489 130.08 50.8711C127.178 41.6902 125.861 32.0765 126.188 22.4479C126.256 20.5221 126.415 18.599 126.564 16.1617C124.679 17.1038 123.298 17.7285 121.978 18.4638C115.371 22.1414 108.758 25.8081 102.188 29.55C79.2597 42.6066 56.3484 55.6932 33.454 68.8102C27.576 72.1977 22.1474 76.3966 16.1865 79.6098C14.8204 80.2578 13.6462 81.2532 12.78 82.4979C11.9138 83.7427 11.386 85.1933 11.2484 86.7066C9.88408 95.3016 11.1637 103.742 12.7848 112.1C17.1894 134.81 28.0625 154.095 43.9267 170.7C52.9578 180.152 63.2492 187.502 75.9703 190.981C77.3993 191.486 78.9317 191.622 80.4267 191.378C88.0817 189.284 94.5857 184.895 101.176 180.988C89.5593 150.741 89.6684 120.281 95.2589 89.4502C89.1316 84.9802 87.9781 81.689 90.1874 74.8842C91.5093 70.8176 94.7065 68.2652 98.7993 68.5109C107.682 69.0386 110.186 70.7912 111.895 76.3829C112.435 78.6271 112.4 80.9726 111.793 83.1995C110.876 87.0793 107.006 88.1274 103.601 90.3965C103.071 99.2731 102.223 108.386 102.074 117.508C101.956 124.774 102.559 132.062 103.08 139.325C103.839 149.693 106 159.907 109.504 169.685C110.096 171.348 110.916 172.928 111.59 174.456L185.655 132.998ZM161.161 89.4647C171.628 80.5891 183.803 77.8926 196.671 76.9804C196.52 76.2242 196.328 75.4771 196.093 74.7489C191.179 62.3648 185.061 50.506 177.828 39.3398C171.933 30.4048 164.457 22.6353 155.772 16.4174C153.068 14.4562 149.855 13.1605 146.787 11.7569C145.492 11.281 144.134 11.0025 142.758 10.9309C141.988 10.7733 141.188 10.9285 140.53 11.3627C139.874 11.7969 139.414 12.4748 139.253 13.2485C138.772 14.5561 138.468 15.9236 138.352 17.3132C138.2 22.1105 138.289 26.9124 138.617 31.7007C139.65 42.7624 143.46 53.089 147.566 63.2866C151.153 72.4765 155.712 81.2536 161.161 89.4647ZM165.194 95.2989C165.246 95.7342 165.346 96.1612 165.492 96.5738C165.952 97.3771 166.441 98.1669 166.961 98.9312C172.913 107.609 179.929 115.498 187.843 122.411C190.193 124.641 193.216 126.018 196.433 126.318C202.792 126.83 208.733 129.709 213.095 134.394C214.883 136.313 216.861 138.044 219.003 139.554C224.169 143.09 229.641 141.087 231.174 134.992C232.264 130.655 232.858 126.212 231.969 121.663C229.841 110.604 223.837 100.68 215.049 93.6977C210.732 90.1241 205.457 87.9197 199.894 87.364C187.556 86.1164 176.101 89.0105 165.194 95.2989ZM117.265 184.835C120.177 187.836 122.311 190.296 124.708 192.459C134.932 201.687 144.158 202.422 155.811 195.088C156.073 194.923 156.332 194.756 156.583 194.577C172.645 183.027 181.803 167.131 186.123 147.168L117.265 184.835Z" fill="#F5C99A"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Header -->
+      <header class="designs__header">
+        <div class="designs__header-left">
+          <div class="designs__eyebrow" aria-hidden="true" data-reveal="fade-up" data-reveal-delay="0.1">
+            <span class="designs__eyebrow-line"></span>
+            <span class="designs__eyebrow-circles">
+              <span class="designs__circle designs__circle--solid"></span>
+              <span class="designs__circle designs__circle--hollow"></span>
+            </span>
+            <span class="designs__eyebrow-line"></span>
+            <span class="designs__eyebrow-text"> Select one </span>
+          </div>
+          <h2 class="designs__title" data-reveal="fade-up" data-reveal-delay="0.2"> Distinctive Designs </h2>
+        </div>
+        <div class="designs__header-right">
+          <div class="designs__arrows" role="group" aria-label="Carousel controls" data-reveal="scale" data-reveal-delay="0.3">
+            <a class="designs__arrow" href="#design-card-0" data-dir="prev" aria-label="Previous designs">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path class="designs__arrow-path-prev" d="M14 6 L8 12 L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="designs__arrow" href="#design-card-4" data-dir="next" aria-label="Next designs">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path class="designs__arrow-path-next" d="M10 6 L16 12 L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Carousel / Viewport -->
+      <div class="designs__viewport">
+        <div class="designs__track" id="designs-track" role="list" data-reveal-group data-reveal-group-stagger="0.1">
+          <!-- Card 0: Beauty -->
+          <div class="designs__card" role="listitem" id="design-card-0" data-card="0" data-reveal="fade-up">
+            <span class="designs__card-label"> Container </span>
+            <div class="designs__tile" aria-hidden="true">
+              <h3 class="designs__card-title"> Health & Beauty </h3>
+              <div class="designs__graphic-circle">
+                <img src="/images/distinctive-designs/health-beauty.webp" alt="Health & Beauty / الصحة والجمال" class="designs__graphic-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <!-- Card 1: Perfumes -->
+          <div class="designs__card" role="listitem" id="design-card-1" data-card="1" data-reveal="fade-up">
+            <span class="designs__card-label"> Container </span>
+            <div class="designs__tile" aria-hidden="true">
+              <h3 class="designs__card-title"> Perfumes </h3>
+              <div class="designs__graphic-circle">
+                <img src="/images/distinctive-designs/perfumes.webp" alt="Perfumes / العطور" class="designs__graphic-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <!-- Card 2: Electronics -->
+          <div class="designs__card" role="listitem" id="design-card-2" data-card="2" data-reveal="fade-up">
+            <span class="designs__card-label"> Container </span>
+            <div class="designs__tile" aria-hidden="true">
+              <h3 class="designs__card-title"> Electronics </h3>
+              <div class="designs__graphic-circle">
+                <img src="/images/distinctive-designs/electronics.webp" alt="Electronics / الإلكترونيات" class="designs__graphic-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <!-- Card 3: Flowers -->
+          <div class="designs__card" role="listitem" id="design-card-3" data-card="3" data-reveal="fade-up">
+            <span class="designs__card-label"> Container </span>
+            <div class="designs__tile" aria-hidden="true">
+              <h3 class="designs__card-title"> Flowers </h3>
+              <div class="designs__graphic-circle">
+                <img src="/images/distinctive-designs/flowers.webp" alt="Flowers / الزهور" class="designs__graphic-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <!-- Card 4: Outfits -->
+          <div class="designs__card" role="listitem" id="design-card-4" data-card="4" data-reveal="fade-up">
+            <span class="designs__card-label"> Container </span>
+            <div class="designs__tile" aria-hidden="true">
+              <h3 class="designs__card-title"> Outfits </h3>
+              <div class="designs__graphic-circle">
+                <img src="/images/distinctive-designs/outfits.webp" alt="Outfits / الملابس والأزياء" class="designs__graphic-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section data-component="support" data-reveal="fade-up">
+  <div class="support">
+    <div class="support__inner">
+      <!-- Yellow back layer -->
+      <div class="support__cart-back" aria-hidden="true">
+        <svg viewBox="0 0 293 392" width="293" height="392" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M292.705 4.16571V36.0504C292.705 38.3297 290.871 40.1637 288.591 40.1637H215.69C213.856 40.1637 212.231 41.3951 211.733 43.1504L143.13 284.63L131.678 324.846C131.18 326.628 129.556 327.833 127.721 327.833H7.70439C5.03153 327.833 3.06619 325.344 3.6951 322.75L31.4457 206.582C31.8912 204.696 33.5945 203.386 35.5074 203.412L76.1245 204.015C78.8236 204.067 80.7627 206.661 80.029 209.255L60.1135 279.364C59.3536 281.984 61.3451 284.604 64.0704 284.604H92.581C94.4153 284.604 96.04 283.373 96.5379 281.617L166.347 35.7884L175.676 2.98673C176.174 1.20517 177.798 0 179.633 0H288.565C290.845 0 292.679 1.83396 292.679 4.11331L292.705 4.16571Z" fill="#F5C99A"/>
+          <path d="M25.0778 391.026C38.9278 391.026 50.1555 379.801 50.1555 365.953C50.1555 352.106 38.9278 340.88 25.0778 340.88C11.2277 340.88 0 352.106 0 365.953C0 379.801 11.2277 391.026 25.0778 391.026Z" fill="#F5C99A"/>
+          <path d="M93.3141 391.026C107.164 391.026 118.392 379.801 118.392 365.953C118.392 352.106 107.164 340.88 93.3141 340.88C79.464 340.88 68.2363 352.106 68.2363 365.953C68.2363 379.801 79.464 391.026 93.3141 391.026Z" fill="#F5C99A"/>
+        </svg>
+      </div>
+
+      <div class="support__card">
+        <div class="support__copy">
+          <div class="support__eyebrow">
+            <span class="support__slider" aria-hidden="true">
+              <span class="support__slider-track"></span>
+              <span class="support__slider-knob"></span>
+            </span>
+            <span class="support__eyebrow-text"> Support & Help </span>
+          </div>
+          <h2 class="support__title">
+            <span class="support__title-line">Are you in need of assistance <span class="support__title-line">or have a question?</span></span>
+          </h2>
+        </div>
+
+        <div class="support__actions" role="group" aria-label="Contact options">
+          <a class="support__btn support__btn--whatsapp" href="https://wa.me/97450988700" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+            <svg viewBox="0 0 92 91" width="92" height="91" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="support-wa-bg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#5BD066"/>
+                  <stop offset="100%" stop-color="#27B43E"/>
+                </linearGradient>
+              </defs>
+              <rect width="92" height="91" rx="25" fill="url(#support-wa-bg)"/>
+              <g transform="translate(20 19.7) scale(2.18)" fill="#FFFFFF">
+                <path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15 c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.264 8.264 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.183 8.183 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12 -.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99 -1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11 .25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34 -.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31 -.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z"/>
+              </g>
+            </svg>
+          </a>
+          <a class="support__btn support__btn--phone" href="tel:+97450988700" aria-label="Call us">
+            <svg viewBox="0 0 92 91" width="92" height="91" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="92" height="91" rx="25" fill="#316C6B"/>
+              <g transform="translate(26 25.5) scale(2.5)" fill="#FFFFFF">
+                <path d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+              </g>
+            </svg>
+          </a>
+          <a class="support__btn support__btn--gmail" href="mailto:info@etrolley.net" aria-label="Email our support team">
+            <svg viewBox="0 0 92 91" width="92" height="91" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="92" height="91" rx="25" fill="#FFFFFF"/>
+              <g transform="translate(22 21.5)">
+                <path fill="#4CAF50" d="M45 16.2l-5 2.75-5 4.75V40h7c1.657 0 3-1.343 3-3V16.2z"/>
+                <path fill="#1E88E5" d="M3 16.2l3.614 1.71L13 23.7V40H6c-1.657 0-3-1.343-3-3V16.2z"/>
+                <polygon fill="#E53935" points="35,11.2 24,19.45 13,11.2 12,17 13,23.7 24,31.95 35,23.7 36,17"/>
+                <path fill="#C62828" d="M3 12.298V16.2l10 7.5V11.2L9.876 8.859C9.132 8.301 8.228 8 7.298 8h0C4.924 8 3 9.924 3 12.298z"/>
+                <path fill="#FBC02D" d="M45 12.298V16.2l-10 7.5V11.2l3.124-2.341C38.868 8.301 39.772 8 40.702 8h0C43.076 8 45 9.924 45 12.298z"/>
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Teal front layer -->
+      <div class="support__cart-front" aria-hidden="true">
+        <svg viewBox="0 0 299 266" width="299" height="266" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M294.303 40.1375H53.8242C51.2037 40.1375 49.2384 42.5478 49.7887 45.1154L56.8115 77.6813C57.2308 79.5676 58.9079 80.93 60.847 80.93H183.668C185.948 80.93 187.782 82.7639 187.782 85.0433V116.928C187.782 119.207 185.948 121.041 183.668 121.041H71.2764C68.656 121.041 66.6906 123.452 67.2409 126.019L74.2375 158.585C74.6568 160.471 76.3339 161.834 78.273 161.834H161.158C163.438 161.834 165.272 163.668 165.272 165.947V197.832C165.272 200.111 163.438 201.945 161.158 201.945H45.858C43.9188 201.945 42.2418 200.583 41.8225 198.696L33.8825 161.808L25.104 120.989L16.4565 80.8514L7.65173 40.0327L0.104818 4.97789C0.0524091 4.6897 0 4.4015 0 4.11331C0 1.83396 1.83432 0 4.11412 0H294.277C296.557 0 298.391 1.83396 298.391 4.11331V35.998C298.391 38.2773 296.557 40.1113 294.277 40.1113L294.303 40.1375Z" fill="#316C6B"/>
+          <path d="M70.8043 265.216C84.6544 265.216 95.8821 253.991 95.8821 240.144C95.8821 226.296 84.6544 215.071 70.8043 215.071C56.9543 215.071 45.7266 226.296 45.7266 240.144C45.7266 253.991 56.9543 265.216 70.8043 265.216Z" fill="#316C6B"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+    </main>
+    <script>
+      (function() {
+        var nav = document.querySelector('.nav');
+        if (!nav) return;
+        function checkScroll() {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          if (scrollTop > 20) {
+            nav.classList.add('is-scrolled');
+          } else {
+            nav.classList.remove('is-scrolled');
+          }
+        }
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        window.addEventListener('resize', checkScroll, { passive: true });
+        document.addEventListener('scroll', checkScroll, { passive: true });
+        document.addEventListener('DOMContentLoaded', checkScroll);
+        checkScroll();
+        window.addEventListener('load', checkScroll);
+      })();
+    </script>
+    <footer data-component="footer">
+  <div class="footer">
+    <div class="footer__inner">
+      <!-- Top Grid: 4 columns -->
+      <div class="footer__grid" data-reveal-group data-reveal-group-stagger="0.1">
+        <!-- Column 1: Brand & Logo -->
+        <div class="footer__col footer__col--brand" data-reveal="fade-up">
+          <span class="footer__brand-label"> Etrolley </span>
+          <div class="footer__logo-box" aria-label="E-Trolley Logo" data-reveal="scale" data-reveal-delay="0.2">
+            <svg width="100%" height="100%" viewBox="0 0 167 162" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g clip-path="url(#clip0_1_259)">
+                <rect width="167" height="162" fill="url(#pattern0_1_259)"/>
+              </g>
+              <defs>
+                <pattern id="pattern0_1_259" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_1_259" transform="matrix(0.00181382 0 0 0.00188593 -1.42541 -0.0204082)"/>
+                </pattern>
+                <clipPath id="clip0_1_259">
+                  <rect width="167" height="162" fill="white"/>
+                </clipPath>
+                <image id="image0_1_259" width="1337" height="560" preserveAspectRatio="none" xlink:href="/images/logo-etrolley-28bffb.png"/>
+              </defs>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links & Social -->
+        <div class="footer__col footer__col--links" data-reveal="fade-up">
+          <h3 class="footer__title"> Quick Links </h3>
+          <ul class="footer__list">
+            <li> <a href="#terms" class="footer__link"> Terms & Conditions </a> </li>
+            <li> <a href="#privacy" class="footer__link"> Privacy Policy </a> </li>
+          </ul>
+          <h3 class="footer__title footer__title--social"> Social </h3>
+          <div class="footer__socials" data-reveal-group data-reveal-group-stagger="0.08">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer__social-btn" aria-label="Instagram" data-reveal="scale">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer__social-btn" aria-label="Facebook" data-reveal="scale">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer__social-btn" aria-label="YouTube" data-reveal="scale">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="footer__social-btn" aria-label="TikTok" data-reveal="scale">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 3: Site Map -->
+        <div class="footer__col footer__col--sitemap" data-reveal="fade-up">
+          <h3 class="footer__title"> Site Map </h3>
+          <ul class="footer__list">
+            <li> <a href="#home" class="footer__link footer__link--active"> Home </a> </li>
+            <li> <a href="services.html" class="footer__link"> Services </a> </li>
+            <li> <a href="#prices" class="footer__link"> Prices </a> </li>
+            <li> <a href="#about" class="footer__link"> About Us </a> </li>
+            <li> <a href="#contact" class="footer__link"> Contact Us </a> </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Keep in touch details -->
+        <div class="footer__col footer__col--contact" data-reveal="fade-up">
+          <h3 class="footer__title"> Let's keep in touch </h3>
+          <div class="footer__contact-items">
+            <!-- Phone -->
+            <div class="footer__contact-row">
+              <div class="footer__contact-badge">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
+                </svg>
+              </div>
+              <a href="tel:+97450988700" class="footer__contact-text footer__contact-text--link" dir="ltr"> (+974) 50988700 </a>
+            </div>
+            <!-- Email -->
+            <div class="footer__contact-row">
+              <div class="footer__contact-badge">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="footer__contact-stack">
+                <a href="mailto:info@etrolley.net" class="footer__contact-text footer__contact-text--link">info@etrolley.net</a>
+                <a href="mailto:sales@etrolley.net" class="footer__contact-text footer__contact-text--link">sales@etrolley.net</a>
+              </div>
+            </div>
+            <!-- Address -->
+            <div class="footer__contact-row">
+              <div class="footer__contact-badge">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                </svg>
+              </div>
+              <span class="footer__contact-text"> Qatar - Doha - Khalifa City </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mid Section: Giant wide CTA pill button -->
+      <div class="footer__cta-wrapper" data-reveal="fade-up" data-reveal-delay="0.3">
+        <a href="#create" class="footer__cta-btn">
+          <span class="footer__cta-text"> build your store now </span>
+          <span class="footer__cta-glow"></span>
+        </a>
+      </div>
+
+      <!-- Bottom Bar: Copyright and Links -->
+      <div class="footer__bottom" data-reveal="fade" data-reveal-delay="0.4">
+        <div class="footer__copyright"> © 2025 E-trolley All Rights Reserved </div>
+        <div class="footer__bottom-links">
+          <a href="#privacy" class="footer__bottom-link"> Privacy Policy </a>
+          <span class="footer__bottom-sep">/</span>
+          <a href="#terms" class="footer__bottom-link"> Terms & Conditions </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
   </body>
 </html>
