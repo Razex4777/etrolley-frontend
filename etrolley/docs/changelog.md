@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:22
+
+- **Added Blog Page Separator Lines and Header Calibration**:
+  - Implemented horizontal solid separator lines below `.blogpage-header` Title + Description section and between sidebar `.blogpage-mostread-card` items using the harmonious `--color-primary-light` (`#99B4AB`) design token to match the Figma mockup exactly.
+  - Symmetrically compiled all static files and verified production bundling compiles cleanly without error.
+
 # 2026-06-01 23:20
 
 - **Replaced Team with Blogs in Navbar Dropdown**:
