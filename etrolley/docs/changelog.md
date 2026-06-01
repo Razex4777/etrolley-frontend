@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:49
+
+- **Added Premium FAQs Accordion Section to About Us Page**:
+  - Scraped live FAQ content from `https://etrolleystore.com/new/E-Trolley/faqs.html` to obtain the official translated question and answer sets.
+  - Implemented a custom premium accordion component (`src/components/faqs/`) with high-fidelity custom animations and pure CSS toggle checks.
+  - Sized the titles, descriptions, separators, and card shadows according to the exact Figma specifications (e.g. 75px titles, white cards, 12px border radius, 0.75px sage border line).
+  - Maintained bidirectional alignment mapping for English LTR (`about.html`) and Arabic RTL (`about-ar.html`) viewports.
+  - Registered and recompiled the pages template, running Vite production builds cleanly.
+
 # 2026-06-01 23:43
 
 - **Fixed Mobile Navbar Sidebar Collapsible About Us Submenu**:

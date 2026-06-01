@@ -66,6 +66,11 @@ etrolley/
     │   │   ├── 📄 benefits.en.html        ( English static layout template with 3 benefits cards and inline SVGs )
     │   │   └── 📄 benefits.ar.html        ( Arabic static layout template with mirrored copy for RTL direction )
     │   │
+    │   ├── 📁 faqs/                       ( About Us page FAQs accordion component )
+    │   │   ├── 📄 faqs.css                ( Box shadows, flexible grid, line separators and height max-height transitions )
+    │   │   ├── 📄 faqs.en.html            ( English static layout template featuring the 3 core Q&A accordions )
+    │   │   └── 📄 faqs.ar.html            ( Arabic static layout template mirrored dynamically for RTL direction )
+    │   │
     │   ├── 📁 navbar/                     ( Top navigation: logo, links, phone block, CTA, soft divider )
     │   │   ├── 📄 navbar.css              ( Pixel-anchored layout from Figma; hover underlines, scroll transparency )
     │   │   ├── 📄 _dropdown.css           ( Dropdown menu container layout and item styling )

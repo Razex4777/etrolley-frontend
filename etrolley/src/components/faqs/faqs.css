@@ -1,0 +1,233 @@
+/* =============================================================
+ * FAQs Component Styling
+ * ============================================================= */
+
+.faqs {
+  position: relative;
+  padding: clamp(60px, 8vw, 120px) clamp(24px, 6vw, 120px);
+  background: var(--color-white);
+}
+
+.faqs__inner {
+  max-width: 1539px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.faqs__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: clamp(24px, 4vw, 80px);
+  margin-bottom: 24px;
+}
+
+.faqs__title {
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  font-size: clamp(40px, 6vw, 75px);
+  line-height: 1.1;
+  color: var(--color-ink);
+  margin: 0;
+  max-width: 879px;
+}
+
+.faqs__intro {
+  font-family: var(--font-arabic);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25.38px;
+  color: var(--color-text);
+  margin: 0;
+  max-width: 443px;
+  padding-bottom: 6px;
+}
+
+.faqs__separator {
+  width: 100%;
+  height: 0.75px;
+  background: var(--color-primary-light);
+  margin-bottom: 40px;
+}
+
+.faqs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Accordion Card Container */
+.faqs__item {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.06);
+  transition: box-shadow var(--dur-base) var(--ease-out-expo),
+              transform var(--dur-base) var(--ease-out-expo);
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.faqs__item:hover {
+  box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Collapsed state padding setup */
+.faqs__trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 30px;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.faqs__question {
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  font-size: clamp(18px, 2.5vw, 22px);
+  line-height: 30px;
+  color: #222222;
+  margin: 0;
+  transition: color var(--dur-fast) var(--ease-out-expo);
+}
+
+.faqs__trigger:hover .faqs__question {
+  color: var(--color-primary);
+}
+
+/* Icon indicator (plus/minus) */
+.faqs__icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 28px;
+  font-weight: 400;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.faqs__icon::before {
+  content: '+';
+  position: absolute;
+  transition: opacity var(--dur-fast) ease;
+}
+
+.faqs__icon::after {
+  content: '−';
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease;
+}
+
+/* Expanded state container */
+.faqs__content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease;
+  box-sizing: border-box;
+}
+
+.faqs__body {
+  font-family: var(--font-arabic);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  padding: 0px 30px 45px 30px;
+  margin: 0;
+}
+
+.faqs__body p {
+  margin: 0 0 16px 0;
+}
+
+.faqs__body p:last-child {
+  margin: 0;
+}
+
+.faqs__body ol, .faqs__body ul {
+  margin: 12px 0;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faqs__body li {
+  line-height: 26px;
+}
+
+.faqs__body strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+/* Checkbox Toggle Hooks */
+.faqs__toggle:checked ~ .faqs__content {
+  max-height: 600px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.faqs__toggle:checked ~ .faqs__trigger .faqs__icon::before {
+  opacity: 0;
+}
+
+.faqs__toggle:checked ~ .faqs__trigger .faqs__icon::after {
+  opacity: 1;
+}
+
+.faqs__toggle:checked ~ .faqs__trigger .faqs__question {
+  color: var(--color-primary);
+}
+
+/* =================== RTL Mirrors =================== */
+[dir='rtl'] .faqs__body ol, [dir='rtl'] .faqs__body ul {
+  padding-left: 0;
+  padding-right: 24px;
+}
+
+/* =================== Responsive =================== */
+@media (max-width: 980px) {
+  .faqs__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .faqs__title {
+    max-width: 100%;
+  }
+  
+  .faqs__intro {
+    max-width: 100%;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .faqs {
+    padding: 60px 20px;
+  }
+  
+  .faqs__trigger {
+    padding: 20px 20px;
+  }
+  
+  .faqs__body {
+    padding: 0 20px 30px 20px;
+  }
+}

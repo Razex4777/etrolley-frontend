@@ -20,6 +20,7 @@ const aboutComponents = [
   'navbar',
   'about',
   'benefits',
+  'faqs',
   'footer'
 ];
 
