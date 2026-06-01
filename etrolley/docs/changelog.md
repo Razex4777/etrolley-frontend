@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:52
+
+- **Added FAQs to Desktop Dropdowns and Mobile Accordions**:
+  - Registered and localized the "FAQs" / "الأسئلة الشائعة" links under the "About Us" / "من نحن" dropdown menus.
+  - Linked the English dropdown/sidebar item to `about.html#faqs` in `navbar.en.html`.
+  - Linked the Arabic dropdown/sidebar item to `about-ar.html#faqs` in `navbar.ar.html`.
+  - Recompiled all static HTML layouts cleanly via standard compiler script and verified Vite builds successfully.
+
 # 2026-06-01 23:49
 
 - **Added Premium FAQs Accordion Section to About Us Page**:
