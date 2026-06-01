@@ -12,10 +12,8 @@
   <!-- ── Content Grid ─────────────────────────────────────── -->
   <div class="blogpage-content">
 
-    <!-- ── Sidebar ──────────────────────────────────────── -->
-    <aside class="blogpage-sidebar">
-
-      <!-- Explore -->
+    <!-- Explore -->
+    <section class="blogpage-explore">
       <h2 class="blogpage-explore__title">Explore</h2>
       <div class="blogpage-tags">
         <button class="blogpage-tag is-active" type="button">E-commerce</button>
@@ -26,10 +24,118 @@
         <button class="blogpage-tag" type="button">WordPress</button>
         <button class="blogpage-tag" type="button">CMS</button>
       </div>
-
       <hr class="blogpage-sidebar__divider" />
+    </section>
 
-      <!-- Most Read -->
+    <!-- Main Grid + Pagination -->
+    <main class="blogpage-main">
+      <div class="blogpage-grid">
+        <!-- Card 1 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/seo-techniques.webp"
+                 alt="Advanced SEO Techniques to Improve Search Rankings"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">E-commerce</span>
+            <h3 class="blogpage-card__title">Top 10 Reasons Why E-commerce Design Is Important</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="E-trolley" />
+                <span class="blogpage-card__author-name">E-trolley team</span>
+              </div>
+              <span class="blogpage-card__date">19 Oct 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/seo-techniques.webp"
+                 alt="Advanced SEO Techniques to Improve Search Rankings"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">E-commerce</span>
+            <h3 class="blogpage-card__title">Top 10 Reasons Why E-commerce Design Is Important</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="E-trolley" />
+                <span class="blogpage-card__author-name">E-trolley team</span>
+              </div>
+              <span class="blogpage-card__date">19 Oct 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/wordpress-website.webp"
+                 alt="How to Build a WordPress Website from Scratch"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">Technology</span>
+            <h3 class="blogpage-card__title">How to Build a WordPress Website from Scratch</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="E-trolley" />
+                <span class="blogpage-card__author-name">E-trolley team</span>
+              </div>
+              <span class="blogpage-card__date">19 Oct 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/seo-techniques.webp"
+                 alt="Advanced SEO Techniques to Improve Search Rankings"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">Digital Marketing</span>
+            <h3 class="blogpage-card__title">Advanced SEO Techniques to Improve Search Rankings</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="E-trolley" />
+                <span class="blogpage-card__author-name">E-trolley team</span>
+              </div>
+              <span class="blogpage-card__date">19 Oct 2025</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pagination -->
+      <div class="blogpage-pagination">
+        <span class="blogpage-page-item is-active">1</span>
+        <a href="#" class="blogpage-page-item">2</a>
+        <a href="#" class="blogpage-page-item">3</a>
+        <span class="blogpage-page-dots">...</span>
+        <a href="#" class="blogpage-page-item">10</a>
+        <a href="#" class="blogpage-page-next">NEXT</a>
+      </div>
+    </main>
+
+    <!-- Most Read -->
+    <section class="blogpage-mostread">
       <h2 class="blogpage-mostread__title">Most Read</h2>
       <div class="blogpage-mostread__list">
 
@@ -66,105 +172,19 @@
           </div>
         </article>
 
+        <article class="blogpage-mostread-card is-visible">
+          <img class="blogpage-mostread-card__img"
+               src="/images/blog/wordpress-website.webp"
+               alt="How to Build a WordPress Website"
+               loading="lazy" />
+          <div class="blogpage-mostread-card__body">
+            <p class="blogpage-mostread-card__title">Top 10 Reasons Why E-commerce Design Is Important</p>
+            <span class="blogpage-mostread-card__date">19 Oct 2025</span>
+          </div>
+        </article>
+
       </div>
-    </aside>
-
-    <!-- ── Blog Cards Grid ──────────────────────────────── -->
-    <div class="blogpage-grid">
-
-      <!-- Card 1 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="Advanced SEO Techniques to Improve Search Rankings"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">E-commerce</span>
-          <h3 class="blogpage-card__title">Top 10 Reasons Why E-commerce Design Is Important</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="E-trolley" />
-              <span class="blogpage-card__author-name">E-trolley team</span>
-            </div>
-            <span class="blogpage-card__date">11 Feb 2024</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="Advanced SEO Techniques to Improve Search Rankings"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">E-commerce</span>
-          <h3 class="blogpage-card__title">Top 10 Reasons Why E-commerce Design Is Important</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="E-trolley" />
-              <span class="blogpage-card__author-name">E-trolley team</span>
-            </div>
-            <span class="blogpage-card__date">11 Feb 2024</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="Advanced SEO Techniques to Improve Search Rankings"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">Technology</span>
-          <h3 class="blogpage-card__title">How to Build a WordPress Website from Scratch</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="E-trolley" />
-              <span class="blogpage-card__author-name">E-trolley team</span>
-            </div>
-            <span class="blogpage-card__date">11 Feb 2024</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="Advanced SEO Techniques to Improve Search Rankings"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">Digital Marketing</span>
-          <h3 class="blogpage-card__title">Advanced SEO Techniques to Improve Search Rankings</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="E-trolley" />
-              <span class="blogpage-card__author-name">E-trolley team</span>
-            </div>
-            <span class="blogpage-card__date">11 Feb 2024</span>
-          </div>
-        </div>
-      </article>
-
-    </div>
+    </section>
   </div>
 
   <!-- ── Scroll-Reveal Observer Script ─────────────────────── -->

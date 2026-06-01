@@ -4,9 +4,12 @@
 
 # 2026-06-01 23:22
 
-- **Added Blog Page Separator Lines and Header Calibration**:
-  - Implemented horizontal solid separator lines below `.blogpage-header` Title + Description section and between sidebar `.blogpage-mostread-card` items using the harmonious `--color-primary-light` (`#99B4AB`) design token to match the Figma mockup exactly.
-  - Symmetrically compiled all static files and verified production bundling compiles cleanly without error.
+- **Refactored Blog Layout, Responsive Column Order, and Pagination**:
+  - Restructured HTML components to separate Explore, Blog Card Grid (Main), and Most Read into independent grid area elements, enabling clean CSS Grid layout on desktop and flexible stacking on mobile.
+  - Placed Explore tags section on top on mobile, followed by main blog list cards, a stylized Pagination row with solid active teal background squares, a horizontal separator line below pagination, and the Most Read section at the bottom.
+  - Flattened blog cards on mobile into clean, borderless list rows separated by horizontal lines.
+  - Implemented horizontal solid separator lines below `.blogpage-header` and sidebar `.blogpage-mostread-card` items using the `--color-primary-light` (`#99B4AB`) design token to match the Figma design exactly.
+  - Symmetrically compiled all static HTML templates and verified production builds bundle successfully.
 
 # 2026-06-01 23:20
 

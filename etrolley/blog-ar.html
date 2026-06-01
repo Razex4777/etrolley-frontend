@@ -45,10 +45,8 @@
   <!-- ── Content Grid ─────────────────────────────────────── -->
   <div class="blogpage-content">
 
-    <!-- ── Sidebar ──────────────────────────────────────── -->
-    <aside class="blogpage-sidebar">
-
-      <!-- Explore -->
+    <!-- Explore -->
+    <section class="blogpage-explore">
       <h2 class="blogpage-explore__title">استكشف</h2>
       <div class="blogpage-tags">
         <button class="blogpage-tag is-active" type="button">التجارة الإلكترونية</button>
@@ -59,10 +57,118 @@
         <button class="blogpage-tag" type="button">ووردبريس</button>
         <button class="blogpage-tag" type="button">إدارة المحتوى</button>
       </div>
-
       <hr class="blogpage-sidebar__divider" />
+    </section>
 
-      <!-- Most Read -->
+    <!-- Main Grid + Pagination -->
+    <main class="blogpage-main">
+      <div class="blogpage-grid">
+        <!-- Card 1 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/seo-techniques.webp"
+                 alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">التجارة الإلكترونية</span>
+            <h3 class="blogpage-card__title">أهم 10 أسباب تجعل تصميم التجارة الإلكترونية مهمًا</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="إي ترولي" />
+                <span class="blogpage-card__author-name">فريق إي ترولي</span>
+              </div>
+              <span class="blogpage-card__date">19 أكتوبر 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/seo-techniques.webp"
+                 alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">التجارة الإلكترونية</span>
+            <h3 class="blogpage-card__title">أهم 10 أسباب تجعل تصميم التجارة الإلكترونية مهمًا</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="إي ترولي" />
+                <span class="blogpage-card__author-name">فريق إي ترولي</span>
+              </div>
+              <span class="blogpage-card__date">19 أكتوبر 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/seo-techniques.webp"
+                 alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">التكنولوجيا</span>
+            <h3 class="blogpage-card__title">كيفية بناء موقع ووردبريس من الصفر</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="إي ترولي" />
+                <span class="blogpage-card__author-name">فريق إي ترولي</span>
+              </div>
+              <span class="blogpage-card__date">19 أكتوبر 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="blogpage-card">
+          <div class="blogpage-card__img-wrap">
+            <img class="blogpage-card__img"
+                 src="/images/blog/seo-techniques.webp"
+                 alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
+                 loading="lazy" />
+          </div>
+          <div class="blogpage-card__body">
+            <span class="blogpage-card__category">التسويق الرقمي</span>
+            <h3 class="blogpage-card__title">تقنيات SEO متقدمة لتحسين ترتيب البحث</h3>
+            <div class="blogpage-card__footer">
+              <div class="blogpage-card__author">
+                <img class="blogpage-card__author-icon"
+                     src="/images/logo-etrolley-28bffb.png"
+                     alt="إي ترولي" />
+                <span class="blogpage-card__author-name">فريق إي ترولي</span>
+              </div>
+              <span class="blogpage-card__date">19 أكتوبر 2025</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pagination -->
+      <div class="blogpage-pagination">
+        <span class="blogpage-page-item is-active">١</span>
+        <a href="#" class="blogpage-page-item">٢</a>
+        <a href="#" class="blogpage-page-item">٣</a>
+        <span class="blogpage-page-dots">...</span>
+        <a href="#" class="blogpage-page-item">١٠</a>
+        <a href="#" class="blogpage-page-next">التالي</a>
+      </div>
+    </main>
+
+    <!-- Most Read -->
+    <section class="blogpage-mostread">
       <h2 class="blogpage-mostread__title">الأكثر قراءة</h2>
       <div class="blogpage-mostread__list">
 
@@ -99,105 +205,19 @@
           </div>
         </article>
 
+        <article class="blogpage-mostread-card is-visible">
+          <img class="blogpage-mostread-card__img"
+               src="/images/blog/wordpress-website.webp"
+               alt="كيفية بناء موقع ووردبريس"
+               loading="lazy" />
+          <div class="blogpage-mostread-card__body">
+            <p class="blogpage-mostread-card__title">أهم 10 أسباب تجعل تصميم التجارة الإلكترونية مهمًا</p>
+            <span class="blogpage-mostread-card__date">19 أكتوبر 2025</span>
+          </div>
+        </article>
+
       </div>
-    </aside>
-
-    <!-- ── Blog Cards Grid ──────────────────────────────── -->
-    <div class="blogpage-grid">
-
-      <!-- Card 1 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">التجارة الإلكترونية</span>
-          <h3 class="blogpage-card__title">أهم 10 أسباب تجعل تصميم التجارة الإلكترونية مهمًا</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="إي ترولي" />
-              <span class="blogpage-card__author-name">فريق إي ترولي</span>
-            </div>
-            <span class="blogpage-card__date">11 فبراير 2024</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">التجارة الإلكترونية</span>
-          <h3 class="blogpage-card__title">أهم 10 أسباب تجعل تصميم التجارة الإلكترونية مهمًا</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="إي ترولي" />
-              <span class="blogpage-card__author-name">فريق إي ترولي</span>
-            </div>
-            <span class="blogpage-card__date">11 فبراير 2024</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">التكنولوجيا</span>
-          <h3 class="blogpage-card__title">كيفية بناء موقع ووردبريس من الصفر</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="إي ترولي" />
-              <span class="blogpage-card__author-name">فريق إي ترولي</span>
-            </div>
-            <span class="blogpage-card__date">11 فبراير 2024</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="blogpage-card">
-        <div class="blogpage-card__img-wrap">
-          <img class="blogpage-card__img"
-               src="/images/blog/seo-techniques.webp"
-               alt="تقنيات SEO متقدمة لتحسين ترتيب البحث"
-               loading="lazy" />
-        </div>
-        <div class="blogpage-card__body">
-          <span class="blogpage-card__category">التسويق الرقمي</span>
-          <h3 class="blogpage-card__title">تقنيات SEO متقدمة لتحسين ترتيب البحث</h3>
-          <div class="blogpage-card__footer">
-            <div class="blogpage-card__author">
-              <img class="blogpage-card__author-icon"
-                   src="/images/logo-etrolley-28bffb.png"
-                   alt="إي ترولي" />
-              <span class="blogpage-card__author-name">فريق إي ترولي</span>
-            </div>
-            <span class="blogpage-card__date">11 فبراير 2024</span>
-          </div>
-        </div>
-      </article>
-
-    </div>
+    </section>
   </div>
 
   <!-- ── Scroll-Reveal Observer Script ─────────────────────── -->
