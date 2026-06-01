@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:43
+
+- **Fixed Mobile Navbar Sidebar Collapsible About Us Submenu**:
+  - Replaced the simple static link for "About Us" under list item `04` in the mobile sidebar panel with a high-fidelity pure CSS accordion toggle submenu.
+  - Implemented hidden toggle inputs and interactive label controls matching the exact look-and-feel (large display typography, hover slide shifts, text underlines, chevron rotation) of other menu links.
+  - Supported LTR and RTL viewports, ensuring sub-menu items (Our Story, Blogs, Designs) indent and animate beautifully with correct chevron mirror directions.
+  - Updated master `navbar.markup.html` and language-specific component mockups (`navbar.en.html`, `navbar.ar.html`).
+  - Recompiled all page templates and ran Vite production builds successfully.
+
 # 2026-06-01 23:40
 
 - **Upgraded Mobile Filter Tabs to solid Pill Chips**:

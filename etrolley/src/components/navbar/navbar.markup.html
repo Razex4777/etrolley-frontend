@@ -257,12 +257,38 @@
             <i><bdi>03</bdi></i>
           </a>
         </li>
-        <li class="mobile-menu__item">
-          <a href="#about" data-menu-close>
-            <span class="i18n-block" lang="en">About Us</span>
-            <span class="i18n-block" lang="ar">من نحن</span>
+        <li class="mobile-menu__item mobile-menu__item--has-submenu">
+          <input type="checkbox" id="mobile-about-toggle" class="mobile-menu__submenu-toggle" hidden />
+          <label for="mobile-about-toggle" class="mobile-menu__submenu-trigger">
+            <span class="mobile-menu__submenu-title">
+              <span class="i18n-block" lang="en">About Us</span>
+              <span class="i18n-block" lang="ar">من نحن</span>
+              <svg class="mobile-menu__chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1.5 2l4.5 4 4.5-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
             <i><bdi>04</bdi></i>
-          </a>
+          </label>
+          <ul class="mobile-menu__submenu">
+            <li>
+              <a href="about.html" data-menu-close>
+                <span class="i18n-block" lang="en">Our Story</span>
+                <span class="i18n-block" lang="ar">قصتنا</span>
+              </a>
+            </li>
+            <li>
+              <a href="blog.html" data-menu-close>
+                <span class="i18n-block" lang="en">Blogs</span>
+                <span class="i18n-block" lang="ar">المدونة</span>
+              </a>
+            </li>
+            <li>
+              <a href="designs.html" data-menu-close>
+                <span class="i18n-block" lang="en">Designs</span>
+                <span class="i18n-block" lang="ar">تصاميمنا</span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li class="mobile-menu__item">
           <a href="#contact" data-menu-close>
