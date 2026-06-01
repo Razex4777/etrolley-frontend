@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:30
+
+- **Updated Custom Hero Mockup Image & Removed Section Separator Line**:
+  - Converted the user's custom hero banner illustration (`f1648f72121efe6d501521b89da6b0682807989d.png`) to web-optimized `hero-mockup.webp` format and updated it in the showcase header banner assets.
+  - Removed the `border-top` separator line below the hero header section in [designspage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/designspage/designspage.css) to create a clean, borderless flow into the client portfolio grid.
+  - Recompiled page templates and ran the production build successfully.
+
 # 2026-06-01 22:36
 
 - **Completed Distinctive Designs Showcase Page**:

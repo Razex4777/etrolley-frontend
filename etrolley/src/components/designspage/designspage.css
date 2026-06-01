@@ -126,7 +126,6 @@
 
 /* ── Portfolio Section Headers ────────────────────────────── */
 .designspage-portfolio {
-  border-top: 2px solid var(--color-primary-light);
   padding-top: clamp(40px, 6vw, 80px);
 }
 
