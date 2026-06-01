@@ -306,23 +306,42 @@
 @media (max-width: 768px) {
   .designspage-tabs {
     justify-content: center;
-    gap: 16px;
-    padding-bottom: 16px;
-  }
-
-  .designspage-tab.is-active::after {
-    bottom: -18px;
-    height: 3px;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: none;
+    margin-bottom: 32px;
   }
 
   .designspage-tab {
-    font-size: clamp(15px, 2.5vw, 22px);
+    font-size: 15px;
+    font-weight: 600;
+    color: #444444;
+    background: #E5E5E5;
+    border-radius: 12px;
+    padding: 10px 24px;
+    transition: all var(--dur-base) var(--ease-out-expo);
+    transform: none;
+  }
+
+  .designspage-tab:hover {
+    background: #D5D5D5;
+    transform: none;
+  }
+
+  .designspage-tab.is-active {
+    color: #FFFFFF;
+    background: #316C6B;
+  }
+
+  .designspage-tab.is-active::after {
+    display: none; /* Disable underline highlight on mobile in favor of pill fill */
   }
 
   .designspage-grid {
     grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 100%;
+    gap: 20px;
+    padding: 0;
   }
 }
 

@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:40
+
+- **Upgraded Mobile Filter Tabs to solid Pill Chips**:
+  - Transformed category filter tabs inside mobile viewports (`max-width: 768px`) to solid gray pill chips with centered margins, rounded corners (`12px`), and background states (`#E5E5E5` fallback, `#316C6B` active state with white typography) to match the layout screenshot exactly.
+  - Recompiled page templates and ran Vite production builds successfully.
+
 # 2026-06-01 23:36
 
 - **Upgraded Double Overlapping Circles Eyebrow & Corrected Navbar Highlights**:
