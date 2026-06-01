@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:59
+
+- **Expanded FAQ Accordion to 9 Items and Set First Opened by Default**:
+  - Rearranged the English and Arabic FAQ components to place "What is the importance of creating an online store?" / "ما أهمية إنشاء متجر إلكتروني؟" as the first item in the list.
+  - Set the first accordion card to be opened by default using the `checked` state on the pure CSS accordion input toggle.
+  - Added a 9th item in total to align exactly with the Figma design specification and order.
+  - Recompiled and bundled all HTML templates and Vite production files cleanly.
+
 # 2026-06-01 23:55
 
 - **Created Separate FAQs Page & Refactored Navbar/Mobile Sidebars**:
