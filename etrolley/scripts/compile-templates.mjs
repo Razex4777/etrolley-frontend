@@ -85,6 +85,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
           compContent = compContent.replace('href="index-ar.html"', 'href="about-ar.html"');
           compContent = compContent.replace('href="index.html"', 'href="about.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
@@ -118,6 +119,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
           compContent = compContent.replace('href="index.html"', 'href="about.html"');
           compContent = compContent.replace('href="index-ar.html"', 'href="about-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
@@ -163,6 +165,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
           compContent = compContent.replace('href="index-ar.html"', 'href="services-ar.html"');
           compContent = compContent.replace('href="index.html"', 'href="services.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
@@ -196,6 +199,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
           compContent = compContent.replace('href="index.html"', 'href="services.html"');
           compContent = compContent.replace('href="index-ar.html"', 'href="services-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
@@ -241,6 +245,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
           compContent = compContent.replace('href="index-ar.html"', 'href="blog-ar.html"');
           compContent = compContent.replace('href="index.html"', 'href="blog.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
@@ -274,6 +279,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
           compContent = compContent.replace('href="index.html"', 'href="blog.html"');
           compContent = compContent.replace('href="index-ar.html"', 'href="blog-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
@@ -318,6 +324,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
           compContent = compContent.replace('href="index-ar.html"', 'href="designs-ar.html"');
           compContent = compContent.replace('href="index.html"', 'href="designs.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
@@ -351,6 +358,7 @@ export function compile() {
           compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
           compContent = compContent.replace('href="index.html"', 'href="designs.html"');
           compContent = compContent.replace('href="index-ar.html"', 'href="designs-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
         } else if (comp === 'footer') {
           compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
           compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');

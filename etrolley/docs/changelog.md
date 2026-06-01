@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-01 23:36
+
+- **Upgraded Double Overlapping Circles Eyebrow & Corrected Navbar Highlights**:
+  - Implemented the double overlapping circles slider decoration on the designs page eyebrow (`designs.html` / `designs-ar.html`) to match the "Support & Help" style exactly.
+  - Upgraded the template compiler script (`compile-templates.mjs`) to strip the hardcoded `is-active` underline class from the "Home" link inside compiled child page navbars (`about`, `services`, `blog`, `designs`), resolving highlight overlap errors.
+  - Recompiled all page templates and ran Vite production builds successfully.
+
 # 2026-06-01 23:30
 
 - **Updated Custom Hero Mockup Image & Removed Section Separator Line**:
