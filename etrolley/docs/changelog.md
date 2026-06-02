@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-02 18:23
+
+- **Fixed Responsive Mobile Horizontal Layout Scroll Bug & Pinned Sticky Animations**:
+  - Removed `overflow-x: hidden` from the `html` element while keeping it on the `body` and setting it explicitly on the `main` layout element in [_reset.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_reset.css). This fully stops mobile viewports from sliding left/right while perfectly preserving standard window viewport scroll tracking for all sticky card decks and parallax features.
+  - Recompiled page files and ran build successfully.
+
 # 2026-06-02 00:05
 
 - **Added CSS-Only Expandable Contact Us Drawer**:

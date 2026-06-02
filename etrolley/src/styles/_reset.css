@@ -27,6 +27,7 @@ main {
   position: relative;
   z-index: 2;
   background: #ffffff;
+  overflow-x: hidden;
 }
 
 
@@ -38,6 +39,7 @@ body {
   color: var(--color-ink);
   background: var(--color-bg);
   max-width: 100%;
+  overflow-x: hidden;
   position: relative;
 }
 
