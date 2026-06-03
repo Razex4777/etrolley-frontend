@@ -23,7 +23,7 @@
   isolation: isolate;
 
   /* Custom variables to compute exact scroll-end padding */
-  --services-card-w: clamp(360px, calc((100vw - 2 * clamp(24px, 3.5vw, 70px) - 84px) / 3.5), 520px);
+  --services-card-w: clamp(300px, calc((100vw - 2 * clamp(24px, 3.5vw, 70px) - 84px) / 3.5), 460px);
   --services-pad-start: max(clamp(24px, 3.5vw, 70px), calc((100vw - var(--canvas-w)) / 2 + clamp(24px, 3.5vw, 70px)));
 }
 
@@ -343,10 +343,10 @@
 /* White footer — generous breathing room */
 .services__card-body {
   background: var(--color-white);
-  padding: 32px 32px 30px;
+  padding: 24px 26px 22px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   flex: 1;
   border-radius: 0 0 8px 8px;
   transition: border-radius 420ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -370,7 +370,7 @@
 .services__card-title {
   font-family: var(--font-arabic);
   font-weight: 600;
-  font-size: clamp(24px, 2.1vw, 34px);
+  font-size: clamp(20px, 1.8vw, 28px);
   line-height: 1.18;
   color: var(--color-ink);
   margin: 0;
@@ -405,7 +405,7 @@
     max-width: 100%;
   }
   .services__card {
-    flex: 0 0 340px;
+    flex: 0 0 300px;
   }
 }
 
