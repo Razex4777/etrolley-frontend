@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 13:51
+
+- **Implemented Magnetic Hover Attraction for Steps CTA Button**:
+  - Added custom butter-smooth JavaScript to `steps.en.html` and `steps.ar.html` that attracts the "LET'S START NOW" CTA button towards the user's mouse cursor using `requestAnimationFrame` and linear interpolation (lerp).
+  - Designed the magnetic pull to trigger within a 180px threshold, translating the button up to 35px, and applying a lighter 40% offset to the inner text layer for a subtle parallax depth effect.
+  - Automatically resets translation offsets on mouse exit and disables tracking on viewports under 1100px or devices without fine pointer/hover capabilities to prevent mobile collisions.
+  - Removed `transform` from the transition lists and disabled hover translations in `steps.css` to prevent layout lag or jittering during dynamic JS animation.
+  - Recompiled all page templates and successfully built the production build.
+
 # 2026-06-03 13:04
 
 - **Corrected Hero Content Downward Shift**:

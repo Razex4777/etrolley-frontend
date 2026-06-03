@@ -26,7 +26,7 @@
   position: relative;
   max-width: var(--canvas-w);
   margin: 0 auto;
-  padding: 0 clamp(48px, 7vw, 120px); /* Generous left/right breathing room */
+  padding: 0 clamp(100px, 13vw, 240px); /* More breathing room left/right */
 }
 
 /* ---------- Eyebrow ---------- */
@@ -242,11 +242,10 @@
 }
 
 .steps__cta {
-  /* Centered under Card 03 */
+  /* Centered under Card 03 — col3 center = 62.5% in a 4-equal-col grid */
   position: absolute;
-  left: calc(50% * (2/4) * 2 + (2 * var(--steps-gap)) + (1fr / 2));
-  left: calc(62.5% + var(--steps-gap));
-  bottom: -55px;
+  left: 62.5%;
+  bottom: -30px; /* Shifted up from -75px */
   transform: translateX(-50%);
   width: 150px; /* Exact PS Studios size */
   height: 150px; /* Exact PS Studios size */
@@ -265,8 +264,7 @@
   /* Spring { mass:1, stiffness:600, damping:15 } → snappy with slight bounce */
   transition: border-color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
               color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+              box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .steps__cta-bg {
@@ -291,12 +289,10 @@
     color: #000000;
     border-color: var(--color-white);
     box-shadow: 0 15px 45px rgba(255, 255, 255, 0.15);
-    transform: translateX(-50%) translateY(-3px);
     /* On hover-in: fast fill — matches Figma "Smart animate" enter */
     transition: border-color 0.25s ease,
                 color 0.25s ease,
-                box-shadow 0.25s ease,
-                transform 0.25s ease;
+                box-shadow 0.25s ease;
   }
 
   .steps__cta:hover .steps__cta-bg {
