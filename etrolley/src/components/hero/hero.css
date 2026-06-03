@@ -59,9 +59,8 @@
 /* ---------- Brand watermark behind headline (3D image from Figma) ---------- */
 .hero__watermark {
   position: absolute;
-  left: 50%;
-  top: 38%;
-  transform: translate(-50%, -50%);
+  left: 0; /* Aligned exactly with the start of the headline and CTA button */
+  top: 10px;
   width: clamp(540px, 68vw, 1320px);
   height: auto;
   pointer-events: none;
@@ -70,9 +69,7 @@
   opacity: 0.85; /* Highly visible bold white text matching user's image exactly */
   mix-blend-mode: normal; /* Normal blend mode so the solid white pops */
   filter: drop-shadow(0 15px 35px rgba(18, 18, 18, 0.08)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.04));
-}
-
-/* ---------- Inner grid ---------- */
+}/* ---------- Inner grid ---------- */
 .hero__inner {
   position: relative;
   display: grid;
@@ -129,10 +126,10 @@
 
 @media (min-width: 1181px) {
   .hero__inner {
-    grid-template-columns: 352px 1fr minmax(60px, 5%);
+    grid-template-columns: 450px 1fr minmax(60px, 5%);
   }
   .hero__aside {
-    padding-left: 47px;
+    padding-left: 90px;
   }
   .hero__qr {
     width: 305px;
@@ -452,14 +449,13 @@
        Match Figma Component 16 (442×171) ≈ 65% of frame width. */
     top: 32%;
     left: 50%;
+    transform: translateX(-50%) !important;
     width: clamp(260px, 70vw, 460px);
     height: auto;
     opacity: 0.75; /* Highly visible bold white text on mobile matching user's image */
     mix-blend-mode: normal;
     filter: drop-shadow(0 10px 25px rgba(18, 18, 18, 0.07)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.03));
-  }
-
-  /* Anchor headline relatively so the watermark visually centers behind it */
+  }  /* Anchor headline relatively so the watermark visually centers behind it */
   .hero__headline {
     position: relative;
     z-index: 1;

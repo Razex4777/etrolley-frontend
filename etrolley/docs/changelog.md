@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:42
+
+- **Aligned Hero Headline, CTA Button, and Watermark to the Right**:
+  - Shifted the desktop hero content container `.hero__content` to the right by increasing the first column of `.hero__inner` to `450px` and matching aside padding.
+  - Aligned `.hero__watermark` exactly at `left: 0` to match the left edge of the headline text and the CTA button wrapper, ensuring all three elements align perfectly along the same vertical line.
+  - Successfully recompiled all page templates and rebuilt the production assets.
+
 # 2026-06-03 12:38
 
 - **Aligned Hero Checkmark Icon and Wrapped Validation Text to 3 Lines**:
