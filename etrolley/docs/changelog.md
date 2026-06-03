@@ -4,9 +4,9 @@
 
 # 2026-06-03 14:58
 
-- **Fixed Steps CTA Hover Background Overflow on Tablet/Mobile**:
-  - Changed `.steps__cta` position from `static` to `relative` under the `@media (max-width: 1100px)` and `@media (max-width: 768px)` breakpoints.
-  - This ensures that the absolute-positioned hover background circle (`.steps__cta-bg`) is contained relative to the button boundary, resolving the visual layout bug where a giant white circle covered the entire card grid.
+- **Fixed Steps CTA Hover Background Overflow and Alignment on Tablet/Mobile**:
+  - Changed `.steps__cta` position from `static` to `relative` and added `left: auto` under the `@media (max-width: 1100px)` and `@media (max-width: 768px)` breakpoints.
+  - This ensures that the absolute-positioned hover background circle (`.steps__cta-bg`) is contained relative to the button boundary, and resets the desktop `left: 62.5%` absolute offset so the button aligns correctly on the left under the first column of cards.
 
 # 2026-06-03 14:47
 

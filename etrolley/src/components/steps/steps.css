@@ -453,6 +453,7 @@
   .steps__cta {
     position: relative;
     transform: none;
+    left: auto;
     width: 160px;
     height: 160px;
     margin: 24px 0 0;   /* flush left */
@@ -536,6 +537,7 @@
     order: 4;
     position: relative;
     transform: none;
+    left: auto;
     width: 140px;
     height: 140px;
     justify-self: start;
