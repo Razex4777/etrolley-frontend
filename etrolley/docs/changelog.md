@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:37
+
+- **Fixed QR Aside Container Overlapping with Hero Headline**:
+  - Restructured the desktop inner grid `.hero__inner` to use a dedicated first column width of `352px` (`grid-template-columns: 352px 1fr minmax(60px, 5%)`) on viewports `min-width: 1181px`.
+  - Scoped the fixed QR container (`305px × 388px`) and footnote (`345px`) widths under the desktop media query, letting them fallback to fluid, auto-sizing widths and aspect-ratio layouts on smaller screens to prevent collision with the headline text.
+
 # 2026-06-03 12:35
 
 - **Aligned Homepage Hero QR Code & Validation Text to Figma Offsets**:
