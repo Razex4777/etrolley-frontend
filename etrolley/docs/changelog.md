@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:38
+
+- **Aligned Hero Checkmark Icon and Wrapped Validation Text to 3 Lines**:
+  - Replaced the simple double-circle check SVG inside `hero.en.html` with a custom-designed rosette checkmark seal badge icon matching the Figma mockup.
+  - Adjusted the validation text container width `.hero__validate` from `345px` to `380px` on desktop viewports. This allows the lowercase "etrolley" validation message to wrap cleanly into exactly 3 lines without cutting off.
+
 # 2026-06-03 12:37
 
 - **Fixed QR Aside Container Overlapping with Hero Headline**:
