@@ -2,6 +2,18 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 13:04
+
+- **Corrected Hero Content Downward Shift**:
+  - Set `.hero__content` `padding-top` to `100px` on desktop to shift the main headline ("Your store will be...") and CTA button downwards.
+  - Reverted the `.hero__aside` validation footnote gap (`gap: clamp(60px, 7vw, 110px)`) back to its default position so the footnote remains static and aligns perfectly with the shifted button baseline.
+
+# 2026-06-03 13:02
+
+- **Shifted Hero Content Downwards**:
+  - Added `padding-top: 70px` to `.hero__content` under the desktop media query. This shifts the display headline and CTA button downwards to create better top breathing space.
+  - Increased `.hero__aside` gap to `90px` to keep the validation footnote vertically aligned with the shifted CTA button.
+
 # 2026-06-03 13:01
 
 - **Shifted Hero Illustration Leftwards**:

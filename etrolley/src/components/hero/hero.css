@@ -130,7 +130,6 @@
   }
   .hero__aside {
     padding-left: 90px;
-    gap: 20px; /* Shift footnote up to align with the CTA button */
   }
   .hero__qr {
     width: 305px;
@@ -144,6 +143,9 @@
   }
   .hero__rail {
     margin-left: -280px; /* Shift rail left to align on top of the 'y' of the watermark */
+  }
+  .hero__content {
+    padding-top: 100px; /* Shift headline and button downwards to align with the footnote */
   }
 }
 
