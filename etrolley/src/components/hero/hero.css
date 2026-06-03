@@ -443,14 +443,62 @@
 @media (max-width: 1180px) {
   .hero__inner {
     grid-template-columns: minmax(140px, 200px) 1fr;
+    row-gap: 32px;
   }
-  .hero__rail { display: none; }
+  
+  .hero__row {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero__image {
+    display: none;
+  }
+
+  /* ----- Horizontal Follow rail for tablet ----- */
+  .hero__rail {
+    display: flex;
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    padding: 10px 0 4px;
+  }
+
+  .hero__rail-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .hero__rail-label::after {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 1px;
+    background: rgba(18, 18, 18, 0.2);
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  .hero__socials {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .hero__social {
+    width: 36px;
+    height: 36px;
+  }
+
   .hero__headline { font-size: clamp(30px, 4.8vw, 60px); }
 }
 
 /* ─────────────────────────────────────────────────────
    TABLET  (769px – 880px)
-   2-column layout — smaller QR, tighter gaps, no rail
+   2-column layout — smaller QR, tighter gaps, horizontal rail
    Headline stays big & readable; CTA stays wide
 ───────────────────────────────────────────────────── */
 @media (max-width: 880px) {
@@ -460,9 +508,6 @@
     column-gap: clamp(12px, 2vw, 24px);
     padding: 20px clamp(16px, 3vw, 32px) 0;
   }
-
-  /* Rail stays hidden on tablet */
-  .hero__rail { display: none; }
 
   /* Tighter aside: QR + validate close together */
   .hero__aside {

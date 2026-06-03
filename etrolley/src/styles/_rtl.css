@@ -137,20 +137,22 @@
    so the same vertical text reads bottom-to-top correctly.
    Restricted to desktop only — the mobile horizontal layout is
    handled below the next media query. */
-@media (min-width: 881px) {
+@media (min-width: 1181px) {
   [dir='rtl'] .hero__rail-label {
     writing-mode: vertical-rl;
     transform: rotate(0deg);
   }
 }
 
-/* On mobile, horizontal Follow rail underline sits to the *right* of
+/* On tablet/mobile, horizontal Follow rail underline sits to the *right* of
    the label in LTR; flip in RTL. */
-@media (max-width: 880px) {
+@media (max-width: 1180px) {
   [dir='rtl'] .hero__rail-label::after {
     margin-left: 0;
     margin-right: 12px;
   }
+}
+@media (max-width: 880px) {
   [dir='rtl'] .hero__validate {
     text-align: right;
     flex-direction: row-reverse;

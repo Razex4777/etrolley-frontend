@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 14:47
+
+- **Fixed Hero Responsive Layout on Tablet Viewports**:
+  - Hidden the laptop illustration `.hero__image` starting from the `max-width: 1180px` breakpoint to prevent layout overcrowding on small screen/tablet devices.
+  - Adjusted `.hero__row` on viewport sizes under `1180px` to use a single-column layout, resolving the empty right-side blank space.
+  - Set the social links follow rail `.hero__rail` to display horizontally at the bottom of the hero section for all viewports under `1180px` instead of hiding it completely.
+  - Updated `_rtl.css` media queries to apply the horizontal rail label alignment to match the `1180px` breakpoint.
+
 # 2026-06-03 13:51
 
 - **Implemented Magnetic Hover Attraction for Steps CTA Button**:
