@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 13:01
+
+- **Shifted Hero Illustration Leftwards**:
+  - Changed `.hero__image img`'s transform in `hero.css` from `translate(-50px, -70px)` to `translate(-120px, -70px)` on desktop. This pulls the laptop and shopping bags illustration closer to the CTA button.
+  - Mirrored this shift in `_rtl.css` with `translate(120px, -70px)`.
+
 # 2026-06-03 13:00
 
 - **Enlarged and Shifted Background Watermark**:

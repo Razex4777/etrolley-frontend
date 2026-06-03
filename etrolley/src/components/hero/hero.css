@@ -331,7 +331,7 @@
   max-width: clamp(280px, 30vw, 480px);
   height: auto;
   filter: drop-shadow(0 24px 40px rgba(49, 108, 107, 0.18));
-  transform: translate(-50px, -70px);
+  transform: translate(-120px, -70px);
 }
 
 /* ---------- Right rail (Follow + socials) ---------- */

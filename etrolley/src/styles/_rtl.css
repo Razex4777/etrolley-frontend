@@ -76,7 +76,7 @@
 }
 
 [dir='rtl'] .hero__image img {
-  transform: translate(50px, -70px);
+  transform: translate(120px, -70px);
 }
 
 [dir='rtl'] .hero__validate {
