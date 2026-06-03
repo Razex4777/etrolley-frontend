@@ -2,6 +2,11 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:47
+
+- **Aligned Footnote Vertically with the CTA Button**:
+  - Reduced `.hero__aside`'s gap to `20px` under the desktop media query. This shifts the 3-line validation footnote upwards by ~90px, aligning its horizontal baseline perfectly with the main "build your store now" CTA button as shown in Figma.
+
 # 2026-06-03 12:42
 
 - **Aligned Hero Headline, CTA Button, and Watermark to the Right**:

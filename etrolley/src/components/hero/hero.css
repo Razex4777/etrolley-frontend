@@ -130,6 +130,7 @@
   }
   .hero__aside {
     padding-left: 90px;
+    gap: 20px; /* Shift footnote up to align with the CTA button */
   }
   .hero__qr {
     width: 305px;
