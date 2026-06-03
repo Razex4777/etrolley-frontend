@@ -36,10 +36,11 @@
   gap: 18px;
   font-family: 'Noto Sans Arabic', var(--font-arabic);
   font-weight: 700;
-  font-size: clamp(16px, 1.4vw, 24px);
+  font-size: clamp(12px, 1vw, 17px);
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: clamp(28px, 2.6vw, 44px);
+  margin-inline-start: clamp(60px, 8vw, 160px);
 }
 
 .steps__slider {
@@ -96,12 +97,13 @@
 .steps__title {
   font-family: var(--font-unbounded), var(--font-arabic);
   font-weight: 900;
-  font-size: clamp(40px, 5.2vw, 76px); /* Large high-impact header */
+  font-size: clamp(32px, 3.8vw, 54px); /* Slightly reduced high-impact header */
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: clamp(20px, 2.6vw, 40px);
   max-width: 800px;
   text-transform: uppercase;
+  margin-inline-start: clamp(60px, 8vw, 160px);
 }
 
 .steps__title .line {
@@ -134,35 +136,49 @@
 
 /* ---------- Card grid ---------- */
 .steps__grid {
+  --steps-gap: clamp(32px, 3.5vw, 64px);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(16px, 1.8vw, 32px); /* Generous gaps for grand card presentation */
+  gap: var(--steps-gap); /* Increased gaps to space cards further apart */
   position: relative;
   align-items: end;
   margin-bottom: clamp(56px, 5.6vw, 100px);
   /* Reduce padding to move the cards up, closer to the title */
   padding-top: 20px;
+  max-width: 1480px; /* Increased card grid max-width to increase card size a bit */
+  margin-inline-start: 0; /* Normal aligned position */
 }
 
 .steps__card {
   position: relative;
   background: #161616;
-  border-radius: var(--r-xl);
-  padding: clamp(24px, 2.2vw, 36px);
+  border-radius: 25px; /* Explicit 25px border-radius */
+  padding: clamp(20px, 1.8vw, 30px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   min-height: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 360 / 356; /* Standard aspect ratio */
   overflow: hidden;
   isolation: isolate;
   border: 2px solid rgba(255, 255, 255, 0.08);
 }
 
+@media (min-width: 1101px) {
+  .steps__grid {
+    grid-template-columns: repeat(4, 360px);
+    margin-inline-start: 68px; /* Aligned exactly at 68px left position */
+  }
+  .steps__card {
+    width: 360px;
+    height: 356px;
+  }
+}
+
 /* Card 03 shifted upward on desktop to clear room for the circular CTA */
 .steps__card--high {
-  transform: translateY(-180px);
+  transform: translateY(-200px); /* Shifted higher up to avoid overlapping text */
 }
 
 /* Outlined number (top right) */
@@ -202,7 +218,7 @@
   margin-top: auto;
   font-family: var(--font-arabic);
   font-weight: 800;
-  font-size: clamp(17px, 1.5vw, 25px);
+  font-size: clamp(15px, 1.3vw, 22px); /* Slightly reduced font size for smaller squares */
   line-height: 1.32;
   letter-spacing: -0.005em;
   color: var(--color-white);
@@ -219,15 +235,14 @@
   border-bottom-right-radius: var(--r-xl);
 }
 
-/* ---------- LET'S START circular button ---------- */
 .steps__cta {
-  /* Sits perfectly centered in the gap under Card 03, aligned with the baseline of other cards */
+  /* Positioned precisely under Card 03 */
   position: absolute;
-  left: 62.5%;
-  bottom: 0px;
-  transform: translate(-50%, 0);
-  width: clamp(120px, 9.5vw, 150px);
-  height: clamp(120px, 9.5vw, 150px);
+  left: calc(2 * 360px + 2 * var(--steps-gap) + 180px);
+  bottom: -60px; /* Shifted lower to avoid overlapping Card 3 */
+  transform: translateX(-50%);
+  width: 190px;
+  height: 190px;
   background: transparent;
   color: var(--color-white);
   border: 1.5px solid rgba(255, 255, 255, 0.4);
@@ -237,11 +252,14 @@
   outline: none;
   display: grid;
   place-items: center;
-  overflow: hidden; /* Hide the expanding circular blob when outside */
+  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  transition: border-color var(--dur-slow) var(--ease-out-expo),
-              color var(--dur-slow) var(--ease-out-expo),
-              box-shadow var(--dur-slow) var(--ease-out-expo);
+  /* Mouse leave uses spring approximation: cubic-bezier with overshoot */
+  /* Spring { mass:1, stiffness:600, damping:15 } → snappy with slight bounce */
+  transition: border-color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .steps__cta-bg {
@@ -254,33 +272,57 @@
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transform-origin: center center;
-  transition: transform var(--dur-slow) var(--ease-out-expo);
+  /* Mouse leave (scale back to 0) uses spring: snappy with slight bounce */
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 1;
 }
 
-.steps__cta:hover {
-  color: #000000;
-  border-color: var(--color-white);
-  box-shadow: 0 15px 45px rgba(255, 255, 255, 0.15);
+/* Hover fill animation — ONLY on devices with a real pointer (mouse).
+   On touch devices :hover sticks after tap, causing a broken white blob. */
+@media (hover: hover) and (pointer: fine) {
+  .steps__cta:hover {
+    color: #000000;
+    border-color: var(--color-white);
+    box-shadow: 0 15px 45px rgba(255, 255, 255, 0.15);
+    transform: translateX(-50%) translateY(-3px);
+    /* On hover-in: fast fill — matches Figma "Smart animate" enter */
+    transition: border-color 0.25s ease,
+                color 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+  }
+
+  .steps__cta:hover .steps__cta-bg {
+    transform: translate(-50%, -50%) scale(1.02);
+    /* On hover-in: fast fill */
+    transition: transform 0.25s ease;
+  }
 }
 
-.steps__cta:hover .steps__cta-bg {
-  transform: translate(-50%, -50%) scale(1.02);
+/* Touch/tap feedback — clean press effect without the fill animation */
+.steps__cta:active {
+  transform: translateX(-50%) scale(0.92);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 .steps__cta-text {
   position: relative;
-  z-index: 2; /* Sits on top of the expanding background circle */
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-unbounded);
-  font-weight: 800;
-  font-size: clamp(10px, 0.8vw, 13px);
-  line-height: 1.25;
-  letter-spacing: 0.05em;
+  /* Figma: Outfit Bold 700, white */
+  font-family: 'Outfit', var(--font-display), sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 34px;
+  line-height: 36px;
+  letter-spacing: 0%;
   text-align: center;
+  color: inherit;
+  transition: color 0.25s ease;
+  width: 90px;
 }
 
 .steps__cta-text span {
@@ -364,18 +406,33 @@
 /* =================== Responsive =================== */
 
 @media (max-width: 1100px) {
+  .steps__eyebrow,
+  .steps__title {
+    margin-inline-start: 0;
+  }
   .steps__grid {
     grid-template-columns: repeat(2, 1fr);
     align-items: stretch;
     padding-top: 0;
+    margin-inline-start: 0;
   }
   .steps__card { min-height: auto; }
   .steps__card--high { transform: none; }
   .steps__cta {
     position: static;
     transform: none;
+    width: 180px;
+    height: 180px;
     margin: 32px auto 0;
     grid-column: 1 / -1;
+  }
+  .steps__cta-text {
+    font-size: 36px;
+    line-height: 40px;
+    width: 90px;
+  }
+  .steps__cta:active {
+    transform: scale(0.92);
   }
   .steps__footer {
     flex-direction: column;
@@ -412,11 +469,16 @@
   .steps__card[data-step="3"] { order: 3; }
   .steps__cta {
     order: 4;
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     justify-self: start;
     margin: 24px 0;
-    margin-inline-start: -20px; /* Shift to the left (or right in RTL) matching design */
+    margin-inline-start: -20px;
+  }
+  .steps__cta-text {
+    font-size: 28px;
+    line-height: 32px;
+    width: 80px;
   }
   .steps__card[data-step="4"] { order: 5; }
 }

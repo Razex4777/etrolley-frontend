@@ -288,7 +288,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: clamp(60px, 7vw, 120px); /* Increased gap to shift the ends stop further to the right/left */
   border-radius: 0; /* Flat block design as requested by user */
   overflow: hidden;
   position: relative;
@@ -312,8 +312,6 @@
   position: relative;
   display: flex;
   flex-grow: 1;
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 
 .partners__logos-track {

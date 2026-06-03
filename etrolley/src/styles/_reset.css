@@ -20,6 +20,9 @@ html {
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   max-width: 100%;
+  /* DO NOT add overflow-x: clip/hidden here — it kills position: sticky
+     for .different__slide stacking cards. Horizontal overflow is
+     already contained by body { overflow-x: hidden; } below. */
 }
 
 main {
@@ -27,7 +30,10 @@ main {
   position: relative;
   z-index: 2;
   background: #ffffff;
-  overflow-x: hidden;
+  /* overflow-x: clip does NOT create a scroll container, so it is
+     safe for position: sticky children (.different__slide). Only
+     overflow: hidden/auto/scroll would break sticky. */
+  overflow-x: clip;
 }
 
 

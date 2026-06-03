@@ -23,6 +23,12 @@
   - If there are `overflow-x: clip` or `overflow-x: hidden` rules defined on root nodes (`html` or `body`), browsers may fail to resolve the nearest scroll container for `scroll()`. This freezes the animation at `0%` progress (e.g., permanent transparency), completely overriding class changes applied by JS.
   - For universal cross-browser reliability (such as on Safari or Firefox viewports where CSS scroll timelines might be buggy or unsupported), use a simple JavaScript `scrollY` scroll listener to toggle a CSS class (e.g., `.is-scrolled`), allowing standard CSS transitions to handle the animation.
 
+- **CRITICAL: NEVER add `overflow-x: clip` or `overflow-x: hidden` to the `html` element**:
+  - `overflow-x: clip` / `overflow-x: hidden` on `html` creates a new scroll container that **breaks `position: sticky` for ALL descendant elements across the entire page**. This includes the stacking card deck in "What Makes Us Different" section.
+  - Horizontal scroll containment should ONLY be applied to `body { overflow-x: hidden; }` — this is safe for sticky.
+  - Individual sections that need overflow clipping should use `overflow: clip` at the section level (e.g., `.support { overflow: clip; }`), not at root level.
+  - This is a browser-engine constraint, not a bug. The CSS spec says sticky positioning requires an unbroken chain of scrollable ancestors.
+
 ## Pure-CSS "Garage Door" Footer Reveal
 
 - **Sticky + z-index layering is enough — no JS required**:
@@ -33,4 +39,8 @@
   - Visual polish: round the footer's top corners with a fluid `border-top-left-radius` / `border-top-right-radius` (`clamp(32px, 4vw, 56px)`) so the footer reads as a distinct "door panel" lifting up. Add a 2-stop inset highlight at the top edge to sell the "light gap" where the door above meets the floor below.
   - Mobile (≤980px): **do not** apply the sticky footer rule. The viewport scroll container behaves erratically when nested sticky elements with z-index live inside it; keep the footer's natural document flow on touch devices.
   - Avoid `overflow: hidden` on `<main>` while using `position: sticky` inside it — `overflow: hidden` (and to a lesser degree `overflow: clip`) can break sticky positioning depending on the browser. Use `isolation: isolate` on individual sections that need a fresh stacking context instead.
+
+- **Support Section Block Container vs Section Background**:
+  - When the user asks to "remove block container" of the support section, they might be referring to the heavy section-level box-shadow and background applied in the global footer reveal rule (e.g. `.support` in `footer.css`) which defines the "lid" of the garage-door reveal, rather than the inner `.support__card` container itself.
+  - Always cross-reference screenshot drawings with container boundaries (like shadows and white background boundaries) before altering component-level card container layouts.
 

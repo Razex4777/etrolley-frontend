@@ -46,7 +46,13 @@
         window.addEventListener('scroll', checkScroll, { passive: true });
         window.addEventListener('resize', checkScroll, { passive: true });
         document.addEventListener('scroll', checkScroll, { passive: true });
-        document.addEventListener('DOMContentLoaded', checkScroll);
+        document.addEventListener('DOMContentLoaded', function() {
+          checkScroll();
+          var sideCta = document.querySelector('[data-side-cta]');
+          if (sideCta && sideCta.parentNode !== document.body) {
+            document.body.appendChild(sideCta);
+          }
+        });
         checkScroll();
         window.addEventListener('load', checkScroll);
       })();

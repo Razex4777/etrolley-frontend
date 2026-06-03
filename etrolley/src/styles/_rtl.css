@@ -236,19 +236,11 @@
 }
 
 [dir='rtl'] .steps__cta {
-  /* Mirror 62.5% → 37.5% so the circle stays under Card 03 in RTL.
-     (LTR distance from left = RTL distance from right.) */
-  left: 37.5%;
+  left: calc(360px + var(--steps-gap) + 180px);
 }
 
 [dir='rtl'] .steps__paragraph {
   text-align: right;
-}
-
-@media (max-width: 1100px) {
-  /* On the stacked 2-col layout the cta is grid-column 1 / -1 +
-     position: static, so the directional override is a no-op. */
-  [dir='rtl'] .steps__cta { left: auto; }
 }
 
 
@@ -288,20 +280,7 @@
 
 /* --------- Support & Help — RTL ---------
    Mirror the trolley artwork to the left edge so the cart still
-   reads as "rolling toward the content" in RTL reading order.
-   The card gradient also gets flipped so the sand glow ends up on
-   the same side as the cart. */
-[dir='rtl'] .support__card {
-  background-color: #FFFFFF;
-  background-image:
-    linear-gradient(
-      -90deg,
-      #F5F6F4 0%,
-      #FFFFFF 35%,
-      #FFFFFF 65%,
-      #FBF1E5 100%
-    );
-}
+   reads as "rolling toward the content" in RTL reading order. */
 
 [dir='rtl'] .support__cart-back {
   right: auto;

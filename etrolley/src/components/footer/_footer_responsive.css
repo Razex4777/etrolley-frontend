@@ -1,0 +1,194 @@
+/* ==================== Responsive ==================== */
+
+@media (max-width: 980px) {
+  .footer {
+    background: #ffffff; /* Clean white canvas as per screenshot */
+    padding: 60px 0 0 0; /* Bottom padding will be inside footer__bottom */
+    text-align: start;
+  }
+  
+  .footer__inner {
+    align-items: stretch;
+    max-width: 100%;
+    padding: 0 24px;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr; /* Two columns side-by-side even on mobile */
+    gap: 32px 24px;
+    margin-bottom: 48px;
+    width: 100%;
+  }
+
+  .footer__col {
+    align-items: flex-start;
+    text-align: start;
+  }
+
+  .footer__col--brand {
+    grid-column: 1 / -1; /* Brand/Logo spans full width */
+    margin-bottom: 8px;
+  }
+
+  .footer__col--links {
+    grid-column: 1; /* Quick Links */
+  }
+
+  .footer__col--sitemap {
+    grid-column: 2; /* Site Map */
+  }
+
+  .footer__col--contact {
+    grid-column: 1 / -1; /* Contact info spans full width */
+    margin-top: 16px;
+  }
+
+  /* Contact Items - Keep inline rows instead of centering/stacking */
+  .footer__contact-items {
+    gap: 24px;
+  }
+
+  .footer__contact-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .footer__contact-row:nth-child(2) {
+    align-items: flex-start;
+  }
+
+  .footer__contact-badge {
+    width: 44px;
+    height: 44px;
+    background: rgba(49, 108, 107, 0.08);
+    color: var(--color-primary);
+    transform: none !important;
+  }
+
+  .footer__contact-text {
+    font-size: 15px;
+  }
+
+  /* Social block inline on mobile */
+  .footer__social-block {
+    grid-column: 1 / -1; /* Spans full width */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding: 16px 0;
+    width: 100%;
+    border-top: none;
+  }
+
+  .footer__title--social {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between icons */
+    justify-content: flex-end;
+  }
+
+  .footer__social-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: none;
+    padding: 0;
+    transform: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer__social-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer__social-btn:hover {
+    background: transparent;
+    color: var(--color-primary-deep);
+    transform: translateY(-2px) !important;
+    box-shadow: none;
+  }
+
+  /* CTA Button responsive size and centering */
+  .footer__cta-wrapper {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+
+  .footer__cta-btn {
+    height: 60px;
+    border-radius: 12px; /* Smooth card-like corners */
+    box-shadow: 0 12px 30px rgba(49, 108, 107, 0.15);
+  }
+
+  .footer__cta-text {
+    font-size: 16px;
+  }
+
+  /* Bottom Bar: Copyright on left, Links on right - on same row as per screenshot */
+  .footer__bottom {
+    background: hsl(165, 12%, 96.5%); /* Beautiful sand-sage background */
+    margin-top: 36px;
+    padding: 20px 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(49, 108, 107, 0.08);
+    gap: 16px;
+
+    /* Span full screen width */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+  }
+
+  [dir="rtl"] .footer__bottom {
+    flex-direction: row-reverse;
+  }
+
+  .footer__copyright {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    text-align: start;
+  }
+
+  .footer__bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+
+  .footer__bottom-link {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+  
+  .footer__bottom-sep {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    opacity: 0.5;
+  }
+}

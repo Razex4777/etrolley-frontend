@@ -1,0 +1,276 @@
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  .svcpage-hero__title {
+    font-size: clamp(40px, 5.5vw, 75px);
+    line-height: 1.25;
+  }
+
+  .svcpage-hero__image {
+    flex: 0 0 400px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .svcpage-row__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 773 / 318;
+  }
+}
+
+@media (max-width: 980px) {
+  .svcpage-hero {
+    padding-top: clamp(80px, 10vw, 100px) !important;
+    padding-bottom: 12px !important;
+    text-align: start;
+  }
+
+  .svcpage-timeline {
+    margin-top: 0 !important;
+    padding-top: 12px !important;
+  }
+
+  .svcpage-hero__inner {
+    flex-direction: column-reverse; /* Image on top, Content on bottom */
+    align-items: flex-start;
+    text-align: start;
+    gap: 24px;
+  }
+
+  [dir='rtl'] .svcpage-hero__inner {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    text-align: right;
+  }
+
+  .svcpage-hero__content {
+    flex: none !important;
+    max-width: 100% !important;
+    text-align: start;
+  }
+
+  [dir='rtl'] .svcpage-hero__content {
+    text-align: right;
+  }
+
+  /* Eyebrow: slider inline with small text */
+  .svcpage-hero__eyebrow {
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  [dir='rtl'] .svcpage-hero__eyebrow {
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+  }
+
+  /* Proportional scale down of the overlapping circles slider decoration */
+  .svcpage-hero__slider {
+    width: 80px;
+    height: 18px;
+  }
+
+  .svcpage-hero__slider-knob {
+    width: 18px;
+    height: 18px;
+    left: calc(50% - 4px);
+  }
+
+  .svcpage-hero__slider-knob::after {
+    width: 18px;
+    height: 18px;
+    transform: translate(calc(-50% + 8px), -50%);
+  }
+
+  .svcpage-hero__eyebrow-text {
+    font-size: 15px; /* Clean compact size matching 3rd image */
+    line-height: 1.4;
+    height: auto;
+  }
+
+  .svcpage-hero__title {
+    font-size: clamp(24px, 5vw, 36px); /* Fitted size */
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: start;
+  }
+
+  [dir='rtl'] .svcpage-hero__title {
+    text-align: right;
+  }
+
+  .svcpage-hero__desc {
+    font-size: 14px; /* Clean compact layout text */
+    line-height: 20px;
+    text-align: start;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 24px;
+    color: var(--color-text);
+  }
+
+  [dir='rtl'] .svcpage-hero__desc {
+    text-align: right;
+  }
+
+  /* Order Now CTA Button size: compact, not full width */
+  .svcpage-hero__cta {
+    width: fit-content;
+    min-width: 180px;
+    height: 56px;
+    padding: 12px 32px;
+    font-size: 16px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(18, 18, 18, 0.15);
+    align-self: flex-start;
+  }
+
+  [dir='rtl'] .svcpage-hero__cta {
+    align-self: flex-start;
+  }
+
+  .svcpage-hero__image {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .svcpage-hero__image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Timeline: stack vertically */
+  .svcpage-timeline {
+    padding: 0 0 clamp(40px, 5vw, 80px) 0;
+    box-sizing: border-box;
+  }
+
+  .svcpage-timeline__line,
+  .svcpage-timeline__line-progress {
+    display: none;
+  }
+
+  .svcpage-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-height: auto;
+    margin: 0 0 clamp(40px, 6vw, 60px) 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .svcpage-row--left .svcpage-row__image,
+  .svcpage-row--right .svcpage-row__image {
+    margin: 0 auto;
+    justify-self: center;
+    width: calc(100% - 36px);
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 369 / 152;
+    border-radius: 45px;
+    order: 1;
+  }
+
+  [dir='rtl'] .svcpage-row--left .svcpage-row__image,
+  [dir='rtl'] .svcpage-row--right .svcpage-row__image {
+    margin: 0 auto;
+    justify-self: center;
+  }
+
+  .svcpage-row--left .svcpage-row__content,
+  .svcpage-row--right .svcpage-row__content {
+    text-align: left;
+    padding: 0 18px;
+    justify-self: start;
+    order: 2;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  [dir='rtl'] .svcpage-row--left .svcpage-row__content,
+  [dir='rtl'] .svcpage-row--right .svcpage-row__content {
+    text-align: right;
+    padding: 0 18px;
+    justify-self: end;
+  }
+
+  .svcpage-row--right .svcpage-row__title-row,
+  .svcpage-row--left .svcpage-row__title-row {
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  [dir='rtl'] .svcpage-row--left .svcpage-row__title-row,
+  [dir='rtl'] .svcpage-row--right .svcpage-row__title-row {
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+  }
+
+  .svcpage-row--right .svcpage-row__desc,
+  .svcpage-row--left .svcpage-row__desc {
+    margin: 0;
+    text-align: left;
+  }
+
+  [dir='rtl'] .svcpage-row--right .svcpage-row__desc,
+  [dir='rtl'] .svcpage-row--left .svcpage-row__desc {
+    margin: 0 !important;
+    text-align: right;
+  }
+
+  .svcpage-row__badge {
+    width: 51px;
+    height: 52px;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  .svcpage-row__title {
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #212121;
+  }
+
+  .svcpage-row__desc {
+    font-size: 12px;
+    line-height: 18px;
+    color: #444444;
+  }
+}
+
+@media (max-width: 480px) {
+  .svcpage-hero {
+    padding: 100px 24px 20px !important;
+  }
+
+  .svcpage-hero__title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .svcpage-hero__desc {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+
+  .svcpage-hero__cta {
+    width: 100%; /* For small mobile, it can fill width or remain fit-content. Let's make it fit-content but styled nicely. */
+    width: fit-content;
+    min-width: 160px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+}

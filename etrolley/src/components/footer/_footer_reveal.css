@@ -1,0 +1,82 @@
+/* =============================================================
+ * Premium Sticky Parallax Footer Reveal (Garage Reveal Effect)
+ * Desktop only (min-width: 981px) to prevent layout jumping or
+ * scroll container sizing glitches on mobile devices.
+ *
+ * Layering (pure CSS — no JS):
+ *   main          z: 2  (white lid covering the footer)
+ *   .support      z: 2  (last content block, casts shadow on door)
+ *   footer        z: 1  (sticky to bottom — the "garage door" panel)
+ *
+ * As the user scrolls, .support slides upward over the pinned
+ * footer, progressively revealing it like a garage opening.
+ * ============================================================= */
+@media (min-width: 981px) {
+  footer[data-component="footer"] {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    display: block;
+  }
+
+  /* Grid Placements for 5 columns/rows structure on Desktop */
+  .footer__col--brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .footer__col--links {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .footer__col--sitemap {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .footer__col--contact {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+  .footer__social-block {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .footer__social-block .footer__title--social {
+    margin-top: 0;
+  }
+
+  /* The footer itself reads as a "door panel" peeking from under
+     the support section. Round only the TOP corners (the bottom of
+     the page is a clean edge), and add a top inner highlight so the
+     seam where the door meets the lid is unmistakably visible. */
+  footer[data-component="footer"] .footer {
+    border-top-left-radius: clamp(32px, 4vw, 56px);
+    border-top-right-radius: clamp(32px, 4vw, 56px);
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, 0.7),
+      inset 0 1px 0 rgba(49, 108, 107, 0.04);
+  }
+
+  /* The last content section sits on top of the footer and casts an
+     elegant, slightly wider drop shadow as it slides away — this is
+     the "door" edge that defines the garage reveal. */
+  .support {
+    position: relative;
+    z-index: 2;
+  }
+
+  .benefits,
+  .faqs,
+  .blogpage,
+  .designspage,
+  .servicepage {
+    position: relative;
+    z-index: 2;
+    background: #FFFFFF;
+    box-shadow:
+      0 24px 60px -12px rgba(18, 18, 18, 0.22),
+      0 8px 18px -6px rgba(49, 108, 107, 0.08);
+  }
+}

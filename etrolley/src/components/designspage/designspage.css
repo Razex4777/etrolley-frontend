@@ -306,20 +306,26 @@
 /* Mobile Screens (≤768px) */
 @media (max-width: 768px) {
   .designspage-tabs {
-    justify-content: center;
-    gap: 12px;
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
     padding-bottom: 24px;
-    border-bottom: none;
+    border-bottom: 2px solid var(--color-primary-light) !important;
     margin-bottom: 32px;
+    width: 100%;
   }
 
   .designspage-tab {
-    font-size: 15px;
+    font-size: clamp(11px, 3.2vw, 13px) !important;
     font-weight: 600;
     color: #444444;
     background: #E5E5E5;
     border-radius: 12px;
-    padding: 10px 24px;
+    padding: 10px 14px !important;
+    text-align: center;
+    width: auto !important;
+    white-space: nowrap !important;
     transition: all var(--dur-base) var(--ease-out-expo);
     transform: none;
   }

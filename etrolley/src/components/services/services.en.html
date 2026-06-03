@@ -212,4 +212,167 @@
       </div>
     </div>
   </div>
+  <script>
+    (function() {
+      var track = document.getElementById('services-track');
+      var indexContainer = document.getElementById('services-index');
+      if (!track || !indexContainer) return;
+
+      var cards = track.querySelectorAll('.services__card');
+      var activeList = indexContainer.querySelector('.services__index-active-list');
+      if (!cards.length || !activeList) return;
+
+      var activeIndex = 0;
+      var autoplayTimer = null;
+      var isRtl = getComputedStyle(track).direction === 'rtl';
+
+      // Helper: translate active index list (1-8)
+      function updateIndex(idx) {
+        if (activeList) {
+          activeList.style.transform = 'translateY(' + (-idx * 1) + 'em)';
+        }
+      }
+
+      // Calculate the index that is currently most visible/centered
+      function calculateActiveIndex() {
+        var trackRect = track.getBoundingClientRect();
+        var minDiff = Infinity;
+        var currentIdx = 0;
+
+        for (var i = 0; i < cards.length; i++) {
+          var cardRect = cards[i].getBoundingClientRect();
+          var diff;
+          if (isRtl) {
+            // RTL matches start edge at the right
+            diff = Math.abs(cardRect.right - trackRect.right);
+          } else {
+            // LTR matches start edge at the left
+            diff = Math.abs(cardRect.left - trackRect.left);
+          }
+
+          if (diff < minDiff) {
+            minDiff = diff;
+            currentIdx = i;
+          }
+        }
+        return currentIdx;
+      }
+
+      // Update index during scrolling
+      track.addEventListener('scroll', function() {
+        // Only update if we are not actively dragging (which handles its own snapping updates)
+        if (!isDown) {
+          var computedIndex = calculateActiveIndex();
+          if (computedIndex !== activeIndex) {
+            activeIndex = computedIndex;
+            updateIndex(activeIndex);
+          }
+        }
+      }, { passive: true });
+
+      // Scroll to a specific card index
+      function scrollToCard(idx) {
+        if (idx < 0 || idx >= cards.length) return;
+        var targetScroll = cards[idx].offsetLeft - cards[0].offsetLeft;
+        track.scrollTo({
+          left: targetScroll,
+          behavior: 'smooth'
+        });
+      }
+
+      // Go to next slide
+      function nextSlide() {
+        activeIndex = (activeIndex + 1) % cards.length;
+        scrollToCard(activeIndex);
+      }
+
+      // Autoplay management
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(nextSlide, 3500);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      // Drag-to-scroll implementation
+      var isDown = false;
+      var startX;
+      var scrollLeftVal;
+
+      track.addEventListener('mousedown', function(e) {
+        isDown = true;
+        track.style.scrollBehavior = 'auto';
+        track.style.scrollSnapType = 'none';
+        track.style.cursor = 'grabbing';
+        startX = e.pageX - track.offsetLeft;
+        scrollLeftVal = track.scrollLeft;
+        stopAutoplay();
+        e.preventDefault(); // Prevent text selection during drag
+      });
+
+      function handleMouseRelease() {
+        if (!isDown) return;
+        isDown = false;
+        track.style.scrollBehavior = '';
+        track.style.scrollSnapType = '';
+        track.style.cursor = '';
+        
+        // Snap to closest card index
+        var computedIndex = calculateActiveIndex();
+        activeIndex = computedIndex;
+        updateIndex(activeIndex);
+        scrollToCard(activeIndex);
+        
+        startAutoplay();
+      }
+
+      // Listen on document so release is caught even if cursor leaves the track
+      document.addEventListener('mouseup', handleMouseRelease);
+
+      document.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - track.offsetLeft;
+        var walk = (x - startX) * 1.5;
+        track.scrollLeft = scrollLeftVal - walk;
+      });
+
+      // Pause autoplay when hovering anywhere inside the services section
+      var servicesSection = track.closest('.services');
+      if (servicesSection) {
+        servicesSection.addEventListener('mouseenter', stopAutoplay);
+        servicesSection.addEventListener('mouseleave', startAutoplay);
+      } else {
+        track.addEventListener('mouseenter', stopAutoplay);
+        track.addEventListener('mouseleave', startAutoplay);
+      }
+
+      // Touch interactions (mobile)
+      track.addEventListener('touchstart', function() {
+        stopAutoplay();
+        track.style.scrollBehavior = 'auto';
+        track.style.scrollSnapType = 'none';
+      }, { passive: true });
+
+      track.addEventListener('touchend', function() {
+        track.style.scrollBehavior = '';
+        track.style.scrollSnapType = '';
+        
+        var computedIndex = calculateActiveIndex();
+        activeIndex = computedIndex;
+        updateIndex(activeIndex);
+        scrollToCard(activeIndex);
+        
+        startAutoplay();
+      }, { passive: true });
+
+      // Initial setup
+      startAutoplay();
+    })();
+  </script>
 </section>

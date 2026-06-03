@@ -10,14 +10,14 @@
 
 .support {
   position: relative;
-  padding: clamp(80px, 8vw, 140px) 0 clamp(60px, 6vw, 110px);
-  background: #FFFFFF;
+  padding: clamp(20px, 2vw, 40px) 0 clamp(60px, 6vw, 110px);
+  margin-top: clamp(-100px, -8vw, -50px);
+  background: transparent;
   isolation: isolate;
-  /* Allow the yellow back layer to extend above the card AND
-     past the right edge horizontally; the parent `<main>` already
-     has `overflow-x: hidden` on `html/body` so we don't risk an
-     extra horizontal scrollbar. */
-  overflow: visible;
+  /* Clip the yellow back-layer cart that extends past the right edge
+     (right: -64px on mobile). overflow: clip does NOT create a scroll
+     container, so it won't break sticky if we ever need it here. */
+  overflow: clip;
 }
 
 .support__inner {
@@ -37,20 +37,14 @@
 /* ---------- Card ---------- */
 .support__card {
   position: relative;
-  border-radius: 48px;
+  max-width: 1567px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: clamp(320px, 20vw, 376px);
+  border-radius: 25px;
   padding: clamp(40px, 4.6vw, 80px) clamp(40px, 4.4vw, 88px);
-  /* SOLID base white so the card is fully opaque and never lets the
-     yellow back layer bleed through it. The gradient sits on top as
-     a decorative wash with low-opacity stops only on the EDGES. */
   background-color: #FFFFFF;
-  background-image:
-    linear-gradient(
-      90deg,
-      #F5F6F4 0%,
-      #FFFFFF 35%,
-      #FFFFFF 65%,
-      #FBF1E5 100%
-    );
+  background-image: linear-gradient(277.69deg, rgba(154, 181, 172, 0.1) -42.5%, #FEFFFF 44.45%, #FFFFFF 72.21%, rgba(245, 201, 154, 0.1) 108.19%);
   box-shadow:
     0 48px 100px -20px rgba(18, 18, 18, 0.18),
     0 24px 50px -12px rgba(49, 108, 107, 0.12),
@@ -59,7 +53,7 @@
   grid-template-columns: 1.2fr 1fr clamp(150px, 16vw, 230px);
   align-items: center;
   gap: clamp(24px, 3vw, 48px);
-  min-height: clamp(220px, 19vw, 320px);
+  z-index: 2;
 }
 
 .support__card::after {
@@ -165,8 +159,8 @@
 .support__btn {
   display: inline-grid;
   place-items: center;
-  width: clamp(72px, 6.4vw, 92px);
-  height: clamp(72px, 6.4vw, 92px);
+  width: clamp(64px, 6.4vw, 92px);
+  height: clamp(63px, 6.32vw, 91px);
   border-radius: 25px;
   overflow: hidden;
   text-decoration: none;
@@ -176,6 +170,7 @@
               box-shadow var(--dur-base) var(--ease-out-expo);
   cursor: pointer;
   background: transparent;
+  opacity: 1;
 }
 
 .support__btn:hover {
@@ -276,7 +271,6 @@
     gap: 32px;
     padding: clamp(32px, 5vw, 48px);
     min-height: 0;
-    border-radius: 36px;
   }
   .support__card::after {
     display: none;
@@ -304,11 +298,6 @@
   .support__title {
     font-size: clamp(20px, 5.6vw, 28px);
     max-width: 100%;
-  }
-  .support__btn {
-    width: 64px;
-    height: 64px;
-    border-radius: 20px;
   }
   .support__cart-back {
     width: 140px;

@@ -15,8 +15,16 @@
      padding-bottom: 160px, so the cart sits on a continuous F8F9FA
      band rather than a white seam. */
   margin-top: 0;
-  overflow: visible;
+  /* Clip ONLY horizontal overflow from the full-viewport-width track
+     wrapper (100vw + negative margin). Vertical overflow stays visible
+     so the cart artwork can extend above the section boundary. */
+  overflow-x: clip;
+  overflow-y: visible;
   isolation: isolate;
+
+  /* Custom variables to compute exact scroll-end padding */
+  --services-card-w: clamp(360px, calc((100vw - 2 * clamp(24px, 3.5vw, 70px) - 84px) / 3.5), 520px);
+  --services-pad-start: max(clamp(24px, 3.5vw, 70px), calc((100vw - var(--canvas-w)) / 2 + clamp(24px, 3.5vw, 70px)));
 }
 
 /* Section background as an explicit layer at z-index 0. The teal
@@ -202,8 +210,7 @@
   flex-direction: column;
   height: 8em; /* 8 items * 1em */
   will-change: transform;
-  animation: services-scroll-index linear both;
-  animation-timeline: --services-track;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .services__index-active-list span {
@@ -257,19 +264,19 @@
   gap: 28px;
   overflow-x: auto;
   padding-block: 14px 36px;
-  padding-inline: max(clamp(24px, 3.5vw, 70px), calc((100vw - var(--canvas-w)) / 2 + clamp(24px, 3.5vw, 70px)));
-  scroll-padding-inline: max(clamp(24px, 3.5vw, 70px), calc((100vw - var(--canvas-w)) / 2 + clamp(24px, 3.5vw, 70px)));
+  padding-inline-start: var(--services-pad-start);
+  padding-inline-end: calc(100vw - var(--services-card-w) - var(--services-pad-start));
+  scroll-padding-inline-start: var(--services-pad-start);
+  scroll-padding-inline-end: calc(100vw - var(--services-card-w) - var(--services-pad-start));
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  cursor: grab;
 
   /* Hide the scrollbar completely */
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE / legacy Edge */
 
-  /* Register scroll timeline for active scroller index */
-  scroll-timeline-name: --services-track;
-  scroll-timeline-axis: inline;
 }
 
 /* Hide WebKit scrollbar completely */
@@ -281,7 +288,7 @@
 
 /* ---------- Card block — image on top, white footer below ---------- */
 .services__card {
-  flex: 0 0 clamp(360px, calc((100vw - 2 * clamp(24px, 3.5vw, 70px) - 84px) / 3.5), 520px);
+  flex: 0 0 var(--services-card-w);
   background: var(--color-white);
   border-radius: 8px;                  /* sharp at idle */
   padding: 0;

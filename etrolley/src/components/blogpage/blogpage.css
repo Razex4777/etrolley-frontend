@@ -404,6 +404,11 @@
 
 /* ── Responsive: Tablet (≤980px) ───────────────────────────── */
 @media (max-width: 980px) {
+  .blogpage {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   .blogpage-header {
     flex-direction: column;
     gap: 16px;
@@ -462,6 +467,18 @@
   .blogpage-pagination {
     border-bottom: 2px solid var(--color-primary-light);
     margin-top: 32px;
+    font-size: 15px !important;
+    gap: 4px !important;
+  }
+
+  .blogpage-page-item,
+  .blogpage-page-dots {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .blogpage-page-next {
+    font-size: 13px !important;
   }
 
   /* Cards become flat borderless entries separated by clean borders */

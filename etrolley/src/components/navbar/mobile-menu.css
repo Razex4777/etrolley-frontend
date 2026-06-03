@@ -18,6 +18,7 @@
   pointer-events: none;
   visibility: hidden;
   transition: visibility 0.4s ease;
+  overflow: hidden;
 }
 
 .mobile-menu:target {
