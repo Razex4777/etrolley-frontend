@@ -451,7 +451,7 @@
 
   /* CTA: static, LEFT-aligned (not centered), own row, matching tablet ref */
   .steps__cta {
-    position: static;
+    position: relative;
     transform: none;
     width: 160px;
     height: 160px;
@@ -534,7 +534,7 @@
   /* CTA sits in its own row between card 03 and 04, left edge */
   .steps__cta {
     order: 4;
-    position: static;
+    position: relative;
     transform: none;
     width: 140px;
     height: 140px;

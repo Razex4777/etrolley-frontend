@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 14:58
+
+- **Fixed Steps CTA Hover Background Overflow on Tablet/Mobile**:
+  - Changed `.steps__cta` position from `static` to `relative` under the `@media (max-width: 1100px)` and `@media (max-width: 768px)` breakpoints.
+  - This ensures that the absolute-positioned hover background circle (`.steps__cta-bg`) is contained relative to the button boundary, resolving the visual layout bug where a giant white circle covered the entire card grid.
+
 # 2026-06-03 14:47
 
 - **Fixed Hero Responsive Layout on Tablet Viewports**:
