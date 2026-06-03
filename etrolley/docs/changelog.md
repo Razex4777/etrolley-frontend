@@ -2,10 +2,10 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
-# 2026-06-03 12:02
+# 2026-06-03 12:03
 
-- **Enabled Sticky Parallax Footer Reveal on Mobile**:
-  - Moved the core reveal parallax stylesheet properties (`position: sticky`, `bottom: 0`, and container `z-index` layering) out of the desktop-only `min-width: 981px` media query inside `_footer_reveal.css` to allow the premium garage reveal scroll effect to run on mobile viewports.
+- **Scoped Sticky Parallax Footer Reveal Back to Desktop Only**:
+  - Reverted `position: sticky` and reveal parallax styling back to desktop-only (`min-width: 981px`) inside `_footer_reveal.css`. Because the mobile footer stacks vertically and is taller than typical phone screens, a sticky layout causes the top part (Logo, Quick Links, Site Map) to be permanently cut off and unreachable. Making the footer static on mobile allows users to scroll and see the entire footer content naturally.
   - Mirrored the interactive carousel scroll scripts and arrow preventDefault actions into `designs.ar.html` to align its functionality with the English version.
   - Adjusted support action buttons `.support__btn` to size down gracefully to `56px` on tablet (`max-width: 980px`) and `48px` on mobile (`max-width: 640px`) to prevent oversized icons.
 
