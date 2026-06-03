@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 11:57
+
+- **Polished Homepage Designs Section Layout on Mobile**:
+  - Hid the large background paint bucket/oil bottle watermark illustration (`.designs__watermark`) on mobile screens to prevent messy text overlaps.
+  - Reduced overall section padding on mobile to a compact `30px` top and `40px` bottom, down from the desktop clamp, making the section footprint cleaner.
+  - Decreased spacing margins inside the header to `24px` to pull the title closer to the cards.
+
 # 2026-06-03 11:47
 
 - **Figma-Aligned Mobile Responsive Filter Tabs on Designs Page**:
