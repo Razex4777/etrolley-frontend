@@ -211,6 +211,7 @@
   paint-order: stroke fill;
   pointer-events: none;
   user-select: none;
+  z-index: 1;
 }
 
 /* ----- Icon ----- */
@@ -238,6 +239,20 @@
   letter-spacing: -0.005em;
   color: var(--color-white);
   max-width: 146px; /* Exact PS Studios widget width */
+  position: relative;
+  z-index: 2;
+}
+
+/* Fluid responsive adjustments to prevent overlaps as cards shrink */
+@media (max-width: 1300px) {
+  .steps__copy {
+    max-width: 100%;
+    font-size: clamp(16px, 1.7vw, 21px);
+  }
+  .steps__num {
+    font-size: clamp(32px, 3.5vw, 42px);
+    opacity: 0.7; /* Make the outline slightly softer when text overlaps */
+  }
 }
 
 /* ----- Decorative bottom corner accent ----- */

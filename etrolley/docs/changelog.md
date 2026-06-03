@@ -7,6 +7,8 @@
 - **Fixed Steps CTA Hover Background Overflow and Alignment on Tablet/Mobile**:
   - Changed `.steps__cta` position from `static` to `relative` and added `left: auto` under the `@media (max-width: 1100px)` and `@media (max-width: 768px)` breakpoints.
   - This ensures that the absolute-positioned hover background circle (`.steps__cta-bg`) is contained relative to the button boundary, and resets the desktop `left: 62.5%` absolute offset so the button aligns correctly on the left under the first column of cards.
+  - Resolved steps card text overlap with background numbers (`03`/`04`) on intermediate responsive viewports (1100px - 1300px) by setting `z-index: 2` on `.steps__copy` (text) and `z-index: 1` on `.steps__num` (number) so the text sits on top.
+  - Sized down font-size dynamically and set `max-width: 100%` under `1300px` to allow fluid text wrapping and prevent overlaps.
 
 # 2026-06-03 14:47
 
