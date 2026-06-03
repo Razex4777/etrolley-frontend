@@ -145,7 +145,7 @@
     margin-left: -280px; /* Shift rail left to align on top of the 'y' of the watermark */
   }
   .hero__content {
-    padding-top: 100px; /* Shift headline and button downwards to align with the footnote */
+    padding-top: 160px; /* Shift headline and button further down to match Figma vertical positioning */
   }
 }
 
