@@ -69,7 +69,25 @@
   opacity: 0.85; /* Highly visible bold white text matching user's image exactly */
   mix-blend-mode: normal; /* Normal blend mode so the solid white pops */
   filter: drop-shadow(0 15px 35px rgba(18, 18, 18, 0.08)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.04));
-}/* ---------- Inner grid ---------- */
+}
+
+.hero__watermark-text {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font-family: var(--font-arabic);
+  font-weight: 900;
+  font-size: clamp(100px, 16vw, 300px);
+  color: var(--color-white);
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  opacity: 0.85;
+  filter: drop-shadow(0 15px 35px rgba(18, 18, 18, 0.08)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.04));
+  white-space: nowrap;
+}
+
+/* ---------- Inner grid ---------- */
 .hero__inner {
   position: relative;
   display: grid;
@@ -139,10 +157,10 @@
     width: 380px;
     font-size: 20px;
     line-height: 27.4px;
-    margin-left: 8px; /* 125px - 117px = 8px offset to the right */
+    margin-left: -50px; /* Shift validate text further left */
   }
   .hero__rail {
-    margin-left: -280px; /* Shift rail left to align on top of the 'y' of the watermark */
+    margin-left: -470px; /* Shift rail left to align on top of the 'y' of the watermark */
   }
   .hero__content {
     padding-top: 160px; /* Shift headline and button further down to match Figma vertical positioning */
@@ -169,7 +187,7 @@
   display: flex;
   flex-direction: column;
   gap: clamp(14px, 1.5vw, 28px);
-  padding-top: clamp(8px, 1vw, 18px);
+  padding-top: clamp(15px, 2vw, 40px);
 }
 
 .hero__dream-pill {

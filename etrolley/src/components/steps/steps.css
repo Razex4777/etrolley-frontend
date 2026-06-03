@@ -11,7 +11,7 @@
 
 .steps {
   position: relative;
-  padding: clamp(80px, 8.5vw, 150px) 0 clamp(60px, 6.5vw, 120px);
+  padding: 140px 0 clamp(60px, 6.5vw, 120px); /* Exact PS Studios padding-top: 140px */
   background: #000000;
   overflow: clip;
   isolation: isolate;
@@ -26,7 +26,7 @@
   position: relative;
   max-width: var(--canvas-w);
   margin: 0 auto;
-  padding: 0 clamp(24px, 3.5vw, 70px);
+  padding: 0 clamp(48px, 7vw, 120px); /* Generous left/right breathing room */
 }
 
 /* ---------- Eyebrow ---------- */
@@ -40,7 +40,7 @@
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: clamp(28px, 2.6vw, 44px);
-  margin-inline-start: clamp(60px, 8vw, 160px);
+  margin-inline-start: 0;
 }
 
 .steps__slider {
@@ -93,17 +93,17 @@
   z-index: 3;
 }
 
-/* ---------- Headline ---------- */
+/* ---------- Headline ---------- PS Studios: OUR=70px/weight500/ls2px, CREATIVE=gray, PROCESS=accent */
 .steps__title {
   font-family: var(--font-unbounded), var(--font-arabic);
-  font-weight: 900;
-  font-size: clamp(32px, 3.8vw, 54px); /* Slightly reduced high-impact header */
+  font-weight: 500; /* Exact PS Studios: 500 */
+  font-size: clamp(40px, 5.5vw, 70px); /* Exact PS Studios: 70px */
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: 2px; /* Exact PS Studios: 2px */
   margin-bottom: clamp(20px, 2.6vw, 40px);
   max-width: 800px;
   text-transform: uppercase;
-  margin-inline-start: clamp(60px, 8vw, 160px);
+  margin-inline-start: 0;
 }
 
 .steps__title .line {
@@ -116,50 +116,51 @@
   padding: 4px 0;
 }
 
+/* OUR: outlined — color matches black bg, only stroke shows */
 .steps__title .line:nth-child(1) .line-inner {
   color: #000000;
   -webkit-text-stroke: 1.5px var(--color-white);
   paint-order: stroke fill;
 }
 
+/* CREATIVE: gray (PS Studios: rgb(170,170,170)) */
 .steps__title .line:nth-child(2) .line-inner {
-  color: #8E8E93; /* Premium cool gray */
+  color: rgb(170, 170, 170);
 }
 
+/* PROCESS: white accent, same size as title */
 .steps__title .line:nth-child(3) .line-inner {
-  font-size: 0.48em;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-size: 1em; /* Same size as OUR/CREATIVE — no shrinking */
+  font-weight: 500;
+  letter-spacing: 2px;
   color: var(--color-white);
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 /* ---------- Card grid ---------- */
 .steps__grid {
-  --steps-gap: clamp(32px, 3.5vw, 64px);
+  --steps-gap: 25px; /* Exact PS Studios gap */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--steps-gap); /* Increased gaps to space cards further apart */
+  gap: var(--steps-gap);
   position: relative;
   align-items: end;
   margin-bottom: clamp(56px, 5.6vw, 100px);
-  /* Reduce padding to move the cards up, closer to the title */
   padding-top: 20px;
-  max-width: 1480px; /* Increased card grid max-width to increase card size a bit */
-  margin-inline-start: 0; /* Normal aligned position */
+  margin-inline-start: 0;
 }
 
 .steps__card {
   position: relative;
   background: #161616;
-  border-radius: 25px; /* Explicit 25px border-radius */
-  padding: clamp(20px, 1.8vw, 30px);
+  border-radius: 20px; /* Exact PS Studios border-radius */
+  padding: 12%; /* Exact PS Studios padding */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  min-height: auto;
-  aspect-ratio: 360 / 356; /* Standard aspect ratio */
+  justify-content: space-between; /* Exact PS Studios justify-content */
+  aspect-ratio: 1 / 1; /* Perfect square */
+  min-height: unset;
   overflow: hidden;
   isolation: isolate;
   border: 2px solid rgba(255, 255, 255, 0.08);
@@ -167,32 +168,36 @@
 
 @media (min-width: 1101px) {
   .steps__grid {
-    grid-template-columns: repeat(4, 360px);
-    margin-inline-start: 68px; /* Aligned exactly at 68px left position */
+    grid-template-columns: repeat(4, 1fr); /* Fluid fill like PS Studios */
+    margin-inline-start: 0;
   }
   .steps__card {
-    width: 360px;
-    height: 356px;
+    width: 100%;
+  }
+  .steps__eyebrow,
+  .steps__title {
+    margin-inline-start: 0; /* Aligned with card 01 left edge */
   }
 }
 
-/* Card 03 shifted upward on desktop to clear room for the circular CTA */
+/* Card 03 elevated using transform (works in CSS grid, unlike margin-top which PS Studios uses in flex-row) */
 .steps__card--high {
-  transform: translateY(-200px); /* Shifted higher up to avoid overlapping text */
+  transform: translateY(-235px); /* Matches PS Studios -235px elevation exactly */
+  margin-top: 0;
 }
 
-/* Outlined number (top right) */
+/* Outlined number (top right) — PS Studios: 45px, weight 600, color matches bg */
 .steps__num {
   position: absolute;
   top: clamp(16px, 1.4vw, 24px);
   right: clamp(18px, 1.6vw, 28px);
-  font-family: var(--font-unbounded), var(--font-arabic); /* Keep the premium blocky brand font */
-  font-weight: 700;
-  font-size: clamp(32px, 3vw, 48px);
+  font-family: var(--font-unbounded), var(--font-arabic);
+  font-weight: 600; /* Exact PS Studios: 600 */
+  font-size: 45px; /* Exact PS Studios: 45px */
   line-height: 1;
   letter-spacing: 0.02em;
-  color: #161616; /* Fill matches the card background exactly as in 1st image */
-  -webkit-text-stroke: 1.5px #FFFFFF; /* High-contrast bright solid white outline */
+  color: #161616; /* Fill matches card background — only stroke is visible */
+  -webkit-text-stroke: 1.5px #FFFFFF;
   paint-order: stroke fill;
   pointer-events: none;
   user-select: none;
@@ -213,15 +218,16 @@
   height: 100%;
 }
 
-/* ----- Copy ----- */
+/* ----- Copy ----- PS Studios: 24px, line-height 1.2em, max-width 146px */
 .steps__copy {
-  margin-top: auto;
+  margin-top: auto; /* Push text to bottom of card like PS Studios */
   font-family: var(--font-arabic);
   font-weight: 800;
-  font-size: clamp(15px, 1.3vw, 22px); /* Slightly reduced font size for smaller squares */
-  line-height: 1.32;
+  font-size: 24px; /* Exact PS Studios: 24px */
+  line-height: 1.2em; /* Exact PS Studios: 1.2em */
   letter-spacing: -0.005em;
   color: var(--color-white);
+  max-width: 146px; /* Exact PS Studios widget width */
 }
 
 /* ----- Decorative bottom corner accent ----- */
@@ -236,13 +242,14 @@
 }
 
 .steps__cta {
-  /* Positioned precisely under Card 03 */
+  /* Centered under Card 03 */
   position: absolute;
-  left: calc(2 * 360px + 2 * var(--steps-gap) + 180px);
-  bottom: -60px; /* Shifted lower to avoid overlapping Card 3 */
+  left: calc(50% * (2/4) * 2 + (2 * var(--steps-gap)) + (1fr / 2));
+  left: calc(62.5% + var(--steps-gap));
+  bottom: -55px;
   transform: translateX(-50%);
-  width: 190px;
-  height: 190px;
+  width: 150px; /* Exact PS Studios size */
+  height: 150px; /* Exact PS Studios size */
   background: transparent;
   color: var(--color-white);
   border: 1.5px solid rgba(255, 255, 255, 0.4);
@@ -312,17 +319,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* Figma: Outfit Bold 700, white */
   font-family: 'Outfit', var(--font-display), sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 34px;
-  line-height: 36px;
+  font-size: 22px; /* Scaled to 150px circle */
+  line-height: 26px;
   letter-spacing: 0%;
   text-align: center;
   color: inherit;
   transition: color 0.25s ease;
-  width: 90px;
+  width: 80px;
 }
 
 .steps__cta-text span {
@@ -417,7 +423,7 @@
     margin-inline-start: 0;
   }
   .steps__card { min-height: auto; }
-  .steps__card--high { transform: none; }
+  .steps__card--high { transform: none; margin-top: 0; }
   .steps__cta {
     position: static;
     transform: none;

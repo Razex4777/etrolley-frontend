@@ -75,6 +75,11 @@
   text-align: right;
 }
 
+[dir='rtl'] .hero__watermark-text {
+  right: -50px;
+  left: auto;
+}
+
 [dir='rtl'] .hero__image img {
   transform: translate(120px, -70px);
 }
@@ -104,7 +109,11 @@
 @media (min-width: 1181px) {
   [dir='rtl'] .hero__rail {
     margin-left: 0;
-    margin-right: -280px; /* Shift rail right in RTL to align on top of the 'e' of the watermark */
+    margin-right: -470px; /* Shift rail right in RTL to align appropriately */
+  }
+  [dir='rtl'] .hero__validate {
+    margin-left: 0;
+    margin-right: -50px;
   }
 }
 
