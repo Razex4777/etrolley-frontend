@@ -469,6 +469,7 @@
     position: relative;
     transform: none;
     left: auto;
+    bottom: auto;
     width: 130px;
     height: 130px;
     margin: 36px 0 0;   /* flush left with clear gap */
@@ -553,6 +554,7 @@
     position: relative;
     transform: none;
     left: auto;
+    bottom: auto;
     width: 140px;
     height: 140px;
     justify-self: start;
