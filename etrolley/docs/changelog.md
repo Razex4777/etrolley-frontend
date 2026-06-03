@@ -2,11 +2,11 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
-# 2026-06-03 12:57
+# 2026-06-03 13:00
 
-- **Resized and Shifted Background Watermark**:
-  - Increased `.hero__watermark`'s width clamp to `clamp(740px, 92vw, 1750px)` to expand the background "e-trolley" watermark text.
-  - Shifted the watermark to the left by setting `left: -40px` relative to `.hero__content` on desktop to allow its lettering to extend beyond the start of the headline and button.
+- **Enlarged and Shifted Background Watermark**:
+  - Increased `.hero__watermark`'s width clamp to `clamp(840px, 105vw, 2000px)` to expand the background "e-trolley" watermark text significantly on all screens.
+  - Shifted the watermark further left by setting `left: -120px` relative to `.hero__content` on desktop to allow its lettering to extend beyond the start of the headline and button.
   - Removed the `<div class="hero__dream-pill">` pill from both `hero.en.html` and `hero.ar.html`.
   - Shortened the social rail label from "Follow us" to "Follow" (and "تابع" in Arabic).
 

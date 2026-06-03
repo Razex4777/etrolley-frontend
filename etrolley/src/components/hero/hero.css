@@ -59,9 +59,9 @@
 /* ---------- Brand watermark behind headline (3D image from Figma) ---------- */
 .hero__watermark {
   position: absolute;
-  left: -40px; /* Shifted left to extend beyond the headline and button start */
+  left: -120px; /* Shifted left to extend beyond the headline and button start */
   top: 10px;
-  width: clamp(740px, 92vw, 1750px);
+  width: clamp(840px, 105vw, 2000px);
   height: auto;
   pointer-events: none;
   user-select: none;
