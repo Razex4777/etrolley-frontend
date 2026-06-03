@@ -61,7 +61,7 @@
   position: absolute;
   left: 0; /* Aligned exactly with the start of the headline and CTA button */
   top: 10px;
-  width: clamp(540px, 68vw, 1320px);
+  width: clamp(680px, 85vw, 1600px);
   height: auto;
   pointer-events: none;
   user-select: none;
@@ -143,7 +143,7 @@
     margin-left: 8px; /* 125px - 117px = 8px offset to the right */
   }
   .hero__rail {
-    margin-left: -140px; /* Shift rail left to align on top of the 'y' of the watermark */
+    margin-left: -280px; /* Shift rail left to align on top of the 'y' of the watermark */
   }
 }
 

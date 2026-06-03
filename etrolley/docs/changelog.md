@@ -2,11 +2,18 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:56
+
+- **Increased Watermark Size, Removed DreamWD Pill, and Shortened Follow Label**:
+  - Increased the background `.hero__watermark` width clamp in `hero.css` to `clamp(680px, 85vw, 1600px)` (up from `540px, 68vw, 1320px`) to enlarge the watermark text dynamically on all viewport widths.
+  - Removed the `<div class="hero__dream-pill">` pill from both `hero.en.html` and `hero.ar.html`.
+  - Shortened the social rail label from "Follow us" to "Follow" (and "تابع" in Arabic).
+
 # 2026-06-03 12:51
 
 - **Aligned Follow Rail to Watermark Letter "y"**:
-  - Added a negative margin-left offset (`margin-left: -140px`) on `.hero__rail` under the desktop media query. This shifts the vertical "Follow us" rail leftwards to sit directly on top of the ending letter "y" of the background "e-trolley" watermark as shown in Figma.
-  - Implemented the corresponding RTL mirrored override (`margin-right: -140px`) in `_rtl.css`.
+  - Added a negative margin-left offset (`margin-left: -280px`) on `.hero__rail` under the desktop media query. This shifts the vertical "Follow us" rail leftwards to sit directly on top of the ending letter "y" of the background "e-trolley" watermark as shown in Figma.
+  - Implemented the corresponding RTL mirrored override (`margin-right: -280px`) in `_rtl.css`.
 
 # 2026-06-03 12:47
 
