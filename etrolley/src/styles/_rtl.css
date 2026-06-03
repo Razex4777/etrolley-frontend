@@ -109,11 +109,11 @@
 @media (min-width: 1181px) {
   [dir='rtl'] .hero__rail {
     margin-left: 0;
-    margin-right: -470px; /* Shift rail right in RTL to align appropriately */
+    margin-right: 0;
   }
   [dir='rtl'] .hero__validate {
     margin-left: 0;
-    margin-right: -50px;
+    margin-right: 0;
   }
 }
 

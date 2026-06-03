@@ -26,7 +26,7 @@
   position: relative;
   max-width: var(--canvas-w);
   margin: 0 auto;
-  padding: 0 clamp(100px, 13vw, 240px); /* More breathing room left/right */
+  padding: 0 clamp(40px, 8vw, 240px); /* Reduced base for better card sizing at mid widths */
 }
 
 /* ---------- Eyebrow ---------- */
@@ -182,9 +182,19 @@
 
 /* Card 03 elevated using transform (works in CSS grid, unlike margin-top which PS Studios uses in flex-row) */
 .steps__card--high {
-  transform: translateY(-235px); /* Matches PS Studios -235px elevation exactly */
+  /* Default for large screens (1920px): -235px lifts card ~69% of height */
+  transform: translateY(-235px);
   margin-top: 0;
 }
+
+/* At mid-range desktop (1101-1500px): cards shrink to ~180-270px.
+   Clamp the elevation so card 03 never overshoots into the title. */
+@media (min-width: 1101px) and (max-width: 1500px) {
+  .steps__card--high {
+    transform: translateY(-110px);
+  }
+}
+
 
 /* Outlined number (top right) — PS Studios: 45px, weight 600, color matches bg */
 .steps__num {
@@ -304,7 +314,6 @@
 
 /* Touch/tap feedback — clean press effect without the fill animation */
 .steps__cta:active {
-  transform: translateX(-50%) scale(0.92);
   border-color: rgba(255, 255, 255, 0.7);
 }
 
