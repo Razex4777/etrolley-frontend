@@ -26,16 +26,16 @@
         </div>
         <div class="designs__header-right">
           <div class="designs__arrows" role="group" aria-label="أدوات التحكم في العرض" data-reveal="scale" data-reveal-delay="0.3">
-            <a class="designs__arrow" href="#design-card-0" data-dir="prev" aria-label="التصاميم السابقة">
+            <button class="designs__arrow" type="button" data-dir="prev" aria-label="التصاميم السابقة">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path class="designs__arrow-path-prev" d="M14 6 L8 12 L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </a>
-            <a class="designs__arrow" href="#design-card-4" data-dir="next" aria-label="التصاميم التالية">
+            </button>
+            <button class="designs__arrow" type="button" data-dir="next" aria-label="التصاميم التالية">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path class="designs__arrow-path-next" d="M10 6 L16 12 L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </header>
@@ -97,4 +97,24 @@
       </div>
     </div>
   </div>
+  <script>
+    (function() {
+      var track = document.getElementById('designs-track');
+      var arrows = document.querySelectorAll('[data-component="designs"] .designs__arrow');
+      if (!track || !arrows.length) return;
+      arrows.forEach(function(arrow) {
+        arrow.addEventListener('click', function(e) {
+          e.preventDefault();
+          var dir = arrow.getAttribute('data-dir');
+          var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+          var scrollAmount = 282; // 242px card width + 40px gap
+          if (dir === 'next') {
+            track.scrollBy({ left: isRTL ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: isRTL ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
 </section>

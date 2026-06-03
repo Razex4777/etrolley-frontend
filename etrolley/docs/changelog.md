@@ -2,6 +2,21 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:02
+
+- **Enabled Sticky Parallax Footer Reveal on Mobile**:
+  - Moved the core reveal parallax stylesheet properties (`position: sticky`, `bottom: 0`, and container `z-index` layering) out of the desktop-only `min-width: 981px` media query inside `_footer_reveal.css` to allow the premium garage reveal scroll effect to run on mobile viewports.
+  - Mirrored the interactive carousel scroll scripts and arrow preventDefault actions into `designs.ar.html` to align its functionality with the English version.
+  - Adjusted support action buttons `.support__btn` to size down gracefully to `56px` on tablet (`max-width: 980px`) and `48px` on mobile (`max-width: 640px`) to prevent oversized icons.
+
+# 2026-06-03 11:58
+
+- **Polished Homepage Support Section Mobile Layout**:
+  - Completely hid the overlapping absolute trolley/cart line art illustrations (`.support__cart-back` and `.support__cart-front`) on screens under `980px` to resolve the visual text overlap corruption.
+  - Centered all text content (`text-align: center`) and social contact buttons (`justify-content: center`) inside `.support__card`.
+  - Scaled down the decorative double circles in the eyebrow slider to matching compact `18px` knob sizes to fit mobile layouts.
+  - Reduced section padding (`30px` top and `40px` bottom) and cleared negative margin offsets.
+
 # 2026-06-03 11:57
 
 - **Polished Homepage Designs Section Layout on Mobile**:
