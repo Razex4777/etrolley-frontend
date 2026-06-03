@@ -2,10 +2,11 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
-# 2026-06-03 12:56
+# 2026-06-03 12:57
 
-- **Increased Watermark Size, Removed DreamWD Pill, and Shortened Follow Label**:
-  - Increased the background `.hero__watermark` width clamp in `hero.css` to `clamp(680px, 85vw, 1600px)` (up from `540px, 68vw, 1320px`) to enlarge the watermark text dynamically on all viewport widths.
+- **Resized and Shifted Background Watermark**:
+  - Increased `.hero__watermark`'s width clamp to `clamp(740px, 92vw, 1750px)` to expand the background "e-trolley" watermark text.
+  - Shifted the watermark to the left by setting `left: -40px` relative to `.hero__content` on desktop to allow its lettering to extend beyond the start of the headline and button.
   - Removed the `<div class="hero__dream-pill">` pill from both `hero.en.html` and `hero.ar.html`.
   - Shortened the social rail label from "Follow us" to "Follow" (and "تابع" in Arabic).
 
