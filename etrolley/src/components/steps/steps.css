@@ -416,80 +416,200 @@
 
 /* =================== Responsive =================== */
 
+/* ─────────────────────────────────────────────────────
+   TABLET  (769px – 1100px)
+   Layout: 2 × 2 grid | CTA left-aligned below cards
+   Reference: second screenshot
+───────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .steps__eyebrow,
   .steps__title {
     margin-inline-start: 0;
   }
+
   .steps__grid {
     grid-template-columns: repeat(2, 1fr);
     align-items: stretch;
+    gap: 20px;
     padding-top: 0;
     margin-inline-start: 0;
+    /* Remove the large negative margin-bottom reserved for the elevated card */
+    margin-bottom: clamp(40px, 5vw, 80px);
   }
-  .steps__card { min-height: auto; }
-  .steps__card--high { transform: none; margin-top: 0; }
+
+  /* Square cards maintained at tablet for clean 2×2 symmetry */
+  .steps__card {
+    min-height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Card 03 no longer elevated — flat in grid */
+  .steps__card--high {
+    transform: none;
+    margin-top: 0;
+  }
+
+  /* CTA: static, LEFT-aligned (not centered), own row, matching tablet ref */
   .steps__cta {
     position: static;
     transform: none;
-    width: 180px;
-    height: 180px;
-    margin: 32px auto 0;
+    width: 160px;
+    height: 160px;
+    margin: 24px 0 0;   /* flush left */
     grid-column: 1 / -1;
+    justify-self: start; /* ← LEFT, not centered */
   }
+
   .steps__cta-text {
-    font-size: 36px;
-    line-height: 40px;
-    width: 90px;
+    font-size: 28px;
+    line-height: 34px;
+    width: 80px;
   }
-  .steps__cta:active {
-    transform: scale(0.92);
-  }
+
+  .steps__cta:active { transform: scale(0.93); }
+
   .steps__footer {
     flex-direction: column;
     align-items: center;
-    gap: 32px;
-    margin-top: 48px;
+    gap: 28px;
+    margin-top: 40px;
   }
+
   .steps__promo {
     margin-inline-start: 0;
     margin-inline-end: 0;
   }
+
   .steps__paragraph {
     width: 100%;
-    max-width: 720px;
+    max-width: 680px;
     padding-inline-start: 0;
     margin-top: 0;
   }
 }
 
-@media (max-width: 880px) {
-  .steps { padding: 64px 0; }
+/* ─────────────────────────────────────────────────────
+   MOBILE  (≤ 768px)
+   Layout : 1 column | cards RECTANGULAR (not square)
+            CTA left-aligned between card 03 and 04
+   Reference: PS Studios first screenshot
+───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .steps {
+    padding: 60px 0 48px;
+  }
+
+  .steps__inner {
+    padding: 0 clamp(20px, 5vw, 40px);
+  }
+
   .steps__title {
-    font-size: clamp(28px, 8vw, 48px);
+    font-size: clamp(32px, 9vw, 52px);
     overflow-wrap: break-word;
     word-break: break-word;
     max-width: 100%;
+    margin-bottom: 24px;
   }
-  .steps__grid { grid-template-columns: 1fr; gap: 18px; }
-  .steps__card { min-height: auto; }
-  
-  /* Order grid items to position CTA button between Card 3 and Card 4 on mobile */
+
+  .steps__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+
+  /* Rectangular cards on mobile — PS Studios style (landscape, not square) */
+  .steps__card {
+    aspect-ratio: unset;      /* Remove square constraint */
+    min-height: 220px;        /* Comfortable landscape height */
+    padding: 24px 28px;
+    justify-content: flex-end; /* Text sits at bottom like PS Studios */
+    border-radius: 16px;
+  }
+
+  /* Reorder grid: 01, 02, 03, [CTA], 04 */
   .steps__card[data-step="1"] { order: 1; }
   .steps__card[data-step="2"] { order: 2; }
   .steps__card[data-step="3"] { order: 3; }
+
+  /* CTA sits in its own row between card 03 and 04, left edge */
   .steps__cta {
     order: 4;
-    width: 150px;
-    height: 150px;
+    position: static;
+    transform: none;
+    width: 140px;
+    height: 140px;
     justify-self: start;
-    margin: 24px 0;
-    margin-inline-start: -20px;
+    margin: 20px 0;
+    grid-column: 1;
   }
+
   .steps__cta-text {
-    font-size: 28px;
-    line-height: 32px;
-    width: 80px;
+    font-size: 24px;
+    line-height: 28px;
+    width: 72px;
   }
+
+  .steps__cta:active { transform: scale(0.93); }
+
   .steps__card[data-step="4"] { order: 5; }
+
+  /* Number stays top-right but smaller */
+  .steps__num {
+    font-size: clamp(32px, 8vw, 48px);
+    top: 16px;
+    right: 20px;
+  }
+
+  /* Card text sits at the bottom */
+  .steps__desc {
+    font-size: clamp(16px, 4vw, 20px);
+    line-height: 1.35;
+  }
+
+  .steps__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .steps__promo {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+
+  .steps__paragraph {
+    width: 100%;
+    max-width: 100%;
+    padding-inline-start: 0;
+    margin-top: 0;
+    font-size: clamp(13px, 3.5vw, 16px);
+  }
+}
+
+/* ─────────────────────────────────────────────────────
+   SMALL MOBILE  (≤ 480px)
+   Further tighten sizing
+───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .steps__title {
+    font-size: clamp(28px, 10vw, 40px);
+    letter-spacing: 1px;
+  }
+
+  .steps__card {
+    min-height: 180px;
+    padding: 20px 22px;
+  }
+
+  .steps__cta {
+    width: 120px;
+    height: 120px;
+  }
+
+  .steps__cta-text {
+    font-size: 20px;
+    line-height: 24px;
+    width: 64px;
+  }
 }
