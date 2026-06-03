@@ -212,26 +212,27 @@
   color: var(--color-ink);
   letter-spacing: 0.04em;
 }
-
 .hero__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(240px, 22vw, 380px);
-  height: clamp(52px, 4.2vw, 74px);
-  background: var(--color-primary);
-  color: var(--color-white);
-  font-family: var(--font-arabic);
+  width: 459px;
+  height: 90px;
+  background: #316C6B;
+  color: #FFFFFF;
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
   font-weight: 700;
-  font-size: clamp(15px, 1.1vw, 20px);
-  border-radius: var(--r-lg);
+  font-size: 24px;
+  line-height: 16px;
+  border-radius: 15px;
+  padding: 18.5px 22.2px;
+  box-sizing: border-box;
   box-shadow: var(--shadow-cta);
   position: relative;
   overflow: hidden;
   transition: transform var(--dur-base) var(--ease-out-expo),
               box-shadow var(--dur-base) var(--ease-out-expo);
 }
-
 .hero__cta::before {
   content: '';
   position: absolute;

@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:33
+
+- **Updated Homepage Hero CTA Button Style to Exact Figma Specs**:
+  - Resized the main CTA link `.hero__cta` in `hero.css` to exact dimensions: `width: 459px; height: 90px;` with `border-radius: 15px;`.
+  - Added precise internal paddings: `18.5px` top/bottom and `22.2px` left/right.
+  - Set bold `24px` font size with `16px` line-height for typography layer on the text.
+  - Updated English button content to "build your store now" and Arabic translation to "أنشئ متجرك الآن".
+
 # 2026-06-03 12:03
 
 - **Scoped Sticky Parallax Footer Reveal Back to Desktop Only**:
