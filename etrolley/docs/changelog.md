@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:35
+
+- **Aligned Homepage Hero QR Code & Validation Text to Figma Offsets**:
+  - Shifted the entire left hero aside container `.hero__aside` to the right using dynamic layout padding to center it according to Figma's horizontal bounds.
+  - Sized the QR wrapper `.hero__qr` to exact width/height parameters (`305px × 388px`) on desktop viewports.
+  - Sized the validation footnote `.hero__validate` to a clean width of `345px` with a matching `8px` rightward offset relative to the QR block.
+  - Formatted the footnote text to `20px` font-size and `27.4px` line-height with 'Noto Sans Arabic' regular weight, and updated the English copy.
+  - Ensured fluid responsive overrides for the aside components are preserved on mobile/tablet viewports.
+
 # 2026-06-03 12:33
 
 - **Updated Homepage Hero CTA Button Style to Exact Figma Specs**:

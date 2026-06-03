@@ -93,22 +93,22 @@
   display: flex;
   flex-direction: column;
   gap: clamp(60px, 7vw, 110px);
+  padding-left: clamp(20px, 2.5vw, 47px);
 }
 
 .hero__qr {
-  width: 100%;
-  max-width: clamp(140px, 14vw, 220px);
+  width: 305px;
+  height: 388px;
   background: var(--color-white);
   border: 1px solid rgba(18, 18, 18, 0.08);
   border-radius: 4px;
   overflow: hidden;
-  aspect-ratio: 305 / 388;
 }
 
 .hero__qr img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
@@ -116,15 +116,14 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-family: var(--font-arabic);
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
   font-weight: 400;
-  font-size: clamp(11px, 0.78vw, 14px);
-  line-height: 1.5;
+  font-size: 20px;
+  line-height: 27.4px;
   color: var(--color-text);
-  max-width: 240px;
-}
-
-.hero__validate-icon {
+  width: 345px;
+  margin-left: 8px; /* 125px - 117px = 8px offset to the right */
+}.hero__validate-icon {
   flex-shrink: 0;
   margin-top: -1px;
   width: 26px;
@@ -496,8 +495,15 @@
   .hero__image { display: none; }
 
   /* ----- QR card ----- */
+  .hero__aside {
+    padding-left: 0 !important;
+  }
+
   .hero__qr {
-    max-width: clamp(240px, 60vw, 320px);
+    width: 100% !important;
+    height: auto !important;
+    max-width: clamp(240px, 60vw, 320px) !important;
+    aspect-ratio: 305 / 388 !important;
     border-radius: 6px;
   }
 
@@ -508,14 +514,14 @@
     justify-content: center;
     text-align: left;
     gap: 10px;
-    max-width: 560px;
-    font-size: 13px;
-    line-height: 1.5;
+    width: auto !important;
+    max-width: 560px !important;
+    margin-left: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
   }
 
-  .hero__validate-icon { width: 22px; height: 22px; margin-top: 0; }
-
-  /* ----- Horizontal Follow rail ----- */
+  .hero__validate-icon { width: 22px; height: 22px; margin-top: 0; }  /* ----- Horizontal Follow rail ----- */
   .hero__rail {
     flex-direction: row;
     align-items: center;
