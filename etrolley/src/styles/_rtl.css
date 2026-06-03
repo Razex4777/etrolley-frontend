@@ -101,6 +101,13 @@
   flex-direction: row-reverse;
 }
 
+@media (min-width: 1181px) {
+  [dir='rtl'] .hero__rail {
+    margin-left: 0;
+    margin-right: -140px; /* Shift rail right in RTL to align on top of the 'e' of the watermark */
+  }
+}
+
 /* The "Send a message" side CTA is fixed to the right edge in LTR.
    In RTL flip it to the left edge with mirrored rotation so the
    text rises in a culturally natural direction. */

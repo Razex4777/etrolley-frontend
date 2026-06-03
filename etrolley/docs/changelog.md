@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-03 12:51
+
+- **Aligned Follow Rail to Watermark Letter "y"**:
+  - Added a negative margin-left offset (`margin-left: -140px`) on `.hero__rail` under the desktop media query. This shifts the vertical "Follow us" rail leftwards to sit directly on top of the ending letter "y" of the background "e-trolley" watermark as shown in Figma.
+  - Implemented the corresponding RTL mirrored override (`margin-right: -140px`) in `_rtl.css`.
+
 # 2026-06-03 12:47
 
 - **Aligned Footnote Vertically with the CTA Button**:

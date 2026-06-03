@@ -142,6 +142,9 @@
     line-height: 27.4px;
     margin-left: 8px; /* 125px - 117px = 8px offset to the right */
   }
+  .hero__rail {
+    margin-left: -140px; /* Shift rail left to align on top of the 'y' of the watermark */
+  }
 }
 
 .hero__validate-icon {
