@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-04 18:53
+
+- **Updated Stacking Breakpoint and Swapped Mobile/Tablet Card Themes in "What Makes Us Different" Section**:
+  - Increased card stacking breakpoint from `max-width: 768px` to `max-width: 1024px` to ensure iPad and smaller landscape/tablet views display stacked layouts (photo on top, text card at bottom) instead of squeezed desktop columns.
+  - Swapped mobile/tablet slide panel background colors: Slide 1, 3, 5 are now White theme, and Slide 2, 4 are Teal theme (matching the mobile Figma designs).
+  - Fixed description text alignments on mobile/tablet stack: set English text to align left in `different.css`, and Arabic text to align right inside `_rtl.css` with a mirrored `flex-direction: row-reverse` layout.
+
 # 2026-06-04 18:45
 
 - **Resolved Steps Section Circle CTA Overlaps and Refactored Codebase**:

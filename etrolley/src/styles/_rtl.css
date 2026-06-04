@@ -246,12 +246,12 @@
    right for LTR; flip it to the left so it reads correctly in RTL.
    (This rule already exists in different.css scoped to max-width:768;
    we mirror it here for the desktop-default cascade safety.) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   [dir='rtl'] .different__slide-desc {
-    text-align: left;
+    text-align: right;
   }
   [dir='rtl'] .different__slide-foot {
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
 }
 
