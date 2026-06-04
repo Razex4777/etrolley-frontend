@@ -105,14 +105,16 @@ etrolley/
     │   │   └── 📄 services.ar.html        ( Static Arabic services markup )
     │   │
     │   ├── 📁 steps/                      ( Our Creative Steps component with 4 stacked dark grids and paragraph )
-    │   │   ├── 📄 steps.css               ( Outlines, card placement, magnetic "LET'S START" CTA, and promo smile )
+    │   │   ├── 📄 steps.css               ( Style aggregator importing base and responsive sheets )
+    │   │   ├── 📄 _steps_base.css         ( Base layouts, outlines, card placements, and desktop circle CTA offsets )
+    │   │   ├── 📄 _steps_responsive.css   ( Media query responsive overrides for tablet 2x2 grids and mobile stack reordering )
     │   │   ├── 📄 steps.en.html           ( Static English steps markup )
     │   │   └── 📄 steps.ar.html           ( Static Arabic steps markup )
     │   │
     │   ├── 📁 clients/                    ( Carousel of renowned client WebP cards with partners banner )
     │   │   ├── 📄 clients.css             ( Carousel layout, rounded cards, cover images, and CSS scroll snapping )
     │   │   ├── 📄 clients.en.html         ( Static English clients markup with scroll-snap anchor links )
-    │   │   └── 📄 clients.ar.html         ( Static Arabic clients markup with scroll-snap anchor links )
+    │   │   └── 📄 clients.ar.html         ( Arabic static clients markup with scroll-snap anchor links )
     │   │
     │   ├── 📁 designs/                    ( Carousel of distinctive store template design card categories )
     │   │   ├── 📄 designs.css             ( Designs layout, cards hovers, absolute watermark styling )

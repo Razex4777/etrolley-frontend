@@ -1,0 +1,442 @@
+/* =============================================================
+ * Our Creative Steps — bold, light, psstudios-grade.
+ *
+ * Layout intent (desktop):
+ *   - Headline left-aligned, very large (~96px)
+ *   - 4 columns grid; Card 03 floats UP ~80px ("popped" feel)
+ *   - LET'S START circle sits between Card 03 and the row below it,
+ *     half-on/half-off the grid baseline
+ *   - Paragraph aligned right at section bottom
+ * ============================================================= */
+
+.steps {
+  position: relative;
+  padding: 140px 0 clamp(60px, 6.5vw, 120px); /* Exact PS Studios padding-top: 140px */
+  background: #000000;
+  overflow: clip;
+  isolation: isolate;
+  color: var(--color-white);
+}
+
+.steps__bg {
+  display: none;
+}
+
+.steps__inner {
+  position: relative;
+  max-width: var(--canvas-w);
+  margin: 0 auto;
+  padding: 0 clamp(40px, 8vw, 240px); /* Reduced base for better card sizing at mid widths */
+}
+
+/* ---------- Eyebrow ---------- */
+.steps__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Noto Sans Arabic', var(--font-arabic);
+  font-weight: 700;
+  font-size: clamp(12px, 1vw, 17px);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: clamp(28px, 2.6vw, 44px);
+  margin-inline-start: 0;
+}
+
+.steps__slider {
+  position: relative;
+  display: inline-block;
+  /* Group 109 in Figma = 175.63 × 25 */
+  width: 176px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.steps__slider-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--color-primary-light);
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+/* Two overlapping circles — sand outline behind (left), teal outline in front (right).
+   Sized at 36px with 4px borders, hollow black fill, centered in the middle of the track. */
+.steps__slider-knob {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 9px);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #000000;
+  border: 4px solid var(--color-sand);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.steps__slider-knob::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #000000;
+  border: 4px solid var(--color-primary);
+  /* Overlaps perfectly at 50% width offset (18px) to match second design */
+  transform: translate(calc(-50% + 18px), -50%);
+  z-index: 3;
+}
+
+/* ---------- Headline ---------- PS Studios: OUR=70px/weight500/ls2px, CREATIVE=gray, PROCESS=accent */
+.steps__title {
+  font-family: var(--font-unbounded), var(--font-arabic);
+  font-weight: 500; /* Exact PS Studios: 500 */
+  font-size: clamp(40px, 5.5vw, 70px); /* Exact PS Studios: 70px */
+  line-height: 1.05;
+  letter-spacing: 2px; /* Exact PS Studios: 2px */
+  margin-bottom: clamp(20px, 2.6vw, 40px);
+  max-width: 800px;
+  text-transform: uppercase;
+  margin-inline-start: 0;
+}
+
+.steps__title .line {
+  display: block;
+  overflow: hidden;
+}
+
+.steps__title .line-inner {
+  display: block;
+  padding: 4px 0;
+}
+
+/* OUR: outlined — color matches black bg, only stroke shows */
+.steps__title .line:nth-child(1) .line-inner {
+  color: #000000;
+  -webkit-text-stroke: 1.5px var(--color-white);
+  paint-order: stroke fill;
+}
+
+/* CREATIVE: gray (PS Studios: rgb(170,170,170)) */
+.steps__title .line:nth-child(2) .line-inner {
+  color: rgb(170, 170, 170);
+}
+
+/* PROCESS: white accent, same size as title */
+.steps__title .line:nth-child(3) .line-inner {
+  font-size: 1em; /* Same size as OUR/CREATIVE — no shrinking */
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--color-white);
+  margin-top: 0;
+}
+
+/* ---------- Card grid ---------- */
+.steps__grid {
+  --steps-gap: 25px; /* Exact PS Studios gap */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--steps-gap);
+  position: relative;
+  align-items: end;
+  margin-bottom: clamp(100px, 10vw, 160px); /* Increased to prevent shifted CTA overlap with footer elements */
+  padding-top: 20px;
+  margin-inline-start: 0;
+}
+
+.steps__card {
+  position: relative;
+  background: #161616;
+  border-radius: 20px; /* Exact PS Studios border-radius */
+  padding: 12%; /* Exact PS Studios padding */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Exact PS Studios justify-content */
+  aspect-ratio: 1 / 1; /* Perfect square */
+  min-height: unset;
+  overflow: hidden;
+  isolation: isolate;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 1101px) {
+  .steps__grid {
+    grid-template-columns: repeat(4, 1fr); /* Fluid fill like PS Studios */
+    margin-inline-start: 0;
+  }
+  .steps__card {
+    width: 100%;
+  }
+  .steps__eyebrow,
+  .steps__title {
+    margin-inline-start: 0; /* Aligned with card 01 left edge */
+  }
+}
+
+/* Card 03 elevated using transform (works in CSS grid, unlike margin-top which PS Studios uses in flex-row) */
+.steps__card--high {
+  /* Default for large screens (1920px): -235px lifts card ~69% of height */
+  transform: translateY(-235px);
+  margin-top: 0;
+}
+
+/* At mid-range desktop (1101-1500px): cards shrink to ~180-270px.
+   Clamp the elevation so card 03 never overshoots into the title. */
+@media (min-width: 1101px) and (max-width: 1500px) {
+  .steps__card--high {
+    transform: translateY(-110px);
+  }
+
+  /* Shrink circle CTA and shift lower to completely clear card 3 on narrower desktops */
+  .steps__cta {
+    width: 120px;
+    height: 120px;
+    bottom: -65px;
+  }
+
+  .steps__cta-text {
+    font-size: 18px;
+    line-height: 22px;
+    width: 68px;
+  }
+}
+
+/* Outlined number (top right) — PS Studios: 45px, weight 600, color matches bg */
+.steps__num {
+  position: absolute;
+  top: clamp(16px, 1.4vw, 24px);
+  right: clamp(18px, 1.6vw, 28px);
+  font-family: var(--font-unbounded), var(--font-arabic);
+  font-weight: 600; /* Exact PS Studios: 600 */
+  font-size: 45px; /* Exact PS Studios: 45px */
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #161616; /* Fill matches card background — only stroke is visible */
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  paint-order: stroke fill;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+/* ----- Icon ----- */
+.steps__icon {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(56px, 4.6vw, 72px);
+  height: clamp(56px, 4.6vw, 72px);
+  color: var(--color-primary-light);
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.steps__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ----- Copy ----- PS Studios: 24px, line-height 1.2em, max-width 146px */
+.steps__copy {
+  margin-top: auto; /* Push text to bottom of card like PS Studios */
+  font-family: var(--font-arabic);
+  font-weight: 800;
+  font-size: 24px; /* Exact PS Studios: 24px */
+  line-height: 1.2em; /* Exact PS Studios: 1.2em */
+  letter-spacing: -0.005em;
+  color: var(--color-white);
+  max-width: 146px; /* Exact PS Studios widget width */
+  position: relative;
+  z-index: 2;
+}
+
+/* Fluid responsive adjustments to prevent overlaps as cards shrink */
+@media (max-width: 1300px) {
+  .steps__copy {
+    max-width: 100%;
+    font-size: clamp(16px, 1.7vw, 21px);
+  }
+  .steps__num {
+    font-size: clamp(32px, 3.5vw, 42px);
+    opacity: 0.7; /* Make the outline slightly softer when text overlaps */
+  }
+}
+
+/* ----- Decorative bottom corner accent ----- */
+.steps__corner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, transparent 50%, rgba(255, 255, 255, 0.02) 50%);
+  border-bottom-right-radius: var(--r-xl);
+}
+
+.steps__cta {
+  /* Centered under Card 03 — col3 center = 62.5% in a 4-equal-col grid */
+  position: absolute;
+  left: 62.5%;
+  bottom: -80px; /* Shifted down to clear stretching card content and prevent overlaps */
+  transform: translateX(-50%);
+  width: 150px; /* Exact PS Studios size */
+  height: 150px; /* Exact PS Studios size */
+  background: transparent;
+  color: var(--color-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 4;
+  outline: none;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* Mouse leave uses spring approximation: cubic-bezier with overshoot */
+  /* Spring { mass:1, stiffness:600, damping:15 } → snappy with slight bounce */
+  transition: border-color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              color 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.steps__cta-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center center;
+  /* Mouse leave (scale back to 0) uses spring: snappy with slight bounce */
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+/* Hover fill animation — ONLY on devices with a real pointer (mouse).
+   On touch devices :hover sticks after tap, causing a broken white blob. */
+@media (hover: hover) and (pointer: fine) {
+  .steps__cta:hover {
+    color: #000000;
+    border-color: var(--color-white);
+    box-shadow: 0 15px 45px rgba(255, 255, 255, 0.15);
+    /* On hover-in: fast fill — matches Figma "Smart animate" enter */
+    transition: border-color 0.25s ease,
+                color 0.25s ease,
+                box-shadow 0.25s ease;
+  }
+
+  .steps__cta:hover .steps__cta-bg {
+    transform: translate(-50%, -50%) scale(1.02);
+    /* On hover-in: fast fill */
+    transition: transform 0.25s ease;
+  }
+}
+
+/* Touch/tap feedback — clean press effect without the fill animation */
+.steps__cta:active {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.steps__cta-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', var(--font-display), sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px; /* Scaled to 150px circle */
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: inherit;
+  transition: color 0.25s ease;
+  width: 80px;
+}
+
+.steps__cta-text span {
+  display: block;
+}
+
+/* ---------- Footer area (Promo + Paragraph) ---------- */
+.steps__footer {
+  display: flex;
+  align-items: center;
+  margin-top: clamp(48px, 4.5vw, 88px);
+  box-sizing: border-box;
+}
+
+.steps__promo {
+  position: relative;
+  width: 322.02px;
+  height: 168.34px;
+  margin-inline-start: auto;
+  margin-inline-end: clamp(24px, 3vw, 48px);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.steps__promo-green {
+  position: absolute;
+  width: 200px;
+  height: 128.36px;
+  left: 90px;
+  top: 15px;
+  z-index: 1;
+}
+
+.steps__promo-message {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 95px;
+  top: 0px;
+  z-index: 2;
+}
+
+.steps__promo-pill {
+  position: absolute;
+  width: 301.02px;
+  height: 56px;
+  left: 0px;
+  top: 60px;
+  background: #FFFFFF;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.steps__promo-text {
+  font-family: 'Inter', var(--font-arabic), sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #111827;
+  text-align: center;
+}
+
+.steps__paragraph {
+  width: 50%;
+  padding-inline-start: 0;
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  font-size: clamp(13px, 0.95vw, 17px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: justify;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}

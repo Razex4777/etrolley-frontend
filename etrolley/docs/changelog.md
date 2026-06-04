@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-04 18:45
+
+- **Resolved Steps Section Circle CTA Overlaps and Refactored Codebase**:
+  - Split `steps.css` (648 lines) into `_steps_base.css` and `_steps_responsive.css` to comply with the project's strict 500-line file size rule.
+  - Fixed "LET'S START NOW" circular CTA button overlap with the bottom edge of Card 03 by shifting its absolute `bottom` offset downward to `-80px` on desktop and `-65px` on mid-desktop viewports.
+  - Increased `.steps__grid`'s bottom margin to `clamp(100px, 10vw, 160px)` to accommodate the lowered CTA button without collisions.
+
 # 2026-06-04 18:40
 
 - **Resolved Hero Responsive Layout Across Viewports and Refactored Codebase for Project Integrity**:
