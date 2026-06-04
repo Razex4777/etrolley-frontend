@@ -85,7 +85,9 @@ etrolley/
     │   │   └── 📄 navbar.ar.html          ( Static Arabic navbar markup )
     │   │
     │   ├── 📁 hero/                       ( Above-the-fold hero with QR aside, headline, CTA, illustration, socials )
-    │   │   ├── 📄 hero.css                ( Grid-based layout, gradient blob, magnetic CTA )
+    │   │   ├── 📄 hero.css                ( Style aggregator importing base and responsive sheets )
+    │   │   ├── 📄 _hero_base.css          ( Base layouts, design tokens, aside columns, CTA wrap, and desktop socials )
+    │   │   ├── 📄 _hero_responsive.css    ( Media query responsive overrides for laptop/tablet overlaps and mobile stacks )
     │   │   ├── 📄 contact-drawer.css      ( CSS-only premium expandable Contact Us side drawer modal panel stylesheet )
     │   │   ├── 📄 hero.en.html            ( Static English hero markup )
     │   │   └── 📄 hero.ar.html            ( Static Arabic hero markup )

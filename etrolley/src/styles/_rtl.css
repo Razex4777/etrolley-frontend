@@ -84,6 +84,12 @@
   transform: translate(120px, -70px);
 }
 
+@media (max-width: 1440px) {
+  [dir='rtl'] .hero__image img {
+    transform: translate(30px, -40px);
+  }
+}
+
 [dir='rtl'] .hero__validate {
   text-align: right;
 }
@@ -150,6 +156,13 @@
   [dir='rtl'] .hero__rail-label::after {
     margin-left: 0;
     margin-right: 12px;
+  }
+  [dir='rtl'] .hero__watermark-text {
+    right: -20px;
+    font-size: clamp(80px, 12vw, 180px);
+  }
+  [dir='rtl'] .hero__validate {
+    margin-right: 0 !important;
   }
 }
 @media (max-width: 880px) {

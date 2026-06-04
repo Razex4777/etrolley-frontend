@@ -2,6 +2,27 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-04 18:40
+
+- **Resolved Hero Responsive Layout Across Viewports and Refactored Codebase for Project Integrity**:
+  - Split `hero.css` (732 lines) into `_hero_base.css` and `_hero_responsive.css` to comply with the project's strict 500-line file size rule.
+  - Resolved laptop illustration `.hero__image` overlap with the CTA button on common medium/small desktop displays (1181px–1440px) by shrinking the image dynamically and scaling down its translation offsets.
+  - Handled tablet viewport (881px–1180px) aside column squeeze by shrinking the QR aside (`max-width: 170px`) and footnote validate font-size/max-width to prevent overflow.
+  - Adjusted the background watermark scaling and RTL overrides for watermark and images dynamically under media queries.
+  - Trimmed the changelog history to remain below the 500-line limit constraint.
+
+# 2026-06-04 18:33
+
+- **Fixed Steps CTA Circle Overflow and Hero Side CTA on Responsive**:
+  - Shrunk the "LET'S START NOW" CTA circle progressively across responsive breakpoints to prevent overlapping with the 3rd card:
+    - Mid-desktop (1101-1500px): 120px with adjusted bottom offset
+    - Tablet (≤1100px): 110px, flush left with 28px top margin
+    - Mobile (≤768px): 120px
+    - Small mobile (≤480px): 100px
+  - Text sizes scaled proportionally at each breakpoint for legibility.
+  - Hidden the floating `.hero__side-cta` button at the `max-width: 1180px` breakpoint (where the follow rail goes horizontal) to prevent layout conflicts.
+  - Overrode the desktop `padding-right: 56px` on `.hero__rail` at tablet/mid-desktop viewports so the horizontal follow rail stretches edge-to-edge.
+
 # 2026-06-03 14:58
 
 - **Fixed Steps CTA Hover Background Overflow, Alignment, and Size on Tablet/Mobile**:
@@ -387,101 +408,4 @@
   - Adjusted the mobile-specific media query padding override under `max-width: 768px` from `60px 20px` to `120px 20px 60px 20px` to preserve a safe top clearance on small viewports.
   - Recompiled and ran production Vite build cleanly.
 
-# 2026-06-01 23:59
 
-- **Expanded FAQ Accordion to 9 Items and Set First Opened by Default**:
-  - Rearranged the English and Arabic FAQ components to place "What is the importance of creating an online store?" / "ما أهمية إنشاء متجر إلكتروني؟" as the first item in the list.
-  - Set the first accordion card to be opened by default using the `checked` state on the pure CSS accordion input toggle.
-  - Added a 9th item in total to align exactly with the Figma design specification and order.
-  - Recompiled and bundled all HTML templates and Vite production files cleanly.
-
-# 2026-06-01 23:55
-
-- **Created Separate FAQs Page & Refactored Navbar/Mobile Sidebars**:
-  - Moved the FAQ Accordion section out of the About page (`about.html` / `about-ar.html`) into its own standalone pages: `faqs.html` (English) and `faqs-ar.html` (Arabic).
-  - Created a new base layout template `src/faqs.base.html` for compilation.
-  - Updated all desktop dropdowns and mobile sidebar accordion menus in `navbar.markup.html`, `navbar.en.html`, and `navbar.ar.html` to direct to `faqs.html` and `faqs-ar.html` instead of anchor hash hashes.
-  - Registered the new page entries in `vite.config.js` and updated the `docs/project_structure.md` architecture snapshot.
-- **Fixed Distinctive Designs RTL Hero Eyebrow Alignment**:
-  - Shifted the "تصاميم مميزة" eyebrow slider in `designs-ar.html` to align with the right-most margin of the content column, mirroring the English layout exactly.
-  - Added `align-items: flex-start` to `.designspage-hero__content` and updated RTL layout rules in `designspage.css`.
-
-# 2026-06-01 23:52
-
-- **Added FAQs to Desktop Dropdowns and Mobile Accordions**:
-  - Registered and localized the "FAQs" / "الأسئلة الشائعة" links under the "About Us" / "من نحن" dropdown menus.
-  - Linked the English dropdown/sidebar item to `about.html#faqs` in `navbar.en.html`.
-  - Linked the Arabic dropdown/sidebar item to `about-ar.html#faqs` in `navbar.ar.html`.
-  - Recompiled all static HTML layouts cleanly via standard compiler script and verified Vite builds successfully.
-
-# 2026-06-01 23:49
-
-- **Added Premium FAQs Accordion Section to About Us Page**:
-  - Scraped live FAQ content from `https://etrolleystore.com/new/E-Trolley/faqs.html` to obtain the official translated question and answer sets.
-  - Implemented a custom premium accordion component (`src/components/faqs/`) with high-fidelity custom animations and pure CSS toggle checks.
-  - Sized the titles, descriptions, separators, and card shadows according to the exact Figma specifications (e.g. 75px titles, white cards, 12px border radius, 0.75px sage border line).
-  - Maintained bidirectional alignment mapping for English LTR (`about.html`) and Arabic RTL (`about-ar.html`) viewports.
-  - Registered and recompiled the pages template, running Vite production builds cleanly.
-
-# 2026-06-01 23:43
-
-- **Fixed Mobile Navbar Sidebar Collapsible About Us Submenu**:
-  - Replaced the simple static link for "About Us" under list item `04` in the mobile sidebar panel with a high-fidelity pure CSS accordion toggle submenu.
-  - Implemented hidden toggle inputs and interactive label controls matching the exact look-and-feel (large display typography, hover slide shifts, text underlines, chevron rotation) of other menu links.
-  - Supported LTR and RTL viewports, ensuring sub-menu items (Our Story, Blogs, Designs) indent and animate beautifully with correct chevron mirror directions.
-  - Updated master `navbar.markup.html` and language-specific component mockups (`navbar.en.html`, `navbar.ar.html`).
-  - Recompiled all page templates and ran Vite production builds successfully.
-
-# 2026-06-01 23:40
-
-- **Upgraded Mobile Filter Tabs to solid Pill Chips**:
-  - Transformed category filter tabs inside mobile viewports (`max-width: 768px`) to solid gray pill chips with centered margins, rounded corners (`12px`), and background states (`#E5E5E5` fallback, `#316C6B` active state with white typography) to match the layout screenshot exactly.
-  - Recompiled page templates and ran Vite production builds successfully.
-
-# 2026-06-01 23:36
-
-- **Upgraded Double Overlapping Circles Eyebrow & Corrected Navbar Highlights**:
-  - Implemented the double overlapping circles slider decoration on the designs page eyebrow (`designs.html` / `designs-ar.html`) to match the "Support & Help" style exactly.
-  - Upgraded the template compiler script (`compile-templates.mjs`) to strip the hardcoded `is-active` underline class from the "Home" link inside compiled child page navbars (`about`, `services`, `blog`, `designs`), resolving highlight overlap errors.
-  - Recompiled all page templates and ran Vite production builds successfully.
-
-# 2026-06-01 23:30
-
-- **Updated Custom Hero Mockup Image & Removed Section Separator Line**:
-  - Converted the user's custom hero banner illustration (`f1648f72121efe6d501521b89da6b0682807989d.png`) to web-optimized `hero-mockup.webp` format and updated it in the showcase header banner assets.
-  - Removed the `border-top` separator line below the hero header section in [designspage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/designspage/designspage.css) to create a clean, borderless flow into the client portfolio grid.
-  - Recompiled page templates and ran the production build successfully.
-
-# 2026-06-01 22:36
-
-- **Completed Distinctive Designs Showcase Page**:
-  - Implemented the full "Distinctive Designs" portfolio page featuring a Figma-accurate English Hero mockup header (`designs.html`) and RTL-mirrored Arabic layout (`designs-ar.html`).
-  - Added filterable category tabs for category sections (All, Outfits, Health & Beauty, Perfumes, Electronics, Flowers) that dynamically filter the showcase grid items using lightweight JS class toggles with CSS scale and opacity transitions.
-  - Converted the 7 project showcase mockups and 1 iMac mockup to web-optimized WebP assets inside the assets folder.
-  - Configured Vite input build points to bundle the new pages successfully with zero compile warnings.
-  - Updated the master navbar markup file (`navbar.markup.html`) to link Partners directly to the new `designs.html` and `designs-ar.html` pages under the title "Designs" / "تصاميمنا".
-
-# 2026-06-01 22:30
-
-- **Fixed Duplicate Most Read Sections**:
-  - Cleaned up dual-duplication of the "Most Read" section from both `blogpage.en.html` and `blogpage.ar.html`.
-  - Removed outdated duplicate elements from compiled `blog.html` and `blog-ar.html`.
-  - Recompiled page templates and verified Vite production bundles build successfully without any layout errors.
-
-# 2026-06-01 23:22
-
-- **Refactored Blog Layout, Responsive Column Order, and Pagination**:
-  - Restructured HTML components to separate Explore, Blog Card Grid (Main), and Most Read into independent grid area elements, enabling clean CSS Grid layout on desktop and flexible stacking on mobile.
-  - Placed Explore tags section on top on mobile, followed by main blog list cards, a stylized Pagination row with solid active teal background squares, a horizontal separator line below pagination, and the Most Read section at the bottom.
-  - Flattened blog cards on mobile into clean, borderless list rows separated by horizontal lines.
-  - Implemented horizontal solid separator lines below `.blogpage-header` and sidebar `.blogpage-mostread-card` items using the `--color-primary-light` (`#99B4AB`) design token to match the Figma design exactly.
-  - Symmetrically compiled all static HTML templates and verified production builds bundle successfully.
-
-# 2026-06-01 23:20
-
-- **Replaced Team with Blogs in Navbar Dropdown**:
-  - Replaced the "Team" menu item under the "About Us" dropdown with "Blogs" pointing to `blog.html` in [navbar.en.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/navbar/navbar.en.html).
-  - Localized and replaced the Arabic "فريقنا" (Team) menu item with "المدونة" (Blogs) pointing to `blog-ar.html` in [navbar.ar.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/navbar/navbar.ar.html).
-  - Kept the master bilingual markup layout updated by replacing `#team` with `blog.html` in [navbar.markup.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/navbar/navbar.markup.html).
-  - Ran the template compilation script successfully to update the navigation menu on all 8 static pages.
-  - Built the production bundle with no errors.
