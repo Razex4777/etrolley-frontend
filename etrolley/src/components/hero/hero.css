@@ -464,7 +464,10 @@
     gap: 16px;
     width: 100%;
     padding: 10px 0 4px;
+    padding-right: 0; /* Override desktop 56px reserved for side CTA */
   }
+
+  .hero__side-cta { display: none; }
 
   .hero__rail-label {
     writing-mode: horizontal-tb;
