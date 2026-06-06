@@ -85,50 +85,79 @@
         }
       }
 
-      // Drag-to-scroll implementation
+      // ── Drag-to-scroll + Rubber-band / Gravity at boundaries ────────────────
       var isDown = false;
       var startX;
       var scrollLeftVal;
+      var isDragging = false;
+
+      var RUBBER = 0.22;
+
+      function getScrollBounds() {
+        var firstCard = cards[0];
+        var lastCard  = cards[cards.length - 1];
+        var minScroll = 0;
+        var maxScroll = lastCard.offsetLeft - firstCard.offsetLeft;
+        return { min: minScroll, max: maxScroll };
+      }
+
+      function rubberClamp(raw, min, max) {
+        if (raw < min) {
+          var excess = raw - min;
+          return min + excess * RUBBER;
+        } else if (raw > max) {
+          var excess = raw - max;
+          return max + excess * RUBBER;
+        }
+        return raw;
+      }
 
       track.addEventListener('mousedown', function(e) {
         isDown = true;
+        isDragging = false;
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
         track.style.cursor = 'grabbing';
         startX = e.pageX - track.offsetLeft;
         scrollLeftVal = track.scrollLeft;
         stopAutoplay();
-        e.preventDefault(); // Prevent text selection during drag
+        e.preventDefault();
       });
 
       function handleMouseRelease() {
         if (!isDown) return;
         isDown = false;
+        isDragging = false;
         track.style.scrollBehavior = '';
         track.style.scrollSnapType = '';
         track.style.cursor = '';
-        
-        // Snap to closest card index
+
+        var bounds = getScrollBounds();
+        var clamped = Math.max(bounds.min, Math.min(bounds.max, track.scrollLeft));
+        if (Math.abs(track.scrollLeft - clamped) > 1) {
+          track.scrollTo({ left: clamped, behavior: 'smooth' });
+        }
+
         var computedIndex = calculateActiveIndex();
         activeIndex = computedIndex;
         updateIndex(activeIndex);
         scrollToCard(activeIndex);
-        
+
         startAutoplay();
       }
 
-      // Listen on document so release is caught even if cursor leaves the track
       document.addEventListener('mouseup', handleMouseRelease);
 
       document.addEventListener('mousemove', function(e) {
         if (!isDown) return;
         e.preventDefault();
+        isDragging = true;
         var x = e.pageX - track.offsetLeft;
-        var walk = (x - startX) * 1.5;
-        track.scrollLeft = scrollLeftVal - walk;
+        var rawScroll = scrollLeftVal - (x - startX) * 1.5;
+        var bounds = getScrollBounds();
+        track.scrollLeft = rubberClamp(rawScroll, bounds.min, bounds.max);
       });
 
-      // Pause autoplay when hovering anywhere inside the services section
       var servicesSection = track.closest('.services');
       if (servicesSection) {
         servicesSection.addEventListener('mouseenter', stopAutoplay);
@@ -138,22 +167,43 @@
         track.addEventListener('mouseleave', startAutoplay);
       }
 
-      // Touch interactions (mobile)
-      track.addEventListener('touchstart', function() {
+      // ── Touch: rubber-band at boundaries ────────────────────────────────────
+      var touchStartX = 0;
+      var touchScrollLeft = 0;
+
+      track.addEventListener('touchstart', function(e) {
         stopAutoplay();
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
+        touchStartX = e.touches[0].pageX;
+        touchScrollLeft = track.scrollLeft;
       }, { passive: true });
+
+      track.addEventListener('touchmove', function(e) {
+        var dx = touchStartX - e.touches[0].pageX;
+        var rawScroll = touchScrollLeft + dx;
+        var bounds = getScrollBounds();
+        if (rawScroll < bounds.min || rawScroll > bounds.max) {
+          e.preventDefault();
+          track.scrollLeft = rubberClamp(rawScroll, bounds.min, bounds.max);
+        }
+      }, { passive: false });
 
       track.addEventListener('touchend', function() {
         track.style.scrollBehavior = '';
         track.style.scrollSnapType = '';
-        
+
+        var bounds = getScrollBounds();
+        var clamped = Math.max(bounds.min, Math.min(bounds.max, track.scrollLeft));
+        if (Math.abs(track.scrollLeft - clamped) > 1) {
+          track.scrollTo({ left: clamped, behavior: 'smooth' });
+        }
+
         var computedIndex = calculateActiveIndex();
         activeIndex = computedIndex;
         updateIndex(activeIndex);
         scrollToCard(activeIndex);
-        
+
         startAutoplay();
       }, { passive: true });
 
