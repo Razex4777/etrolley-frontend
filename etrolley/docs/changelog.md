@@ -7,6 +7,7 @@
 - **Scaled Down Clients and Distinctive Designs Cards on Mobile**:
   - Reduced clients carousel card width from `70vw` to `140px` and label font-size to `14px` on mobile viewports in `clients.css`.
   - Reduced distinctive designs carousel card width from `65vw` to `160px`, graphic-circle to `76px`, card-title to `14px`, and card-label to `11px` on mobile viewports in `designs.css`.
+  - Fixed mobile menu `04` item numbering font style by extending the menu number styling (`font-style: normal;`, letter-spacing, sand color) to the `mobile-menu__submenu-trigger i` class in `mobile-menu.css`.
   - Recompiled all HTML page templates.
 
 # 2026-06-06 14:16

@@ -170,7 +170,8 @@
   transition: right var(--dur-base) var(--ease-out-expo);
 }
 
-.mobile-menu__item a i {
+.mobile-menu__item a i,
+.mobile-menu__submenu-trigger i {
   font-style: normal;
   font-family: var(--font-display);
   font-weight: 400;
