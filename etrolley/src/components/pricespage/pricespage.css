@@ -95,13 +95,14 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-left: 4px; /* room for accent line */
+  padding-top: 24px; /* room for Platinum header overflow */
 }
 
 /* Left vertical teal accent line */
 .pricespage__accent-line {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 24px;
   bottom: 0;
   width: 3px;
   background: var(--color-primary);
@@ -248,13 +249,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  border-color: #9AB5AD;
-  border-top-left-radius: 19px;
-  border-top-right-radius: 19px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   box-sizing: border-box;
 }
 

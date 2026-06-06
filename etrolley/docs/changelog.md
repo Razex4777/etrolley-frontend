@@ -7,7 +7,8 @@
 - **Redesigned Prices Table Headers & Checkmarks**:
   - Restructured `pricespage.css` to remove grid container `overflow: hidden`, keeping the first three plan headers flat (non-rounded) and same height.
   - Made the Platinum plan header stand out taller (`margin-top: -24px`) with custom rounded top corners (`border-radius: 20px 20px 0 0`) and clean shadow effects.
-  - Corrected the Platinum "New" badge container style: removed the inside bottom rounded corners (`border-bottom-radius: 0`) and added rounded top-left and top-right corners (`border-top-radius: 19px`) matching the parent card's corners, making the separating divider line a clean flat horizontal line (outside rounded corners, not inside).
+  - Added `padding-top: 24px` to the `.pricespage__table-wrap` container and aligned the accent line `.pricespage__accent-line` to `top: 24px` to prevent the parent overflow-x scroll container from clipping the rounded top corners of the Platinum card.
+  - Refactored the Platinum "New" badge container style: removed the border-bottom horizontal line entirely to match the Figma original card design, creating a single continuous header card with "New" text at the top and "Platinum" details below, with rounded top corners.
   - Replaced the simple checkmark icons with custom-overlayed verified checkbox SVGs consisting of green square checkbox frame (`#76AD60`) and the custom checkmark vector paths.
   - Recompiled page templates and ran the production build successfully.
 
