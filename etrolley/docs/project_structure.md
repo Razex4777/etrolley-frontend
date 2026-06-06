@@ -24,6 +24,8 @@ etrolley/
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
 │   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
+│   │   ├── 📄 unpin-prices-headers.md     ( Active implementation plan for unpinning table headers and mobile accordion cards )
+│   │   ├── 📄 prices-table-figma-match.md ( Active implementation plan for matching comparison table grid lines with Figma )
 │   │   ├── 📄 clients-zero-js.md          ( Active implementation plan for clients section Zero-JS migration and logo styling )
 │   │   ├── 📄 services-8-slides.md        ( Active implementation plan for expanding services section to 8 slides )
 │   │   ├── 📄 support-rtl-fix.md          ( Active implementation plan for resolving Support CTA RTL layout and logo rotation issues )

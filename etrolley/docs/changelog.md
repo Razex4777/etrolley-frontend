@@ -2,6 +2,119 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 00:07
+
+- **Removed Horizontal Separator Lines from Mobile Features Accordion**:
+  - Removed `border-top` from `.pricespage__mobile-card-features` and `border-bottom` (dashed separators) from `.pricespage__mobile-feature-row` inside `pricespage.css`.
+  - Recompiled page templates and built Vite production assets successfully.
+
+# 2026-06-07 00:06
+
+- **Refined Mobile Card Borders to Match Figma Corner-only Left/Right Lines**:
+  - Replaced card-level border definitions in `pricespage.css` with dynamic `::before` (top cap) and `::after` (bottom cap) pseudo-elements.
+  - Sized pseudo-elements to `height: 60px` and set borders on three sides (`border-top`/`border-bottom` and `border-left`/`border-right`) to draw corner curves and let the vertical border segments extend downwards/upwards for exactly `60px` before terminating cleanly, matching the `App Store (Pro)` border style.
+  - Recompiled templates and built Vite assets cleanly.
+
+# 2026-06-07 00:05
+
+- **Styled Mobile Pricing Cards to be Full-Width and Borderless on Left and Right**:
+  - Removed vertical border lines (`border-left: none` and `border-right: none`) from `.pricespage__mobile-card` and `.pricespage__mobile-card--platinum` class rules in `pricespage.css` while keeping the `border-radius: 25px` property so corners curve naturally.
+  - Set `max-width: 100%` on mobile pricing cards to make them stretch full-width.
+  - Updated the toggle click event handler in both English (`pricespage.en.html`) and Arabic (`pricespage.ar.html`) component templates to toggle the `.is-expanded` class on the parent `.pricespage__mobile-card` container element.
+  - Successfully recompiled all HTML templates and completed the production build.
+
+# 2026-06-06 23:35
+
+- **Unpinned Pricing Table Headers and Created Mobile Accordion Layouts**:
+  - Enforced `position: relative` layout on plan headers and disabled any sticky/pinned behavior in the viewport.
+  - Implemented responsive styles under `@media (max-width: 880px)` to hide the wide desktop comparison grid and display individual collapsible cards.
+  - Formatted mobile cards for Mini, Pro, App, and Platinum packages including a localized "View More" / "View Less" button linking a simple toggle script.
+  - Recompiled all page templates and generated production Vite assets cleanly.
+
+# 2026-06-06 19:03
+
+- **Forced Left Border Priority on Platinum Card in RTL Mode**:
+  - Appended `!important` to the `border-left` and `border-right` rules of the Platinum header card overrides inside [pricespage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/pricespage/pricespage.css). This overrides the higher specificity of the standard sibling adjacent selector, restoring the leftmost card outline in RTL.
+  - Recompiled page templates and completed the production assets build cleanly.
+
+# 2026-06-06 19:00
+
+- **Fixed RTL Header Card Text Alignment & Restored Platinum Left Border**:
+  - Corrected the flex cross-axis alignment selector `html[dir="rtl"] .pricespage__plan-header` in [pricespage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/pricespage/pricespage.css) from `align-items: flex-end` to `align-items: flex-start`. This properly aligns plan details (name, price, period) to the right side of the card in RTL layout mode.
+  - Added an explicit border selector for `.pricespage__plan-header--platinum` in RTL to preserve both the left and right border lines on the Platinum header card, preventing adjacent sibling overrides from removing its leftmost column boundary.
+  - Recompiled pages and completed the production build.
+
+# 2026-06-06 18:59
+
+- **Aligned Platinum Card "New" / "جديد" Badge with Plan Info Layout**:
+  - Refactored `.pricespage__new-badge-container` in [pricespage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/pricespage/pricespage.css) to align left (flex-start) in LTR and right (flex-start inside RTL context) in RTL.
+  - Set padding to match card headers (`clamp(16px, 1.8vw, 28px)`), ensuring the "New" badge aligns cleanly above the "Platinum" title.
+  - Recompiled page templates and ran Vite production assets build.
+
+# 2026-06-06 18:58
+
+- **Fixed Right Boundary Clipping of Platinum Plan Card Rounded Corners**:
+  - Added `padding-right: 13px` to the scrollable comparison container `.pricespage__table-wrap` in [pricespage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/pricespage/pricespage.css) to match the left side padding.
+  - Removed the asymmetric RTL override layout rule so both LTR and RTL directions maintain symmetrical spacing, preventing parent element border-radius clipping of the outermost columns.
+  - Recompiled pages and ran the production assets build cleanly.
+
+# 2026-06-06 18:57
+
+- **Removed Bottom Rounded Corners from Pricing Grid**:
+  - Deleted border-radius rules targeting the last cells and the overall grid in [pricespage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/pricespage/pricespage.css) to prevent the bottom-right or bottom-left corners of the comparison table from being rounded.
+  - Recompiled page templates and completed the production build successfully.
+
+# 2026-06-06 18:54
+
+- **Centered Feature Check Icons and Added Vertical Grid dividers**:
+  - Added `justify-content: center` to `.pricespage__feature-check` in [pricespage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/pricespage/pricespage.css) to center both checkmarks and unavailable crosses inside the middle of their respective columns.
+  - Implemented vertical grid borders between comparison columns by adding `border-right: 1px solid #9FB9B3` to `.pricespage__feature-check` in LTR and swapping to `border-left: 1px solid #9FB9B3` in RTL layout configurations.
+  - Recompiled all page templates and ran the production assets build successfully.
+
+# 2026-06-06 18:45
+
+- **Styled Unavailable Feature Icons on Prices Comparison Table**:
+  - Added CSS style rule for `.pricespage__unavailable-icon` in [pricespage.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/pricespage/pricespage.css) to enforce the original `24px` by `24px` SVG dimensions, preventing stretching and aspect-ratio distortion caused by the default `30px` width and `25px` height applied to checkmark icons.
+  - Verified package feature availability matrix matches the user's plan.
+  - Recompiled page templates and ran Vite build.
+
+# 2026-06-06 18:24
+
+- **Refined Prices Table Staggered Line Extensions & Selector Fix**:
+  - Fixed CSS selector targeting the last label cell by using `:nth-last-child(5)` instead of tag-specific `:last-of-type` (which was matching nothing since check cells are also `div`s).
+  - Increased the leftmost vertical accent line (1st line) extension length to `200px` below the last row.
+  - Extended the vertical line between the label column and Column 1 (2nd line) by `40px` past the bottom of the table using a dynamic `::before` pseudo-element.
+  - Adjusted the staircase offset logic across remaining column dividers (3rd line stops 3 rows early, 4th stops 6 rows early, 5th stops 9 rows early, and 6th stops 12 rows early) to form a perfect staircase going up.
+  - Recompiled page templates and ran production build successfully.
+
+# 2026-06-06 18:22
+
+- **Matched Prices Table Borders & Staggered Lines with Figma Mockup**:
+  - Removed all horizontal row line borders from checkmark cells (`.pricespage__feature-check`) to make comparison area clean.
+  - Implemented a vertical extension using a `::after` pseudo-element on the last `.pricespage__feature-label` to carry the leftmost accent line 100px past the bottom of the table.
+  - Aligned and staggered all columns' vertical dividers dynamically at the bottom, including the outer boundary of the Platinum column.
+  - Executed production Vite compilation and build.
+
+# 2026-06-06 18:20
+
+- **Expanded Pricing Comparison Table & Removed Eyebrow Slider**:
+  - Populated the comparison table in both English (`pricespage.en.html`) and Arabic (`pricespage.ar.html`) with the full expanded list of 34 features.
+  - Mapped features logically across Web Store (Mini), Web Store (Pro), App Store (Pro), and Platinum tiers with checkmarks and dashes.
+  - Removed the horizontal slider track and knob from the eyebrow next to "compare packages" / "مقارنة الباقات" as requested.
+  - Hid the horizontal scrollbar visually from `.pricespage__table-wrap` using CSS properties (`scrollbar-width: none`, `display: none` for Webkit scrollbars) to keep the table container neat while retaining horizontal touch scroll functionality.
+  - Implemented staggered bottom endpoints (stepped vertical dividers) for the table's internal column lines in CSS to match Figma (each successive column line stops higher up).
+  - Ran the production Vite compile and build to output updated HTML pages.
+
+# 2026-06-06 18:10
+
+- **Fixed Prices Table Menu Topics Layout & Accent Circles**:
+  - Aligned double-circle decorative elements next to Compare Packages with the exact 25px by 25px sizes and 1px border specs from the homepage Support component.
+  - Removed grid-level borders and background from `.pricespage__corner` to completely clear out the top-left empty block, rendering it transparent and borderless.
+  - Implemented cell-specific borders (top, bottom, outer right/left boundaries) to enclose only active plan columns and comparison check rows, matching Figma specs exactly.
+  - Removed absolute `.pricespage__accent-line` elements and nested the double-circle knob inside the first feature label cell, using the cell's left/right border to draw the vertical accent line dynamically starting exactly from the header/button line downwards.
+  - Added a vertical line extension above the top circle of the accent knob (`::before` pseudo-element on `.pricespage__accent-knob`) matching the Figma illustration.
+  - Resolved RTL styling inconsistencies on the corner cell `.pricespage__corner` by mirroring borders (left border instead of right border in RTL).
+
 # 2026-06-06 18:00
 
 - **Redesigned Prices Table Headers & Checkmarks**:
@@ -333,156 +446,6 @@
   - Changed `.support` section wrapper background from white (`#FFFFFF`) to `transparent` so that the card container integrates cleanly on top of continuous page backgrounds.
   - Recompiled page templates and ran the production build successfully.
 
-# 2026-06-02 19:23
 
-- **Implemented Services Slider Horizontal Auto-Scroll and Index Synchronization**:
-  - Replaced buggy CSS-only scroll timeline animation on `.services__index-active-list` with a smooth JS-driven translation (`transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)`).
-  - Injected a bidirectional javascript block in [services.en.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/services/services.en.html) and [services.ar.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/services/services.ar.html) that handles horizontal auto-scrolling to next index every 3.5s.
-  - Set slider to loop back to slide 1 upon reaching the end of the carousel.
-  - Synchronized auto-scroll index dynamically with manual drag/scroll gesture using relative scroll boundaries.
-  - Configured hover and touch event observers to pause autoplay during active user interaction.
-  - Recompiled all pages and ran production Vite builds successfully.
-
-# 2026-06-02 19:19
-
-- **Fixed CTA Hover Text Contrast (Color Transition)**:
-  - Changed `.steps__cta-text` color from hardcoded `#FFFFFF` to `inherit` and added a `0.25s` transition. This allows the text to smoothly transition to black (`#000000`) on hover when the white background slide fills, making it clearly readable.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:18
-
-- **Calculated Pixel-Perfect CTA Position under Card 3**:
-  - Replaced manual static percentages on `.steps__cta` with a dynamic CSS `calc()` formula (`left: calc(2 * 360px + 2 * var(--steps-gap) + 180px)`) that tracks card widths and current grid gaps exactly, aligning the circle perfectly to the center line of Card 3 regardless of screen size.
-  - Implemented the corresponding RTL mathematical formula (`left: calc(360px + var(--steps-gap) + 180px)`) in [_rtl.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_rtl.css).
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:17
-
-- **Shifted CTA Circle Slightly Right**:
-  - Adjusted steps CTA circle horizontal positioning (`left: 63.8%` for LTR and `left: 36.2%` for RTL in `_rtl.css`) to shift the circle slightly to the right on desktop layouts.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:13
-
-- **Positioned CTA Circle precisely under Card 03 (Percentage Centered)**:
-  - Configured absolute percentage positioning (`left: 62.8%` for LTR and `left: 37.2%` for RTL in `_rtl.css`) with `transform: translateX(-50%)` to ensure the CTA circle centers exactly below Card 03 regardless of the layout structure or screen width.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:12
-
-- **Positioned CTA Circle Under Card 3 and Lowered to Prevent Overlap**:
-  - Matched steps grid columns exactly to card widths (`repeat(4, 360px)`) on desktop to eliminate grid size mismatches.
-  - Positioned the CTA circle using grid coordinates (`grid-column: 3; justify-self: center; left: auto; transform: none;`) to center it precisely under Card 3.
-  - Set `bottom: -60px` on `.steps__cta` to shift it lower down so it does not overlap with Card 2 or Card 3.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:11
-
-- **Reduced Card Sizes & Centered CTA Circle Horizontally**:
-  - Decreased steps card size to `360px` width and `356px` height (with aspect-ratio of `360 / 356`) on desktop to prevent the last card (Card 04) from overflowing or getting cut off.
-  - Centered the "LET'S START NOW" CTA circle horizontally in the exact middle of the section using absolute alignment (`left: 50%; transform: translateX(-50%)`), and decreased its size to `190px` with a matching `34px` typography hierarchy.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:09
-
-- **Shifted Cards Grid Back to Normal Margin**:
-  - Reset `.steps__grid`'s `margin-inline-start` back to `0` in [steps.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/steps/steps.css) to shift the cards slightly rightward, restoring normal alignment with page guidelines.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:06
-
-- **Shifted Steps Cards Grid to Page Edge (Negative Margin)**:
-  - Applied a fluid negative margin `margin-inline-start: calc(-1 * clamp(24px, 3.5vw, 70px))` to `.steps__grid` in [steps.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/steps/steps.css) to shift the cards grid all the way to the screen boundary on desktop viewports.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:05
-
-- **Grid Positioned CTA Circle Exactly under Card 3**:
-  - Refactored `.steps__cta` in [steps.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/steps/steps.css) to use grid-positioning (`grid-column: 3; justify-self: center; left: auto; transform: none;`) to keep it perfectly centered under Card 3 regardless of container margins.
-  - Updated [_rtl.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_rtl.css) to map `.steps__cta` to `grid-column: 2` in RTL.
-  - Fixed `:active` style to scale without translation offsets.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:04
-
-- **Applied Figma Card Dimensions and Left Grid Margin**:
-  - Configured steps cards (`.steps__card`) to have an exact size of `422px` width, `418px` height, and `25px` `border-radius` on desktop viewports.
-  - Set steps cards grid (`.steps__grid`) to start at `margin-inline-start: 68px` (representing `left: 68px` in Figma inspect).
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:01
-
-- **Shifted Steps Eyebrow and Title to the Left**:
-  - Decreased `margin-inline-start` on `.steps__eyebrow` ("Build a store") and `.steps__title` ("OUR CREATIVE PROCESS") to `clamp(60px, 8vw, 160px)` in [steps.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/steps/steps.css) to shift them leftwards.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 19:00
-
-- **Aligned Steps Cards Grid and CTA Circle to the Left Margin**:
-  - Set `.steps__grid`'s `margin-inline-start` to `0` to align the cards grid exactly with the left boundary of the container, matching the QR code's left alignment above.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 18:56
-
-- **Shifted Steps Cards Grid and CTA Circle to the Left**:
-  - Decreased `.steps__grid`'s `margin-inline-start` to `clamp(30px, 4vw, 80px)` to shift the cards grid and the absolute positioned "LET'S START NOW" CTA circle further to the left (to the right in RTL) as requested by the user.
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 18:55
-
-- **Shifted Steps Headers to the Right and Reduced Size**:
-  - Shifted `.steps__eyebrow` ("Build a store") and `.steps__title` ("OUR CREATIVE PROCESS") further to the right (to the left in RTL) by setting `margin-inline-start` to `clamp(120px, 16vw, 320px)`.
-  - Reduced font sizes for both `.steps__eyebrow` (to `clamp(12px, 1vw, 17px)`) and `.steps__title` (to `clamp(32px, 3.8vw, 54px)`).
-  - Recompiled pages and built production Vite bundle successfully.
-
-# 2026-06-02 18:52
-
-- **Increased Card Sizes, Raised Card 3, and Offset Circle CTA**:
-  - Increased `.steps__grid`'s `max-width` to `1480px` to enlarge the cards slightly.
-  - Set `.steps__card--high` vertical shift to `translateY(-200px)` (up from `-160px`) to lift Card 3 higher.
-  - Offset the circle `.steps__cta` position downward to `bottom: -20px` to completely clear any overlap with Card 3's description text ("process.").
-  - Recompiled pages and successfully rebuilt production Vite bundle.
-
-# 2026-06-02 18:51
-
-- **Increased Gaps between Cards & Confirmed Circle Alignment**:
-  - Doubled the layout gap on `.steps__grid` in [steps.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/steps/steps.css) to `clamp(32px, 3.5vw, 64px)` to space the cards further apart as requested.
-  - Confirmed and finalized circle `.steps__cta` centering under Card 3 (`left: 62.5%`).
-  - Recompiled templates and rebuilt Vite assets cleanly.
-
-# 2026-06-02 18:49
-
-- **Reduced Size of Steps Cards and CTA Circle**:
-  - Decreased `.steps__grid`'s `max-width` to `1380px` and set padding to `clamp(20px, 1.8vw, 30px)` on `.steps__card` to reduce square card sizes.
-  - Reduced circular CTA `.steps__cta` size from `242px` to `210px` and changed text size to `40px` inside `.steps__cta-text`.
-  - Moved `.steps__cta` positioning to `left: 62.5%` to center it exactly under Card 3.
-  - Recompiled page templates and ran Vite production build successfully.
-
-# 2026-06-02 18:45
-
-- **Shifted Creative Steps Eyebrow and Title to the Right**:
-  - Increased `margin-inline-start` on `.steps__eyebrow` and `.steps__title` in [steps.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/steps/steps.css) to `clamp(40px, 6vw, 120px)` to shift the English headers rightwards (and Arabic headers leftwards) on desktop viewports.
-  - Recompiled page templates and ran Vite production build successfully.
-
-# 2026-06-02 18:23
-
-- **Fixed Responsive Mobile Horizontal Layout Scroll Bug & Pinned Sticky Animations**:
-  - Removed `overflow-x: hidden` from the `html` element while keeping it on the `body` and setting it explicitly on the `main` layout element in [_reset.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_reset.css). This fully stops mobile viewports from sliding left/right while perfectly preserving standard window viewport scroll tracking for all sticky card decks and parallax features.
-  - Recompiled page files and ran build successfully.
-
-# 2026-06-02 00:05
-
-- **Added CSS-Only Expandable Contact Us Drawer**:
-  - Implemented a Figma-accurate premium Contact Us side drawer modal panel (`#contact-drawer`) inside [index.base.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/index.base.html) containing inputs for Name, Email, Phone Number, and Message.
-  - Linked the floating "Send a message" / "أرسل رسالة" CTA buttons on the Home Hero section to target `#contact-drawer` directly.
-  - Styled the panel in a new stylesheet [contact-drawer.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/hero/contact-drawer.css) with elegant backdrop-filters, custom inputs, rounded borders, shadows, focus glows, and bidirectional RTL mirroring.
-  - Recompiled and ran production Vite build cleanly.
-
-# 2026-06-02 00:00
-
-- **Fixed Responsive Mobile FAQs Overlap with Navbar**:
-  - Increased top padding on the `.faqs` section in `src/components/faqs/faqs.css` to `clamp(140px, 12vw, 200px)` to safely clear the sticky top navbar.
-  - Adjusted the mobile-specific media query padding override under `max-width: 768px` from `60px 20px` to `120px 20px 60px 20px` to preserve a safe top clearance on small viewports.
-  - Recompiled and ran production Vite build cleanly.
 
 
