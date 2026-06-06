@@ -4,10 +4,10 @@
 
 # 2026-06-06 13:55
 
-- **Converted WhatsApp and Gmail Icons to Premium Inline SVGs**:
-  - Replaced image-based `whatsapp.webp` and `gmail.webp` `<img>` icons inside `.support__actions` (in both `support.en.html` and `support.ar.html`) with clean, lightweight inline SVG vector versions.
-  - Retained the existing inline SVG behavior for the telephone Call button.
-  - Recompiled English and Arabic templates to publish the updated vector icons globally.
+- **Converted WhatsApp and Gmail Icons to Official Simple Icons SVGs**:
+  - Replaced custom/image-based icons with exact official SVG vector paths from the Simple Icons library for WhatsApp and Gmail.
+  - Positioned, scaled, and color-tuned the paths to match the premium, professional flat aesthetic (WhatsApp Green `#25D366` and Gmail Red `#EA4335`) on white rounded-rectangle button templates.
+  - Recompiled English and Arabic templates globally.
 
 # 2026-06-06 13:52
 
