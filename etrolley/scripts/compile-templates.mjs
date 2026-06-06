@@ -453,6 +453,85 @@ export function compile() {
     fs.writeFileSync(path.join(root, 'faqs-ar.html'), arFaqs, 'utf8');
     console.log('Compiled faqs-ar.html (Arabic)');
   }
+
+  // --- 7. Compile prices.html and prices-ar.html ---
+  const pricesPageComponents = [
+    'navbar',
+    'pricespage',
+    'footer'
+  ];
+
+  if (fs.existsSync(path.join(root, 'src/prices.base.html'))) {
+    const pricesBase = fs.readFileSync(path.join(root, 'src/prices.base.html'), 'utf8');
+
+    // English prices.html
+    let enPrices = pricesBase;
+    enPrices = enPrices.replace('[LANG]', 'en');
+    enPrices = enPrices.replace('[DIR]', 'ltr');
+    enPrices = enPrices.replace('[TITLE]', 'Compare Pricing Packages — E-Trolley');
+    enPrices = enPrices.replace('[DESCRIPTION]', 'Compare E-Trolley store package pricing options and find the perfect plan with 0% sales commission.');
+
+    pricesPageComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="prices-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="prices.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index.html#create"');
+        }
+        enPrices = enPrices.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'prices.html'), enPrices, 'utf8');
+    console.log('Compiled prices.html (English)');
+
+    // Arabic prices-ar.html
+    let arPrices = pricesBase;
+    arPrices = arPrices.replace('[LANG]', 'ar');
+    arPrices = arPrices.replace('[DIR]', 'rtl');
+    arPrices = arPrices.replace('[TITLE]', 'مقارنة باقات الأسعار — إي ترولي');
+    arPrices = arPrices.replace('[DESCRIPTION]', 'قارن باقات أسعار إنشاء المتاجر من إي ترولي واختر الباقة الأنسب لمشروعك مع عمولة 0% على المبيعات.');
+
+    pricesPageComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
+          compContent = compContent.replace('href="index.html"', 'href="prices.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="prices-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about-ar.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index-ar.html#create"');
+        }
+        arPrices = arPrices.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'prices-ar.html'), arPrices, 'utf8');
+    console.log('Compiled prices-ar.html (Arabic)');
+  }
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

@@ -48,6 +48,8 @@ export default defineConfig({
         designs_ar: fileURLToPath(new URL('./designs-ar.html', import.meta.url)),
         faqs: fileURLToPath(new URL('./faqs.html', import.meta.url)),
         faqs_ar: fileURLToPath(new URL('./faqs-ar.html', import.meta.url)),
+        prices: fileURLToPath(new URL('./prices.html', import.meta.url)),
+        prices_ar: fileURLToPath(new URL('./prices-ar.html', import.meta.url)),
       },
     },
   },

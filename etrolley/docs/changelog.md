@@ -2,6 +2,20 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-06 17:55
+
+- **Aligned Prices Page Eyebrow circles slider with support section**:
+  - Replaced the line-and-circles eyebrow layout in both English (`pricespage.en.html`) and Arabic (`pricespage.ar.html`) prices page templates with the slider track and double-circle knob pattern from the homepage's "Support & Help" block.
+
+# 2026-06-06 17:45
+
+- **Added Standalone Prices Comparison Page**:
+  - Created new `pricespage` component with comparison table showing Web Store (Mini), Web Store (Pro), App Store (Pro), and Platinum packages.
+  - Styled with custom CSS grid (`pricespage.css`), column/row dividers, custom teal checkmarks, and a gold-themed highlight layout with bottom curved border for the Platinum plan matching Figma specifications.
+  - Built localized English (`pricespage.en.html`) and Arabic RTL (`pricespage.ar.html`) markup.
+  - Linked "Prices" from navigation bar, mobile menu drawer, and footers directly to `prices.html` and `prices-ar.html`.
+  - Added compile logic in `compile-templates.mjs` and successfully built all templates.
+
 # 2026-06-06 16:58
 
 - **Scaled Down Clients and Distinctive Designs Cards on Mobile**:

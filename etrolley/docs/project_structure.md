@@ -18,7 +18,9 @@ etrolley/
 ├── 📄 designs-ar.html                     ( Arabic Distinctive Designs page; RTL-compiled mirror with localized portfolio showcase )
 ├── 📄 faqs.html                           ( English FAQs page; compiled from faqs.base.html + faqs component + navbar + footer )
 ├── 📄 faqs-ar.html                        ( Arabic FAQs page; RTL-compiled mirror with fully localized accordion Q&A content )
-├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, designs, and faqs pages in both EN and AR )
+├── 📄 prices.html                         ( English Prices page; compiled from prices.base.html + pricespage + navbar + footer )
+├── 📄 prices-ar.html                      ( Arabic Prices page; RTL-compiled mirror with localized pricing packages )
+├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, designs, prices, and faqs pages in both EN and AR )
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
 │   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
@@ -60,6 +62,7 @@ etrolley/
     ├── 📄 blog.base.html                  ( Base HTML shell layout template for compiled Blog pages )
     ├── 📄 designs.base.html               ( Base HTML shell layout template for compiled Distinctive Designs showcase pages )
     ├── 📄 faqs.base.html                  ( Base HTML shell layout template for compiled FAQs pages )
+    ├── 📄 prices.base.html                ( Base HTML shell layout template for compiled Prices comparison pages )
     ├── 📄 index.base.html                 ( Base HTML shell layout template for compiled Home landing pages )
     ├── 📁 components/                     ( UI building blocks; each contains its styles, static HTML layouts )
     │   ├── 📁 about/                      ( Symmetrical LTR/RTL About Us page content component )
@@ -142,6 +145,11 @@ etrolley/
     │   │   ├── 📄 _servicepage_responsive.css ( Mobile and tablet responsive layout overrides )
     │   │   ├── 📄 servicepage.en.html     ( English timeline and zigzag service cards layout template )
     │   │   └── 📄 servicepage.ar.html     ( Arabic mirrored timeline and zigzag layout template )
+    │   │
+    │   ├── 📁 pricespage/                 ( Dedicated prices comparison packages grid table component )
+    │   │   ├── 📄 pricespage.css          ( Figma-accurate grid layout styling, column/row dividers, platinum card highlight, and RTL adjustments )
+    │   │   ├── 📄 pricespage.en.html      ( English prices table markup — corner card, plan headers with prices, subscribe buttons, and feature list )
+    │   │   └── 📄 pricespage.ar.html      ( Arabic prices table markup — RTL mirrored copy with localized plan names and features )
     │   │
     │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links, bottom CTA, and pure-CSS sticky "garage-door" reveal effect )
     │       ├── 📄 footer.css              ( CSS aggregator importing footer sub-stylesheets )
