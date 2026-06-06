@@ -298,31 +298,11 @@
   border-bottom: none;
 }
 
-/* Checkbox / Verified Icon styles */
-.pricespage__checkbox {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* Checkmark icon */
+.pricespage__check-icon {
+  width: 30px;
+  height: 25px;
   flex-shrink: 0;
-}
-
-.pricespage__check-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-}
-
-.pricespage__check-mark {
-  position: absolute;
-  top: 2.5px;
-  left: 0;
-  width: 24px;
-  height: 19px;
 }
 
 /* Empty cell (dash) */
