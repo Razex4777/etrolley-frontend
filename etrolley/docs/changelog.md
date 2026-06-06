@@ -9,6 +9,8 @@
   - Made the Platinum plan header stand out taller (`margin-top: -24px`) with custom rounded top corners (`border-radius: 20px 20px 0 0`) and clean shadow effects.
   - Added `padding-top: 24px` to the `.pricespage__table-wrap` container and aligned the accent line `.pricespage__accent-line` to `top: 24px` to prevent the parent overflow-x scroll container from clipping the rounded top corners of the Platinum card.
   - Refactored the Platinum "New" badge container style: removed the border-bottom horizontal line entirely to match the Figma original card design, creating a single continuous header card with "New" text at the top and "Platinum" details below, with rounded top corners.
+  - Aligned plan header text left (`align-items: flex-start`, `text-align: left`) for English (LTR) and right (`align-items: flex-end`, `text-align: right`) for Arabic (RTL) while keeping the action button perfectly centered in the middle of each card.
+  - Set exact Figma inspect fonts: plan name (`Web Store (Pro)`) to `18px` bold `#316C6B` and price amount (`1699 QAR`) to `35px` bold `#121212` with `40px` line-height.
   - Replaced the simple checkmark icons with custom-overlayed verified checkbox SVGs consisting of green square checkbox frame (`#76AD60`) and the custom checkmark vector paths.
   - Recompiled page templates and ran the production build successfully.
 
