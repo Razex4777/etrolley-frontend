@@ -5,7 +5,7 @@
 # 2026-06-06 14:16
 
 - **Increased Gravity Slide Distance on Services Carousel**:
-  - Increased `MAX_SLIDE` from `200` to `400` and `SLIDE_DAMP` from `300` to `500` in both English and Arabic versions.
+  - Increased `MAX_SLIDE` from `200` to `600` and `SLIDE_DAMP` from `300` to `800` in both English and Arabic versions to allow a longer elastic drag distance at boundaries.
   - Recompiled page templates to update the live sites.
 
 # 2026-06-06 13:55
