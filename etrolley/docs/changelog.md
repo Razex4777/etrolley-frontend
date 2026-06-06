@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-06 13:17
+
+- **Fixed "What Makes Us Different" Scroll Pinning and Slide 5 Stacking Match**:
+  - Added a targeted style rule `.different__slide:last-child { margin-bottom: 100vh; }` in `different.css` to prevent the parent tracking container from running out of scrollable space prematurely. This allows the final card (Slide 5) to scroll all the way up to its sticky coordinate and fully align with and cover Slide 4 before unpinning.
+
+- **Squared Creative Steps Cards on Mobile Viewports**:
+  - Replaced the mobile landscape card configuration (`min-height: 220px`, `aspect-ratio: unset`) under the `max-width: 768px` and `max-width: 480px` media queries inside `_steps_responsive.css` with a square aspect ratio layout (`aspect-ratio: 1 / 1`, `min-height: auto`).
+  - Adjusted the layout border-radius to `20px` to match card designs.
+
 # 2026-06-04 18:53
 
 - **Updated Stacking Breakpoint and Swapped Mobile/Tablet Card Themes in "What Makes Us Different" Section**:

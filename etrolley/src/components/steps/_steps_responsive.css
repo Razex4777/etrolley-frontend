@@ -103,13 +103,13 @@
     margin-bottom: 0;
   }
 
-  /* Rectangular cards on mobile — PS Studios style (landscape, not square) */
+  /* Square cards on mobile */
   .steps__card {
-    aspect-ratio: unset;      /* Remove square constraint */
-    min-height: 220px;        /* Comfortable landscape height */
+    aspect-ratio: 1 / 1;      /* Make them square */
+    min-height: auto;         /* Remove landscape height constraint */
     padding: 24px 28px;
-    justify-content: flex-end; /* Text sits at bottom like PS Studios */
-    border-radius: 16px;
+    justify-content: flex-end; /* Text sits at bottom */
+    border-radius: 20px;
   }
 
   /* Reorder grid: 01, 02, 03, [CTA], 04 */
@@ -186,7 +186,7 @@
   }
 
   .steps__card {
-    min-height: 180px;
+    min-height: auto;
     padding: 20px 22px;
   }
 
