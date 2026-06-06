@@ -7,6 +7,7 @@
 - **Redesigned Prices Table Headers & Checkmarks**:
   - Restructured `pricespage.css` to remove grid container `overflow: hidden`, keeping the first three plan headers flat (non-rounded) and same height.
   - Made the Platinum plan header stand out taller (`margin-top: -24px`) with custom rounded top corners (`border-radius: 20px 20px 0 0`) and clean shadow effects.
+  - Corrected the Platinum "New" badge container style: removed the inside bottom rounded corners (`border-bottom-radius: 0`) and added rounded top-left and top-right corners (`border-top-radius: 19px`) matching the parent card's corners, making the separating divider line a clean flat horizontal line (outside rounded corners, not inside).
   - Replaced the simple checkmark icons with custom-overlayed verified checkbox SVGs consisting of green square checkbox frame (`#76AD60`) and the custom checkmark vector paths.
   - Recompiled page templates and ran the production build successfully.
 
