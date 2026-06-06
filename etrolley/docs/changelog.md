@@ -11,6 +11,7 @@
   - Refactored the Platinum "New" badge container style: removed the border-bottom horizontal line entirely to match the Figma original card design, creating a single continuous header card with "New" text at the top and "Platinum" details below, with rounded top corners.
   - Aligned plan header text left (`align-items: flex-start`, `text-align: left`) for English (LTR) and right (`align-items: flex-end`, `text-align: right`) for Arabic (RTL) while keeping the action button perfectly centered in the middle of each card.
   - Set exact Figma inspect fonts: plan name (`Web Store (Pro)`) to `18px` bold `#316C6B` and price amount (`1699 QAR`) to `35px` bold `#121212` with `40px` line-height.
+  - Sized the subscribe action buttons `.pricespage__subscribe-btn` to exact Figma specifications: `width: 242px`, `height: 42px`, `border-radius: 7px`, and `padding: 10px 0`.
   - Replaced the simple checkmark icons with custom-overlayed verified checkbox SVGs consisting of green square checkbox frame (`#76AD60`) and the custom checkmark vector paths.
   - Recompiled page templates and ran the production build successfully.
 
