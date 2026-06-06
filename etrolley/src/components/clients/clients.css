@@ -268,11 +268,14 @@
     line-height: 1.15;
   }
   .clients__card {
-    flex: 0 0 70vw;
-    max-width: 280px;
+    flex: 0 0 140px;
+    gap: 8px;
   }
   .clients__label {
-    font-size: 18px;
+    font-size: 14px;
+  }
+  .clients__tile {
+    border-radius: 16px;
   }
 }
 

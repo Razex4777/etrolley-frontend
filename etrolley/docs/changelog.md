@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-06 16:58
+
+- **Scaled Down Clients and Distinctive Designs Cards on Mobile**:
+  - Reduced clients carousel card width from `70vw` to `140px` and label font-size to `14px` on mobile viewports in `clients.css`.
+  - Reduced distinctive designs carousel card width from `65vw` to `160px`, graphic-circle to `76px`, card-title to `14px`, and card-label to `11px` on mobile viewports in `designs.css`.
+  - Recompiled all HTML page templates.
+
 # 2026-06-06 14:16
 
 - **Increased Gravity Slide Distance on Services Carousel**:

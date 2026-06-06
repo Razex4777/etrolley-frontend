@@ -336,7 +336,23 @@
     line-height: 1.15;
   }
   .designs__card {
-    flex: 0 0 65vw;
-    max-width: 250px;
+    flex: 0 0 160px;
+    gap: 8px;
+  }
+  .designs__tile {
+    padding: 14px 10px;
+    border-radius: 16px;
+  }
+  .designs__card-title {
+    font-size: 14px;
+  }
+  .designs__graphic-circle {
+    width: 76px;
+    height: 76px;
+    margin-top: 8px;
+  }
+  .designs__card-label {
+    font-size: 11px;
+    margin-inline-start: 6px;
   }
 }
