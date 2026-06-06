@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-06 18:00
+
+- **Redesigned Prices Table Headers & Checkmarks**:
+  - Restructured `pricespage.css` to remove grid container `overflow: hidden`, keeping the first three plan headers flat (non-rounded) and same height.
+  - Made the Platinum plan header stand out taller (`margin-top: -24px`) with custom rounded top corners (`border-radius: 20px 20px 0 0`) and clean shadow effects.
+  - Replaced the simple checkmark icons with custom-overlayed verified checkbox SVGs consisting of green square checkbox frame (`#76AD60`) and the custom checkmark vector paths.
+  - Recompiled page templates and ran the production build successfully.
+
 # 2026-06-06 17:55
 
 - **Aligned Prices Page Eyebrow circles slider with support section**:
