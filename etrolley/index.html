@@ -338,18 +338,17 @@
         }
       }
 
-      // ── Gravity / Taffy stretch at boundaries ──────────────────────────────
+      // ── Gravity / Elastic slide at boundaries ─────────────────────────────
       var isDown = false;
       var startX;
       var scrollLeftVal;
-      var overscrollPx = 0;        // how many px past the boundary
-      var overscrollSide = null;   // 'start' | 'end' | null
-      var springRaf = null;        // rAF id for spring animation
+      var overscrollPx = 0;        // signed px past boundary
+      var springRaf = null;
 
-      // Max visual stretch (scaleX delta). 0.12 = 12% wider at peak drag.
-      var MAX_STRETCH = 0.12;
-      // Diminishing-returns constant — higher = reach max stretch sooner
-      var STRETCH_DAMP = 400;
+      // Max translateX in px at peak drag — caps how far it can slide out
+      var MAX_SLIDE = 120;
+      // Damping constant — higher = reach max faster
+      var SLIDE_DAMP = 300;
 
       function getScrollBounds() {
         return {
@@ -358,50 +357,45 @@
         };
       }
 
-      // Convert overscroll pixels to a scaleX value using a logarithmic curve
-      function overscrollToScale(px) {
-        var absPx = Math.abs(px);
-        // log curve: rises fast then flattens — feels like real tension
-        return 1 + MAX_STRETCH * (1 - Math.exp(-absPx / STRETCH_DAMP));
+      // Logarithmic resistance: fast slide at first, then diminishes
+      function dampedSlide(excessPx) {
+        var sign = excessPx < 0 ? -1 : 1;
+        var abs = Math.abs(excessPx);
+        return sign * MAX_SLIDE * (1 - Math.exp(-abs / SLIDE_DAMP));
       }
 
-      function applyStretch(px, side) {
-        overscrollPx = px;
-        overscrollSide = side;
-        var sx = overscrollToScale(px);
-        // Stretch FROM the opposite edge so cards near the pull side expand more
-        track.style.transformOrigin = side === 'start' ? 'right center' : 'left center';
-        track.style.transform = 'scaleX(' + sx + ')';
+      function applySlide(excessPx) {
+        overscrollPx = excessPx;
+        var tx = dampedSlide(excessPx);
+        track.style.transform = 'translateX(' + tx + 'px)';
       }
 
-      function clearStretch() {
+      function clearSlide() {
         overscrollPx = 0;
-        overscrollSide = null;
         track.style.transform = '';
-        track.style.transformOrigin = '';
       }
 
-      // Animate scaleX back to 1 with a fast spring ease
+      // Spring animate translateX back to 0
       function springBack() {
         if (springRaf) cancelAnimationFrame(springRaf);
 
-        var startScale = overscrollToScale(overscrollPx);
+        var startTx = dampedSlide(overscrollPx);
         var startTime = null;
-        var DURATION = 400; // ms
-        var origin = track.style.transformOrigin; // keep same origin during spring
+        var DURATION = 500; // ms
 
         function tick(now) {
           if (!startTime) startTime = now;
           var t = Math.min((now - startTime) / DURATION, 1);
-          // Underdamped spring easing: fast out, slight settle
-          var ease = 1 - Math.pow(1 - t, 4);
-          var sx = startScale + (1 - startScale) * ease;
-          track.style.transformOrigin = origin;
-          track.style.transform = 'scaleX(' + sx + ')';
+          // Underdamped spring: overshoot slightly then settle
+          var decay = Math.exp(-6 * t);
+          var osc = Math.cos(t * Math.PI * 1.5);
+          var ease = 1 - decay * osc;
+          var tx = startTx * (1 - ease);
+          track.style.transform = 'translateX(' + tx + 'px)';
           if (t < 1) {
             springRaf = requestAnimationFrame(tick);
           } else {
-            clearStretch();
+            clearSlide();
           }
         }
         springRaf = requestAnimationFrame(tick);
@@ -411,7 +405,7 @@
       track.addEventListener('mousedown', function(e) {
         isDown = true;
         if (springRaf) { cancelAnimationFrame(springRaf); springRaf = null; }
-        clearStretch();
+        clearSlide();
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
         track.style.cursor = 'grabbing';
@@ -428,8 +422,7 @@
         track.style.scrollSnapType = '';
         track.style.cursor = '';
 
-        // If we were stretching, spring back
-        if (overscrollSide) {
+        if (overscrollPx !== 0) {
           springBack();
         }
 
@@ -451,16 +444,15 @@
         var bounds = getScrollBounds();
 
         if (desired < bounds.min) {
-          // Overscrolling past first card — clamp scroll, apply stretch
+          // Past first card — clamp scroll, slide track right
           track.scrollLeft = bounds.min;
-          applyStretch(bounds.min - desired, 'start');
+          applySlide(bounds.min - desired); // positive = slide right
         } else if (desired > bounds.max) {
-          // Overscrolling past last card
+          // Past last card — clamp scroll, slide track left
           track.scrollLeft = bounds.max;
-          applyStretch(desired - bounds.max, 'end');
+          applySlide(bounds.max - desired); // negative = slide left
         } else {
-          // Normal range — clear any stretch, scroll normally
-          if (overscrollSide) clearStretch();
+          if (overscrollPx !== 0) clearSlide();
           track.scrollLeft = desired;
         }
       });
@@ -475,20 +467,18 @@
         track.addEventListener('mouseleave', startAutoplay);
       }
 
-      // ── Touch: same taffy stretch ──────────────────────────────────────────
+      // ── Touch: same elastic slide ─────────────────────────────────────────
       var touchStartX = 0;
       var touchScrollLeft = 0;
-      var touchOverscrolling = false;
 
       track.addEventListener('touchstart', function(e) {
         stopAutoplay();
         if (springRaf) { cancelAnimationFrame(springRaf); springRaf = null; }
-        clearStretch();
+        clearSlide();
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
         touchStartX = e.touches[0].pageX;
         touchScrollLeft = track.scrollLeft;
-        touchOverscrolling = false;
       }, { passive: true });
 
       track.addEventListener('touchmove', function(e) {
@@ -499,17 +489,13 @@
         if (desired < bounds.min) {
           e.preventDefault();
           track.scrollLeft = bounds.min;
-          applyStretch(bounds.min - desired, 'start');
-          touchOverscrolling = true;
+          applySlide(bounds.min - desired);
         } else if (desired > bounds.max) {
           e.preventDefault();
           track.scrollLeft = bounds.max;
-          applyStretch(desired - bounds.max, 'end');
-          touchOverscrolling = true;
+          applySlide(bounds.max - desired);
         } else {
-          if (overscrollSide) clearStretch();
-          touchOverscrolling = false;
-          // Let native scroll handle in-bounds movement
+          if (overscrollPx !== 0) clearSlide();
         }
       }, { passive: false });
 
@@ -517,7 +503,7 @@
         track.style.scrollBehavior = '';
         track.style.scrollSnapType = '';
 
-        if (overscrollSide) {
+        if (overscrollPx !== 0) {
           springBack();
         }
 
