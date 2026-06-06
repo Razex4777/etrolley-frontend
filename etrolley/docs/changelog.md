@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-06 13:55
+
+- **Converted WhatsApp and Gmail Icons to Premium Inline SVGs**:
+  - Replaced image-based `whatsapp.webp` and `gmail.webp` `<img>` icons inside `.support__actions` (in both `support.en.html` and `support.ar.html`) with clean, lightweight inline SVG vector versions.
+  - Retained the existing inline SVG behavior for the telephone Call button.
+  - Recompiled English and Arabic templates to publish the updated vector icons globally.
+
 # 2026-06-06 13:52
 
 - **Removed Background Container Block from "What Makes Us Different" Slides**:
