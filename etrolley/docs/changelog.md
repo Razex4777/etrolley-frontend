@@ -2,6 +2,12 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-06 13:52
+
+- **Removed Background Container Block from "What Makes Us Different" Slides**:
+  - Removed `background: #F8F9FA` from `.different__slide` in `different.css` to fix the rectangular background container block overlaying slides during the scroll pinning transition.
+  - Recompiled HTML templates across English and Arabic sites to synchronize the style updates.
+
 # 2026-06-06 13:17
 
 - **Fixed "What Makes Us Different" Scroll Pinning and Slide 5 Stacking Match**:

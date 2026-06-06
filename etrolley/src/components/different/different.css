@@ -123,7 +123,17 @@
   position: relative;
   width: 100%;
   margin: 0 auto;
+  display: flow-root;
+}
+
+/* Physical spacer — cannot margin-collapse out of parent.
+   Guarantees the track is tall enough for all sticky slides
+   to remain pinned through their full transition. */
+.different__track::after {
+  content: '';
   display: block;
+  height: 100vh;
+  pointer-events: none;
 }
 
 @media (min-width: 1025px) {
@@ -146,10 +156,9 @@
   will-change: transform;
 }
 
-/* Ensure the last slide has enough space to fully cover the previous card before unpinning */
-.different__slide:last-child {
-  margin-bottom: 100vh;
-}
+/* All slides share identical margin-bottom so they ALL unpin at the same
+   scroll position and exit as a unified stack. The track ::after provides
+   the scroll runway for the last card's pin duration. */
 
 /* Z-indexing to ensure correct stacking deck order */
 .different__slide[data-slide="0"] { z-index: 1; }
@@ -307,7 +316,7 @@
     max-height: none;
     margin: 0 auto;
     position: relative;
-    display: block;
+    display: flow-root; /* BFC prevents last-child margin collapse — critical for sticky deck */
   }
 
   .different__slide {
