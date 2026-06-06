@@ -299,39 +299,80 @@
         }
       }
 
-      // ── Drag-to-scroll + Rubber-band / Gravity at boundaries ────────────────
+      // ── Gravity / Taffy stretch at boundaries ──────────────────────────────
       var isDown = false;
       var startX;
       var scrollLeftVal;
-      var isDragging = false;
+      var overscrollPx = 0;        // how many px past the boundary
+      var overscrollSide = null;   // 'start' | 'end' | null
+      var springRaf = null;        // rAF id for spring animation
 
-      // Rubber-band coefficient — lower = more resistance (iOS-style)
-      var RUBBER = 0.22;
+      // Max visual stretch (scaleX delta). 0.12 = 12% wider at peak drag.
+      var MAX_STRETCH = 0.12;
+      // Diminishing-returns constant — higher = reach max stretch sooner
+      var STRETCH_DAMP = 400;
 
       function getScrollBounds() {
-        var firstCard = cards[0];
-        var lastCard  = cards[cards.length - 1];
-        var minScroll = firstCard.offsetLeft - firstCard.offsetLeft; // 0
-        var maxScroll = lastCard.offsetLeft  - firstCard.offsetLeft;
-        return { min: minScroll, max: maxScroll };
+        return {
+          min: 0,
+          max: track.scrollWidth - track.clientWidth
+        };
       }
 
-      function rubberClamp(raw, min, max) {
-        if (raw < min) {
-          // Over-dragged before first card: spring resistance
-          var excess = raw - min;
-          return min + excess * RUBBER;
-        } else if (raw > max) {
-          // Over-dragged past last card: spring resistance
-          var excess = raw - max;
-          return max + excess * RUBBER;
+      // Convert overscroll pixels to a scaleX value using a logarithmic curve
+      function overscrollToScale(px) {
+        var absPx = Math.abs(px);
+        // log curve: rises fast then flattens — feels like real tension
+        return 1 + MAX_STRETCH * (1 - Math.exp(-absPx / STRETCH_DAMP));
+      }
+
+      function applyStretch(px, side) {
+        overscrollPx = px;
+        overscrollSide = side;
+        var sx = overscrollToScale(px);
+        // Stretch FROM the opposite edge so cards near the pull side expand more
+        track.style.transformOrigin = side === 'start' ? 'right center' : 'left center';
+        track.style.transform = 'scaleX(' + sx + ')';
+      }
+
+      function clearStretch() {
+        overscrollPx = 0;
+        overscrollSide = null;
+        track.style.transform = '';
+        track.style.transformOrigin = '';
+      }
+
+      // Animate scaleX back to 1 with a fast spring ease
+      function springBack() {
+        if (springRaf) cancelAnimationFrame(springRaf);
+
+        var startScale = overscrollToScale(overscrollPx);
+        var startTime = null;
+        var DURATION = 400; // ms
+        var origin = track.style.transformOrigin; // keep same origin during spring
+
+        function tick(now) {
+          if (!startTime) startTime = now;
+          var t = Math.min((now - startTime) / DURATION, 1);
+          // Underdamped spring easing: fast out, slight settle
+          var ease = 1 - Math.pow(1 - t, 4);
+          var sx = startScale + (1 - startScale) * ease;
+          track.style.transformOrigin = origin;
+          track.style.transform = 'scaleX(' + sx + ')';
+          if (t < 1) {
+            springRaf = requestAnimationFrame(tick);
+          } else {
+            clearStretch();
+          }
         }
-        return raw;
+        springRaf = requestAnimationFrame(tick);
       }
 
+      // ── Mouse drag ──────────────────────────────────────────────────────────
       track.addEventListener('mousedown', function(e) {
         isDown = true;
-        isDragging = false;
+        if (springRaf) { cancelAnimationFrame(springRaf); springRaf = null; }
+        clearStretch();
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
         track.style.cursor = 'grabbing';
@@ -344,23 +385,19 @@
       function handleMouseRelease() {
         if (!isDown) return;
         isDown = false;
-        isDragging = false;
         track.style.scrollBehavior = '';
         track.style.scrollSnapType = '';
         track.style.cursor = '';
 
-        // Snap back if rubber-banded past boundary, then snap to card
-        var bounds = getScrollBounds();
-        var clamped = Math.max(bounds.min, Math.min(bounds.max, track.scrollLeft));
-        if (Math.abs(track.scrollLeft - clamped) > 1) {
-          track.scrollTo({ left: clamped, behavior: 'smooth' });
+        // If we were stretching, spring back
+        if (overscrollSide) {
+          springBack();
         }
 
         var computedIndex = calculateActiveIndex();
         activeIndex = computedIndex;
         updateIndex(activeIndex);
         scrollToCard(activeIndex);
-
         startAutoplay();
       }
 
@@ -369,14 +406,27 @@
       document.addEventListener('mousemove', function(e) {
         if (!isDown) return;
         e.preventDefault();
-        isDragging = true;
         var x = e.pageX - track.offsetLeft;
-        var rawScroll = scrollLeftVal - (x - startX) * 1.5;
+        var walk = (x - startX) * 1.5;
+        var desired = scrollLeftVal - walk;
         var bounds = getScrollBounds();
-        track.scrollLeft = rubberClamp(rawScroll, bounds.min, bounds.max);
+
+        if (desired < bounds.min) {
+          // Overscrolling past first card — clamp scroll, apply stretch
+          track.scrollLeft = bounds.min;
+          applyStretch(bounds.min - desired, 'start');
+        } else if (desired > bounds.max) {
+          // Overscrolling past last card
+          track.scrollLeft = bounds.max;
+          applyStretch(desired - bounds.max, 'end');
+        } else {
+          // Normal range — clear any stretch, scroll normally
+          if (overscrollSide) clearStretch();
+          track.scrollLeft = desired;
+        }
       });
 
-      // Pause autoplay when hovering anywhere inside the services section
+      // Pause autoplay when hovering
       var servicesSection = track.closest('.services');
       if (servicesSection) {
         servicesSection.addEventListener('mouseenter', stopAutoplay);
@@ -386,26 +436,41 @@
         track.addEventListener('mouseleave', startAutoplay);
       }
 
-      // ── Touch: rubber-band at boundaries ────────────────────────────────────
+      // ── Touch: same taffy stretch ──────────────────────────────────────────
       var touchStartX = 0;
       var touchScrollLeft = 0;
+      var touchOverscrolling = false;
 
       track.addEventListener('touchstart', function(e) {
         stopAutoplay();
+        if (springRaf) { cancelAnimationFrame(springRaf); springRaf = null; }
+        clearStretch();
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
         touchStartX = e.touches[0].pageX;
         touchScrollLeft = track.scrollLeft;
+        touchOverscrolling = false;
       }, { passive: true });
 
       track.addEventListener('touchmove', function(e) {
         var dx = touchStartX - e.touches[0].pageX;
-        var rawScroll = touchScrollLeft + dx;
+        var desired = touchScrollLeft + dx;
         var bounds = getScrollBounds();
-        // Apply rubber-band only outside boundaries; native scroll handles the rest
-        if (rawScroll < bounds.min || rawScroll > bounds.max) {
+
+        if (desired < bounds.min) {
           e.preventDefault();
-          track.scrollLeft = rubberClamp(rawScroll, bounds.min, bounds.max);
+          track.scrollLeft = bounds.min;
+          applyStretch(bounds.min - desired, 'start');
+          touchOverscrolling = true;
+        } else if (desired > bounds.max) {
+          e.preventDefault();
+          track.scrollLeft = bounds.max;
+          applyStretch(desired - bounds.max, 'end');
+          touchOverscrolling = true;
+        } else {
+          if (overscrollSide) clearStretch();
+          touchOverscrolling = false;
+          // Let native scroll handle in-bounds movement
         }
       }, { passive: false });
 
@@ -413,18 +478,14 @@
         track.style.scrollBehavior = '';
         track.style.scrollSnapType = '';
 
-        // Snap back from rubber-band overshoot
-        var bounds = getScrollBounds();
-        var clamped = Math.max(bounds.min, Math.min(bounds.max, track.scrollLeft));
-        if (Math.abs(track.scrollLeft - clamped) > 1) {
-          track.scrollTo({ left: clamped, behavior: 'smooth' });
+        if (overscrollSide) {
+          springBack();
         }
 
         var computedIndex = calculateActiveIndex();
         activeIndex = computedIndex;
         updateIndex(activeIndex);
         scrollToCard(activeIndex);
-
         startAutoplay();
       }, { passive: true });
 

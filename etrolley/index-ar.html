@@ -124,36 +124,73 @@
         }
       }
 
-      // ── Drag-to-scroll + Rubber-band / Gravity at boundaries ────────────────
+      // ── Gravity / Taffy stretch at boundaries ──────────────────────────────
       var isDown = false;
       var startX;
       var scrollLeftVal;
-      var isDragging = false;
+      var overscrollPx = 0;
+      var overscrollSide = null;
+      var springRaf = null;
 
-      var RUBBER = 0.22;
+      var MAX_STRETCH = 0.12;
+      var STRETCH_DAMP = 400;
 
       function getScrollBounds() {
-        var firstCard = cards[0];
-        var lastCard  = cards[cards.length - 1];
-        var minScroll = 0;
-        var maxScroll = lastCard.offsetLeft - firstCard.offsetLeft;
-        return { min: minScroll, max: maxScroll };
+        return {
+          min: 0,
+          max: track.scrollWidth - track.clientWidth
+        };
       }
 
-      function rubberClamp(raw, min, max) {
-        if (raw < min) {
-          var excess = raw - min;
-          return min + excess * RUBBER;
-        } else if (raw > max) {
-          var excess = raw - max;
-          return max + excess * RUBBER;
+      function overscrollToScale(px) {
+        var absPx = Math.abs(px);
+        return 1 + MAX_STRETCH * (1 - Math.exp(-absPx / STRETCH_DAMP));
+      }
+
+      function applyStretch(px, side) {
+        overscrollPx = px;
+        overscrollSide = side;
+        var sx = overscrollToScale(px);
+        track.style.transformOrigin = side === 'start' ? 'right center' : 'left center';
+        track.style.transform = 'scaleX(' + sx + ')';
+      }
+
+      function clearStretch() {
+        overscrollPx = 0;
+        overscrollSide = null;
+        track.style.transform = '';
+        track.style.transformOrigin = '';
+      }
+
+      function springBack() {
+        if (springRaf) cancelAnimationFrame(springRaf);
+
+        var startScale = overscrollToScale(overscrollPx);
+        var startTime = null;
+        var DURATION = 400;
+        var origin = track.style.transformOrigin;
+
+        function tick(now) {
+          if (!startTime) startTime = now;
+          var t = Math.min((now - startTime) / DURATION, 1);
+          var ease = 1 - Math.pow(1 - t, 4);
+          var sx = startScale + (1 - startScale) * ease;
+          track.style.transformOrigin = origin;
+          track.style.transform = 'scaleX(' + sx + ')';
+          if (t < 1) {
+            springRaf = requestAnimationFrame(tick);
+          } else {
+            clearStretch();
+          }
         }
-        return raw;
+        springRaf = requestAnimationFrame(tick);
       }
 
+      // ── Mouse drag ──────────────────────────────────────────────────────────
       track.addEventListener('mousedown', function(e) {
         isDown = true;
-        isDragging = false;
+        if (springRaf) { cancelAnimationFrame(springRaf); springRaf = null; }
+        clearStretch();
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
         track.style.cursor = 'grabbing';
@@ -166,22 +203,18 @@
       function handleMouseRelease() {
         if (!isDown) return;
         isDown = false;
-        isDragging = false;
         track.style.scrollBehavior = '';
         track.style.scrollSnapType = '';
         track.style.cursor = '';
 
-        var bounds = getScrollBounds();
-        var clamped = Math.max(bounds.min, Math.min(bounds.max, track.scrollLeft));
-        if (Math.abs(track.scrollLeft - clamped) > 1) {
-          track.scrollTo({ left: clamped, behavior: 'smooth' });
+        if (overscrollSide) {
+          springBack();
         }
 
         var computedIndex = calculateActiveIndex();
         activeIndex = computedIndex;
         updateIndex(activeIndex);
         scrollToCard(activeIndex);
-
         startAutoplay();
       }
 
@@ -190,11 +223,21 @@
       document.addEventListener('mousemove', function(e) {
         if (!isDown) return;
         e.preventDefault();
-        isDragging = true;
         var x = e.pageX - track.offsetLeft;
-        var rawScroll = scrollLeftVal - (x - startX) * 1.5;
+        var walk = (x - startX) * 1.5;
+        var desired = scrollLeftVal - walk;
         var bounds = getScrollBounds();
-        track.scrollLeft = rubberClamp(rawScroll, bounds.min, bounds.max);
+
+        if (desired < bounds.min) {
+          track.scrollLeft = bounds.min;
+          applyStretch(bounds.min - desired, 'start');
+        } else if (desired > bounds.max) {
+          track.scrollLeft = bounds.max;
+          applyStretch(desired - bounds.max, 'end');
+        } else {
+          if (overscrollSide) clearStretch();
+          track.scrollLeft = desired;
+        }
       });
 
       var servicesSection = track.closest('.services');
@@ -206,25 +249,40 @@
         track.addEventListener('mouseleave', startAutoplay);
       }
 
-      // ── Touch: rubber-band at boundaries ────────────────────────────────────
+      // ── Touch: same taffy stretch ──────────────────────────────────────────
       var touchStartX = 0;
       var touchScrollLeft = 0;
+      var touchOverscrolling = false;
 
       track.addEventListener('touchstart', function(e) {
         stopAutoplay();
+        if (springRaf) { cancelAnimationFrame(springRaf); springRaf = null; }
+        clearStretch();
         track.style.scrollBehavior = 'auto';
         track.style.scrollSnapType = 'none';
         touchStartX = e.touches[0].pageX;
         touchScrollLeft = track.scrollLeft;
+        touchOverscrolling = false;
       }, { passive: true });
 
       track.addEventListener('touchmove', function(e) {
         var dx = touchStartX - e.touches[0].pageX;
-        var rawScroll = touchScrollLeft + dx;
+        var desired = touchScrollLeft + dx;
         var bounds = getScrollBounds();
-        if (rawScroll < bounds.min || rawScroll > bounds.max) {
+
+        if (desired < bounds.min) {
           e.preventDefault();
-          track.scrollLeft = rubberClamp(rawScroll, bounds.min, bounds.max);
+          track.scrollLeft = bounds.min;
+          applyStretch(bounds.min - desired, 'start');
+          touchOverscrolling = true;
+        } else if (desired > bounds.max) {
+          e.preventDefault();
+          track.scrollLeft = bounds.max;
+          applyStretch(desired - bounds.max, 'end');
+          touchOverscrolling = true;
+        } else {
+          if (overscrollSide) clearStretch();
+          touchOverscrolling = false;
         }
       }, { passive: false });
 
@@ -232,17 +290,14 @@
         track.style.scrollBehavior = '';
         track.style.scrollSnapType = '';
 
-        var bounds = getScrollBounds();
-        var clamped = Math.max(bounds.min, Math.min(bounds.max, track.scrollLeft));
-        if (Math.abs(track.scrollLeft - clamped) > 1) {
-          track.scrollTo({ left: clamped, behavior: 'smooth' });
+        if (overscrollSide) {
+          springBack();
         }
 
         var computedIndex = calculateActiveIndex();
         activeIndex = computedIndex;
         updateIndex(activeIndex);
         scrollToCard(activeIndex);
-
         startAutoplay();
       }, { passive: true });
 
