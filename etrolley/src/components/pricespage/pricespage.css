@@ -228,7 +228,7 @@
   margin-top: -24px;
   margin-left: -1px;
   margin-right: -1px;
-  padding-top: calc(clamp(18px, 2vw, 28px) + 24px);
+  padding-top: calc(clamp(18px, 2vw, 28px) + 57px);
   z-index: 10;
   box-shadow: 0 -10px 20px rgba(49, 108, 107, 0.04), -5px 0 15px rgba(0, 0, 0, 0.02), 5px 0 15px rgba(0, 0, 0, 0.02);
 }
@@ -238,20 +238,30 @@
   color: var(--color-ink-soft);
 }
 
-/* "New" badge for platinum */
-.pricespage__new-badge {
+/* "New" badge container cup for platinum */
+.pricespage__new-badge-container {
   position: absolute;
-  top: -1px;
-  right: 50%;
-  transform: translateX(50%);
-  background: var(--color-sand);
-  color: var(--color-ink-soft);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #9AB5AD;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-sizing: border-box;
+}
+
+.pricespage__new-badge-text {
+  color: var(--color-sand);
   font-family: var(--font-arabic);
   font-weight: 600;
-  font-size: 11px;
-  padding: 3px 18px;
-  border-radius: 0 0 8px 8px;
-  text-transform: uppercase;
+  font-size: clamp(14px, 1.1vw, 18px);
+  text-transform: capitalize;
   letter-spacing: 0.05em;
 }
 
