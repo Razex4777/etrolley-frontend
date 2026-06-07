@@ -3,7 +3,8 @@
  * ============================================================= */
 
 .contact {
-  padding: clamp(80px, 8vw, 140px) 0;
+  padding-top: clamp(120px, 10vw, 160px);
+  padding-bottom: clamp(80px, 8vw, 140px);
   background: #FFFFFF;
   position: relative;
   overflow: hidden;
@@ -499,7 +500,8 @@
 /* ─── Responsive ─── */
 @media (max-width: 980px) {
   .contact {
-    padding: 40px 0;
+    padding-top: 120px;
+    padding-bottom: 40px;
   }
 
   .contact__header {

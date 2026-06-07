@@ -2,6 +2,11 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:40
+
+- **Fixed Top Navbar Padding Overlap**:
+  - Increased top padding of `.contact` section to `clamp(120px, 10vw, 160px)` on desktop and `120px` on mobile viewports. This ensures the page title "KEEP IN TOUCH" clears the fixed top navigation bar layout elements and renders beautifully without overlapping.
+
 # 2026-06-07 05:38
 
 - **Optimized Mobile Sizing & Hidden Illustrations on Mobile**:
