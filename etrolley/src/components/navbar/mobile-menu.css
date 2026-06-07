@@ -140,10 +140,10 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 18px 4px;
+  padding: 12px 4px;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(28px, 7vw, 40px);
+  font-size: clamp(20px, 5vw, 28px);
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--color-white);
@@ -368,9 +368,9 @@ body:has(#mobile-menu:target) {
 }
 
 .mobile-menu__submenu li a {
-  font-size: clamp(20px, 5.5vw, 24px) !important;
+  font-size: clamp(16px, 4.5vw, 20px) !important;
   font-weight: 500 !important;
-  padding: 10px 4px !important;
+  padding: 8px 4px !important;
   border: none !important;
   color: rgba(255, 255, 255, 0.7) !important;
   display: flex;
@@ -416,10 +416,10 @@ body:has(#mobile-menu:target) {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 18px 4px;
+  padding: 12px 4px;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(28px, 7vw, 40px);
+  font-size: clamp(20px, 5vw, 28px);
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--color-white);
