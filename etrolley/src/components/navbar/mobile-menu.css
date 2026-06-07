@@ -45,7 +45,8 @@
 .mobile-menu__panel {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+  right: auto;
   bottom: 0;
   width: min(420px, 86vw);
   background: linear-gradient(180deg, #0e1f1f 0%, #16302f 100%);
@@ -59,8 +60,8 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   /* Decorative vertical glow strip on the inner edge */
-  box-shadow: -40px 0 80px rgba(0, 0, 0, 0.4);
-  transform: translateX(100%);
+  box-shadow: 40px 0 80px rgba(0, 0, 0, 0.4);
+  transform: translateX(-100%);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -72,7 +73,8 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
+  left: auto;
   width: 1px;
   height: 100%;
   background: linear-gradient(180deg, transparent 0%, rgba(245, 201, 154, 0.3) 30%, rgba(154, 181, 172, 0.3) 70%, transparent 100%);
@@ -466,4 +468,21 @@ body:has(#mobile-menu:target) {
 /* Hide menu trigger entirely on desktop */
 @media (min-width: 981px) {
   .mobile-menu { display: none; }
+}
+
+/* RTL Slide-in from Right Overrides */
+[dir="rtl"] .mobile-menu__panel {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+  box-shadow: -40px 0 80px rgba(0, 0, 0, 0.4);
+}
+
+[dir="rtl"] .mobile-menu:target .mobile-menu__panel {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-menu__panel::before {
+  right: auto;
+  left: 0;
 }
