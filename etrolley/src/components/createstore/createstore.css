@@ -89,6 +89,7 @@
 /* ─── Phone field and custom country dropdown ─── */
 .createstore__field-wrapper {
   position: relative;
+  z-index: 10;
 }
 
 .createstore__phone-field {
@@ -477,6 +478,7 @@ html[dir="rtl"] .createstore__timer-row {
 .createstore__field--select {
   padding: 0;
   cursor: pointer;
+  z-index: 10;
 }
 
 .createstore__select-btn {
