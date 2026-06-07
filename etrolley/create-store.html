@@ -16,6 +16,7 @@
     />
 
     <link rel="icon" type="image/png" href="/images/logo-etrolley-28bffb.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css" />
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body>
@@ -43,97 +44,10 @@
         </p>
 
         <form class="createstore__form" action="create-new" method="POST" onsubmit="event.preventDefault(); alert('Redirecting to Create new...');">
-          <!-- Phone field with dropdown and layout match -->
+          <!-- Phone field with library input integration -->
           <div class="createstore__field-wrapper">
             <div class="createstore__phone-field">
-              <!-- Custom Country Code Dropdown -->
-              <div class="createstore__dropdown" data-country-dropdown>
-                <button type="button" class="createstore__dropdown-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select Country Code">
-                  <span class="createstore__flag" data-selected-flag>
-                    <svg viewBox="0 0 28 15" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="28" height="15" fill="#8D1B3D"/>
-                      <polygon points="0,0 8,0 8,0.68 7,1.36 8,2.04 7,2.72 8,3.4 7,4.08 8,4.76 7,5.44 8,6.12 7,6.8 8,7.48 7,8.16 8,8.84 7,9.52 8,10.2 7,10.88 8,11.56 7,12.24 8,12.92 7,13.6 8,14.28 7,14.96 8,15 0,15" fill="#FFFFFF"/>
-                    </svg>
-                  </span>
-                  <svg class="createstore__arrow" width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.5 6L7.5 12L13.5 6" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-                <ul class="createstore__dropdown-list" role="listbox">
-                  <li class="createstore__dropdown-item" role="option" data-value="+974" data-flag="qa" aria-selected="true">
-                    <span class="createstore__flag">
-                      <svg viewBox="0 0 28 15" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="28" height="15" fill="#8D1B3D"/>
-                        <polygon points="0,0 8,0 8,0.68 7,1.36 8,2.04 7,2.72 8,3.4 7,4.08 8,4.76 7,5.44 8,6.12 7,6.8 8,7.48 7,8.16 8,8.84 7,9.52 8,10.2 7,10.88 8,11.56 7,12.24 8,12.92 7,13.6 8,14.28 7,14.96 8,15 0,15" fill="#FFFFFF"/>
-                      </svg>
-                    </span>
-                    <span class="createstore__code">+974</span>
-                    <span class="createstore__country-name">Qatar</span>
-                  </li>
-                  <li class="createstore__dropdown-item" role="option" data-value="+966" data-flag="sa">
-                    <span class="createstore__flag">
-                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="30" height="20" fill="#006C35"/>
-                        <path d="M5 12h20M12 15l3-3-3-3" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
-                    </span>
-                    <span class="createstore__code">+966</span>
-                    <span class="createstore__country-name">Saudi Arabia</span>
-                  </li>
-                  <li class="createstore__dropdown-item" role="option" data-value="+971" data-flag="ae">
-                    <span class="createstore__flag">
-                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="30" height="20" fill="#00732F"/>
-                        <rect width="7.5" height="20" fill="#FF0000"/>
-                        <rect x="7.5" width="22.5" height="6.6" fill="#000"/>
-                        <rect x="7.5" y="6.6" width="22.5" height="6.8" fill="#FFF"/>
-                      </svg>
-                    </span>
-                    <span class="createstore__code">+971</span>
-                    <span class="createstore__country-name">UAE</span>
-                  </li>
-                  <li class="createstore__dropdown-item" role="option" data-value="+965" data-flag="kw">
-                    <span class="createstore__flag">
-                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="30" height="20" fill="#FFF"/>
-                        <rect width="30" height="6.6" fill="#128C7E"/>
-                        <rect y="13.3" width="30" height="6.7" fill="#CE1126"/>
-                        <polygon points="0,0 7.5,6.6 7.5,13.3 0,20" fill="#000"/>
-                      </svg>
-                    </span>
-                    <span class="createstore__code">+965</span>
-                    <span class="createstore__country-name">Kuwait</span>
-                  </li>
-                  <li class="createstore__dropdown-item" role="option" data-value="+968" data-flag="om">
-                    <span class="createstore__flag">
-                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="30" height="20" fill="#00843D"/>
-                        <rect width="10" height="20" fill="#D21034"/>
-                        <rect x="10" width="20" height="6.6" fill="#FFF"/>
-                        <rect x="10" y="13.3" width="20" height="6.7" fill="#D21034"/>
-                      </svg>
-                    </span>
-                    <span class="createstore__code">+968</span>
-                    <span class="createstore__country-name">Oman</span>
-                  </li>
-                  <li class="createstore__dropdown-item" role="option" data-value="+973" data-flag="bh">
-                    <span class="createstore__flag">
-                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="30" height="20" fill="#CE1126"/>
-                        <polygon points="0,0 10,0 6.6,2.5 10,5 6.6,7.5 10,10 6.6,12.5 10,15 6.6,17.5 10,20 0,20" fill="#FFF"/>
-                      </svg>
-                    </span>
-                    <span class="createstore__code">+973</span>
-                    <span class="createstore__country-name">Bahrain</span>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Hidden input for prefix and standard input for layout integration -->
-              <input type="hidden" name="country_code" id="country-code-val" value="+974" />
-              <div class="createstore__input-container">
-                <input type="tel" name="phone" class="createstore__input" id="phone-input" placeholder="XXXXXXXXX" required />
-              </div>
+              <input type="tel" name="phone" class="createstore__input" id="phone-input" placeholder="XXXXXXXXX" required />
             </div>
           </div>
 
@@ -206,50 +120,6 @@
   </div>
 </section>
 
-<!-- Country dropdown logic script -->
-<script>
-  (function() {
-    var wrapper = document.querySelector('[data-country-dropdown]');
-    if (!wrapper) return;
-
-    var btn = wrapper.querySelector('.createstore__dropdown-btn');
-    var list = wrapper.querySelector('.createstore__dropdown-list');
-    var hiddenInput = document.getElementById('country-code-val');
-    var selectedFlag = wrapper.querySelector('[data-selected-flag]');
-
-    // Toggle list visibility
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', !isExpanded);
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', function() {
-      btn.setAttribute('aria-expanded', 'false');
-    });
-
-    // Item selection
-    var items = wrapper.querySelectorAll('.createstore__dropdown-item');
-    items.forEach(function(item) {
-      item.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var code = item.getAttribute('data-value');
-        var flagSvg = item.querySelector('.createstore__flag').innerHTML;
-
-        hiddenInput.value = code;
-        selectedFlag.innerHTML = flagSvg;
-
-        // Reset aria selected
-        items.forEach(function(i) { i.setAttribute('aria-selected', 'false'); });
-        item.setAttribute('aria-selected', 'true');
-
-        btn.setAttribute('aria-expanded', 'false');
-      });
-    });
-  })();
-</script>
-
     </main>
 
     <script>
@@ -273,6 +143,22 @@
         checkScroll();
         window.addEventListener('load', checkScroll);
       })();
+    </script>
+
+    <!-- intl-tel-input library initialization -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var phoneInput = document.getElementById('phone-input');
+        if (phoneInput) {
+          window.itiInstance = window.intlTelInput(phoneInput, {
+            initialCountry: "qa",
+            separateDialCode: true,
+            preferredCountries: ["qa", "sa", "ae", "kw", "om", "bh"],
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js"
+          });
+        }
+      });
     </script>
   </body>
 </html>

@@ -67,12 +67,9 @@
   max-width: 838px;
   height: 96px;
   border-radius: 5px;
-  padding: 15px 20px;
+  padding: 0; /* Let intl-tel-input control layout inside */
   background: #FFFFFF;
   box-shadow: 0px 0px 20px 0px #DFDFDF;
-  display: flex;
-  align-items: center;
-  gap: 20px;
   box-sizing: border-box;
   transition: box-shadow var(--dur-fast) var(--ease-out-expo),
               transform var(--dur-fast) var(--ease-out-expo);
@@ -83,136 +80,115 @@
   transform: translateY(-2px);
 }
 
-/* Dropdown styling */
-.createstore__dropdown {
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.createstore__dropdown-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  height: 42px;
-}
-
-.createstore__flag {
-  display: inline-flex;
-  width: 38px;
-  height: 38px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.createstore__flag svg {
+/* intl-tel-input specific overrides */
+.createstore__phone-field .iti {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
-.createstore__arrow {
-  width: 15px;
-  height: 17px;
-  transition: transform var(--dur-fast) var(--ease-out-expo);
+.createstore__phone-field .iti input,
+.createstore__phone-field .iti input[type=tel] {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-family: 'Noto Sans Arabic', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  color: #121212 !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-right: 20px !important;
 }
 
-.createstore__dropdown-btn[aria-expanded="true"] .createstore__arrow {
-  transform: rotate(180deg);
+html[dir="rtl"] .createstore__phone-field .iti input,
+html[dir="rtl"] .createstore__phone-field .iti input[type=tel] {
+  padding-left: 20px !important;
+  padding-right: 0 !important;
 }
 
-.createstore__dropdown-list {
-  position: absolute;
-  top: calc(100% + 15px);
-  left: 0;
-  z-index: 100;
-  width: 250px;
-  max-height: 280px;
-  overflow-y: auto;
-  background: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(49, 108, 107, 0.1);
-  padding: 8px 0;
-  margin: 0;
-  list-style: none;
-  display: none;
-  animation: dropdownFade var(--dur-fast) var(--ease-out-expo);
+.iti__selected-flag {
+  background: transparent !important;
+  padding: 0 15px 0 20px !important;
+  height: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
 }
 
-html[dir="rtl"] .createstore__dropdown-list {
-  left: auto;
-  right: 0;
+html[dir="rtl"] .iti__selected-flag {
+  padding: 0 20px 0 15px !important;
 }
 
-.createstore__dropdown-btn[aria-expanded="true"] + .createstore__dropdown-list {
-  display: block;
+/* Arrow styling */
+.iti__arrow {
+  border-top: 5px solid #555555 !important;
+  border-left: 4px solid transparent !important;
+  border-right: 4px solid transparent !important;
+  border-bottom: 0 !important;
+  transition: transform var(--dur-fast) var(--ease-out-expo) !important;
+  margin-left: 5px !important;
 }
 
-.createstore__dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease-out-expo);
+html[dir="rtl"] .iti__arrow {
+  margin-left: 0 !important;
+  margin-right: 5px !important;
 }
 
-.createstore__dropdown-item:hover,
-.createstore__dropdown-item[aria-selected="true"] {
-  background: rgba(49, 108, 107, 0.08);
+/* Selected Dial code text style */
+.iti__selected-dial-code {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: #316C6B !important;
+  margin-left: 8px !important;
 }
 
-.createstore__code {
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #316C6B;
+html[dir="rtl"] .iti__selected-dial-code {
+  margin-left: 0 !important;
+  margin-right: 8px !important;
 }
 
-.createstore__country-name {
-  font-family: 'Noto Sans Arabic', sans-serif;
-  font-size: 14px;
-  color: #555555;
-  margin-left: auto;
+/* Country list dropdown dropdown styling */
+.iti__dropdown-content {
+  background: #FFFFFF !important;
+  border-radius: 10px !important;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(49, 108, 107, 0.1) !important;
+  padding: 8px 0 !important;
+  font-family: 'Noto Sans Arabic', sans-serif !important;
+  z-index: 1000 !important;
 }
 
-html[dir="rtl"] .createstore__country-name {
-  margin-left: 0;
-  margin-right: auto;
+.iti__country {
+  padding: 10px 16px !important;
+  font-size: 15px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  color: #555555 !important;
+  line-height: normal !important;
 }
 
-/* Input container */
-.createstore__input-container {
-  flex: 1 1 auto;
-  height: 42px;
+.iti__country-name {
+  color: #555555 !important;
+  font-size: 14px !important;
 }
 
-.createstore__input {
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: 'Noto Sans Arabic', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  color: #121212;
-  padding: 0;
-  margin: 0;
-  line-height: 42px;
+.iti__dial-code {
+  color: #316C6B !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 500 !important;
 }
 
-.createstore__input::placeholder {
-  color: #757575;
+.iti__country:hover,
+.iti__country.iti__highlight {
+  background: rgba(49, 108, 107, 0.08) !important;
 }
 
 /* ─── Checkbox Row ─── */
