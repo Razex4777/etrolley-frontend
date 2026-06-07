@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:30
+
+- **Created Standalone Contact Page and Completed Form Styling**:
+  - Moved the contact form out of the home page (`index.html`/`index-ar.html`) into dedicated pages `contact.html` and `contact-ar.html`.
+  - Created a base HTML template `src/contact.base.html` for compiling the contact pages.
+  - Completed Figma-accurate CSS layout and styling for Map & Address (Block 2) and Complaints Form (Block 3) in `contact.css`.
+  - Updated all navigation and footer menu links in EN/AR files to route directly to `contact.html`/`contact-ar.html` instead of `#contact`.
+  - Registered contact pages in `vite.config.js` and updated the template compiler to build them successfully.
+
 # 2026-06-07 05:19
 
 - **Figma-Aligned Submit Button & Removed Input Placeholders**:

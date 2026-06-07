@@ -13,7 +13,6 @@ const indexComponents = [
   'clients',
   'designs',
   'support',
-  'contact',
   'footer'
 ];
 
@@ -532,6 +531,85 @@ export function compile() {
     });
     fs.writeFileSync(path.join(root, 'prices-ar.html'), arPrices, 'utf8');
     console.log('Compiled prices-ar.html (Arabic)');
+  }
+
+  // --- 8. Compile contact.html and contact-ar.html ---
+  const contactComponents = [
+    'navbar',
+    'contact',
+    'footer'
+  ];
+
+  if (fs.existsSync(path.join(root, 'src/contact.base.html'))) {
+    const contactBase = fs.readFileSync(path.join(root, 'src/contact.base.html'), 'utf8');
+
+    // English contact.html
+    let enContact = contactBase;
+    enContact = enContact.replace('[LANG]', 'en');
+    enContact = enContact.replace('[DIR]', 'ltr');
+    enContact = enContact.replace('[TITLE]', 'Contact Us — E-Trolley');
+    enContact = enContact.replace('[DESCRIPTION]', 'Contact E-Trolley specialized in e-commerce services in Qatar. We are ready to help you launch your online store or app.');
+
+    contactComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index.html#create-store"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="contact-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="contact.html"');
+          // Set Contact Us link as active
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+          compContent = compContent.replace('href="contact.html" class="nav__link"', 'href="contact.html" class="nav__link is-active"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about.html"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index.html#create"');
+        }
+        enContact = enContact.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'contact.html'), enContact, 'utf8');
+    console.log('Compiled contact.html (English)');
+
+    // Arabic contact-ar.html
+    let arContact = contactBase;
+    arContact = arContact.replace('[LANG]', 'ar');
+    arContact = arContact.replace('[DIR]', 'rtl');
+    arContact = arContact.replace('[TITLE]', 'اتصل بنا — إي ترولي');
+    arContact = arContact.replace('[DESCRIPTION]', 'تواصل مع إي ترولي المتخصصة في خدمات التجارة الإلكترونية في قطر. نحن جاهزون لمساعدتك في إطلاق متجرك أو تطبيقك.');
+
+    contactComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="index-ar.html#create-store"');
+          compContent = compContent.replace('href="index.html"', 'href="contact.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="contact-ar.html"');
+          // Set Contact Us link as active
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+          compContent = compContent.replace('href="contact-ar.html" class="nav__link"', 'href="contact-ar.html" class="nav__link is-active"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about-ar.html"');
+          compContent = compContent.replaceAll('href="#create"', 'href="index-ar.html#create"');
+        }
+        arContact = arContact.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'contact-ar.html'), arContact, 'utf8');
+    console.log('Compiled contact-ar.html (Arabic)');
   }
 }
 

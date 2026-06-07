@@ -20,7 +20,9 @@ etrolley/
 ├── 📄 faqs-ar.html                        ( Arabic FAQs page; RTL-compiled mirror with fully localized accordion Q&A content )
 ├── 📄 prices.html                         ( English Prices page; compiled from prices.base.html + pricespage + navbar + footer )
 ├── 📄 prices-ar.html                      ( Arabic Prices page; RTL-compiled mirror with localized pricing packages )
-├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, designs, prices, and faqs pages in both EN and AR )
+├── 📄 contact.html                        ( English Contact Us page; compiled from contact.base.html + contact component + navbar + footer )
+├── 📄 contact-ar.html                     ( Arabic Contact Us page; RTL-compiled mirror with fully localized contact form )
+├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, designs, prices, faqs, and contact pages in both EN and AR )
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
 │   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
@@ -65,6 +67,7 @@ etrolley/
     ├── 📄 designs.base.html               ( Base HTML shell layout template for compiled Distinctive Designs showcase pages )
     ├── 📄 faqs.base.html                  ( Base HTML shell layout template for compiled FAQs pages )
     ├── 📄 prices.base.html                ( Base HTML shell layout template for compiled Prices comparison pages )
+    ├── 📄 contact.base.html               ( Base HTML shell layout template for compiled Contact pages )
     ├── 📄 index.base.html                 ( Base HTML shell layout template for compiled Home landing pages )
     ├── 📁 components/                     ( UI building blocks; each contains its styles, static HTML layouts )
     │   ├── 📁 about/                      ( Symmetrical LTR/RTL About Us page content component )
