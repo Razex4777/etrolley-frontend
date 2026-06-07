@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 07:08
+
+- **Customized Phone Country Flag Widget Layout**:
+  - Implemented exact Figma dimensions for the country flag select container (`width: 38px`, `height: 38px`) and the flag itself (`width: 32.72px`, `height: 20.05px`, `top: 8.97px`, `left: 2.64px`, `border: 0.5px solid #000`).
+  - Added a DOM wrapper helper in `create-store.base.html` to inject a white container `.iti__flag-box` around the flag sprite element.
+  - Custom styled the select arrow chevron (`width: 15px`, `height: 17px`, `margin-left: 10px`) with the light-green `#9AB5AD` color.
+  - Hidden the separate text dial code outside the input field to match the mockups (with the dial code prepended programmatically on form submit).
+
 # 2026-06-07 07:06
 
 - **Adjusted Desktop Illustration Container Size**:
