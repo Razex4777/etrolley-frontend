@@ -27,7 +27,7 @@
 /* ─── Left Column: Form ─── */
 .createstore__left {
   flex: 1 1 50%;
-  max-width: 760px;
+  max-width: 580px;
   width: 100%;
   transition: all 0.3s ease;
 }
@@ -80,7 +80,7 @@
 
 .createstore__phone-field {
   width: 100%;
-  max-width: 838px;
+  max-width: 580px;
   height: 76px;
   border-radius: 5px;
   padding: 0; /* Let intl-tel-input control layout inside */
@@ -1038,7 +1038,7 @@ html[dir="rtl"] .createstore__cart-front {
 
 .createstore.is-register-page .createstore__left {
   flex: 0 0 100%;
-  max-width: var(--container);
+  max-width: 1000px;
   width: 100%;
   margin: 0 auto;
 }
@@ -1263,7 +1263,7 @@ html[dir="rtl"] .createstore.is-register-page .createstore__slug-hint {
 
 .createstore__cost-box {
   width: 100%;
-  max-width: 832px;
+  max-width: 580px;
   height: 100px;
   border: 1px solid #99B4AB;
   border-radius: 5px;
@@ -1312,7 +1312,7 @@ html[dir="rtl"] .createstore.is-register-page .createstore__slug-hint {
 
 /* Coupon input box layout */
 .createstore__field--coupon {
-  max-width: 837px;
+  max-width: 580px;
   height: 76px;
   padding: 10px 20px;
   display: flex;
@@ -1362,7 +1362,7 @@ html[dir="rtl"] .createstore.is-register-page .createstore__slug-hint {
   margin-top: 15px;
   margin-bottom: 25px;
   width: 100%;
-  max-width: 837px;
+  max-width: 580px;
   text-align: left;
 }
 
