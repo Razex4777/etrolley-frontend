@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 07:15
+
+- **Optimized Create Store & Registration Layouts**:
+  - Expanded `.createstore__inner` and `.createstore.is-register-page .createstore__left` to use full-width `max-width: var(--container)` instead of being centered and cramped in the middle on desktop screens.
+  - Scaled down dimensions of constituent input fields, submit buttons, verification code containers, and cost boxes to prevent vertical scrolling.
+  - Scaled down the right-hand illustration container and glassmorphic banner by 20% on desktop to fit tight viewports.
+
 # 2026-06-07 07:08
 
 - **Customized Phone Country Flag Widget Layout**:
@@ -406,101 +413,4 @@
 
 # 2026-06-03 13:51
 
-- **Implemented Magnetic Hover Attraction for Steps CTA Button**:
-  - Added custom butter-smooth JavaScript to `steps.en.html` and `steps.ar.html` that attracts the "LET'S START NOW" CTA button towards the user's mouse cursor using `requestAnimationFrame` and linear interpolation (lerp).
-  - Designed the magnetic pull to trigger within a 180px threshold, translating the button up to 35px, and applying a lighter 40% offset to the inner text layer for a subtle parallax depth effect.
-  - Automatically resets translation offsets on mouse exit and disables tracking on viewports under 1100px or devices without fine pointer/hover capabilities to prevent mobile collisions.
-  - Removed `transform` from the transition lists and disabled hover translations in `steps.css` to prevent layout lag or jittering during dynamic JS animation.
-  - Recompiled all page templates and successfully built the production build.
-
-# 2026-06-03 13:04
-
-- **Corrected Hero Content Downward Shift**:
-  - Set `.hero__content` `padding-top` to `100px` on desktop to shift the main headline ("Your store will be...") and CTA button downwards.
-  - Reverted the `.hero__aside` validation footnote gap (`gap: clamp(60px, 7vw, 110px)`) back to its default position so the footnote remains static and aligns perfectly with the shifted button baseline.
-
-# 2026-06-03 13:02
-
-- **Shifted Hero Content Downwards**:
-  - Added `padding-top: 70px` to `.hero__content` under the desktop media query. This shifts the display headline and CTA button downwards to create better top breathing space.
-  - Increased `.hero__aside` gap to `90px` to keep the validation footnote vertically aligned with the shifted CTA button.
-
-# 2026-06-03 13:01
-
-- **Shifted Hero Illustration Leftwards**:
-  - Changed `.hero__image img`'s transform in `hero.css` from `translate(-50px, -70px)` to `translate(-120px, -70px)` on desktop. This pulls the laptop and shopping bags illustration closer to the CTA button.
-  - Mirrored this shift in `_rtl.css` with `translate(120px, -70px)`.
-
-# 2026-06-03 13:00
-
-- **Enlarged and Shifted Background Watermark**:
-  - Increased `.hero__watermark`'s width clamp to `clamp(840px, 105vw, 2000px)` to expand the background "e-trolley" watermark text significantly on all screens.
-  - Shifted the watermark further left by setting `left: -120px` relative to `.hero__content` on desktop to allow its lettering to extend beyond the start of the headline and button.
-  - Removed the `<div class="hero__dream-pill">` pill from both `hero.en.html` and `hero.ar.html`.
-  - Shortened the social rail label from "Follow us" to "Follow" (and "تابع" in Arabic).
-
-# 2026-06-03 12:51
-
-- **Aligned Follow Rail to Watermark Letter "y"**:
-  - Added a negative margin-left offset (`margin-left: -280px`) on `.hero__rail` under the desktop media query. This shifts the vertical "Follow us" rail leftwards to sit directly on top of the ending letter "y" of the background "e-trolley" watermark as shown in Figma.
-  - Implemented the corresponding RTL mirrored override (`margin-right: -280px`) in `_rtl.css`.
-
-# 2026-06-03 12:47
-
-- **Aligned Footnote Vertically with the CTA Button**:
-  - Reduced `.hero__aside`'s gap to `20px` under the desktop media query. This shifts the 3-line validation footnote upwards by ~90px, aligning its horizontal baseline perfectly with the main "build your store now" CTA button as shown in Figma.
-
-# 2026-06-03 12:42
-
-- **Aligned Hero Headline, CTA Button, and Watermark to the Right**:
-  - Shifted the desktop hero content container `.hero__content` to the right by increasing the first column of `.hero__inner` to `450px` and matching aside padding.
-  - Aligned `.hero__watermark` exactly at `left: 0` to match the left edge of the headline text and the CTA button wrapper, ensuring all three elements align perfectly along the same vertical line.
-  - Successfully recompiled all page templates and rebuilt the production assets.
-
-# 2026-06-03 12:38
-
-- **Aligned Hero Checkmark Icon and Wrapped Validation Text to 3 Lines**:
-  - Replaced the simple double-circle check SVG inside `hero.en.html` with a custom-designed rosette checkmark seal badge icon matching the Figma mockup.
-  - Adjusted the validation text container width `.hero__validate` from `345px` to `380px` on desktop viewports. This allows the lowercase "etrolley" validation message to wrap cleanly into exactly 3 lines without cutting off.
-
-# 2026-06-03 12:37
-
-- **Fixed QR Aside Container Overlapping with Hero Headline**:
-  - Restructured the desktop inner grid `.hero__inner` to use a dedicated first column width of `352px` (`grid-template-columns: 352px 1fr minmax(60px, 5%)`) on viewports `min-width: 1181px`.
-  - Scoped the fixed QR container (`305px × 388px`) and footnote (`345px`) widths under the desktop media query, letting them fallback to fluid, auto-sizing widths and aspect-ratio layouts on smaller screens to prevent collision with the headline text.
-
-# 2026-06-03 12:35
-
-- **Aligned Homepage Hero QR Code & Validation Text to Figma Offsets**:
-  - Shifted the entire left hero aside container `.hero__aside` to the right using dynamic layout padding to center it according to Figma's horizontal bounds.
-  - Sized the QR wrapper `.hero__qr` to exact width/height parameters (`305px × 388px`) on desktop viewports.
-  - Sized the validation footnote `.hero__validate` to a clean width of `345px` with a matching `8px` rightward offset relative to the QR block.
-  - Formatted the footnote text to `20px` font-size and `27.4px` line-height with 'Noto Sans Arabic' regular weight, and updated the English copy.
-  - Ensured fluid responsive overrides for the aside components are preserved on mobile/tablet viewports.
-
-# 2026-06-03 12:33
-
-- **Updated Homepage Hero CTA Button Style to Exact Figma Specs**:
-  - Resized the main CTA link `.hero__cta` in `hero.css` to exact dimensions: `width: 459px; height: 90px;` with `border-radius: 15px;`.
-  - Added precise internal paddings: `18.5px` top/bottom and `22.2px` left/right.
-  - Set bold `24px` font size with `16px` line-height for typography layer on the text.
-  - Updated English button content to "build your store now" and Arabic translation to "أنشئ متجرك الآن".
-
-# 2026-06-03 12:03
-
-- **Scoped Sticky Parallax Footer Reveal Back to Desktop Only**:
-  - Reverted `position: sticky` and reveal parallax styling back to desktop-only (`min-width: 981px`) inside `_footer_reveal.css`. Because the mobile footer stacks vertically and is taller than typical phone screens, a sticky layout causes the top part (Logo, Quick Links, Site Map) to be permanently cut off and unreachable. Making the footer static on mobile allows users to scroll and see the entire footer content naturally.
-  - Mirrored the interactive carousel scroll scripts and arrow preventDefault actions into `designs.ar.html` to align its functionality with the English version.
-  - Adjusted support action buttons `.support__btn` to size down gracefully to `56px` on tablet (`max-width: 980px`) and `48px` on mobile (`max-width: 640px`) to prevent oversized icons.
-
-# 2026-06-03 11:58
-
-- **Polished Homepage Support Section Mobile Layout**:
-  - Completely hid the overlapping absolute trolley/cart line art illustrations (`.support__cart-back` and `.support__cart-front`) on screens under `980px` to resolve the visual text overlap corruption.
-  - Centered all text content (`text-align: center`) and social contact buttons (`justify-content: center`) inside `.support__card`.
-  - Scaled down the decorative double circles in the eyebrow slider to matching compact `18px` knob sizes to fit mobile layouts.
-  - Reduced section padding (`30px` top and `40px` bottom) and cleared negative margin offsets.
-
-
-
-
+  - Added compile logic in `compile-templates.mjs` and successfully built all templates.
