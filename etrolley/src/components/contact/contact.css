@@ -499,13 +499,18 @@
 /* ─── Responsive ─── */
 @media (max-width: 980px) {
   .contact {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .contact__header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .contact__header-title {
+    font-size: 36px;
   }
 
   .contact__header-desc-box {
@@ -515,56 +520,130 @@
 
   .contact__content {
     flex-direction: column;
-    align-items: center;
-    gap: 48px;
+    align-items: stretch;
+    gap: 24px;
   }
 
   .contact__form {
     flex: none;
     max-width: 100%;
+    gap: 16px;
   }
 
   .contact__image-box {
-    flex: none;
-    max-width: 480px;
+    display: none;
+  }
+
+  .contact__field {
+    height: 80px;
+    padding: 0 16px;
+  }
+
+  .contact__field-input,
+  .contact__select-placeholder {
+    font-size: 16px;
+    height: 36px;
+    line-height: 36px;
+  }
+
+  .contact__select-custom {
+    height: 36px;
+  }
+
+  .contact__select-options {
+    left: -16px;
+    right: -16px;
+  }
+
+  .contact__select-option {
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  .contact__field--textarea {
+    height: 140px;
+    padding: 16px;
   }
 
   .contact__submit-btn {
     align-self: center;
     max-width: 100%;
+    height: 72px;
+    font-size: 16px;
   }
 
   .contact__map-section {
     flex-direction: column;
-    align-items: center;
-    gap: 32px;
+    align-items: stretch;
+    gap: 24px;
+    margin-top: 40px;
   }
 
   .contact__map-box {
     width: 100%;
     max-width: 100%;
-    height: 250px;
+    height: 220px;
   }
 
   .contact__address-box {
     width: 100%;
     max-width: 100%;
+    gap: 16px;
+  }
+
+  .contact__address-title {
+    font-size: 28px;
+  }
+
+  .contact__info-list {
+    gap: 16px;
+  }
+
+  .contact__info-item {
+    gap: 12px;
+  }
+
+  .contact__info-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact__info-text {
+    font-size: 18px;
+  }
+
+  .contact__complaints-section {
+    margin-top: 50px;
   }
 
   .contact__complaints-header {
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
   }
 
   .contact__complaints-image-box {
-    width: 100%;
-    max-width: 320px;
+    display: none;
   }
 
   .contact__complaints-title-box {
     width: 100%;
     max-width: 100%;
+    gap: 12px;
+  }
+
+  .contact__complaints-eyebrow-text {
+    font-size: 18px;
+  }
+
+  .contact__complaints-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .contact__complaints-form {
+    gap: 16px;
   }
 
   .contact__complaints-fields {
@@ -575,5 +654,7 @@
   .contact__complaints-submit-btn {
     align-self: center;
     max-width: 100%;
+    height: 72px;
+    font-size: 16px;
   }
 }

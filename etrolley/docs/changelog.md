@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:38
+
+- **Optimized Mobile Sizing & Hidden Illustrations on Mobile**:
+  - Hidden illustrations in Block 1 (`contact-illustration.webp`) and Block 3 (`complaints-illustration.webp`) on viewports below `980px` (`display: none;`) to keep mobile forms clean and clean.
+  - Sized down mobile contact fields card container heights from `101px` to `80px` and text placeholder sizes to `16px`.
+  - Scaled down textarea height to `140px` and primary submit buttons to `72px` height on mobile viewports for compact screen fitting.
+  - Trimmed down display typography headings (Title, Address, Info rows, and Complaints heading) to balanced sizes on mobile.
+
 # 2026-06-07 05:35
 
 - **Implemented Modern Custom Dropdown & Centered Field Placeholders**:
