@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:05
+
+- **Fixed Pricing Page Responsiveness & Table Overflow Across Viewports**:
+  - Increased the mobile cards breakpoint from `880px` to `1180px` in `pricespage.css` to prevent the desktop comparison grid from overflowing or being clipped on medium/tablet viewports (like iPad Pro/Air and small laptops).
+  - Redesigned the mobile card container `.pricespage__mobile-cards` to use a responsive CSS grid:
+    - 1-column layout on small mobile screens (`<600px`).
+    - 2-column grid layout on tablets and intermediate screens (`600px` to `1180px`), creating a clean 2x2 square-shaped layout for the 4 plans instead of overly stretched cards.
+  - Recompiled templates and built Vite assets cleanly.
+
 # 2026-06-07 00:07
 
 - **Removed Horizontal Separator Lines from Mobile Features Accordion**:
