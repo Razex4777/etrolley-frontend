@@ -306,6 +306,243 @@ html[dir="rtl"] .iti__selected-dial-code {
   transform: translateY(-2px);
 }
 
+/* ─── Multi-step Animation and Containers ─── */
+.createstore__step {
+  transition: opacity 300ms ease, transform 300ms ease;
+  width: 100%;
+}
+
+.createstore__step.is-hidden {
+  opacity: 0 !important;
+  transform: translateX(-30px) !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+html[dir="rtl"] .createstore__step.is-hidden {
+  transform: translateX(30px) !important;
+}
+
+/* ─── Step 2: Verification Code Layout ─── */
+.createstore__code-container {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .createstore__code-container {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.createstore__code-input {
+  width: 116px;
+  height: 96px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px 0px #DFDFDF;
+  font-family: 'Outfit', 'Noto Sans Arabic', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  color: #121212;
+  text-align: center;
+  box-sizing: border-box;
+  transition: box-shadow var(--dur-fast) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__code-input:focus {
+  box-shadow: 0px 0px 25px 0px rgba(49, 108, 107, 0.2);
+  transform: translateY(-2px);
+}
+
+.createstore__timer-row {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #99B4AB;
+  margin: 15px 0;
+  text-align: left;
+}
+
+html[dir="rtl"] .createstore__timer-row {
+  text-align: right;
+}
+
+/* ─── Step 3: Registration Form Layout ─── */
+.createstore__register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.createstore__register-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.createstore__field {
+  width: 100%;
+  height: 101px;
+  border-radius: 5px;
+  padding: 0 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px 0px #DFDFDF;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: box-shadow var(--dur-fast) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__field:focus-within {
+  box-shadow: 0px 0px 25px 0px rgba(49, 108, 107, 0.15);
+  transform: translateY(-2px);
+}
+
+.createstore__field input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #121212;
+}
+
+.createstore__field input::placeholder {
+  color: #757575;
+}
+
+/* Custom Select Trigger for Registration */
+.createstore__field--select {
+  padding: 0;
+  cursor: pointer;
+}
+
+.createstore__select-btn {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: 20px;
+  color: #757575;
+  cursor: pointer;
+  text-align: left;
+}
+
+html[dir="rtl"] .createstore__select-btn {
+  text-align: right;
+}
+
+.createstore__select-btn.has-value {
+  color: #121212;
+}
+
+.createstore__select-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(49, 108, 107, 0.1);
+  padding: 8px 0;
+  margin: 0;
+  list-style: none;
+  z-index: 100;
+  display: none;
+  animation: dropdownFade var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__field--select[aria-expanded="true"] .createstore__select-list {
+  display: block;
+}
+
+.createstore__select-option {
+  padding: 12px 20px;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: 16px;
+  color: #555555;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-expo);
+  text-align: left;
+}
+
+html[dir="rtl"] .createstore__select-option {
+  text-align: right;
+}
+
+.createstore__select-option:hover {
+  background: rgba(49, 108, 107, 0.08);
+}
+
+/* Slug row layout */
+.createstore__slug-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 15px;
+}
+
+.createstore__slug-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.createstore__domain-link {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #316C6B;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  white-space: nowrap;
+}
+
+.createstore__field--slug {
+  flex: 1 1 auto;
+  max-width: 480px;
+}
+
+.createstore__slug-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #9AB5AD;
+  text-align: left;
+}
+
+html[dir="rtl"] .createstore__slug-hint {
+  text-align: right;
+}
+
+.createstore__slug-hint svg {
+  flex: 0 0 auto;
+}
+
 /* ─── Right Column: Illustration & Banner ─── */
 .createstore__right {
   flex: 0 1 820px;
@@ -545,6 +782,53 @@ html[dir="rtl"] .createstore__cart-front {
     height: 72px;
     font-size: 18px;
   }
+
+  /* Step 2 Code Inputs tablet spacing */
+  .createstore__code-container {
+    justify-content: center;
+    gap: 10px;
+  }
+  .createstore__code-input {
+    width: clamp(60px, 12vw, 90px);
+    height: 80px;
+    font-size: 26px;
+  }
+  .createstore__timer-row {
+    text-align: center;
+  }
+
+  /* Step 3 Registration Grid stacking */
+  .createstore__register-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto 25px auto;
+  }
+  .createstore__field {
+    height: 80px;
+  }
+  .createstore__field input,
+  .createstore__select-btn {
+    font-size: 18px;
+  }
+  .createstore__slug-block {
+    align-items: center;
+    max-width: 600px;
+    margin: 15px auto 25px auto;
+  }
+  .createstore__slug-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .createstore__field--slug {
+    width: 100%;
+    max-width: 100%;
+  }
+  .createstore__slug-hint {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -624,5 +908,36 @@ html[dir="rtl"] .createstore__cart-front {
     height: 60px;
     font-size: 16px;
     border-radius: 10px;
+  }
+
+  /* Step 2 Inputs mobile resolution */
+  .createstore__code-container {
+    gap: 6px;
+  }
+  .createstore__code-input {
+    width: clamp(42px, 12vw, 55px);
+    height: 60px;
+    font-size: 20px;
+    border-radius: 4px;
+  }
+  .createstore__timer-row {
+    font-size: 15px;
+  }
+
+  /* Step 3 Inputs mobile resolution */
+  .createstore__field {
+    height: 70px;
+    padding: 0 15px;
+  }
+  .createstore__field input,
+  .createstore__select-btn {
+    font-size: 16px;
+  }
+  .createstore__domain-link {
+    font-size: 18px;
+  }
+  .createstore__slug-hint {
+    font-size: 12px;
+    line-height: 18px;
   }
 }
