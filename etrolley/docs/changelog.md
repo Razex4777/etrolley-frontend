@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:19
+
+- **Figma-Aligned Submit Button & Removed Input Placeholders**:
+  - Resized the contact form `.contact__submit-btn` to matches Figma specifications: `width: 100%`, `max-width: 473px`, `height: 102px`, and `border-radius: 8px` with `14px 30px` padding.
+  - Set the button text style to Noto Sans Arabic with regular weight `400` and size `18px`.
+  - Removed all `placeholder` attributes from input and textarea elements inside [contact.en.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/contact/contact.en.html) and [contact.ar.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/contact/contact.ar.html) to matches Figma.
+  - Recompiled templates and built Vite assets cleanly.
+
 # 2026-06-07 05:17
 
 - **Aligned Contact Us Form Inputs and Placeholders with Figma Mockup**:
