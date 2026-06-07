@@ -2,6 +2,13 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:08
+
+- **Made Desktop Pricing Grid Elements Fluid and Fully Responsive**:
+  - Changed `.pricespage__subscribe-btn` width from a fixed `242px` to a fluid `width: 100%; max-width: 242px;`. This ensures that on smaller desktop/laptop viewports where column widths shrink below `242px`, the buttons scale down nicely instead of overflowing column dividers.
+  - Converted plan titles, pricing amounts, currency labels, and feature row text labels to use fluid CSS `clamp()` font sizes (e.g. `clamp(14px, 1.2vw, 18px)` and `clamp(24px, 2.5vw, 35px)`), preventing text overflows or wrapping issues on smaller desktop resolutions.
+  - Recompiled templates and built Vite assets cleanly.
+
 # 2026-06-07 05:05
 
 - **Fixed Pricing Page Responsiveness & Table Overflow Across Viewports**:

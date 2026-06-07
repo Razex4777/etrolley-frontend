@@ -192,7 +192,7 @@
 .pricespage__plan-name {
   font-family: var(--font-arabic);
   font-weight: 700;
-  font-size: 18px;
+  font-size: clamp(14px, 1.3vw, 18px);
   line-height: 24px;
   color: var(--color-primary);
   margin-bottom: 6px;
@@ -211,7 +211,7 @@
 .pricespage__price-amount {
   font-family: 'DM Sans', var(--font-arabic);
   font-weight: 700;
-  font-size: 35px;
+  font-size: clamp(24px, 2.5vw, 35px);
   line-height: 40px;
   color: var(--color-ink);
 }
@@ -219,7 +219,7 @@
 .pricespage__price-currency {
   font-family: 'DM Sans', var(--font-arabic);
   font-weight: 700;
-  font-size: 18px;
+  font-size: clamp(13px, 1.3vw, 18px);
   color: var(--color-text-muted);
 }
 
@@ -239,7 +239,8 @@
   align-items: center;
   justify-content: center;
   align-self: center;
-  width: 242px;
+  width: 100%;
+  max-width: 242px;
   height: 42px;
   padding: 10px 0;
   border-radius: 7px;
@@ -329,8 +330,8 @@
   border-bottom: none;
   font-family: 'Noto Sans Arabic', var(--font-arabic);
   font-weight: 400;
-  font-size: 20px;
-  line-height: 22px;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.3;
   color: #4E4B66;
   padding-left: clamp(24px, 3vw, 48px);
 }
