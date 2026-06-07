@@ -9,12 +9,24 @@
   background: #FFFFFF;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1181px) {
+  .createstore {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 .createstore__inner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--gutter);
+  width: 100%;
 }
 
 .createstore__grid {
