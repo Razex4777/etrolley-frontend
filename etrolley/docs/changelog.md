@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:17
+
+- **Aligned Contact Us Form Inputs and Placeholders with Figma Mockup**:
+  - Replaced `justify-content: space-between` with `justify-content: flex-start` and a clean `gap: 8px` on `.contact__field` elements. This shifts input fields immediately below their labels to eliminate excessive whitespace gaps.
+  - Set `opacity: 1` and changed color to `#9E9E9E` for `::placeholder` targets on inputs and textareas inside `contact.css`, preventing browser default opacity overrides from making placeholder text invisible.
+  - Capitalized the message field label to `Message Here..` in `contact.en.html`.
+  - Recompiled templates and built Vite assets cleanly.
+
 # 2026-06-07 05:15
 
 - **Added Figma-Accurate Contact Us Form Section**:
