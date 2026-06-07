@@ -153,6 +153,11 @@ etrolley/
     │   │   ├── 📄 pricespage.en.html      ( English prices table markup — corner card, plan headers with prices, subscribe buttons, and feature list )
     │   │   └── 📄 pricespage.ar.html      ( Arabic prices table markup — RTL mirrored copy with localized plan names and features )
     │   │
+    │   ├── 📁 contact/                    ( Premium Figma-accurate Contact Us form section component )
+    │   │   ├── 📄 contact.css             ( Form grid layouts, box shadow fields, fluid typography, and responsive media query stack )
+    │   │   ├── 📄 contact.en.html         ( English static contact form layout with name, email, phone, message inputs, and CTA )
+    │   │   └── 📄 contact.ar.html         ( Arabic mirrored RTL layout template with fully localized labels and placeholder values )
+    │   │
     │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links, bottom CTA, and pure-CSS sticky "garage-door" reveal effect )
     │       ├── 📄 footer.css              ( CSS aggregator importing footer sub-stylesheets )
     │       ├── 📄 _footer_base.css        ( Core desktop column layouts, link lifts, brand badges, and CTA styles )

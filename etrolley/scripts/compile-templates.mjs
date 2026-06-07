@@ -13,6 +13,7 @@ const indexComponents = [
   'clients',
   'designs',
   'support',
+  'contact',
   'footer'
 ];
 

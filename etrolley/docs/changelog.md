@@ -2,6 +2,15 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:15
+
+- **Added Figma-Accurate Contact Us Form Section**:
+  - Created a new `contact` component with templates `contact.en.html`, `contact.ar.html`, and `contact.css` matching all Figma specifications (dimensions, shadows, typography, and line separators).
+  - Converted the source PNG contact illustration to web-optimized WebP format using `sharp` at `public/images/contact-illustration.webp`.
+  - Registered the component in `compile-templates.mjs` and inserted it into `index.base.html`.
+  - Imported `contact.css` inside `main.css`.
+  - Recompiled templates and built Vite assets cleanly.
+
 # 2026-06-07 05:08
 
 - **Made Desktop Pricing Grid Elements Fluid and Fully Responsive**:
