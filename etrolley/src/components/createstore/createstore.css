@@ -676,16 +676,17 @@ html[dir="rtl"] .createstore__banner {
 .createstore__cart-back,
 .createstore__cart-front {
   position: absolute;
-  bottom: 0;
-  right: -79px; /* Shifted further right */
-  width: 230px;
-  height: 189px;
+  bottom: -15px;
+  right: -110px; /* Shifted further right and down to prevent text overlap */
+  width: 180px;
+  height: 148px;
+  pointer-events: none;
 }
 
 html[dir="rtl"] .createstore__cart-back,
 html[dir="rtl"] .createstore__cart-front {
   right: auto;
-  left: -79px; /* Mirror shift further left in RTL */
+  left: -110px; /* Mirror shift further left in RTL */
 }
 
 .createstore__cart-back {
