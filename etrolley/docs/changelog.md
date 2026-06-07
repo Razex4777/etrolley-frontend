@@ -2,6 +2,14 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 05:35
+
+- **Implemented Modern Custom Dropdown & Centered Field Placeholders**:
+  - Replaced native select dropdowns with a premium custom UI select dropdown trigger (`.contact__select-custom`) that matches the exact vertical alignment of the SVG arrow and text placeholder on a single horizontal line.
+  - Centered input placeholders vertically inside the `101px` height card fields with a larger `20px` typography and `#757575` color.
+  - Hidden labels visually using `.sr-only` to match Figma mockup structure where only centered placeholder text is present inside the fields.
+  - Injected lightweight event syncing logic in `contact.base.html` to toggle the custom options list listbox, update option selections, and sync with hidden select forms.
+
 # 2026-06-07 05:30
 
 - **Created Standalone Contact Page and Completed Form Styling**:
