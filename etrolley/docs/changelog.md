@@ -2,6 +2,11 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 07:06
+
+- **Adjusted Desktop Illustration Container Size**:
+  - Resized the right illustration column (`.createstore__right`) on desktop to a balanced `720px` width (originally `820px`, scaled down to `650px`, then tuned up to `720px`) to prevent vertical page scrolling while keeping images visible and premium.
+
 # 2026-06-07 07:02
 
 - **Updated Hero CTA Routing**:
