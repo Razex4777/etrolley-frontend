@@ -2,6 +2,65 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 07:02
+
+- **Updated Hero CTA Routing**:
+  - Linked the English home hero page CTA button directly to the standalone `create-store.html` page.
+  - Linked the Arabic home hero page CTA button directly to the standalone `create-store-ar.html` page.
+
+# 2026-06-07 07:00
+
+- **Optimized Mobile Responsiveness and Alignments for Login & Registration 3**:
+  - Removed hardcoded inline style attributes from `login.en.html` and `login.ar.html` input fields to allow them to inherit the clean, responsive `.createstore__field` styles defined in `createstore.css` (height scaling to 80px/70px and auto-scaling flex gap).
+  - Centered all form components inside the 600px form width container to match Registration 2 updates.
+
+# 2026-06-07 06:59
+
+- **Optimized Mobile Responsiveness and Alignments for Registration Steps 2 & 3**:
+  - Aligned all form boxes (`.createstore__cost-box`, `.createstore__field--coupon`, `.createstore__domain-row`) to start (left in LTR, right in RTL) on mobile by replacing `margin: 0 auto` centering with dynamic `margin: 0 0 20px 0`.
+  - Refactored mobile submit buttons (`.createstore__submit-btn` and `.createstore.is-register-page .createstore__submit-btn`) to use compact layout properties: changed `width` from `100%` to `auto` with `min-width: 240px` and `max-width: 100%` preventing full-width layout stretching.
+  - Centered the root form container (`.createstore__form` and `.createstore.is-register-page .createstore__form`) at `max-width: 600px; margin: 0 auto;` on mobile/tablet viewports. This resolves misalignment where registration fields centered, but lower slug blocks/links and action buttons stayed left-aligned.
+
+# 2026-06-07 06:56
+
+- **Reduced Spacing Between Registration Fields and Store Domain Link on Mobile**:
+  - Decreased the vertical empty space between the `Confirm Password*` field block and the `https://etrolley.net/store` link on mobile.
+  - Reduced `.createstore.is-register-page .createstore__register-grid` margin-bottom from `25px` to `10px` inside the `1180px` media query.
+  - Reduced `.createstore.is-register-page .createstore__form` flex gap from `25px` to `15px` on mobile viewports.
+  - Set `.createstore.is-register-page .createstore__slug-block` margin-top from `15px` to `5px` on mobile resolutions.
+
+# 2026-06-07 06:48
+
+- **Implemented Login Pages & Fixed Checkbox Text Wrap**:
+  - Created standalone Login pages `login.html` and `login-ar.html` using a modular component layout structure.
+  - Linked entry points in `vite.config.js` and registered the template compilation paths inside `compile-templates.mjs`.
+  - Added CSS rule `white-space: nowrap;` to `.createstore__domain-text` on desktop screens to force the domain checkbox text to render in one line, resetting to `white-space: normal;` on mobile breakpoints.
+
+# 2026-06-07 06:45
+
+- **Implemented Registration V3 Pages & Checkbox Redirect Routing**:
+  - Created Arabic step 3 component `registration3.ar.html` and layout base template `registration3.base.html`.
+  - Configured template compiler script `compile-templates.mjs` to auto-compile `registration3.html` and `registration3-ar.html`.
+  - Added new build outputs `registration3` and `registration3_ar` within `vite.config.js`.
+  - Implemented custom styling for expanded cost summary details `.createstore__cost-box.is-expanded` and custom domain cost warnings `.createstore__domain-hint` matching figma typography.
+  - Linked onclick redirects to checkbox input elements to simulate prototype navigation behavior toggling between V2 and V3 pages.
+
+# 2026-06-07 06:33
+
+- **Split Multistep Wizard into Separate Page Routes**:
+  - Split the single-page wizard into `create-store.html`, `verification.html`, and `registration.html` (and their respective `-ar.html` Arabic mirrors).
+  - Used `localStorage` to pass the validated phone number from Step 1 (`create-store.html`) to Step 2 (`verification.html`) for dynamic localization.
+  - Implemented exact Figma dimensions for registration form: fields styled with `height: 100px`, `border-radius: 5px`, `padding: 15px 20px`, and box shadow `0px 0px 20px 0px #DFDFDF`.
+  - Structured the Slug section to layout side-by-side matching the Figma layout grid, aligning the `https://etrolley.net/store` link on the left column and the `Slug*` input on the right column.
+  - Configured Vite and layout templates compiler to bundle the 4 new pages.
+
+# 2026-06-07 06:28
+
+- **Expanded Registration Step to Full Width & Hid Right-Side Graphics**:
+  - Modified wizard step transition logic in `createstore.en.html` and `createstore.ar.html` to toggle a dynamic class `.is-register-active` on the root section container when the active step is `#step-register`.
+  - Added CSS rules in `createstore.css` to hide the right-side graphics column completely (`.createstore__right`) and expand the form container (`.createstore__left`) to `100%` width.
+  - Set `.createstore__register-grid` columns to double width on desktop for registration fields layout spread.
+
 # 2026-06-07 06:25
 
 - **Implemented Interactive Multistep Store Creation Flow**:

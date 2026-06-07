@@ -29,6 +29,31 @@ const createStoreComponents = [
   'createstore'
 ];
 
+const verificationComponents = [
+  'navbar',
+  'verification'
+];
+
+const registrationComponents = [
+  'navbar',
+  'registration'
+];
+
+const registration2Components = [
+  'navbar',
+  'registration2'
+];
+
+const registration3Components = [
+  'navbar',
+  'registration3'
+];
+
+const loginComponents = [
+  'navbar',
+  'login'
+];
+
 export function compile() {
   // --- 1. Compile index.html and index-ar.html ---
   const indexBase = fs.readFileSync(path.join(root, 'src/index.base.html'), 'utf8');
@@ -691,6 +716,301 @@ export function compile() {
     });
     fs.writeFileSync(path.join(root, 'create-store-ar.html'), arCreateStore, 'utf8');
     console.log('Compiled create-store-ar.html (Arabic)');
+  }
+
+  // --- 10. Compile verification.html and verification-ar.html ---
+  if (fs.existsSync(path.join(root, 'src/verification.base.html'))) {
+    const verificationBase = fs.readFileSync(path.join(root, 'src/verification.base.html'), 'utf8');
+
+    // English verification.html
+    let enVerify = verificationBase;
+    enVerify = enVerify.replace('[LANG]', 'en');
+    enVerify = enVerify.replace('[DIR]', 'ltr');
+    enVerify = enVerify.replace('[TITLE]', 'Verification — E-Trolley');
+    enVerify = enVerify.replace('[DESCRIPTION]', 'Enter your code sent to phone number to verify and continue creating your store.');
+
+    verificationComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="verification-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="verification.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        enVerify = enVerify.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'verification.html'), enVerify, 'utf8');
+    console.log('Compiled verification.html (English)');
+
+    // Arabic verification-ar.html
+    let arVerify = verificationBase;
+    arVerify = arVerify.replace('[LANG]', 'ar');
+    arVerify = arVerify.replace('[DIR]', 'rtl');
+    arVerify = arVerify.replace('[TITLE]', 'التحقق — إي ترولي');
+    arVerify = arVerify.replace('[DESCRIPTION]', 'أدخل كود التحقق المرسل لرقم هاتفك لمتابعة إنشاء متجرك.');
+
+    verificationComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="verification.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="verification-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        arVerify = arVerify.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'verification-ar.html'), arVerify, 'utf8');
+    console.log('Compiled verification-ar.html (Arabic)');
+  }
+
+  // --- 11. Compile registration.html and registration-ar.html ---
+  if (fs.existsSync(path.join(root, 'src/registration.base.html'))) {
+    const registrationBase = fs.readFileSync(path.join(root, 'src/registration.base.html'), 'utf8');
+
+    // English registration.html
+    let enRegister = registrationBase;
+    enRegister = enRegister.replace('[LANG]', 'en');
+    enRegister = enRegister.replace('[DIR]', 'ltr');
+    enRegister = enRegister.replace('[TITLE]', 'Registration — E-Trolley');
+    enRegister = enRegister.replace('[DESCRIPTION]', 'Complete registration info to get your e-commerce store up and running in minutes.');
+
+    registrationComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="registration-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="registration.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        enRegister = enRegister.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'registration.html'), enRegister, 'utf8');
+    console.log('Compiled registration.html (English)');
+
+    // Arabic registration-ar.html
+    let arRegister = registrationBase;
+    arRegister = arRegister.replace('[LANG]', 'ar');
+    arRegister = arRegister.replace('[DIR]', 'rtl');
+    arRegister = arRegister.replace('[TITLE]', 'التسجيل — إي ترولي');
+    arRegister = arRegister.replace('[DESCRIPTION]', 'أكمل معلومات التسجيل ليصبح متجرك الإلكتروني جاهزاً خلال دقائق.');
+
+    registrationComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="registration.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="registration-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        arRegister = arRegister.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'registration-ar.html'), arRegister, 'utf8');
+    console.log('Compiled registration-ar.html (Arabic)');
+  }
+
+  // --- 12. Compile registration2.html and registration2-ar.html ---
+  if (fs.existsSync(path.join(root, 'src/registration2.base.html'))) {
+    const registration2Base = fs.readFileSync(path.join(root, 'src/registration2.base.html'), 'utf8');
+
+    // English registration2.html
+    let enRegister2 = registration2Base;
+    enRegister2 = enRegister2.replace('[LANG]', 'en');
+    enRegister2 = enRegister2.replace('[DIR]', 'ltr');
+    enRegister2 = enRegister2.replace('[TITLE]', 'Registration Step 2 — E-Trolley');
+    enRegister2 = enRegister2.replace('[DESCRIPTION]', 'Complete registration payment details.');
+
+    registration2Components.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="registration2-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="registration2.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        enRegister2 = enRegister2.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'registration2.html'), enRegister2, 'utf8');
+    console.log('Compiled registration2.html (English)');
+
+    // Arabic registration2-ar.html
+    let arRegister2 = registration2Base;
+    arRegister2 = arRegister2.replace('[LANG]', 'ar');
+    arRegister2 = arRegister2.replace('[DIR]', 'rtl');
+    arRegister2 = arRegister2.replace('[TITLE]', 'التسجيل الخطوة 2 — إي ترولي');
+    arRegister2 = arRegister2.replace('[DESCRIPTION]', 'أكمل تفاصيل الدفع الخاصة بالتسجيل.');
+
+    registration2Components.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="registration2.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="registration2-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        arRegister2 = arRegister2.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'registration2-ar.html'), arRegister2, 'utf8');
+    console.log('Compiled registration2-ar.html (Arabic)');
+  }
+
+  // --- 13. Compile registration3.html and registration3-ar.html ---
+  if (fs.existsSync(path.join(root, 'src/registration3.base.html'))) {
+    const registration3Base = fs.readFileSync(path.join(root, 'src/registration3.base.html'), 'utf8');
+
+    // English registration3.html
+    let enRegister3 = registration3Base;
+    enRegister3 = enRegister3.replace('[LANG]', 'en');
+    enRegister3 = enRegister3.replace('[DIR]', 'ltr');
+    enRegister3 = enRegister3.replace('[TITLE]', 'Registration Step 3 — E-Trolley');
+    enRegister3 = enRegister3.replace('[DESCRIPTION]', 'Complete registration payment details with domain cost added.');
+
+    registration3Components.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="registration3-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="registration3.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        enRegister3 = enRegister3.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'registration3.html'), enRegister3, 'utf8');
+    console.log('Compiled registration3.html (English)');
+
+    // Arabic registration3-ar.html
+    let arRegister3 = registration3Base;
+    arRegister3 = arRegister3.replace('[LANG]', 'ar');
+    arRegister3 = arRegister3.replace('[DIR]', 'rtl');
+    arRegister3 = arRegister3.replace('[TITLE]', 'التسجيل الخطوة 3 — إي ترولي');
+    arRegister3 = arRegister3.replace('[DESCRIPTION]', 'أكمل تفاصيل الدفع الخاصة بالتسجيل مع إضافة تكلفة الدومين.');
+
+    registration3Components.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="registration3.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="registration3-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        arRegister3 = arRegister3.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'registration3-ar.html'), arRegister3, 'utf8');
+    console.log('Compiled registration3-ar.html (Arabic)');
+  }
+
+  // --- 14. Compile login.html and login-ar.html ---
+  if (fs.existsSync(path.join(root, 'src/login.base.html'))) {
+    const loginBase = fs.readFileSync(path.join(root, 'src/login.base.html'), 'utf8');
+
+    // English login.html
+    let enLogin = loginBase;
+    enLogin = enLogin.replace('[LANG]', 'en');
+    enLogin = enLogin.replace('[DIR]', 'ltr');
+    enLogin = enLogin.replace('[TITLE]', 'Login — E-Trolley');
+    enLogin = enLogin.replace('[DESCRIPTION]', 'Login to access your store control panel.');
+
+    loginComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="login-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="login.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        enLogin = enLogin.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'login.html'), enLogin, 'utf8');
+    console.log('Compiled login.html (English)');
+
+    // Arabic login-ar.html
+    let arLogin = loginBase;
+    arLogin = arLogin.replace('[LANG]', 'ar');
+    arLogin = arLogin.replace('[DIR]', 'rtl');
+    arLogin = arLogin.replace('[TITLE]', 'تسجيل الدخول — إي ترولي');
+    arLogin = arLogin.replace('[DESCRIPTION]', 'قم بتسجيل الدخول للوصول إلى لوحة تحكم متجرك.');
+
+    loginComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="login.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="login-ar.html"');
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+        }
+        arLogin = arLogin.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'login-ar.html'), arLogin, 'utf8');
+    console.log('Compiled login-ar.html (Arabic)');
   }
 }
 

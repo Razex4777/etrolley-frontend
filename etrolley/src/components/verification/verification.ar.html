@@ -1,46 +1,34 @@
 <section class="createstore" id="createstore-section">
   <div class="createstore__inner">
     <div class="createstore__grid">
-      <!-- Left side: Form steps container -->
+      <!-- Left side: Verification container -->
       <div class="createstore__left">
-
-        <!-- STEP 1: Phone Code Request -->
-        <div class="createstore__step" id="step-phone">
-          <h1 class="createstore__title">Create A New Store</h1>
+        <div class="createstore__step" id="step-verify">
+          <h1 class="createstore__title">التحقق</h1>
           <p class="createstore__subtitle">
-            To create and manage your own store through a special control panel, Fill out the required information:
+            الرجاء إدخال الرمز الذي تم إرساله إلى رقم الهاتف <span id="verify-phone-display" style="color: #316C6B; font-weight: 700;">+974 33433313</span>
           </p>
 
-          <form class="createstore__form" id="phone-form" onsubmit="event.preventDefault(); handlePhoneSubmit();">
-            <div class="createstore__field-wrapper">
-              <div class="createstore__phone-field">
-                <input type="tel" name="phone" class="createstore__input" id="phone-input" placeholder="XXXXXXXXX" required />
-              </div>
+          <form class="createstore__form" id="verify-form" onsubmit="event.preventDefault(); handleVerifySubmit();">
+            <!-- 6 digits code inputs -->
+            <div class="createstore__code-container">
+              <input type="text" class="createstore__code-input" maxlength="1" required />
+              <input type="text" class="createstore__code-input" maxlength="1" required />
+              <input type="text" class="createstore__code-input" maxlength="1" required />
+              <input type="text" class="createstore__code-input" maxlength="1" required />
+              <input type="text" class="createstore__code-input" maxlength="1" required />
+              <input type="text" class="createstore__code-input" maxlength="1" />
             </div>
 
-            <!-- Terms Agreement -->
-            <div class="createstore__checkbox-row">
-              <label class="createstore__checkbox-label">
-                <input type="checkbox" name="agree" class="createstore__checkbox" required />
-                <span class="createstore__checkbox-custom"></span>
-                <span class="createstore__agreement-text">
-                  I Agree <a href="#terms" target="_blank">Terms and Conditions</a> & <a href="#seller" target="_blank">Seller Agreement</a> & <a href="#privacy" target="_blank">Privacy Policy</a> Own from the platform
-                </span>
-              </label>
+            <div class="createstore__timer-row">
+              إعادة إرسال الرمز بعد: <span id="countdown-timer">22</span> ثانية
             </div>
 
-            <!-- Helper label -->
-            <div class="createstore__whatsapp-helper">
-              Code Will Be Send To Your Whatsapp
-            </div>
-
-            <!-- Submit Button -->
             <button type="submit" class="createstore__submit-btn">
-              Continue <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              متابعة <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </button>
           </form>
         </div>
-
       </div>
 
       <!-- Right side: Image & Glassmorphism Banner -->
@@ -66,7 +54,7 @@
 
           <!-- Glassmorphic Banner overlay -->
           <div class="createstore__banner">
-            <h2 class="createstore__banner-text">Begin selling right away, there's No Delay !</h2>
+            <h2 class="createstore__banner-text">ابدأ البيع على الفور، لا يوجد أي تأخير!</h2>
           </div>
 
           <!-- Symmetrical Cart outlines placed in bottom right corner -->
@@ -91,16 +79,78 @@
 
 <script>
   (function() {
-    window.handlePhoneSubmit = function() {
-      var phoneInput = document.getElementById('phone-input');
-      var val = phoneInput.value.trim();
-      var dialCode = "";
-      if (window.itiInstance) {
-        dialCode = "+" + window.itiInstance.getSelectedCountryData().dialCode + " ";
+    // Populate phone number from localStorage
+    var savedPhone = localStorage.getItem('etrolley_phone');
+    var displayNum = document.getElementById('verify-phone-display');
+    if (displayNum) {
+      displayNum.textContent = savedPhone ? savedPhone : '+974 33433313';
+    }
+
+    // Digit Inputs Behavior (move focus forward/back)
+    var codeInputs = document.querySelectorAll('.createstore__code-input');
+    codeInputs.forEach(function(input, idx) {
+      input.addEventListener('input', function(e) {
+        input.value = input.value.replace(/[^0-9]/g, '');
+        if (input.value.length === 1 && idx < codeInputs.length - 1) {
+          codeInputs[idx + 1].focus();
+        }
+      });
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && input.value.length === 0 && idx > 0) {
+          codeInputs[idx - 1].focus();
+        }
+      });
+      input.addEventListener('paste', function(e) {
+        e.preventDefault();
+        var pasteData = (e.clipboardData || window.clipboardData).getData('text').trim();
+        if (/^\d+$/.test(pasteData)) {
+          var chars = pasteData.split('');
+          codeInputs.forEach(function(inp, i) {
+            if (chars[i]) {
+              inp.value = chars[i];
+              if (i < codeInputs.length - 1) {
+                codeInputs[i + 1].focus();
+              }
+            }
+          });
+        }
+      });
+    });
+
+    // Verification Code Validation
+    window.handleVerifySubmit = function() {
+      var code = Array.from(codeInputs).map(function(i) { return i.value; }).join('').trim();
+      if (code === '11111' || code === '111111' || code === '1111') {
+        window.location.href = 'registration-ar.html';
+      } else {
+        alert('رمز التحقق غير صحيح! يرجى استخدام الرمز: 11111');
       }
-      var fullNum = dialCode + val;
-      localStorage.setItem('etrolley_phone', fullNum);
-      window.location.href = 'verification.html';
     };
+
+    // Countdown Timer logic
+    var timerInterval;
+    function startTimer(seconds) {
+      clearInterval(timerInterval);
+      var display = document.getElementById('countdown-timer');
+      if (!display) return;
+      
+      var timeLeft = seconds;
+      display.textContent = timeLeft;
+
+      timerInterval = setInterval(function() {
+        timeLeft--;
+        display.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          setTimeout(function() { startTimer(22); }, 2000);
+        }
+      }, 1000);
+    }
+    
+    // Auto-focus first field & start timer
+    setTimeout(function() {
+      if (codeInputs[0]) codeInputs[0].focus();
+    }, 200);
+    startTimer(22);
   })();
 </script>

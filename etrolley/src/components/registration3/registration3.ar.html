@@ -1,46 +1,63 @@
 <section class="createstore" id="createstore-section">
   <div class="createstore__inner">
     <div class="createstore__grid">
-      <!-- Left side: Form steps container -->
+      <!-- Left side: Payment Info -->
       <div class="createstore__left">
+        <h1 class="createstore__title">التسجيل</h1>
 
-        <!-- STEP 1: Phone Code Request -->
-        <div class="createstore__step" id="step-phone">
-          <h1 class="createstore__title">Create A New Store</h1>
-          <p class="createstore__subtitle">
-            To create and manage your own store through a special control panel, Fill out the required information:
-          </p>
-
-          <form class="createstore__form" id="phone-form" onsubmit="event.preventDefault(); handlePhoneSubmit();">
-            <div class="createstore__field-wrapper">
-              <div class="createstore__phone-field">
-                <input type="tel" name="phone" class="createstore__input" id="phone-input" placeholder="XXXXXXXXX" required />
-              </div>
+        <form class="createstore__form" id="register3-form" onsubmit="event.preventDefault(); handleRegister3Submit();">
+          <!-- Cost & Total Price box (with Domain Cost row) -->
+          <div class="createstore__cost-box is-expanded">
+            <div class="createstore__cost-row">
+              <span class="createstore__cost-label">التكلفة</span>
+              <span class="createstore__cost-value">6521.11 ر.ق</span>
             </div>
-
-            <!-- Terms Agreement -->
-            <div class="createstore__checkbox-row">
-              <label class="createstore__checkbox-label">
-                <input type="checkbox" name="agree" class="createstore__checkbox" required />
-                <span class="createstore__checkbox-custom"></span>
-                <span class="createstore__agreement-text">
-                  I Agree <a href="#terms" target="_blank">Terms and Conditions</a> & <a href="#seller" target="_blank">Seller Agreement</a> & <a href="#privacy" target="_blank">Privacy Policy</a> Own from the platform
-                </span>
-              </label>
+            <div class="createstore__cost-row">
+              <span class="createstore__cost-label">تكلفة الرابط (الدومين)</span>
+              <span class="createstore__cost-value">6521.11 ر.ق</span>
             </div>
-
-            <!-- Helper label -->
-            <div class="createstore__whatsapp-helper">
-              Code Will Be Send To Your Whatsapp
+            <div class="createstore__cost-row createstore__cost-row--total">
+              <span class="createstore__cost-label font-bold">السعر الإجمالي</span>
+              <span class="createstore__cost-value font-bold">6521.11 ر.ق</span>
             </div>
+          </div>
 
-            <!-- Submit Button -->
-            <button type="submit" class="createstore__submit-btn">
-              Continue <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-          </form>
-        </div>
+          <!-- Coupon Code Input with Enable button -->
+          <div class="createstore__field createstore__field--coupon">
+            <input type="text" name="coupon" id="coupon-input" placeholder="كود الخصم (الكوبون)" />
+            <button type="button" class="createstore__coupon-btn">تفعيل</button>
+          </div>
 
+          <!-- Domain Checkbox option (Checked in V3) -->
+          <div class="createstore__domain-row">
+            <label class="createstore__domain-label">
+              <input type="checkbox" name="buy_domain" class="createstore__domain-checkbox" checked onclick="window.location.href='registration2-ar.html';" />
+              <span class="createstore__domain-checkbox-custom">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.5" y="0.5" width="17" height="17" stroke="#757575"/>
+                </svg>
+              </span>
+              <span class="createstore__domain-text">
+                هل ترغب في شراء رابط (دومين) خاص بمتجرك (مثال: www.yourstore.com)؟
+              </span>
+            </label>
+            
+            <!-- V3 Domain cost hint -->
+            <div class="createstore__domain-hint">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="createstore__hint-icon">
+                <path d="M0.75 0.75H16.75V14.75C16.75 15.2804 16.5393 15.7891 16.1642 16.1642C15.7891 16.5393 15.2804 16.75 14.75 16.75H2.75C2.21957 16.75 1.71086 16.5393 1.33579 16.1642C0.960714 15.7891 0.75 15.2804 0.75 14.75V0.75Z" stroke="#9AB5AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.75 12.749H8.76V12.759H8.75V12.749Z" stroke="#9AB5AD" stroke-width="2.25" stroke-linejoin="round"/>
+                <path d="M8.75 8.74902V4.74902" stroke="#9AB5AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="createstore__hint-text">سنضيف تكلفة الدومين إلى التكلفة الإجمالية....................</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="createstore__submit-btn">
+            متابعة <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+        </form>
       </div>
 
       <!-- Right side: Image & Glassmorphism Banner -->
@@ -66,7 +83,7 @@
 
           <!-- Glassmorphic Banner overlay -->
           <div class="createstore__banner">
-            <h2 class="createstore__banner-text">Begin selling right away, there's No Delay !</h2>
+            <h2 class="createstore__banner-text">ابدأ البيع على الفور، لا يوجد أي تأخير!</h2>
           </div>
 
           <!-- Symmetrical Cart outlines placed in bottom right corner -->
@@ -91,16 +108,9 @@
 
 <script>
   (function() {
-    window.handlePhoneSubmit = function() {
-      var phoneInput = document.getElementById('phone-input');
-      var val = phoneInput.value.trim();
-      var dialCode = "";
-      if (window.itiInstance) {
-        dialCode = "+" + window.itiInstance.getSelectedCountryData().dialCode + " ";
-      }
-      var fullNum = dialCode + val;
-      localStorage.setItem('etrolley_phone', fullNum);
-      window.location.href = 'verification.html';
+    window.handleRegister3Submit = function() {
+      alert('تم إكمال عملية التسجيل بنجاح!');
+      window.location.href = 'index-ar.html';
     };
   })();
 </script>

@@ -29,6 +29,22 @@
   flex: 1 1 50%;
   max-width: 838px;
   width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* ─── Full-width Registration State overrides ─── */
+.createstore.is-register-active .createstore__right {
+  display: none !important;
+}
+
+.createstore.is-register-active .createstore__left {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.createstore.is-register-active .createstore__register-grid {
+  grid-template-columns: 1fr 1fr;
+  max-width: 100%;
 }
 
 .createstore__title {
@@ -716,36 +732,61 @@ html[dir="rtl"] .createstore__cart-front {
   }
   .createstore__left {
     max-width: 760px;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+  html[dir="rtl"] .createstore__left {
+    margin: 0;
+    align-items: flex-start;
+    text-align: right;
   }
   .createstore__title {
-    text-align: center;
-    margin-left: auto;
+    text-align: left;
+    margin-left: 0;
     margin-right: auto;
     margin-bottom: 24px;
     font-size: clamp(32px, 5vw, 48px);
     line-height: normal;
   }
-  .createstore__subtitle {
-    text-align: center;
+  html[dir="rtl"] .createstore__title {
+    text-align: right;
     margin-left: auto;
+    margin-right: 0;
+  }
+  .createstore__subtitle {
+    text-align: left;
+    margin-left: 0;
     margin-right: auto;
     margin-bottom: 30px;
     font-size: 16px;
     line-height: 24px;
   }
+  html[dir="rtl"] .createstore__subtitle {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
+  }
   .createstore__form {
     width: 100%;
-    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  html[dir="rtl"] .createstore__form {
+    align-items: flex-start;
   }
   .createstore__field-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+  html[dir="rtl"] .createstore__field-wrapper {
+    justify-content: flex-start;
   }
   .createstore__phone-field {
     width: 100%;
@@ -760,7 +801,10 @@ html[dir="rtl"] .createstore__cart-front {
     width: 100%;
     max-width: 600px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+  html[dir="rtl"] .createstore__checkbox-row {
+    justify-content: flex-start;
   }
   .createstore__checkbox-label {
     align-items: flex-start;
@@ -770,23 +814,34 @@ html[dir="rtl"] .createstore__cart-front {
     text-align: right;
   }
   .createstore__whatsapp-helper {
-    text-align: center;
+    text-align: left;
     font-size: 16px;
     margin-top: 10px;
   }
+  html[dir="rtl"] .createstore__whatsapp-helper {
+    text-align: right;
+  }
   .createstore__submit-btn {
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
-    width: 100%;
-    max-width: 459px;
+    width: auto;
+    min-width: 240px;
+    max-width: 100%;
     height: 72px;
     font-size: 18px;
+  }
+  html[dir="rtl"] .createstore__submit-btn {
+    margin-left: auto;
+    margin-right: 0;
   }
 
   /* Step 2 Code Inputs tablet spacing */
   .createstore__code-container {
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
+  }
+  html[dir="rtl"] .createstore__code-container {
+    justify-content: flex-start;
   }
   .createstore__code-input {
     width: clamp(60px, 12vw, 90px);
@@ -794,7 +849,10 @@ html[dir="rtl"] .createstore__cart-front {
     font-size: 26px;
   }
   .createstore__timer-row {
-    text-align: center;
+    text-align: left;
+  }
+  html[dir="rtl"] .createstore__timer-row {
+    text-align: right;
   }
 
   /* Step 3 Registration Grid stacking */
@@ -802,7 +860,7 @@ html[dir="rtl"] .createstore__cart-front {
     grid-template-columns: 1fr;
     gap: 15px;
     max-width: 600px;
-    margin: 0 auto 25px auto;
+    margin: 0 auto 10px auto;
   }
   .createstore__field {
     height: 80px;
@@ -812,22 +870,33 @@ html[dir="rtl"] .createstore__cart-front {
     font-size: 18px;
   }
   .createstore__slug-block {
-    align-items: center;
+    align-items: flex-start;
     max-width: 600px;
-    margin: 15px auto 25px auto;
+    margin: 5px 0 25px 0;
+  }
+  html[dir="rtl"] .createstore__slug-block {
+    align-items: flex-start;
+    margin: 5px 0 25px 0;
   }
   .createstore__slug-row {
     flex-direction: column;
     gap: 10px;
-    align-items: center;
+    align-items: flex-start;
+  }
+  html[dir="rtl"] .createstore__slug-row {
+    align-items: flex-start;
   }
   .createstore__field--slug {
     width: 100%;
     max-width: 100%;
   }
   .createstore__slug-hint {
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  html[dir="rtl"] .createstore__slug-hint {
+    justify-content: flex-start;
+    text-align: right;
   }
 }
 
@@ -941,3 +1010,570 @@ html[dir="rtl"] .createstore__cart-front {
     line-height: 18px;
   }
 }
+
+/* =============================================================
+ * Registration Page Layout (.is-register-page)
+ * ============================================================= */
+
+.createstore.is-register-page .createstore__left {
+  flex: 0 0 100%;
+  max-width: 1700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.createstore.is-register-page .createstore__title {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+html[dir="rtl"] .createstore.is-register-page .createstore__title {
+  text-align: right;
+}
+
+.createstore.is-register-page .createstore__field {
+  height: 100px;
+  border-radius: 5px;
+  padding: 15px 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px 0px #DFDFDF;
+  box-sizing: border-box;
+}
+
+.createstore.is-register-page .createstore__field input,
+.createstore.is-register-page .createstore__select-btn {
+  font-size: 20px;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.createstore.is-register-page .createstore__register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.createstore.is-register-page .createstore__register-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.createstore.is-register-page .createstore__slug-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.createstore.is-register-page .createstore__slug-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.createstore.is-register-page .createstore__domain-link-wrapper {
+  width: 450px;
+  flex: 0 0 450px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100px;
+}
+
+html[dir="rtl"] .createstore.is-register-page .createstore__domain-link-wrapper {
+  justify-content: flex-start;
+}
+
+.createstore.is-register-page .createstore__domain-link {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #316C6B;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  white-space: nowrap;
+}
+
+.createstore.is-register-page .createstore__field--slug {
+  width: 838px;
+  flex: 0 0 838px;
+  max-width: 838px !important;
+}
+
+.createstore.is-register-page .createstore__slug-hint-row {
+  display: flex;
+  width: 100%;
+}
+
+.createstore.is-register-page .createstore__slug-hint-spacer {
+  width: 470px;
+  flex: 0 0 470px;
+}
+
+.createstore.is-register-page .createstore__slug-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #9AB5AD;
+  text-align: left;
+}
+
+html[dir="rtl"] .createstore.is-register-page .createstore__slug-hint {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.createstore.is-register-page .createstore__submit-btn {
+  max-width: 459px;
+  height: 90px;
+  margin-top: 35px;
+}
+
+@media (max-width: 1180px) {
+  .createstore.is-register-page .createstore__form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 15px;
+  }
+  
+  .createstore.is-register-page .createstore__slug-block {
+    margin-top: 5px;
+  }
+
+  .createstore.is-register-page .createstore__register-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .createstore.is-register-page .createstore__field {
+    height: 80px;
+    padding: 10px 15px;
+  }
+  
+  .createstore.is-register-page .createstore__field input,
+  .createstore.is-register-page .createstore__select-btn {
+    font-size: 18px;
+  }
+  
+  .createstore.is-register-page .createstore__field--slug {
+    width: 100%;
+    max-width: 100% !important;
+    flex: 1 1 100%;
+  }
+  
+  .createstore.is-register-page .createstore__slug-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: start;
+    text-align: left;
+    width: 100%;
+  }
+  html[dir="rtl"] .createstore.is-register-page .createstore__slug-row {
+    justify-items: start;
+    text-align: right;
+  }
+  
+  .createstore.is-register-page .createstore__domain-link-wrapper {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+    height: auto;
+    justify-content: flex-start;
+  }
+  html[dir="rtl"] .createstore.is-register-page .createstore__domain-link-wrapper {
+    justify-content: flex-start;
+  }
+  
+  .createstore.is-register-page .createstore__domain-link {
+    font-size: 18px;
+  }
+  
+  .createstore.is-register-page .createstore__slug-hint-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .createstore.is-register-page .createstore__slug-hint-spacer {
+    display: none;
+  }
+  
+  .createstore.is-register-page .createstore__slug-hint {
+    justify-content: flex-start;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+  }
+  html[dir="rtl"] .createstore.is-register-page .createstore__slug-hint {
+    justify-content: flex-start;
+    text-align: right;
+  }
+  
+  .createstore.is-register-page .createstore__submit-btn {
+    width: auto;
+    min-width: 240px;
+    max-width: 100%;
+    height: 72px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  html[dir="rtl"] .createstore.is-register-page .createstore__submit-btn {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+/* =============================================================
+ * Registration V2 Styles (Cost, Coupon, Domain Option)
+ * ============================================================= */
+
+.createstore__cost-box {
+  width: 100%;
+  max-width: 832px;
+  height: 125px;
+  border: 1px solid #99B4AB;
+  border-radius: 5px;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFFFFF;
+  margin-bottom: 25px;
+}
+
+.createstore__cost-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createstore__cost-label {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25.38px;
+  color: #121212;
+}
+
+.createstore__cost-value {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25.38px;
+  color: #121212;
+}
+
+.createstore__cost-row--total .createstore__cost-label {
+  font-weight: 700;
+  font-size: 24px;
+  color: #316C6B;
+}
+
+.createstore__cost-row--total .createstore__cost-value {
+  font-weight: 700;
+  font-size: 24px;
+  color: #316C6B;
+}
+
+/* Coupon input box layout */
+.createstore__field--coupon {
+  max-width: 837px;
+  height: 101px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 0px 0px 20px 0px #DFDFDF;
+  border-radius: 5px;
+  background: #FFFFFF;
+}
+
+.createstore__field--coupon input {
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: 20px;
+  color: #121212;
+  background: transparent;
+}
+
+.createstore__coupon-btn {
+  width: 138px;
+  height: 66px;
+  border: none;
+  border-radius: 8px;
+  background: #316C6B;
+  color: #FFFFFF;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__coupon-btn:hover {
+  background: var(--color-primary-deep);
+  transform: translateY(-1px);
+}
+
+/* Domain checkbox row option */
+.createstore__domain-row {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 837px;
+  text-align: left;
+}
+
+html[dir="rtl"] .createstore__domain-row {
+  text-align: right;
+}
+
+.createstore__domain-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.createstore__domain-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.createstore__domain-checkbox-custom {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createstore__domain-checkbox-custom svg rect {
+  transition: fill var(--dur-fast) var(--ease-out-expo),
+              stroke var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__domain-checkbox:checked ~ .createstore__domain-checkbox-custom svg rect {
+  fill: #316C6B;
+  stroke: #316C6B;
+}
+
+/* Checkmark check inside checked domain checkbox */
+.createstore__domain-checkbox-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 3px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  z-index: 2;
+}
+
+.createstore__domain-checkbox:checked ~ .createstore__domain-checkbox-custom::after {
+  display: block;
+}
+
+.createstore__domain-text {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25.38px;
+  color: #121212;
+  white-space: nowrap;
+}
+
+/* Registration V3 styles */
+.createstore__cost-box.is-expanded {
+  height: auto;
+  min-height: 125px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.createstore__domain-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding-left: 33px; /* Align with checkbox text (18px checkbox + 15px gap = 33px) */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+html[dir="rtl"] .createstore__domain-hint {
+  padding-left: 0;
+  padding-right: 33px;
+}
+
+.createstore__hint-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createstore__hint-text {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: #99B4AB;
+  vertical-align: middle;
+}
+
+@media (max-width: 1180px) {
+  .createstore__cost-box {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 0 20px 0;
+    height: 110px;
+    padding: 12px 18px;
+  }
+  .createstore__cost-box.is-expanded {
+    height: auto;
+    min-height: 110px;
+    gap: 8px;
+  }
+  .createstore__cost-label,
+  .createstore__cost-value {
+    font-size: 17px;
+  }
+  .createstore__cost-row--total .createstore__cost-label,
+  .createstore__cost-row--total .createstore__cost-value {
+    font-size: 20px;
+  }
+  
+  .createstore__field--coupon {
+    width: 100%;
+    max-width: 600px;
+    height: 80px;
+    margin: 0 0 20px 0;
+  }
+  .createstore__field--coupon input {
+    font-size: 17px;
+  }
+  .createstore__coupon-btn {
+    width: 100px;
+    height: 52px;
+    font-size: 15px;
+  }
+  
+  .createstore__domain-row {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 0 20px 0;
+  }
+  .createstore__domain-label {
+    align-items: flex-start;
+  }
+  .createstore__domain-text {
+    font-size: 16px;
+    line-height: 22px;
+    white-space: normal;
+  }
+  .createstore__domain-hint {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+  html[dir="rtl"] .createstore__domain-hint {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .createstore__hint-text {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 520px) {
+  .createstore__cost-box {
+    height: 96px;
+  }
+  .createstore__cost-box.is-expanded {
+    height: auto;
+    min-height: 96px;
+    padding: 10px 14px;
+    gap: 6px;
+  }
+  .createstore__cost-label,
+  .createstore__cost-value {
+    font-size: 15px;
+  }
+  .createstore__cost-row--total .createstore__cost-label,
+  .createstore__cost-row--total .createstore__cost-value {
+    font-size: 18px;
+  }
+  
+  .createstore__field--coupon {
+    height: 70px;
+    padding: 10px 15px;
+  }
+  .createstore__field--coupon input {
+    font-size: 15px;
+  }
+  .createstore__coupon-btn {
+    width: 80px;
+    height: 44px;
+    font-size: 13px;
+  }
+  
+  .createstore__domain-text {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: normal;
+  }
+  
+  .createstore.is-register-page .createstore__field {
+    height: 70px;
+    padding: 8px 12px;
+  }
+  .createstore.is-register-page .createstore__field input,
+  .createstore.is-register-page .createstore__select-btn {
+    font-size: 15px;
+  }
+  .createstore.is-register-page .createstore__domain-link {
+    font-size: 15px;
+  }
+  .createstore.is-register-page .createstore__submit-btn {
+    height: 60px;
+    font-size: 16px;
+  }
+}
+
+

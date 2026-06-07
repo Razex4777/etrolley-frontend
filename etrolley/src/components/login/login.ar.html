@@ -1,46 +1,29 @@
 <section class="createstore" id="createstore-section">
   <div class="createstore__inner">
     <div class="createstore__grid">
-      <!-- Left side: Form steps container -->
+      <!-- Left side: Login Info -->
       <div class="createstore__left">
+        <h1 class="createstore__title">تسجيل الدخول</h1>
+        <p class="createstore__subtitle" style="margin-bottom: 40px; max-width: 500px; line-height: 1.6;">
+          للوصول إلى متجرك الخاص من خلال لوحة تحكم مميزة، يرجى ملء المعلومات المطلوبة:
+        </p>
 
-        <!-- STEP 1: Phone Code Request -->
-        <div class="createstore__step" id="step-phone">
-          <h1 class="createstore__title">Create A New Store</h1>
-          <p class="createstore__subtitle">
-            To create and manage your own store through a special control panel, Fill out the required information:
-          </p>
+        <form class="createstore__form" id="login-form" onsubmit="event.preventDefault(); handleLoginSubmit();">
+          <!-- Email Field -->
+          <div class="createstore__field">
+            <input type="email" name="email" id="login-email" placeholder="Someone.one@gmail.com" required />
+          </div>
 
-          <form class="createstore__form" id="phone-form" onsubmit="event.preventDefault(); handlePhoneSubmit();">
-            <div class="createstore__field-wrapper">
-              <div class="createstore__phone-field">
-                <input type="tel" name="phone" class="createstore__input" id="phone-input" placeholder="XXXXXXXXX" required />
-              </div>
-            </div>
+          <!-- Password Field -->
+          <div class="createstore__field">
+            <input type="password" name="password" id="login-password" placeholder="كلمة المرور*" required />
+          </div>
 
-            <!-- Terms Agreement -->
-            <div class="createstore__checkbox-row">
-              <label class="createstore__checkbox-label">
-                <input type="checkbox" name="agree" class="createstore__checkbox" required />
-                <span class="createstore__checkbox-custom"></span>
-                <span class="createstore__agreement-text">
-                  I Agree <a href="#terms" target="_blank">Terms and Conditions</a> & <a href="#seller" target="_blank">Seller Agreement</a> & <a href="#privacy" target="_blank">Privacy Policy</a> Own from the platform
-                </span>
-              </label>
-            </div>
-
-            <!-- Helper label -->
-            <div class="createstore__whatsapp-helper">
-              Code Will Be Send To Your Whatsapp
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="createstore__submit-btn">
-              Continue <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-          </form>
-        </div>
-
+          <!-- Submit Button -->
+          <button type="submit" class="createstore__submit-btn">
+            متابعة <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+        </form>
       </div>
 
       <!-- Right side: Image & Glassmorphism Banner -->
@@ -66,7 +49,7 @@
 
           <!-- Glassmorphic Banner overlay -->
           <div class="createstore__banner">
-            <h2 class="createstore__banner-text">Begin selling right away, there's No Delay !</h2>
+            <h2 class="createstore__banner-text">ابدأ البيع على الفور، لا يوجد أي تأخير!</h2>
           </div>
 
           <!-- Symmetrical Cart outlines placed in bottom right corner -->
@@ -91,16 +74,9 @@
 
 <script>
   (function() {
-    window.handlePhoneSubmit = function() {
-      var phoneInput = document.getElementById('phone-input');
-      var val = phoneInput.value.trim();
-      var dialCode = "";
-      if (window.itiInstance) {
-        dialCode = "+" + window.itiInstance.getSelectedCountryData().dialCode + " ";
-      }
-      var fullNum = dialCode + val;
-      localStorage.setItem('etrolley_phone', fullNum);
-      window.location.href = 'verification.html';
+    window.handleLoginSubmit = function() {
+      alert('تم تسجيل الدخول بنجاح!');
+      window.location.href = 'index-ar.html';
     };
   })();
 </script>
