@@ -1,0 +1,217 @@
+<section class="createstore" id="createstore-section">
+  <div class="createstore__inner">
+    <div class="createstore__grid">
+      <!-- Left side: Form -->
+      <div class="createstore__left">
+        <h1 class="createstore__title">أنشئ متجر جديد</h1>
+        <p class="createstore__subtitle">
+          لإنشاء وإدارة متجرك الخاص من خلال لوحة تحكم خاصة، يرجى ملء المعلومات المطلوبة:
+        </p>
+
+        <form class="createstore__form" action="create-new" method="POST" onsubmit="event.preventDefault(); alert('جاري الانتقال إلى إنشاء جديد...');">
+          <!-- Phone field with dropdown and layout match -->
+          <div class="createstore__field-wrapper">
+            <div class="createstore__phone-field">
+              <!-- Custom Country Code Dropdown -->
+              <div class="createstore__dropdown" data-country-dropdown>
+                <button type="button" class="createstore__dropdown-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="اختر رمز الدولة">
+                  <span class="createstore__flag" data-selected-flag>
+                    <svg viewBox="0 0 28 15" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="28" height="15" fill="#8D1B3D"/>
+                      <polygon points="0,0 8,0 8,0.68 7,1.36 8,2.04 7,2.72 8,3.4 7,4.08 8,4.76 7,5.44 8,6.12 7,6.8 8,7.48 7,8.16 8,8.84 7,9.52 8,10.2 7,10.88 8,11.56 7,12.24 8,12.92 7,13.6 8,14.28 7,14.96 8,15 0,15" fill="#FFFFFF"/>
+                    </svg>
+                  </span>
+                  <svg class="createstore__arrow" width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.5 6L7.5 12L13.5 6" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <ul class="createstore__dropdown-list" role="listbox">
+                  <li class="createstore__dropdown-item" role="option" data-value="+974" data-flag="qa" aria-selected="true">
+                    <span class="createstore__flag">
+                      <svg viewBox="0 0 28 15" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="28" height="15" fill="#8D1B3D"/>
+                        <polygon points="0,0 8,0 8,0.68 7,1.36 8,2.04 7,2.72 8,3.4 7,4.08 8,4.76 7,5.44 8,6.12 7,6.8 8,7.48 7,8.16 8,8.84 7,9.52 8,10.2 7,10.88 8,11.56 7,12.24 8,12.92 7,13.6 8,14.28 7,14.96 8,15 0,15" fill="#FFFFFF"/>
+                      </svg>
+                    </span>
+                    <span class="createstore__code">+974</span>
+                    <span class="createstore__country-name">قطر</span>
+                  </li>
+                  <li class="createstore__dropdown-item" role="option" data-value="+966" data-flag="sa">
+                    <span class="createstore__flag">
+                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="30" height="20" fill="#006C35"/>
+                        <path d="M5 12h20M12 15l3-3-3-3" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                    <span class="createstore__code">+966</span>
+                    <span class="createstore__country-name">السعودية</span>
+                  </li>
+                  <li class="createstore__dropdown-item" role="option" data-value="+971" data-flag="ae">
+                    <span class="createstore__flag">
+                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="30" height="20" fill="#00732F"/>
+                        <rect width="7.5" height="20" fill="#FF0000"/>
+                        <rect x="7.5" width="22.5" height="6.6" fill="#000"/>
+                        <rect x="7.5" y="6.6" width="22.5" height="6.8" fill="#FFF"/>
+                      </svg>
+                    </span>
+                    <span class="createstore__code">+971</span>
+                    <span class="createstore__country-name">الإمارات</span>
+                  </li>
+                  <li class="createstore__dropdown-item" role="option" data-value="+965" data-flag="kw">
+                    <span class="createstore__flag">
+                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="30" height="20" fill="#FFF"/>
+                        <rect width="30" height="6.6" fill="#128C7E"/>
+                        <rect y="13.3" width="30" height="6.7" fill="#CE1126"/>
+                        <polygon points="0,0 7.5,6.6 7.5,13.3 0,20" fill="#000"/>
+                      </svg>
+                    </span>
+                    <span class="createstore__code">+965</span>
+                    <span class="createstore__country-name">الكويت</span>
+                  </li>
+                  <li class="createstore__dropdown-item" role="option" data-value="+968" data-flag="om">
+                    <span class="createstore__flag">
+                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="30" height="20" fill="#00843D"/>
+                        <rect width="10" height="20" fill="#D21034"/>
+                        <rect x="10" width="20" height="6.6" fill="#FFF"/>
+                        <rect x="10" y="13.3" width="20" height="6.7" fill="#D21034"/>
+                      </svg>
+                    </span>
+                    <span class="createstore__code">+968</span>
+                    <span class="createstore__country-name">عُمان</span>
+                  </li>
+                  <li class="createstore__dropdown-item" role="option" data-value="+973" data-flag="bh">
+                    <span class="createstore__flag">
+                      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="30" height="20" fill="#CE1126"/>
+                        <polygon points="0,0 10,0 6.6,2.5 10,5 6.6,7.5 10,10 6.6,12.5 10,15 6.6,17.5 10,20 0,20" fill="#FFF"/>
+                      </svg>
+                    </span>
+                    <span class="createstore__code">+973</span>
+                    <span class="createstore__country-name">البحرين</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Hidden input for prefix and standard input for layout integration -->
+              <input type="hidden" name="country_code" id="country-code-val" value="+974" />
+              <div class="createstore__input-container">
+                <input type="tel" name="phone" class="createstore__input" id="phone-input" placeholder="XXXXXXXXX" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms Agreement -->
+          <div class="createstore__checkbox-row">
+            <label class="createstore__checkbox-label">
+              <input type="checkbox" name="agree" class="createstore__checkbox" required />
+              <span class="createstore__checkbox-custom"></span>
+              <span class="createstore__agreement-text">
+                أوافق على <a href="#terms" target="_blank">الشروط والأحكام</a> و <a href="#seller" target="_blank">اتفاقية البائع</a> و <a href="#privacy" target="_blank">سياسة الخصوصية</a> الخاصة بالمنصة
+              </span>
+            </label>
+          </div>
+
+          <!-- Helper Subtitle label -->
+          <div class="createstore__whatsapp-helper">
+            سيتم إرسال كود التفعيل إلى حساب الواتساب الخاص بك
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="createstore__submit-btn">
+            متابعة <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right side: Image & Glassmorphism Banner -->
+      <div class="createstore__right">
+        <!-- SVG Container -->
+        <div class="createstore__svg-container">
+          <svg class="createstore__svg-bg" width="820" height="935" viewBox="0 0 820 935" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M795 0C808.807 0 820 11.1929 820 25V835C820 862.614 797.614 885 770 885H700.805C686.998 885 675.805 896.193 675.805 910C675.805 923.807 664.612 935 650.805 935H25C11.1929 935 0 923.807 0 910V25C1.05052e-05 11.1929 11.1929 7.95502e-08 25 0H795Z" fill="url(#paint0_linear_802_620)"/>
+            <defs>
+              <linearGradient id="paint0_linear_802_620" x1="961.381" y1="1423.21" x2="-323.477" y2="484.155" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9AB5AC" stop-opacity="0.1"/>
+                <stop offset="0.472351" stop-color="#FEFFFF"/>
+                <stop offset="0.536629" stop-color="white"/>
+                <stop offset="0.876836" stop-color="#F5C99A" stop-opacity="0.05"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <!-- Main illustration -->
+          <div class="createstore__image-wrapper">
+            <img class="createstore__image" src="/images/create-store-illustration.webp" alt="Create new store illustration" loading="eager" />
+          </div>
+
+          <!-- Glassmorphic Banner overlay -->
+          <div class="createstore__banner">
+            <h2 class="createstore__banner-text">ابدأ البيع على الفور، لا يوجد أي تأخير!</h2>
+          </div>
+
+          <!-- Symmetrical Cart outlines placed in bottom right corner -->
+          <div class="createstore__cart-back" aria-hidden="true">
+            <svg viewBox="0 0 262 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M100.429 67.2482H232.45C233.888 67.2482 234.967 68.5714 234.665 69.981L230.81 87.8593C230.58 88.8949 229.659 89.6428 228.594 89.6428H161.167C159.915 89.6428 158.908 90.6496 158.908 91.9009V109.405C158.908 110.657 159.915 111.663 161.167 111.663H222.869C224.307 111.663 225.386 112.987 225.084 114.396L221.243 132.275C221.013 133.31 220.092 134.058 219.028 134.058H173.525C172.273 134.058 171.266 135.065 171.266 136.316V153.821C171.266 155.072 172.273 156.079 173.525 156.079H236.823C237.888 156.079 238.808 155.331 239.039 154.295L243.397 134.044L248.217 111.635L252.964 89.5996L257.798 67.1906L257.798 67.1906L261.941 47.9459C261.97 47.7877 261.999 47.6295 261.999 47.4713C261.999 46.22 260.992 45.2131 259.74 45.2131H100.444C99.1921 45.2131 98.1851 46.22 98.1851 47.4713V64.9756C98.1851 66.227 99.1921 67.2338 100.444 67.2338L100.429 67.2482Z" fill="#316C6B"/>
+              <path d="M223.128 190.814C215.524 190.814 209.36 184.651 209.36 177.049C209.36 169.447 215.524 163.285 223.128 163.285C230.731 163.285 236.895 169.447 236.895 177.049C236.895 184.651 230.731 190.814 223.128 190.814Z" fill="#316C6B"/>
+            </svg>
+          </div>
+          <div class="createstore__cart-front" aria-hidden="true">
+            <svg viewBox="0 0 262 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 2.28693V19.7913C0 21.0426 1.007 22.0494 2.25859 22.0494H42.2805C43.2875 22.0494 44.1794 22.7254 44.4528 23.6891L82.1154 156.259L88.402 178.337C88.6754 179.315 89.5673 179.977 90.5743 179.977H156.462C157.93 179.977 159.009 178.61 158.663 177.186L143.429 113.411C143.184 112.376 142.249 111.657 141.199 111.671L118.9 112.002C117.419 112.031 116.354 113.455 116.757 114.878L127.69 153.368C128.107 154.806 127.014 156.244 125.518 156.244H109.866C108.859 156.244 107.967 155.568 107.694 154.605L69.3694 19.6474L64.2479 1.63968C63.9746 0.661626 63.0827 0 62.0756 0H2.27299C1.02141 0 0.0143738 1.00682 0.0143738 2.25816L0 2.28693Z" fill="#F5C99A"/>
+              <path d="M146.923 214.669C139.32 214.669 133.156 208.506 133.156 200.904C133.156 193.302 139.32 187.139 146.923 187.139C154.527 187.139 160.691 193.302 160.691 200.904C160.691 208.506 154.527 214.669 146.923 214.669Z" fill="#F5C99A"/>
+              <path d="M109.462 214.669C101.858 214.669 95.6942 208.506 95.6942 200.904C95.6942 193.302 101.858 187.139 109.462 187.139C117.065 187.139 123.229 193.302 123.229 200.904C123.229 208.506 117.065 214.669 109.462 214.669Z" fill="#F5C99A"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Country dropdown logic script -->
+<script>
+  (function() {
+    var wrapper = document.querySelector('[data-country-dropdown]');
+    if (!wrapper) return;
+
+    var btn = wrapper.querySelector('.createstore__dropdown-btn');
+    var list = wrapper.querySelector('.createstore__dropdown-list');
+    var hiddenInput = document.getElementById('country-code-val');
+    var selectedFlag = wrapper.querySelector('[data-selected-flag]');
+
+    // Toggle list visibility
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function() {
+      btn.setAttribute('aria-expanded', 'false');
+    });
+
+    // Item selection
+    var items = wrapper.querySelectorAll('.createstore__dropdown-item');
+    items.forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var code = item.getAttribute('data-value');
+        var flagSvg = item.querySelector('.createstore__flag').innerHTML;
+
+        hiddenInput.value = code;
+        selectedFlag.innerHTML = flagSvg;
+
+        // Reset aria selected
+        items.forEach(function(i) { i.setAttribute('aria-selected', 'false'); });
+        item.setAttribute('aria-selected', 'true');
+
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>

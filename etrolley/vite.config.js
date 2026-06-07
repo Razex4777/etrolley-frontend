@@ -52,6 +52,8 @@ export default defineConfig({
         prices_ar: fileURLToPath(new URL('./prices-ar.html', import.meta.url)),
         contact: fileURLToPath(new URL('./contact.html', import.meta.url)),
         contact_ar: fileURLToPath(new URL('./contact-ar.html', import.meta.url)),
+        create_store: fileURLToPath(new URL('./create-store.html', import.meta.url)),
+        create_store_ar: fileURLToPath(new URL('./create-store-ar.html', import.meta.url)),
       },
     },
   },

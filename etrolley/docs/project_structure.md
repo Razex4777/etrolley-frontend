@@ -22,7 +22,9 @@ etrolley/
 ├── 📄 prices-ar.html                      ( Arabic Prices page; RTL-compiled mirror with localized pricing packages )
 ├── 📄 contact.html                        ( English Contact Us page; compiled from contact.base.html + contact component + navbar + footer )
 ├── 📄 contact-ar.html                     ( Arabic Contact Us page; RTL-compiled mirror with fully localized contact form )
-├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, designs, prices, faqs, and contact pages in both EN and AR )
+├── 📄 create-store.html                   ( English Create Store page; compiled from create-store.base.html + createstore component + navbar )
+├── 📄 create-store-ar.html                ( Arabic Create Store page; RTL-compiled mirror with fully localized store creation form )
+├── 📄 vite.config.js                      ( Vite bundler config; multi-page entry for index, about, services, blog, designs, prices, faqs, create-store, and contact pages in both EN and AR )
 │
 ├── 📁 docs/                               ( Source-of-truth documentation, never source code )
 │   ├── 📁 plans/                          ( Technical implementation plans for feature expansions and hotfixes )
@@ -160,6 +162,11 @@ etrolley/
     │   │   ├── 📄 contact.css             ( Form grid layouts, box shadow fields, fluid typography, and responsive media query stack )
     │   │   ├── 📄 contact.en.html         ( English static contact form layout with name, email, phone, message inputs, and CTA )
     │   │   └── 📄 contact.ar.html         ( Arabic mirrored RTL layout template with fully localized labels and placeholder values )
+    │   │
+    │   ├── 📁 createstore/                ( Standalone Create Store layout component )
+    │   │   ├── 📄 createstore.css         ( Glassmorphic styling, country codes picker, and flex grids )
+    │   │   ├── 📄 createstore.en.html     ( English static layout for phone validation form )
+    │   │   └── 📄 createstore.ar.html     ( Arabic mirrored RTL layout for phone validation form )
     │   │
     │   └── 📁 footer/                     ( Symmetrical multi-column brand footer with social links, bottom CTA, and pure-CSS sticky "garage-door" reveal effect )
     │       ├── 📄 footer.css              ( CSS aggregator importing footer sub-stylesheets )

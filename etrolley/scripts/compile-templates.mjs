@@ -24,6 +24,11 @@ const aboutComponents = [
   'footer'
 ];
 
+const createStoreComponents = [
+  'navbar',
+  'createstore'
+];
+
 export function compile() {
   // --- 1. Compile index.html and index-ar.html ---
   const indexBase = fs.readFileSync(path.join(root, 'src/index.base.html'), 'utf8');
@@ -610,6 +615,82 @@ export function compile() {
     });
     fs.writeFileSync(path.join(root, 'contact-ar.html'), arContact, 'utf8');
     console.log('Compiled contact-ar.html (Arabic)');
+  }
+
+  // --- 9. Compile create-store.html and create-store-ar.html ---
+  if (fs.existsSync(path.join(root, 'src/create-store.base.html'))) {
+    const createStoreBase = fs.readFileSync(path.join(root, 'src/create-store.base.html'), 'utf8');
+
+    // English create-store.html
+    let enCreateStore = createStoreBase;
+    enCreateStore = enCreateStore.replace('[LANG]', 'en');
+    enCreateStore = enCreateStore.replace('[DIR]', 'ltr');
+    enCreateStore = enCreateStore.replace('[TITLE]', 'Create A New Store — E-Trolley');
+    enCreateStore = enCreateStore.replace('[DESCRIPTION]', 'Fill out your phone number to create and manage your own store through a special control panel.');
+
+    createStoreComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.en.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="create-store-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="create-store.html"');
+          // Set Create a store CTA link as active
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+          compContent = compContent.replace('href="create-store.html" class="nav__cta"', 'href="create-store.html" class="nav__cta is-active"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about.html"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index.html#contact"');
+          compContent = compContent.replaceAll('href="#create"', 'href="create-store.html"');
+        }
+        enCreateStore = enCreateStore.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'create-store.html'), enCreateStore, 'utf8');
+    console.log('Compiled create-store.html (English)');
+
+    // Arabic create-store-ar.html
+    let arCreateStore = createStoreBase;
+    arCreateStore = arCreateStore.replace('[LANG]', 'ar');
+    arCreateStore = arCreateStore.replace('[DIR]', 'rtl');
+    arCreateStore = arCreateStore.replace('[TITLE]', 'أنشئ متجرك الإلكتروني — إي ترولي');
+    arCreateStore = arCreateStore.replace('[DESCRIPTION]', 'أدخل رقم هاتفك لإنشاء متجرك الخاص وإدارته من خلال لوحة تحكم مميزة.');
+
+    createStoreComponents.forEach(comp => {
+      const compPath = path.join(root, `src/components/${comp}/${comp}.ar.html`);
+      if (fs.existsSync(compPath)) {
+        let compContent = fs.readFileSync(compPath, 'utf8');
+        if (comp === 'navbar') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#contact"', 'href="index-ar.html#contact"');
+          compContent = compContent.replaceAll('href="#create-store"', 'href="create-store-ar.html"');
+          compContent = compContent.replace('href="index.html"', 'href="create-store.html"');
+          compContent = compContent.replace('href="index-ar.html"', 'href="create-store-ar.html"');
+          // Set Create a store CTA link as active
+          compContent = compContent.replace('class="nav__link is-active"', 'class="nav__link"');
+          compContent = compContent.replace('href="create-store-ar.html" class="nav__cta"', 'href="create-store-ar.html" class="nav__cta is-active"');
+        } else if (comp === 'footer') {
+          compContent = compContent.replaceAll('href="#home"', 'href="index-ar.html#home"');
+          compContent = compContent.replaceAll('href="#services"', 'href="index-ar.html#services"');
+          compContent = compContent.replaceAll('href="#prices"', 'href="index-ar.html#prices"');
+          compContent = compContent.replaceAll('href="#about"', 'href="about-ar.html"');
+          compContent = compContent.replaceAll('href="#create"', 'href="create-store-ar.html"');
+        }
+        arCreateStore = arCreateStore.replace(`<!-- INSERT: ${comp} -->`, compContent);
+      }
+    });
+    fs.writeFileSync(path.join(root, 'create-store-ar.html'), arCreateStore, 'utf8');
+    console.log('Compiled create-store-ar.html (Arabic)');
   }
 }
 

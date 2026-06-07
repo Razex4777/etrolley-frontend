@@ -1,0 +1,652 @@
+/* =============================================================
+ * Create Store Page Layout Stylesheet
+ * Symmetrical Layout matching Figma Dimensions & Qatari Colors
+ * ============================================================= */
+
+.createstore {
+  padding-top: clamp(120px, 12vw, 180px);
+  padding-bottom: clamp(80px, 8vw, 120px);
+  background: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.createstore__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.createstore__grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(40px, 5vw, 100px);
+}
+
+/* ─── Left Column: Form ─── */
+.createstore__left {
+  flex: 1 1 50%;
+  max-width: 838px;
+  width: 100%;
+}
+
+.createstore__title {
+  font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: clamp(40px, 5.2vw, 75px);
+  line-height: clamp(55px, 6.5vw, 100px);
+  color: #121212;
+  margin: 0 0 62px 0;
+  text-transform: capitalize;
+}
+
+.createstore__subtitle {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 400;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 25.38px;
+  color: #555555;
+  margin: 0 0 35px 0;
+  max-width: 717px;
+}
+
+.createstore__form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ─── Phone field and custom country dropdown ─── */
+.createstore__field-wrapper {
+  position: relative;
+}
+
+.createstore__phone-field {
+  width: 100%;
+  max-width: 838px;
+  height: 96px;
+  border-radius: 5px;
+  padding: 15px 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px 0px #DFDFDF;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  transition: box-shadow var(--dur-fast) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__phone-field:focus-within {
+  box-shadow: 0px 0px 25px 0px rgba(49, 108, 107, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Dropdown styling */
+.createstore__dropdown {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.createstore__dropdown-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  height: 42px;
+}
+
+.createstore__flag {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.createstore__flag svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.createstore__arrow {
+  width: 15px;
+  height: 17px;
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__dropdown-btn[aria-expanded="true"] .createstore__arrow {
+  transform: rotate(180deg);
+}
+
+.createstore__dropdown-list {
+  position: absolute;
+  top: calc(100% + 15px);
+  left: 0;
+  z-index: 100;
+  width: 250px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(49, 108, 107, 0.1);
+  padding: 8px 0;
+  margin: 0;
+  list-style: none;
+  display: none;
+  animation: dropdownFade var(--dur-fast) var(--ease-out-expo);
+}
+
+html[dir="rtl"] .createstore__dropdown-list {
+  left: auto;
+  right: 0;
+}
+
+.createstore__dropdown-btn[aria-expanded="true"] + .createstore__dropdown-list {
+  display: block;
+}
+
+.createstore__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__dropdown-item:hover,
+.createstore__dropdown-item[aria-selected="true"] {
+  background: rgba(49, 108, 107, 0.08);
+}
+
+.createstore__code {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #316C6B;
+}
+
+.createstore__country-name {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: 14px;
+  color: #555555;
+  margin-left: auto;
+}
+
+html[dir="rtl"] .createstore__country-name {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Input container */
+.createstore__input-container {
+  flex: 1 1 auto;
+  height: 42px;
+}
+
+.createstore__input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #121212;
+  padding: 0;
+  margin: 0;
+  line-height: 42px;
+}
+
+.createstore__input::placeholder {
+  color: #757575;
+}
+
+/* ─── Checkbox Row ─── */
+.createstore__checkbox-row {
+  margin-top: 10px;
+}
+
+.createstore__checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.createstore__checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.createstore__checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #C0B693;
+  border-radius: 3px;
+  background: #FFFFFF;
+  position: relative;
+  flex: 0 0 auto;
+  transition: background var(--dur-fast) var(--ease-out-expo),
+              border-color var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__checkbox:checked ~ .createstore__checkbox-custom {
+  background: #316C6B;
+  border-color: #316C6B;
+}
+
+.createstore__checkbox-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.createstore__checkbox:checked ~ .createstore__checkbox-custom::after {
+  display: block;
+}
+
+.createstore__agreement-text {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 13px;
+  line-height: 22px;
+  color: #555555;
+}
+
+.createstore__agreement-text a {
+  color: #121212;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  transition: color var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__agreement-text a:hover {
+  color: #316C6B;
+}
+
+/* Helper whatsapp description text */
+.createstore__whatsapp-helper {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25.38px;
+  color: #316C6B;
+  margin-top: 15px;
+}
+
+/* ─── Submit button ─── */
+.createstore__submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 459px;
+  height: 90px;
+  border-radius: 15px;
+  padding: 18.5px 22.2px;
+  background: #316C6B;
+  box-shadow: 0px 12px 18px 0px rgba(18, 18, 18, 0.25);
+  border: none;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background var(--dur-fast) var(--ease-out-expo),
+              box-shadow var(--dur-fast) var(--ease-out-expo),
+              transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.createstore__submit-btn:hover {
+  background: var(--color-primary-deep);
+  box-shadow: 0px 18px 24px 0px rgba(18, 18, 18, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ─── Right Column: Illustration & Banner ─── */
+.createstore__right {
+  flex: 0 1 820px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.createstore__svg-container {
+  width: 820px;
+  height: 935px;
+  position: relative;
+  mix-blend-mode: multiply;
+}
+
+.createstore__svg-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Phone and cart main WebP image */
+.createstore__image-wrapper {
+  position: absolute;
+  top: 32px;
+  left: 72px;
+  width: 676px;
+  height: 525px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+html[dir="rtl"] .createstore__image-wrapper {
+  left: auto;
+  right: 72px;
+}
+
+.createstore__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Glassmorphism details */
+.createstore__banner {
+  position: absolute;
+  top: 583px;
+  left: 32px;
+  width: 720px;
+  height: 184px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.49);
+  -webkit-backdrop-filter: blur(67px);
+  backdrop-filter: blur(67px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+html[dir="rtl"] .createstore__banner {
+  left: auto;
+  right: 32px;
+}
+
+.createstore__banner-text {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 36px);
+  line-height: clamp(40px, 4.5vw, 60px);
+  color: #316C6B;
+  margin: 0;
+  text-align: center;
+}
+
+/* Carts parts in the bottom right corner */
+.createstore__cart-back,
+.createstore__cart-front {
+  position: absolute;
+  bottom: 0;
+  right: -90px; /* Shifted further right */
+  width: 262px;
+  height: 215px;
+}
+
+html[dir="rtl"] .createstore__cart-back,
+html[dir="rtl"] .createstore__cart-front {
+  right: auto;
+  left: -90px; /* Mirror shift further left in RTL */
+}
+
+.createstore__cart-back {
+  z-index: 4; /* Teal basket in front of yellow handles */
+  transform: scaleX(-1) translateY(22px); /* default English LTR points to left */
+}
+
+html[dir="rtl"] .createstore__cart-back {
+  transform: translateY(22px); /* Arabic RTL points to right */
+}
+
+.createstore__cart-front {
+  z-index: 1; /* Yellow handle + wheels layer behind basket */
+  transform: scaleX(-1); /* default English LTR points to left */
+}
+
+html[dir="rtl"] .createstore__cart-front {
+  transform: none; /* Arabic RTL points to right */
+}
+
+.createstore__cart-back svg,
+.createstore__cart-front svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Animations ─── */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Responsive Media Queries ─── */
+@media (max-width: 1400px) {
+  .createstore__grid {
+    gap: 40px;
+  }
+  .createstore__right {
+    flex: 0 1 700px;
+  }
+  .createstore__svg-container {
+    width: 700px;
+    height: 800px;
+  }
+  .createstore__image-wrapper {
+    width: 580px;
+    height: 450px;
+    left: 60px;
+  }
+  html[dir="rtl"] .createstore__image-wrapper {
+    left: auto;
+    right: 60px;
+  }
+  .createstore__banner {
+    width: 620px;
+    height: 160px;
+    top: 500px;
+    left: 40px;
+  }
+  html[dir="rtl"] .createstore__banner {
+    left: auto;
+    right: 40px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .createstore__grid {
+    display: block;
+  }
+  .createstore__right {
+    display: none !important;
+  }
+  .createstore__left {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .createstore__title {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: normal;
+  }
+  .createstore__subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .createstore__form {
+    width: 100%;
+    align-items: center;
+  }
+  .createstore__field-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .createstore__phone-field {
+    width: 100%;
+    max-width: 600px;
+    height: 80px;
+    padding: 10px 20px;
+  }
+  .createstore__input {
+    font-size: 18px;
+  }
+  .createstore__checkbox-row {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+  }
+  .createstore__checkbox-label {
+    align-items: flex-start;
+    text-align: left;
+  }
+  html[dir="rtl"] .createstore__checkbox-label {
+    text-align: right;
+  }
+  .createstore__whatsapp-helper {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .createstore__submit-btn {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 459px;
+    height: 72px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .createstore {
+    padding-top: clamp(100px, 12vw, 130px);
+  }
+  .createstore__title {
+    font-size: 36px;
+  }
+  .createstore__phone-field {
+    height: 76px;
+  }
+  .createstore__input {
+    font-size: 17px;
+  }
+  .createstore__submit-btn {
+    height: 68px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 520px) {
+  .createstore {
+    padding-top: 90px;
+  }
+  .createstore__title {
+    font-size: 28px;
+  }
+  .createstore__subtitle {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .createstore__phone-field {
+    height: 70px;
+    gap: 12px;
+    padding: 10px 15px;
+  }
+  .createstore__flag {
+    width: 32px;
+    height: 32px;
+  }
+  .createstore__dropdown-btn {
+    height: 34px;
+    gap: 6px;
+  }
+  .createstore__arrow {
+    width: 12px;
+    height: 14px;
+  }
+  .createstore__dropdown-list {
+    width: 220px;
+  }
+  .createstore__input {
+    font-size: 16px;
+  }
+  .createstore__agreement-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .createstore__checkbox-label {
+    gap: 10px;
+  }
+  .createstore__checkbox-custom {
+    width: 16px;
+    height: 16px;
+  }
+  .createstore__checkbox-custom::after {
+    left: 4px;
+    top: 1px;
+    width: 3px;
+    height: 7px;
+  }
+  .createstore__whatsapp-helper {
+    font-size: 14px;
+  }
+  .createstore__submit-btn {
+    height: 60px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+}

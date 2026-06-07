@@ -2,6 +2,29 @@
 
 > Append-only history. Trim oldest entries when this file approaches 500 lines.
 
+# 2026-06-07 06:00
+
+- **Optimized Create Store Page Responsiveness**:
+  - Hid the right column illustration graphics, banner overlays, and carts artwork completely on viewports under `1180px` (`display: none !important`).
+  - Centered all form elements, title headings, subtitles, checkbox rows, helper labels, and Continue CTAs on mobile/tablet viewports to match Figma spec mockups.
+  - scaled down padding, margins, phone validation input containers, and button sizes progressively across multiple breakpoints (tablet, standard mobile, and extra small screens) for premium fluid rendering.
+
+# 2026-06-07 05:58
+
+- **Removed Brand Footer from Create Store Page**:
+  - Excluded the `'footer'` component template from the compile pipeline arrays in [compile-templates.mjs](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/scripts/compile-templates.mjs) for `createStoreComponents`.
+  - Removed `<!-- INSERT: footer -->` comment marker from [create-store.base.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/create-store.base.html).
+  - Recompiled page templates to update static HTML build files.
+
+# 2026-06-07 05:45
+
+- **Implemented Create Store Design Subpages**:
+  - Created standalone pages `create-store.html` and `create-store-ar.html` via compiler script.
+  - Implemented custom country code phone prefix dropdown widget.
+  - Symmetrical columns matching Figma dimensions with glassmorphism (blur 67px) banner overlay.
+  - Sourced homepage services cart SVGs into the right-hand corner decoration.
+  - Updated global navbars and footers to route CTA clicks to the new store creation flow.
+
 # 2026-06-07 05:40
 
 - **Fixed Top Navbar Padding Overlap**:
@@ -397,125 +420,6 @@
   - Centered all text content (`text-align: center`) and social contact buttons (`justify-content: center`) inside `.support__card`.
   - Scaled down the decorative double circles in the eyebrow slider to matching compact `18px` knob sizes to fit mobile layouts.
   - Reduced section padding (`30px` top and `40px` bottom) and cleared negative margin offsets.
-
-# 2026-06-03 11:57
-
-- **Polished Homepage Designs Section Layout on Mobile**:
-  - Hid the large background paint bucket/oil bottle watermark illustration (`.designs__watermark`) on mobile screens to prevent messy text overlaps.
-  - Reduced overall section padding on mobile to a compact `30px` top and `40px` bottom, down from the desktop clamp, making the section footprint cleaner.
-  - Decreased spacing margins inside the header to `24px` to pull the title closer to the cards.
-
-# 2026-06-03 11:47
-
-- **Figma-Aligned Mobile Responsive Filter Tabs on Designs Page**:
-  - Restructured `.designspage-tabs` to use a centering flex layout with wrap (`display: flex; flex-wrap: wrap; justify-content: center`) instead of rigid grid boxes.
-  - Sized tabs to fit their content dynamically (`width: auto; padding: 10px 14px`) and forced text to stay on a single line (`white-space: nowrap !important`) so that long categories like "Health and Beauty" display their full name without truncation or wrapping into jagged boxes.
-  - Restored the horizontal divider line below the tabs on mobile viewports using the primary-light sage stroke.
-
-# 2026-06-03 11:42
-
-- **Fixed Blog Page Mobile Layout Card Shifting & Horizontal Overflow**:
-  - Identified that the desktop-sized pagination buttons (`56px` wide) and gap spacings on the mobile view were creating a minimum pagination row width of `420px`. This overflowed the viewport and forced the main content column to stretch and shift to the right.
-  - scaled down mobile pagination buttons to `36px` and font sizes to `15px` with a tighter `4px` gap, ensuring pagination occupies only `260px` max-width.
-  - Forced `.blogpage` container to `width: 100% !important; max-width: 100% !important;` on mobile to prevent layout shifting.
-
-# 2026-06-03 11:41
-
-- **Fixed Mobile/Tablet Hero-Timeline Spacing & White Space**:
-  - Identified root cause where `.svcpage-hero__content`'s desktop `flex-basis: 832px` was being interpreted as a height constraint in mobile's vertical flex layout (`flex-direction: column-reverse`). Overrode it with `flex: none !important` to release the spacing.
-  - Forced `height: auto !important` and `flex: none !important` with minimal constraints on the hero image container (`.svcpage-hero__image`) to avoid inheriting desktop's fixed `618px` heights.
-  - Reduced the mobile hero top padding (`padding-top: clamp(80px, 10vw, 100px) !important;`) to minimize spacing between header and page content.
-  - Decreased spacing inside `.svcpage-hero__inner` and minimized paddings/margins on `.svcpage-timeline` to create a compact, seamless layout flow on mobile screen sizes.
-
-# 2026-06-03 11:35
-
-- **Redesigned Service Page Hero Section Responsive Layout**:
-  - Split `servicepage.css` into `_servicepage_base.css` and `_servicepage_responsive.css` to satisfy the strict 500-line limit rule, converting the main file to a clean aggregator.
-  - Corrected mobile/tablet viewports layout to be left-aligned (`text-align: start; align-items: flex-start;`) instead of centered to match the Figma mockups.
-  - Scaled down the overlapping circles slider decoration on mobile: reduced knob sizes from `25px` to `18px` and slider width from `160px` to `80px`.
-  - Adjusted the eyebrow label font size to a compact `15px` with normal line-height so it flows next to the slider on a single line.
-  - Sized the primary "Order Now" CTA button to fit content dynamically instead of stretching full-width.
-  - Recompiled all page templates and ran the production build successfully.
-
-# 2026-06-03 11:32
-
-- **Upgraded Responsive Footer Design & Layout**:
-  - Separated the "Social" section into its own markup block (`.footer__social-block`) inside [footer.en.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/footer/footer.en.html) and [footer.ar.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/footer/footer.ar.html) to allow flexible responsive stacking and grid placements.
-  - Defined explicit desktop layout grid coordinates (`grid-column` / `grid-row`) under `@media (min-width: 981px)` in [footer.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/footer/footer.css) to preserve the original 4-column desktop layout.
-  - Completely redesigned mobile and tablet responsive layouts (`max-width: 980px`):
-    - Changed main footer background color to white (`#ffffff`) as requested.
-    - Preserved side-by-side dual-column layouts for Quick Links and Site Map on mobile screens.
-    - Set contact details to remain in horizontal row formats with soft circular background badges.
-    - Aligned the "Social" title and borderless social icon SVGs side-by-side on a single row.
-    - Applied a full-width background bar using Qatari sand-sage canvas (`hsl(165, 12%, 96.5%)`) for the bottom copyright section.
-    - Adjusted the primary CTA button border-radius to a clean `12px` card corner with soft shadows.
-  - Successfully recompiled all page templates and ran the production build.
-
-# 2026-06-03 11:26
-
-- **Fixed Broken Sticky Animation in "What Makes Us Different" Section**:
-  - **Root Cause**: The previous session added `overflow-x: clip` to the `html` element in [_reset.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_reset.css). This property breaks `position: sticky` for ALL descendant elements, killing the stacking card scroll animation.
-  - **Fix**: Removed `overflow-x: clip` from `html` and added a protective comment explaining why it must never be added back. The `body` element already has `overflow-x: hidden` which handles horizontal scroll containment without breaking sticky.
-
-# 2026-06-03 11:24
-
-- **Mobile Menu Overflow Fix (from previous session)**:
-  - Added `overflow: hidden` to the `.mobile-menu` overlay wrapper in [mobile-menu.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/navbar/mobile-menu.css) to clip the offscreen menu panel (`transform: translateX(100%)`) when closed.
-  - Removed the outdated linear-gradient override on `.support__card` in [_rtl.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/styles/_rtl.css) to allow it to inherit the new Figma gradient directly.
-
-  - Recompiled page templates and ran the production build successfully.
-
-# 2026-06-03 11:19
-
-- **Updated Support & Help Card to Match Figma Specs and Icons**:
-  - Implemented Figma properties on `.support__card` in [support.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.css): `max-width: 1567px`, `min-height: 376px`, and `border-radius: 25px`.
-  - Applied the exact Figma linear gradient directly on the `.support__card` background with `background-color: #FFFFFF`. This keeps the card container 100% solid and fully opaque (no transparency or mix-blend-mode), ensuring a premium, clear visual appearance.
-  - Converted the downloaded Figma PNGs for WhatsApp and Gmail using Node.js `sharp` library into web-optimized WebP images (`whatsapp.webp` and `gmail.webp`) and saved them to the `public/images/` directory.
-  - Replaced the inline SVGs for WhatsApp and Gmail inside [support.en.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.en.html) and [support.ar.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.ar.html) with the new WebP images.
-  - Sized the contact buttons to exactly `92px × 91px` on desktop with `border-radius: 25px` and `opacity: 1` as per specifications.
-  - Successfully ran local Vite production build and verified compiled files.
-
-# 2026-06-03 11:08
-
-- **Aligned Final Services Slide to the Left with Empty Space**:
-  - Defined CSS custom properties (`--services-card-w` and `--services-pad-start`) to calculate pixel-perfect spacing dynamically.
-  - Set `padding-inline-end` on `.services__track` to `calc(100vw - var(--services-card-w) - var(--services-pad-start))` in [services.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/services/services.css). This allows slide 8/8 to align completely to the far left of the viewport on scroll while leaving the right side empty as requested.
-  - Rebuilt production assets successfully.
-
-# 2026-06-03 11:06
-
-- **Enabled Drag-to-Scroll & Expanded Hover Autoplay Pause for Services Carousel**:
-  - Implemented interactive mouse drag-to-scroll handling (`mousedown`, `mousemove`, `mouseup`, `mouseleave`) in [services.en.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/services/services.en.html) and [services.ar.html](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/services/services.ar.html) that pauses autoplay and allows users to click, hold, and drag cards horizontally.
-  - Dynamically disables/enables CSS scroll-snapping and smooth scroll behaviors during drag states to ensure 1:1 mouse tracking.
-  - Linked hover observers to the parent `.services` container so autoplay pauses if the cursor is anywhere on the services section.
-  - Added `cursor: grab` and `cursor: grabbing` styling on the carousel track.
-  - Recompiled pages and verified production Vite bundle build successfully.
-
-# 2026-06-03 11:04
-
-- **Customized Partners Marquee Scroll Boundaries and Transition**:
-  - Removed linear-gradient opacity masks (`mask-image` and `-webkit-mask-image`) on `.partners__logos` in [clients.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/clients/clients.css) to eliminate visual fade-outs and enforce sharp, TV-news-style instant boundaries.
-  - Increased `.partners` container layout gap using a fluid `clamp(60px, 7vw, 120px)` to shift the scroll start and stop points further to the right.
-  - Recompiled all pages and verified production build completes successfully.
-
-# 2026-06-03 11:00
-
-- **Placed Floating Side CTA Above Everything**:
-  - Increased `z-index` of `.hero__side-cta` from `var(--z-side)` to `99999` in [hero.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/hero/hero.css) to guarantee the floating "Send a message" button stays on top of all visual sections, margins, and layout elements on scroll.
-  - Recompiled page templates and ran the production build successfully.
-
-# 2026-06-03 10:59
-
-- **Shifted Support Card Block Upwards**:
-  - Decreased top padding on `.support` to `clamp(20px, 2vw, 40px)` and applied a negative `margin-top` (`clamp(-100px, -8vw, -50px)`) in [support.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.css) to pull the support card container up closer to the designs section.
-  - Recompiled page templates and ran the production build successfully.
-
-# 2026-06-03 10:57
-
-- **Removed Support Section Wrapper Background and Restored Card Block**:
-  - Reverted block card container styles (`background-color`, `background-image`, `box-shadow`, `padding`, and `border-radius`) on `.support__card` in [support.css](file:///c:/Users/MSI-PC/OneDrive/Documents/freelancing/e-trolley/etrolley/src/components/support/support.css) to preserve the original Figma card container layout.
-  - Changed `.support` section wrapper background from white (`#FFFFFF`) to `transparent` so that the card container integrates cleanly on top of continuous page backgrounds.
-  - Recompiled page templates and ran the production build successfully.
 
 
 
