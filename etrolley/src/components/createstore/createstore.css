@@ -129,45 +129,66 @@ html[dir="rtl"] .createstore__phone-field .iti input[type=tel] {
 
 .iti__selected-flag {
   background: transparent !important;
-  padding: 0 15px 0 20px !important;
+  padding: 0 10px 0 20px !important;
   height: 100% !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 0 !important;
   cursor: pointer !important;
 }
 
 html[dir="rtl"] .iti__selected-flag {
-  padding: 0 20px 0 15px !important;
+  padding: 0 20px 0 10px !important;
+}
+
+/* Flag box wrapper container */
+.iti__flag-box {
+  width: 38px !important;
+  height: 38px !important;
+  position: relative !important;
+  background: #FFFFFF !important;
+  border: 1px solid #DFDFDF !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  flex: 0 0 38px !important;
+}
+
+/* Flag country layout inside wrapper */
+.iti__flag-box .iti__flag {
+  position: absolute !important;
+  width: 32.72222137451172px !important;
+  height: 20.05555534362793px !important;
+  top: 8.97px !important;
+  left: 2.64px !important;
+  margin: 0 !important;
+  border: 0.5px solid #000000 !important;
+  box-sizing: border-box !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
 }
 
 /* Arrow styling */
 .iti__arrow {
-  border-top: 5px solid #555555 !important;
-  border-left: 4px solid transparent !important;
-  border-right: 4px solid transparent !important;
-  border-bottom: 0 !important;
+  width: 15px !important;
+  height: 17px !important;
+  border: none !important;
+  background-image: url("data:image/svg+xml;utf8,<svg width='15' height='17' viewBox='0 0 15 17' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.5 6L7.5 12L13.5 6' stroke='%239AB5AD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
   transition: transform var(--dur-fast) var(--ease-out-expo) !important;
-  margin-left: 5px !important;
+  margin-left: 10px !important;
+  margin-right: 0 !important;
 }
 
 html[dir="rtl"] .iti__arrow {
   margin-left: 0 !important;
-  margin-right: 5px !important;
+  margin-right: 10px !important;
 }
 
-/* Selected Dial code text style */
+/* Selected Dial code text style - hidden */
 .iti__selected-dial-code {
-  font-family: 'Outfit', sans-serif !important;
-  font-size: 18px !important;
-  font-weight: 500 !important;
-  color: #316C6B !important;
-  margin-left: 8px !important;
-}
-
-html[dir="rtl"] .iti__selected-dial-code {
-  margin-left: 0 !important;
-  margin-right: 8px !important;
+  display: none !important;
 }
 
 /* Country list dropdown dropdown styling */

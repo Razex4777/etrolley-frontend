@@ -173,10 +173,24 @@
         if (phoneInput) {
           window.itiInstance = window.intlTelInput(phoneInput, {
             initialCountry: "qa",
-            separateDialCode: true,
+            separateDialCode: false,
             preferredCountries: ["qa", "sa", "ae", "kw", "om", "bh"],
             utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js"
           });
+
+          // Wrap flag inside a 38x38 container box
+          function wrapFlag() {
+            var flag = document.querySelector('.iti__selected-flag .iti__flag');
+            if (flag && !flag.parentElement.classList.contains('iti__flag-box')) {
+              var box = document.createElement('div');
+              box.className = 'iti__flag-box';
+              flag.parentNode.insertBefore(box, flag);
+              box.appendChild(flag);
+            }
+          }
+          // Wrap on init
+          setTimeout(wrapFlag, 50);
+          phoneInput.addEventListener('countrychange', wrapFlag);
         }
       });
     </script>
