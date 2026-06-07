@@ -48,3 +48,7 @@ Desktop.ini
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+
+# Exclude docs from github
+docs/
+**/docs/

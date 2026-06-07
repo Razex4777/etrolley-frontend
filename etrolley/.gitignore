@@ -16,3 +16,7 @@ yarn-error.log*
 .idea
 *.swp
 *.swo
+
+# Exclude docs from github
+docs/
+**/docs/
