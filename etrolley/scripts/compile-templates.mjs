@@ -2,6 +2,20 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Override writeFileSync to make paths relative for local file:// previews
+const originalWriteFileSync = fs.writeFileSync;
+fs.writeFileSync = function(filePath, content, options) {
+  if (typeof content === 'string' && filePath.endsWith('.html')) {
+    content = content
+      .replaceAll('href="/src/', 'href="src/')
+      .replaceAll('src="/src/', 'src="src/')
+      .replaceAll('href="/images/', 'href="public/images/')
+      .replaceAll('src="/images/', 'src="public/images/')
+      .replaceAll('type="module" src="src/assets/js/main.js"', 'src="src/assets/js/main.js"');
+  }
+  return originalWriteFileSync.call(fs, filePath, content, options);
+};
+
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const indexComponents = [

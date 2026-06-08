@@ -39,32 +39,7 @@
       <!-- INSERT: support -->
 
     </main>
-    <script>
-      (function() {
-        var nav = document.querySelector('.nav');
-        if (!nav) return;
-        function checkScroll() {
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-          if (scrollTop > 20) {
-            nav.classList.add('is-scrolled');
-          } else {
-            nav.classList.remove('is-scrolled');
-          }
-        }
-        window.addEventListener('scroll', checkScroll, { passive: true });
-        window.addEventListener('resize', checkScroll, { passive: true });
-        document.addEventListener('scroll', checkScroll, { passive: true });
-        document.addEventListener('DOMContentLoaded', function() {
-          checkScroll();
-          var sideCta = document.querySelector('[data-side-cta]');
-          if (sideCta && sideCta.parentNode !== document.body) {
-            document.body.appendChild(sideCta);
-          }
-        });
-        checkScroll();
-        window.addEventListener('load', checkScroll);
-      })();
-    </script>
+    <script type="module" src="/src/assets/js/main.js"></script>
     <!-- INSERT: footer -->
     
     <!-- CSS-Only Expandable Contact Drawer Modal -->
@@ -82,7 +57,7 @@
             </svg>
           </a>
         </div>
-        <form class="contact-drawer__form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent!'); window.location.hash='#';">
+        <form class="contact-drawer__form" action="#" method="POST">
           <div class="contact-drawer__field">
             <input type="text" id="contact-name" placeholder="Name" required />
             <label for="contact-name" class="i18n-block--inline" lang="en">Name</label>
@@ -110,7 +85,6 @@
         </form>
       </div>
     </div>
-
 
   </body>
 </html>

@@ -11,7 +11,7 @@
 /* ---------- Hero Section ---------- */
 .svcpage-hero {
   position: relative;
-  padding: clamp(100px, 10vw, 155px) clamp(24px, 6vw, 153px) clamp(20px, 3vw, 40px);
+  padding: clamp(100px, 10vw, 155px) 0 clamp(20px, 3vw, 40px);
   background: transparent;
   overflow: hidden;
   min-height: auto;
@@ -22,8 +22,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 60px;
-  max-width: 1920px;
+  max-width: var(--container);
+  width: 100%;
   margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 /* Left column — content */
@@ -166,9 +168,10 @@
 /* ---------- Timeline Services Section ---------- */
 .svcpage-timeline {
   position: relative;
-  padding: 0 clamp(24px, 6vw, 127px) clamp(40px, 5vw, 80px);
+  padding: 0 var(--gutter) clamp(40px, 5vw, 80px);
   background: transparent;
-  max-width: 1920px;
+  max-width: var(--container);
+  width: 100%;
   margin: 0 auto;
 }
 

@@ -1764,23 +1764,6 @@
     </div>
 
     <!-- Mobile Accordion Script -->
-    <script>
-      (function() {
-        var buttons = document.querySelectorAll('.pricespage__mobile-toggle-btn');
-        buttons.forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            var card = btn.closest('.pricespage__mobile-card');
-            var features = card.querySelector('.pricespage__mobile-card-features');
-            var isHidden = features.style.display === 'none';
-            
-            features.style.display = isHidden ? 'block' : 'none';
-            btn.textContent = isHidden ? 'View Less' : 'View More';
-            card.classList.toggle('is-expanded', isHidden);
-            btn.classList.toggle('is-expanded', isHidden);
-          });
-        });
-      })();
-    </script>
 
   </div>
 </section>

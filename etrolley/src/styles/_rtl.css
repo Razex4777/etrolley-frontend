@@ -39,7 +39,7 @@
 /* Burger lines: re-anchor to the LEFT edge so the indented middle
    bar (with its dot) reads naturally in RTL. */
 [dir='rtl'] .nav__burger {
-  align-items: flex-start;
+  align-items: flex-end;
 }
 [dir='rtl'] .nav__burger-line {
   transform-origin: left center;
@@ -178,10 +178,10 @@
    "off-screen" offset there, not in CSS. The CSS just needs to
    anchor the panel and tweak edge styling. */
 [dir='rtl'] .mobile-menu__panel {
-  right: auto;
-  left: 0;
-  box-shadow: 40px 0 80px rgba(0, 0, 0, 0.4);
-  transform: translateX(-100%);
+  left: auto;
+  right: 0;
+  box-shadow: -40px 0 80px rgba(0, 0, 0, 0.4);
+  transform: translateX(100%);
 }
 
 [dir='rtl'] .mobile-menu:target .mobile-menu__panel {
@@ -189,8 +189,8 @@
 }
 
 [dir='rtl'] .mobile-menu__panel::before {
-  left: auto;
-  right: 0;
+  right: auto;
+  left: 0;
 }
 
 [dir='rtl'] .mobile-menu__item a:hover {

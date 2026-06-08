@@ -190,32 +190,5 @@
   </div>
 
   <!-- ── Scroll-Reveal Observer Script ─────────────────────── -->
-  <script>
-    (function() {
-      var cards = document.querySelectorAll('.blogpage-card, .blogpage-mostread-card');
-      if (!cards.length) return;
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry, idx) {
-          if (entry.isIntersecting) {
-            setTimeout(function() {
-              entry.target.classList.add('is-visible');
-            }, idx * 100);
-          }
-        });
-      }, { threshold: 0.1 });
-      cards.forEach(function(el) { observer.observe(el); });
-    })();
-
-    /* Tag toggle */
-    (function() {
-      var tags = document.querySelectorAll('.blogpage-tag');
-      tags.forEach(function(tag) {
-        tag.addEventListener('click', function() {
-          tags.forEach(function(t) { t.classList.remove('is-active'); });
-          tag.classList.add('is-active');
-        });
-      });
-    })();
-  </script>
 
 </section>

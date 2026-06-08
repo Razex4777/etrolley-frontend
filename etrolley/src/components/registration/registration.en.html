@@ -3,7 +3,7 @@
     <div class="createstore__left">
       <h1 class="createstore__title">Registration</h1>
 
-      <form class="createstore__form" id="register-form" action="create-store-final" method="POST" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+      <form class="createstore__form" id="register-form" action="create-store-final" method="POST">
         <div class="createstore__register-grid">
           <!-- Left Col -->
           <div class="createstore__register-col">
@@ -75,42 +75,3 @@
   </div>
 </section>
 
-<script>
-  (function() {
-    // Registration Type Dropdown Logic
-    var dropdown = document.getElementById('store-type-dropdown');
-    if (dropdown) {
-      var btn = dropdown.querySelector('.createstore__select-btn');
-      var hiddenInput = document.getElementById('store-type-val');
-      var placeholder = document.getElementById('selected-store-type');
-
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', !expanded);
-      });
-
-      document.addEventListener('click', function() {
-        btn.setAttribute('aria-expanded', 'false');
-      });
-
-      dropdown.querySelectorAll('.createstore__select-option').forEach(function(opt) {
-        opt.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var val = opt.getAttribute('data-value');
-          var text = opt.textContent;
-
-          hiddenInput.value = val;
-          placeholder.textContent = text;
-          btn.classList.add('has-value');
-          btn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-
-    // Form submission redirection
-    window.handleRegisterSubmit = function() {
-      window.location.href = 'registration2.html';
-    };
-  })();
-</script>

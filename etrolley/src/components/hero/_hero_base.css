@@ -97,9 +97,9 @@
     auto;                /* Follow rail — shrink to content */
   column-gap: clamp(16px, 2vw, 40px);
   align-items: start;
-  max-width: var(--canvas-w);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: clamp(36px, 4.5vw, 90px) clamp(24px, 3.5vw, 70px) 0;
+  padding: clamp(36px, 4.5vw, 90px) var(--gutter) 0;
   height: 100%;
 }
 

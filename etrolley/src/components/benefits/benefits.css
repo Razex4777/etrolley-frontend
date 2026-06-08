@@ -4,9 +4,17 @@
 
 .benefits {
   position: relative;
-  padding: clamp(60px, 8vw, 120px) clamp(24px, 6vw, 120px);
+  padding: clamp(60px, 8vw, 120px) 0;
   background: var(--color-white);
   overflow: clip;
+}
+
+.benefits__inner {
+  position: relative;
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 .benefits__header {

@@ -104,40 +104,5 @@
   </div>
 
   <!-- ── Interactive Filter & Tab Toggling Script ───────────── -->
-  <script>
-    (function() {
-      var tabs = document.querySelectorAll('.designspage-tab');
-      var cards = document.querySelectorAll('.designspage-card');
-      
-      tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          // Reset active class
-          tabs.forEach(function(t) { 
-            t.classList.remove('is-active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('is-active');
-          tab.setAttribute('aria-selected', 'true');
-
-          var filter = tab.getAttribute('data-filter');
-
-          cards.forEach(function(card) {
-            var categories = card.getAttribute('data-category').split(' ');
-            if (filter === 'all' || categories.indexOf(filter) !== -1) {
-              card.style.display = 'block';
-              setTimeout(function() {
-                card.classList.add('is-visible');
-              }, 10);
-            } else {
-              card.classList.remove('is-visible');
-              setTimeout(function() {
-                card.style.display = 'none';
-              }, 400); // Matches CSS transition duration
-            }
-          });
-        });
-      });
-    })();
-  </script>
 
 </section>

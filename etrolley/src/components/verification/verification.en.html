@@ -9,7 +9,7 @@
             Please Enter the code that has been send to phone number <span id="verify-phone-display" style="color: #316C6B; font-weight: 700;">+974 33433313</span>
           </p>
 
-          <form class="createstore__form" id="verify-form" onsubmit="event.preventDefault(); handleVerifySubmit();">
+          <form class="createstore__form" id="verify-form">
             <!-- 6 digits code inputs -->
             <div class="createstore__code-container">
               <input type="text" class="createstore__code-input" maxlength="1" required />
@@ -77,80 +77,3 @@
   </div>
 </section>
 
-<script>
-  (function() {
-    // Populate phone number from localStorage
-    var savedPhone = localStorage.getItem('etrolley_phone');
-    var displayNum = document.getElementById('verify-phone-display');
-    if (displayNum) {
-      displayNum.textContent = savedPhone ? savedPhone : '+974 33433313';
-    }
-
-    // Digit Inputs Behavior (move focus forward/back)
-    var codeInputs = document.querySelectorAll('.createstore__code-input');
-    codeInputs.forEach(function(input, idx) {
-      input.addEventListener('input', function(e) {
-        input.value = input.value.replace(/[^0-9]/g, '');
-        if (input.value.length === 1 && idx < codeInputs.length - 1) {
-          codeInputs[idx + 1].focus();
-        }
-      });
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Backspace' && input.value.length === 0 && idx > 0) {
-          codeInputs[idx - 1].focus();
-        }
-      });
-      input.addEventListener('paste', function(e) {
-        e.preventDefault();
-        var pasteData = (e.clipboardData || window.clipboardData).getData('text').trim();
-        if (/^\d+$/.test(pasteData)) {
-          var chars = pasteData.split('');
-          codeInputs.forEach(function(inp, i) {
-            if (chars[i]) {
-              inp.value = chars[i];
-              if (i < codeInputs.length - 1) {
-                codeInputs[i + 1].focus();
-              }
-            }
-          });
-        }
-      });
-    });
-
-    // Verification Code Validation
-    window.handleVerifySubmit = function() {
-      var code = Array.from(codeInputs).map(function(i) { return i.value; }).join('').trim();
-      if (code === '11111' || code === '111111' || code === '1111') {
-        window.location.href = 'registration.html';
-      } else {
-        alert('Invalid Verification Code! Please use the code: 11111');
-      }
-    };
-
-    // Countdown Timer logic
-    var timerInterval;
-    function startTimer(seconds) {
-      clearInterval(timerInterval);
-      var display = document.getElementById('countdown-timer');
-      if (!display) return;
-      
-      var timeLeft = seconds;
-      display.textContent = timeLeft;
-
-      timerInterval = setInterval(function() {
-        timeLeft--;
-        display.textContent = timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          setTimeout(function() { startTimer(22); }, 2000);
-        }
-      }, 1000);
-    }
-    
-    // Auto-focus first field & start timer
-    setTimeout(function() {
-      if (codeInputs[0]) codeInputs[0].focus();
-    }, 200);
-    startTimer(22);
-  })();
-</script>

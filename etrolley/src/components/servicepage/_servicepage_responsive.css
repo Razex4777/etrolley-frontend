@@ -251,7 +251,7 @@
 
 @media (max-width: 480px) {
   .svcpage-hero {
-    padding: 100px 24px 20px !important;
+    padding: 100px 0 20px !important;
   }
 
   .svcpage-hero__title {

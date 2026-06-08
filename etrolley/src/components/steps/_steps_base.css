@@ -24,9 +24,10 @@
 
 .steps__inner {
   position: relative;
-  max-width: var(--canvas-w);
+  max-width: var(--container);
+  width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(40px, 8vw, 240px); /* Reduced base for better card sizing at mid widths */
+  padding: 0 var(--gutter);
 }
 
 /* ---------- Eyebrow ---------- */

@@ -21,9 +21,10 @@
 
 .clients__inner {
   position: relative;
-  max-width: var(--canvas-w);
+  max-width: var(--container);
+  width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 80px);
+  padding: 0 var(--gutter);
 }
 
 /* ---------- Header ---------- */

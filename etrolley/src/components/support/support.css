@@ -22,12 +22,10 @@
 
 .support__inner {
   position: relative;
-  /* Wide, long card like the Figma — spans most of the canvas with
-     a comfortable gutter. The title sits on 2 lines and the icons
-     have room to sit out near the cart artwork. */
-  max-width: min(1760px, calc(100% - clamp(48px, 6vw, 120px)));
+  max-width: var(--container);
+  width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 80px);
+  padding: 0 var(--gutter);
   /* Children with z-index live in this stacking context; we DON'T
      create a new stacking context here so the yellow back layer
      and the teal front layer can stack relative to the card via

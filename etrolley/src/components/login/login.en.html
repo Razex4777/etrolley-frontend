@@ -8,7 +8,7 @@
           To access your own store through a special control panel, Fill out the required information:
         </p>
 
-        <form class="createstore__form" id="login-form" onsubmit="event.preventDefault(); handleLoginSubmit();">
+        <form class="createstore__form" id="login-form">
           <!-- Email Field -->
           <div class="createstore__field">
             <input type="email" name="email" id="login-email" placeholder="Someone.one@gmail.com" required />
@@ -72,11 +72,3 @@
   </div>
 </section>
 
-<script>
-  (function() {
-    window.handleLoginSubmit = function() {
-      alert('Login Successful!');
-      window.location.href = 'index.html';
-    };
-  })();
-</script>

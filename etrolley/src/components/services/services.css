@@ -78,9 +78,9 @@
 .services__inner {
   position: relative;            /* establishes its own stacking context above bg */
   z-index: 1;
-  max-width: var(--canvas-w);
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 clamp(24px, 3.5vw, 70px);
+  padding: 0 var(--gutter);
 }
 
 /* ---------- Header section ---------- */

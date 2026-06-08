@@ -6,7 +6,7 @@
 .footer {
   position: relative;
   background: hsl(165, 12%, 96.5%); /* Soft off-white Qatari sand-sage canvas */
-  padding: clamp(96px, 10vw, 160px) 0 clamp(40px, 4vw, 64px);
+  padding: clamp(64px, 6vw, 96px) 0 clamp(32px, 3vw, 48px);
   color: var(--color-ink-soft);
   overflow: hidden;
   isolation: isolate;
@@ -14,9 +14,9 @@
 
 .footer__inner {
   position: relative;
-  max-width: min(1500px, calc(100% - clamp(48px, 6vw, 120px)));
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 80px);
+  padding: 0 var(--gutter);
   display: flex;
   flex-direction: column;
 }
@@ -26,7 +26,7 @@
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
   gap: clamp(40px, 4vw, 80px);
-  margin-bottom: clamp(64px, 7vw, 110px);
+  margin-bottom: clamp(32px, 3.5vw, 48px);
 }
 
 .footer__col {
@@ -316,8 +316,8 @@
   justify-content: space-between;
   align-items: center;
   border-top: 1.5px solid rgba(49, 108, 107, 0.1);
-  padding-top: clamp(24px, 2.5vw, 36px);
-  margin-top: clamp(48px, 5vw, 80px);
+  padding-top: clamp(16px, 2vw, 24px);
+  margin-top: clamp(28px, 3vw, 40px);
   gap: 20px;
 }
 

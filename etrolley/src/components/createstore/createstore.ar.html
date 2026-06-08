@@ -11,7 +11,7 @@
             لإنشاء وإدارة متجرك الخاص من خلال لوحة تحكم خاصة، يرجى ملء المعلومات المطلوبة:
           </p>
 
-          <form class="createstore__form" id="phone-form" onsubmit="event.preventDefault(); handlePhoneSubmit();">
+          <form class="createstore__form" id="phone-form">
             <div class="createstore__field-wrapper">
               <div class="createstore__phone-field">
                 <input type="tel" name="phone" class="createstore__input" id="phone-input" placeholder="XXXXXXXXX" required />
@@ -89,18 +89,3 @@
   </div>
 </section>
 
-<script>
-  (function() {
-    window.handlePhoneSubmit = function() {
-      var phoneInput = document.getElementById('phone-input');
-      var val = phoneInput.value.trim();
-      var dialCode = "";
-      if (window.itiInstance) {
-        dialCode = "+" + window.itiInstance.getSelectedCountryData().dialCode + " ";
-      }
-      var fullNum = dialCode + val;
-      localStorage.setItem('etrolley_phone', fullNum);
-      window.location.href = 'verification-ar.html';
-    };
-  })();
-</script>

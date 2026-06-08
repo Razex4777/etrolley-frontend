@@ -30,72 +30,9 @@
     <main>
       <!-- INSERT: contact -->
     </main>
-    <script>
-      (function() {
-        var nav = document.querySelector('.nav');
-        if (!nav) return;
-        function checkScroll() {
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-          if (scrollTop > 20) {
-            nav.classList.add('is-scrolled');
-          } else {
-            nav.classList.remove('is-scrolled');
-          }
-        }
-        window.addEventListener('scroll', checkScroll, { passive: true });
-        window.addEventListener('resize', checkScroll, { passive: true });
-        document.addEventListener('scroll', checkScroll, { passive: true });
-        document.addEventListener('DOMContentLoaded', function() {
-          checkScroll();
-          var sideCta = document.querySelector('[data-side-cta]');
-          if (sideCta && sideCta.parentNode !== document.body) {
-            document.body.appendChild(sideCta);
-          }
-
-          // Custom Select Dropdown logic
-          var customSelects = document.querySelectorAll('[data-custom-select]');
-          customSelects.forEach(function(selectContainer) {
-            var trigger = selectContainer.querySelector('.contact__select-trigger');
-            var placeholder = selectContainer.querySelector('.contact__select-placeholder');
-            var optionsList = selectContainer.querySelector('.contact__select-options');
-            var options = selectContainer.querySelectorAll('.contact__select-option');
-            var hiddenSelect = selectContainer.querySelector('select');
-
-            trigger.addEventListener('click', function(e) {
-              e.stopPropagation();
-              var isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-              trigger.setAttribute('aria-expanded', !isExpanded);
-              optionsList.classList.toggle('is-open');
-            });
-
-            options.forEach(function(opt) {
-              opt.addEventListener('click', function(e) {
-                e.stopPropagation();
-                var val = opt.getAttribute('data-value');
-                var text = opt.textContent;
-
-                placeholder.textContent = text;
-                placeholder.classList.add('has-value');
-
-                hiddenSelect.value = val;
-                hiddenSelect.dispatchEvent(new Event('change'));
-
-                trigger.setAttribute('aria-expanded', 'false');
-                optionsList.classList.remove('is-open');
-              });
-            });
-
-            document.addEventListener('click', function() {
-              trigger.setAttribute('aria-expanded', 'false');
-              optionsList.classList.remove('is-open');
-            });
-          });
-        });
-        checkScroll();
-        window.addEventListener('load', checkScroll);
-      })();
-    </script>
+    
     <!-- INSERT: footer -->
 
+      <script type="module" src="/src/assets/js/main.js"></script>
   </body>
 </html>

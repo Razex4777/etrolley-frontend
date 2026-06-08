@@ -4,7 +4,7 @@
 
 .about {
   position: relative;
-  padding: clamp(60px, 6vw, 120px) clamp(24px, 6vw, 120px);
+  padding: clamp(60px, 6vw, 120px) 0;
   background: var(--color-white);
   overflow: clip;
 }
@@ -26,7 +26,10 @@
   grid-template-columns: 1.12fr 0.88fr;
   gap: clamp(40px, 5vw, 100px);
   align-items: center;
-  max-width: 100%;
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 /* ---------- Text Content Column ---------- */
@@ -165,7 +168,7 @@
   }
 
   .about {
-    padding: 120px 24px clamp(40px, 5vw, 60px) 24px;
+    padding: 120px 0 clamp(40px, 5vw, 60px) 0;
   }
 
   .about__image-container {

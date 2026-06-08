@@ -5,7 +5,7 @@
       <div class="createstore__left">
         <h1 class="createstore__title">التسجيل</h1>
 
-        <form class="createstore__form" id="register2-form" onsubmit="event.preventDefault(); handleRegister2Submit();">
+        <form class="createstore__form" id="register2-form">
           <!-- Cost & Total Price box -->
           <div class="createstore__cost-box">
             <div class="createstore__cost-row">
@@ -27,7 +27,7 @@
           <!-- Domain Checkbox option -->
           <div class="createstore__domain-row">
             <label class="createstore__domain-label">
-              <input type="checkbox" name="buy_domain" class="createstore__domain-checkbox" onclick="window.location.href='registration3-ar.html';" />
+              <input type="checkbox" name="buy_domain" class="createstore__domain-checkbox" />
               <span class="createstore__domain-checkbox-custom">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="0.5" y="0.5" width="17" height="17" stroke="#757575"/>
@@ -92,11 +92,3 @@
   </div>
 </section>
 
-<script>
-  (function() {
-    window.handleRegister2Submit = function() {
-      alert('تم إكمال عملية التسجيل بنجاح!');
-      window.location.href = 'index-ar.html';
-    };
-  })();
-</script>

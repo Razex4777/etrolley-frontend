@@ -159,38 +159,4 @@
 </section>
 
 <!-- Service Page scroll-reveal + timeline progress JS -->
-<script>
-(function() {
-  /* Scroll-reveal for service rows */
-  var rows = document.querySelectorAll('.svcpage-row[data-reveal]');
-  if (!rows.length) return;
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  rows.forEach(function(row) { observer.observe(row); });
-
-  /* Timeline progress line */
-  var timeline = document.querySelector('.svcpage-timeline');
-  var progressLine = document.querySelector('.svcpage-timeline__line-progress');
-  if (!timeline || !progressLine) return;
-
-  function updateProgress() {
-    var rect = timeline.getBoundingClientRect();
-    var viewH = window.innerHeight;
-    var totalH = timeline.offsetHeight;
-    var scrolledInto = viewH - rect.top;
-    var pct = Math.max(0, Math.min(1, scrolledInto / totalH));
-    progressLine.style.height = (pct * 100) + '%';
-  }
-
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  window.addEventListener('resize', updateProgress, { passive: true });
-  updateProgress();
-})();
-</script>

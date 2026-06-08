@@ -97,24 +97,5 @@
       </div>
     </div>
   </div>
-  <script>
-    (function() {
-      var track = document.getElementById('designs-track');
-      var arrows = document.querySelectorAll('[data-component="designs"] .designs__arrow');
-      if (!track || !arrows.length) return;
-      arrows.forEach(function(arrow) {
-        arrow.addEventListener('click', function(e) {
-          e.preventDefault();
-          var dir = arrow.getAttribute('data-dir');
-          var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-          var scrollAmount = 282; // 242px card width + 40px gap
-          if (dir === 'next') {
-            track.scrollBy({ left: isRTL ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-          } else {
-            track.scrollBy({ left: isRTL ? scrollAmount : -scrollAmount, behavior: 'smooth' });
-          }
-        });
-      });
-    })();
-  </script>
+  
 </section>
