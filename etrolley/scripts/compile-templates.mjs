@@ -6,12 +6,14 @@ import { fileURLToPath } from 'node:url';
 const originalWriteFileSync = fs.writeFileSync;
 fs.writeFileSync = function(filePath, content, options) {
   if (typeof content === 'string' && filePath.endsWith('.html')) {
+    const version = Date.now();
     content = content
+      .replaceAll('href="/src/styles/main.css"', `href="src/styles/main.css?v=${version}"`)
       .replaceAll('href="/src/', 'href="src/')
       .replaceAll('src="/src/', 'src="src/')
       .replaceAll('href="/images/', 'href="public/images/')
       .replaceAll('src="/images/', 'src="public/images/')
-      .replaceAll('type="module" src="src/assets/js/main.js"', 'src="src/assets/js/main.js"');
+      .replaceAll('type="module" src="src/assets/js/main.js"', `src="src/assets/js/main.js?v=${version}"`);
   }
   return originalWriteFileSync.call(fs, filePath, content, options);
 };
